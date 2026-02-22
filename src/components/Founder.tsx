@@ -5,7 +5,7 @@ export default function Founder() {
   return (
     <section className="py-32 bg-brand-dark relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-4">
-        <div className="grid lg:grid-cols-12 gap-12 items-start">
+        <div className="grid lg:grid-cols-12 gap-12 items-stretch">
           
           {/* Left Side - Image (Span 5) */}
           <motion.div 
@@ -14,7 +14,7 @@ export default function Founder() {
             viewport={{ once: true }}
             className="lg:col-span-5 relative"
           >
-            <div className="aspect-[3/4] bg-brand-card relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 group">
+            <div className="h-full min-h-[400px] bg-brand-card relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 group">
               {/* Headshot Image */}
               <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10" />
               <img
@@ -45,7 +45,7 @@ export default function Founder() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="lg:col-span-7 lg:pl-12 pt-8"
+            className="lg:col-span-7 lg:pl-12 flex flex-col justify-center"
           >
             <h2 className="text-5xl md:text-7xl font-display font-medium text-white mb-12 leading-[0.9]">
               From Data Scientist <br />
@@ -55,7 +55,7 @@ export default function Founder() {
             <div className="space-y-8 text-lg text-brand-text/80 font-light leading-relaxed max-w-2xl">
               <p>
                 <span className="text-white font-medium">I don't teach theory.</span> I teach what works in production. 
-                After working with 5+ early-stage startups and launching multiple AI-powered products, 
+                After working with 5+ early-stage startups and launching multiple AI-powered products, I’ve helped founders go from concept to live product,
                 I realized most courses are stuck in 2023.
               </p>
               <p>
@@ -74,7 +74,7 @@ export default function Founder() {
               </div>
               <div>
                 <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-2">Connect</p>
-                <a href="#" className="text-white font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1">
+                <a href="https://www.linkedin.com/in/hariprasad20/" className="text-white font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1">
                   LinkedIn <ArrowUpRight size={14} />
                 </a>
               </div>

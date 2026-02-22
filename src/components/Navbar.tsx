@@ -14,8 +14,8 @@ export default function Navbar() {
           MyRealProduct
         </div>
         
-        <Button size="sm" className="hidden md:flex h-10 px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300">
-          I'M READY TO BREAK INTO AI
+        <Button size="sm" className="hidden md:flex h-10 px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+          I'M READY
         </Button>
       </div>
     </motion.nav>

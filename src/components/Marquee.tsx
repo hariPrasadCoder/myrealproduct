@@ -32,7 +32,7 @@ export default function Marquee() {
         >
           {tripled.map((logo, index) => (
             <div
-              key={index}
+              key={index} 
               className="flex-shrink-0 flex items-center justify-center px-4"
             >
               <img

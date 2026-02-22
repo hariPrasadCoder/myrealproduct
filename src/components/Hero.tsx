@@ -1,22 +1,51 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/Button';
-import { Terminal, Cpu, Globe } from 'lucide-react';
+import { Terminal, Cpu, Globe, Play } from 'lucide-react';
 import Particles from './Particles';
+import { useState } from 'react';
+
+var BUNNY_BASE = "https://player.mediadelivery.net/embed/546900/9abfd383-b962-4c1e-b883-a75e4745c551";
+var PREVIEW_SRC = BUNNY_BASE + "?autoplay=true&muted=true&loop=true&preload=true&responsive=true&controls=false";
+var FULL_SRC = BUNNY_BASE + "?autoplay=true&muted=false&loop=false&preload=true&responsive=true&controls=true&primaryColor=453dc8";
 
 export default function Hero() {
+  var playState = useState(false);
+  var isPlaying = playState[0];
+  var setIsPlaying = playState[1];
+
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden bg-brand-dark">
       {/* Noise Overlay for Texture */}
       <div className="noise-overlay" />
 
-      {/* Spline 3D Background */}
-      <div className="absolute inset-0 z-0 opacity-15 pointer-events-none mix-blend-screen brightness-150 contrast-125">
-        <iframe 
-          src="https://my.spline.design/glowingplanetparticles-nhVHji30IRoa5HBGe8yeDiTs" 
-          frameBorder="0" 
-          width="100%" 
-          height="100%" 
-          className="w-full h-full"
+      {/* Spline 3D Background — masked to hide outer ring, only inner glow visible */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none"
+        style={{
+          maskImage: 'radial-gradient(ellipse 48% 42% at 50% 45%, black 0%, rgba(0,0,0,0.5) 55%, transparent 100%)',
+          WebkitMaskImage: 'radial-gradient(ellipse 48% 42% at 50% 45%, black 0%, rgba(0,0,0,0.5) 55%, transparent 100%)',
+        }}
+      >
+        <div 
+          className="absolute inset-0 mix-blend-screen opacity-[0.14]"
+          style={{ filter: 'saturate(0) brightness(1.0) contrast(1.05)' }}
+        >
+          <iframe 
+            src="https://my.spline.design/glowingplanetparticles-nhVHji30IRoa5HBGe8yeDiTs" 
+            frameBorder="0" 
+            width="100%" 
+            height="100%" 
+            className="w-full h-full"
+          />
+        </div>
+
+        {/* Tint: brand purple duotone */}
+        <div 
+          className="absolute inset-0"
+          style={{
+            background: 'radial-gradient(ellipse 55% 48% at 50% 45%, rgba(69, 61, 200, 0.7) 0%, rgba(69, 61, 200, 0.3) 40%, transparent 70%)',
+            mixBlendMode: 'multiply',
+          }}
         />
       </div>
 
@@ -90,38 +119,56 @@ export default function Hero() {
           </h1>
           
           <p className="text-lg md:text-xl text-brand-text/80 mb-12 max-w-xl mx-auto leading-relaxed font-light tracking-wide">
-            Stop learning syntax. Start shipping software. <br />
+          Build Products, Not Just Projects. Learn while you build.<br />
             Join <span className="text-white font-medium">2,000+ engineers</span> building the future.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]">
+            <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
               I'M READY TO BREAK INTO AI
             </Button>
           </div>
         </motion.div>
 
-        {/* Video Area - Minimalist & Technical */}
+        {/* Video Area — Silent preview loop, click for full playback */}
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.3 }}
-          className="w-full max-w-4xl aspect-video bg-black/40 backdrop-blur-sm border border-white/10 relative overflow-hidden group shadow-2xl"
+          className="w-full max-w-4xl aspect-video bg-black relative overflow-hidden shadow-2xl border border-white/10"
         >
-          {/* Tech Corners */}
-          <div className="absolute top-0 left-0 w-2 h-2 bg-white/20 z-20 pointer-events-none" />
-          <div className="absolute top-0 right-0 w-2 h-2 bg-white/20 z-20 pointer-events-none" />
-          <div className="absolute bottom-0 left-0 w-2 h-2 bg-white/20 z-20 pointer-events-none" />
-          <div className="absolute bottom-0 right-0 w-2 h-2 bg-white/20 z-20 pointer-events-none" />
-
+          {/* Preview iframe — always loaded, muted loop, no controls */}
           <iframe 
-            src="https://player.mediadelivery.net/embed/546900/9abfd383-b962-4c1e-b883-a75e4745c551?autoplay=true&loop=true&muted=false&preload=true&responsive=true&primaryColor=%23453DC8" 
-            loading="lazy" 
-            className="absolute top-0 left-0 w-full h-full border-0"
+            src={PREVIEW_SRC}
+            loading="eager" 
+            className={"absolute inset-0 w-full h-full border-0" + (isPlaying ? " hidden" : "")}
             allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" 
             allowFullScreen={true}
           />
+
+          {/* Full iframe — only mounts after click */}
+          {isPlaying && (
+            <iframe 
+              src={FULL_SRC}
+              loading="eager" 
+              className="absolute inset-0 w-full h-full border-0"
+              allow="accelerometer; gyroscope; autoplay; encrypted-media; picture-in-picture;" 
+              allowFullScreen={true}
+            />
+          )}
+
+          {/* Play button overlay — sits on top of preview */}
+          {!isPlaying && (
+            <div 
+              className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer group"
+              onClick={function() { setIsPlaying(true); }}
+            >
+              <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-300 group-hover:scale-110">
+                <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white group-hover:text-brand-primary group-hover:fill-brand-primary ml-1 transition-colors duration-300" />
+              </div>
+            </div>
+          )}
         </motion.div>
       </div>
     </section>

@@ -137,7 +137,7 @@ export default function Showcase() {
                     rel="noopener noreferrer"
                     className="p-2 rounded-full bg-white/10 hover:bg-white hover:text-black transition-colors opacity-0 group-hover:opacity-100 duration-300 transform translate-y-2 group-hover:translate-y-0"
                   >
-                    <ExternalLink size={16} />
+                      <ExternalLink size={16} />
                   </a>
                 </div>
 

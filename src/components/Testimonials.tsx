@@ -4,12 +4,12 @@ import { useState, useRef } from 'react';
 
 const REVIEWS = [
   {
-    text: "MyRealProduct made complex AI concepts simple. Hari's guidance gave me the confidence to actually build products.",
+    text: "MyRealProduct made complex AI concepts simple and approachable. Hari’s guidance and analogies gave me the confidence to use new tools and actually build products instead of just learning theory.",
     name: "Praveena Suresh",
     title: "Senior Data Analyst",
   },
   {
-    text: "I had no idea how to apply AI meaningfully. Now, I've built an app—something I didn't think I could do.",
+    text: "It’s not easy to keep a group motivated and engaged for 4 weeks, especially while staying motivated yourself. I’m really glad I joined this cohort. Before this, I had no idea how to actually apply AI in a meaningful way. But now, I’ve built an app(hehe) something I didn’t think I could do before.",
     name: "Vidyamai Shakkara",
     title: "Business Data Analyst",
   },
@@ -169,8 +169,8 @@ export default function Testimonials() {
             </div>
           </motion.div>
 
-          {/* Small Video Grid (Span 8) — 4 remaining videos */}
-          <div className="md:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-4">
+          {/* Small Video Grid (Span 8) — 4 remaining videos as rectangles */}
+          <div className="md:col-span-8 grid grid-cols-2 gap-4">
             {VIDEOS.slice(1).map((video, i) => (
               <motion.div
                 key={i}
@@ -178,7 +178,7 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.3 + (i * 0.1) }}
-                className="aspect-square"
+                className="aspect-video"
               >
                 <VideoCard
                   src={video.src}
