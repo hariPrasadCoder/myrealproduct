@@ -16,7 +16,7 @@ export default function Founder() {
           >
             <div className="h-full min-h-[400px] bg-brand-card relative overflow-hidden grayscale hover:grayscale-0 transition-all duration-700 group">
               {/* Headshot Image */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black/80 z-10" />
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black z-10" />
               <img
                 src="/images/hari-prasad.webp"
                 alt="Hari Prasad"
@@ -25,8 +25,8 @@ export default function Founder() {
               
               {/* Overlay Text */}
               <div className="absolute bottom-8 left-8 z-20">
-                <h3 className="text-3xl font-display font-bold text-white mb-1">Hari Prasad</h3>
-                <p className="text-brand-primary font-mono text-xs tracking-widest uppercase">
+                <h3 className="text-3xl font-display font-bold text-white mb-1 drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">Hari Prasad</h3>
+                <p className="text-white font-mono text-xs tracking-widest uppercase drop-shadow-[0_2px_8px_rgba(0,0,0,0.9)]">
                   Lead Instructor
                 </p>
               </div>
