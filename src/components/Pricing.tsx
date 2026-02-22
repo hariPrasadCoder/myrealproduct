@@ -51,7 +51,7 @@ export default function Pricing() {
               
               <div className="mt-6 flex items-center gap-2 text-xs font-mono text-brand-accent/80 bg-brand-primary/10 px-4 py-2 rounded-sm border border-brand-primary/20">
                 <Info size={14} />
-                <span>Only 9 Spots Left!</span>
+                <span>Only taking 15 people this cohort</span>
               </div>
             </div>
 
@@ -70,7 +70,7 @@ export default function Pricing() {
                       {feature.includes("Check what you will get") ? (
                         <>
                           {feature.split("Check what you will get")[0]}
-                          <a href="https://deals.myrealproduct.com/" className="text-white hover:text-brand-accent underline underline-offset-4 decoration-white/30 hover:decoration-brand-accent transition-all">
+                          <a href="https://deals.myrealproduct.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-accent underline underline-offset-4 decoration-white/30 hover:decoration-brand-accent transition-all">
                             Check what you will get
                           </a>
                           {feature.split("Check what you will get")[1]}

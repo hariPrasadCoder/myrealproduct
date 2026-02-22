@@ -43,6 +43,8 @@ export default function Philanthropy() {
 
                 <a 
                   href="https://www.globalgiving.org/projects/education-in-india-1/" 
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center text-brand-accent hover:text-white transition-colors underline underline-offset-4 mt-4"
                 >
                   GlobalGiving – Send a Child in India to School for a Year

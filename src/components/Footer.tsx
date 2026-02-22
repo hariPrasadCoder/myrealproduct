@@ -21,9 +21,7 @@ export default function Footer() {
           </div>
           
           <div className="flex gap-8 text-sm text-brand-text/60">
-            <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
-            <a href="#" className="hover:text-white transition-colors">Terms of Service</a>
-            <a href="#" className="hover:text-white transition-colors">Contact</a>
+            <a href="mailto:contact@myrealproduct.com" className="hover:text-white transition-colors">Contact</a>
           </div>
 
           <div className="text-sm text-brand-text/40">
