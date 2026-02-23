@@ -18,25 +18,25 @@ const LOGOS = [
 
 const WEEKS = [
   {
-    week: "01",
+    week: "Week 1",
     title: "Problem Identification",
     subtitle: "Foundation & Strategy",
     items: ["Which Problem to solve", "Competitor Analysis", "Market Analysis", "Building a landing page", "Project Management"]
   },
   {
-    week: "02",
+    week: "Week 2",
     title: "Building an MVP",
     subtitle: "Core Development",
     items: ["AI Agents", "RAG application", "Vector Database", "Python for product development", "LLMs (Gemini, GPT models)", "API connection", "Streamlit", "Github", "Supabase SQL"]
   },
   {
-    week: "03",
+    week: "Week 3",
     title: "Deployment",
     subtitle: "Production Infrastructure",
     items: ["CI/CD", "AWS S3", "AWS EC2", "AWS IAM", "Domain registration & connection", "SSL Certificates", "Hosting"]
   },
   {
-    week: "04",
+    week: "Week 4",
     title: "Getting your first user",
     subtitle: "Launch & Growth",
     items: ["8 Marketing Framework", "Pitch deck creation", "Project presentation", "Feedback loop"]
@@ -129,7 +129,7 @@ export default function Syllabus() {
               <div className="absolute top-1.5 left-0 lg:left-8 w-px h-full bg-white/10 lg:hidden" />
 
               <div className="pl-8 lg:pl-0 lg:pt-8">
-                <span className="text-6xl font-display font-bold text-white/5 mb-4 block group-hover:text-white/10 transition-colors">
+                <span className="text-3xl lg:text-4xl font-display font-bold text-white/10 mb-4 block group-hover:text-white/20 transition-colors">
                   {week.week}
                 </span>
                 
