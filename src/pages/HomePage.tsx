@@ -1,6 +1,7 @@
 import Navbar from '../components/Navbar';
 import Hero from '../components/Hero';
 import Marquee from '../components/Marquee';
+import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import Syllabus from '../components/Syllabus';
 import Founder from '../components/Founder';
@@ -24,6 +25,7 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <Marquee />
+      <HowItWorks />
       <Testimonials />
       <Syllabus />
       <Founder />
