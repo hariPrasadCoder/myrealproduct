@@ -10,7 +10,7 @@ export default function Footer() {
             Ready to build your <br />
             <span className="text-gradient">AI Future?</span>
           </h2>
-          <Button size="lg" className="text-lg font-semibold tracking-widest uppercase px-12 h-16 rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+          <Button size="lg" className="text-lg font-semibold tracking-widest uppercase px-12 h-16 rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1">
             APPLY TO THE COHORT
           </Button>
         </div>
