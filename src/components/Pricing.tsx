@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/Button';
 import { Check, Info, Sparkles } from 'lucide-react';
+import { useEffect } from 'react';
+import { trackCTAClick, trackSectionView, trackExternalLink } from '../lib/posthog';
 
 const FEATURES = [
   "4 Week Product Building Live Workshops (Not a recording)",
@@ -13,6 +15,18 @@ const FEATURES = [
 ];
 
 export default function Pricing() {
+  useEffect(() => {
+    trackSectionView('pricing');
+  }, []);
+
+  const handleCTAClick = () => {
+    trackCTAClick('book_call', 'pricing');
+  };
+
+  const handleDealsClick = () => {
+    trackExternalLink('https://deals.myrealproduct.com/', 'Check what you will get');
+  };
+
   return (
     <section className="py-32 bg-brand-dark relative overflow-hidden">
       {/* Background Elements */}
@@ -45,7 +59,7 @@ export default function Pricing() {
               </h2>
               <p className="text-brand-text/60 text-sm font-mono uppercase tracking-wider mb-10">One-time payment</p>
 
-              <Button size="lg" className="w-full h-14 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+              <Button size="lg" className="w-full h-14 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleCTAClick}>
                 I'M READY TO BREAK INTO AI
               </Button>
               
@@ -70,7 +84,7 @@ export default function Pricing() {
                       {feature.includes("Check what you will get") ? (
                         <>
                           {feature.split("Check what you will get")[0]}
-                          <a href="https://deals.myrealproduct.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-accent underline underline-offset-4 decoration-white/30 hover:decoration-brand-accent transition-all">
+                          <a href="https://deals.myrealproduct.com/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-brand-accent underline underline-offset-4 decoration-white/30 hover:decoration-brand-accent transition-all" onClick={handleDealsClick}>
                             Check what you will get
                           </a>
                           {feature.split("Check what you will get")[1]}

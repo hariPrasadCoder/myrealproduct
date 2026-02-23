@@ -10,8 +10,15 @@ import Philanthropy from '../components/Philanthropy';
 import Showcase from '../components/Showcase';
 import Quote from '../components/Quote';
 import Footer from '../components/Footer';
+import { useScrollDepthTracking, useTimeOnPage } from '../hooks/useAnalytics';
 
 export default function HomePage() {
+  // Track scroll depth milestones (25%, 50%, 75%, 100%)
+  useScrollDepthTracking();
+  
+  // Track time spent on page
+  useTimeOnPage();
+
   return (
     <main className="bg-brand-dark min-h-screen text-white selection:bg-brand-primary/30 selection:text-white">
       <Navbar />

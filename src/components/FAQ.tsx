@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from './ui/Button';
 import { Plus, Minus } from 'lucide-react';
+import { trackSectionView, trackFAQInteraction, trackCTAClick } from '../lib/posthog';
 
 const FAQS = [
   {
@@ -45,6 +46,20 @@ const FAQS = [
 export default function FAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
+  useEffect(() => {
+    trackSectionView('faq');
+  }, []);
+
+  const handleFAQClick = (index: number, question: string) => {
+    const isOpening = openIndex !== index;
+    setOpenIndex(isOpening ? index : null);
+    trackFAQInteraction(question, isOpening ? 'expand' : 'collapse');
+  };
+
+  const handleCTAClick = () => {
+    trackCTAClick('book_call', 'faq');
+  };
+
   return (
     <section className="py-24 bg-brand-dark border-t border-white/5">
       <div className="container mx-auto px-4">
@@ -60,7 +75,7 @@ export default function FAQ() {
             <p className="text-brand-text mb-8">
               Some of the most common questions. Can't find the right answer? Book an info call with us.
             </p>
-            <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+            <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleCTAClick}>
               I'M READY TO BREAK INTO AI
             </Button>
           </div>
@@ -74,7 +89,7 @@ export default function FAQ() {
                   className="bg-brand-card border border-white/5 rounded-xl overflow-hidden transition-colors hover:border-white/10"
                 >
                   <button
-                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
+                    onClick={() => handleFAQClick(index, faq.q)}
                     className="w-full flex items-center justify-between p-6 text-left"
                   >
                     <span className="font-medium text-lg text-white pr-8">

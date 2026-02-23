@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
+import { trackSectionView, trackVideoInteraction } from '../lib/posthog';
 
 const REVIEWS = [
   {
@@ -28,7 +29,7 @@ const VIDEOS = [
   { src: "/videos/testimonial-5.mp4", label: "Student Story" },
 ];
 
-function VideoCard({ src, label, className, isLarge = false }: { src: string; label: string; className?: string; isLarge?: boolean }) {
+function VideoCard({ src, label, className, isLarge = false, videoId }: { src: string; label: string; className?: string; isLarge?: boolean; videoId?: string }) {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -38,9 +39,11 @@ function VideoCard({ src, label, className, isLarge = false }: { src: string; la
     if (vid.paused) {
       vid.play();
       setIsPlaying(true);
+      trackVideoInteraction('play', videoId || src);
     } else {
       vid.pause();
       setIsPlaying(false);
+      trackVideoInteraction('pause', videoId || src);
     }
   };
 
@@ -82,6 +85,10 @@ function VideoCard({ src, label, className, isLarge = false }: { src: string; la
 }
 
 export default function Testimonials() {
+  useEffect(() => {
+    trackSectionView('testimonials');
+  }, []);
+
   return (
     <section className="py-32 bg-brand-dark relative overflow-hidden">
       {/* Background Noise & Grid */}

@@ -2,7 +2,8 @@ import { motion } from 'motion/react';
 import { Button } from './ui/Button';
 import { Terminal, Cpu, Globe, Play } from 'lucide-react';
 import Particles from './Particles';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { trackCTAClick, trackVideoInteraction, trackSectionView } from '../lib/posthog';
 
 var BUNNY_BASE = "https://player.mediadelivery.net/embed/546900/9abfd383-b962-4c1e-b883-a75e4745c551";
 var PREVIEW_SRC = BUNNY_BASE + "?autoplay=true&muted=true&loop=true&preload=true&responsive=true&controls=false";
@@ -12,6 +13,20 @@ export default function Hero() {
   var playState = useState(false);
   var isPlaying = playState[0];
   var setIsPlaying = playState[1];
+
+  // Track hero section view on mount
+  useEffect(() => {
+    trackSectionView('hero');
+  }, []);
+
+  const handleCTAClick = () => {
+    trackCTAClick('book_call', 'hero');
+  };
+
+  const handleVideoPlay = () => {
+    setIsPlaying(true);
+    trackVideoInteraction('play', 'hero_video');
+  };
 
   return (
     <section className="relative min-h-screen flex flex-col items-center justify-center pt-32 pb-20 overflow-hidden bg-brand-dark">
@@ -124,7 +139,7 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
-            <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+            <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleCTAClick}>
               I'M READY TO BREAK INTO AI
             </Button>
           </div>
@@ -162,7 +177,7 @@ export default function Hero() {
           {!isPlaying && (
             <div 
               className="absolute inset-0 z-10 flex items-center justify-center cursor-pointer group"
-              onClick={function() { setIsPlaying(true); }}
+              onClick={handleVideoPlay}
             >
               <div className="w-20 h-20 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center group-hover:bg-white group-hover:border-white transition-all duration-300 group-hover:scale-110">
                 <Play className="w-8 h-8 md:w-10 md:h-10 text-white fill-white group-hover:text-brand-primary group-hover:fill-brand-primary ml-1 transition-colors duration-300" />

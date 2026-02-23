@@ -1,7 +1,17 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
+import { useEffect } from 'react';
+import { trackSectionView, trackExternalLink } from '../lib/posthog';
 
 export default function Founder() {
+  useEffect(() => {
+    trackSectionView('founder');
+  }, []);
+
+  const handleLinkedInClick = () => {
+    trackExternalLink('https://www.linkedin.com/in/hariprasad20/', 'founder_linkedin');
+  };
+
   return (
     <section className="py-32 bg-brand-dark relative overflow-hidden border-t border-white/5">
       <div className="container mx-auto px-4">
@@ -74,7 +84,7 @@ export default function Founder() {
               </div>
               <div>
                 <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-2">Connect</p>
-                <a href="https://www.linkedin.com/in/hariprasad20/" className="text-white font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1">
+                <a href="https://www.linkedin.com/in/hariprasad20/" className="text-white font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1" onClick={handleLinkedInClick}>
                   LinkedIn <ArrowUpRight size={14} />
                 </a>
               </div>
