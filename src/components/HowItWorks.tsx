@@ -64,7 +64,8 @@ export default function HowItWorks() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15, duration: 0.5 }}
-                className="relative flex flex-col items-center text-center group"
+                className={`relative flex flex-col items-center text-center group ${index === 0 ? 'cursor-pointer' : ''}`}
+                {...(index === 0 ? { 'data-tally-open': 'D4N6gl', 'data-tally-layout': 'modal', 'data-tally-width': '500', 'data-tally-form-events-forwarding': '1' } : {})}
               >
                 {/* Step number + icon circle */}
                 <div className="relative mb-8 z-10">
