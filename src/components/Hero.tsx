@@ -140,7 +140,7 @@ export default function Hero() {
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
             <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleCTAClick}>
-              I'M READY TO BREAK INTO AI
+              APPLY TO THE COHORT
             </Button>
           </div>
         </motion.div>

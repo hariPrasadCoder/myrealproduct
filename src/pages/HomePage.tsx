@@ -25,8 +25,8 @@ export default function HomePage() {
       <Navbar />
       <Hero />
       <Marquee />
-      <HowItWorks />
       <Testimonials />
+      <HowItWorks />
       <Syllabus />
       <Founder />
       <FAQ />

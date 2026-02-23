@@ -173,7 +173,7 @@ export default function Syllabus() {
 
         <div className="mt-16 flex justify-center">
           <Button size="lg" className="h-14 px-12 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleCTAClick}>
-            I'M READY TO BREAK INTO AI
+            APPLY TO THE COHORT
           </Button>
         </div>
       </div>

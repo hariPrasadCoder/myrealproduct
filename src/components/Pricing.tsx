@@ -60,7 +60,7 @@ export default function Pricing() {
               <p className="text-brand-text/60 text-sm font-mono uppercase tracking-wider mb-10">One-time payment</p>
 
               <Button size="lg" className="w-full h-14 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleCTAClick}>
-                I'M READY TO BREAK INTO AI
+                APPLY TO THE COHORT
               </Button>
               
               <div className="mt-6 flex items-center gap-2 text-xs font-mono text-brand-accent/80 bg-brand-primary/10 px-4 py-2 rounded-sm border border-brand-primary/20">

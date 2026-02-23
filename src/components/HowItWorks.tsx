@@ -7,7 +7,7 @@ const STEPS = [
     icon: FileText,
     title: "Apply",
     highlight: "Submit your application",
-    detail: "Tell us about yourself, your goals, and why you want to build an AI product.",
+    detail: "Just fill a simple form , give us your LinkedIn profile link, that's it!",
     accent: "from-brand-primary to-brand-accent",
   },
   {
@@ -15,7 +15,7 @@ const STEPS = [
     icon: Users,
     title: "Interview",
     highlight: "We get to know each other",
-    detail: "A quick call to see if we're the right fit. Ask us anything — we'll do the same.",
+    detail: "A quick call to see if we're the right fit. Ask us anything , we'll do the same.",
     accent: "from-brand-accent to-brand-secondary",
   },
   {
@@ -23,7 +23,7 @@ const STEPS = [
     icon: CheckCircle,
     title: "Decision",
     highlight: "Hear back within 24 hours",
-    detail: "No waiting around. You'll know if you're in within a day.",
+    detail: "No waiting around. You'll know if you're in , just within a day.",
     accent: "from-brand-secondary to-[#A78BFA]",
   },
 ];
@@ -102,6 +102,24 @@ export default function HowItWorks() {
             ))}
           </div>
         </div>
+
+        {/* Curated Intake Statement */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.3, duration: 0.6 }}
+          className="mt-20 text-center max-w-2xl mx-auto"
+        >
+          <div className="inline-block w-px h-12 bg-gradient-to-b from-transparent via-brand-primary/40 to-transparent mb-8" />
+          <p className="text-2xl md:text-3xl font-display font-medium text-white leading-snug tracking-tight">
+          Not everyone gets in.
+          
+          </p>
+          <p className="text-lg md:text-xl text-brand-text/60 mt-3 leading-relaxed">
+          We accept just 10% of applicants to protect <span className="text-white font-medium">an elite community of builders.</span>
+          </p>
+        </motion.div>
       </div>
     </section>
   );
