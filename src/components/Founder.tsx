@@ -84,7 +84,7 @@ export default function Founder() {
               </div>
               <div>
                 <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-2">Connect</p>
-                <a href="https://www.linkedin.com/in/hariprasad20/" className="text-white font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1" onClick={handleLinkedInClick}>
+                <a href="https://www.linkedin.com/in/hariprasad20/" target="_blank" rel="noopener noreferrer" className="text-white font-medium hover:text-brand-primary transition-colors inline-flex items-center gap-1" onClick={handleLinkedInClick}>
                   LinkedIn <ArrowUpRight size={14} />
                 </a>
               </div>
