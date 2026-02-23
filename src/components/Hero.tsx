@@ -3,7 +3,7 @@ import { Button } from './ui/Button';
 import { Terminal, Cpu, Globe, Play } from 'lucide-react';
 import Particles from './Particles';
 import { useState, useEffect } from 'react';
-import { trackCTAClick, trackVideoInteraction, trackSectionView } from '../lib/posthog';
+import { trackApplyClick, trackBookCallClick, trackVideoInteraction, trackSectionView } from '../lib/posthog';
 
 var BUNNY_BASE = "https://player.mediadelivery.net/embed/546900/9abfd383-b962-4c1e-b883-a75e4745c551";
 var PREVIEW_SRC = BUNNY_BASE + "?autoplay=true&muted=true&loop=true&preload=true&responsive=true&controls=false";
@@ -19,8 +19,12 @@ export default function Hero() {
     trackSectionView('hero');
   }, []);
 
-  const handleCTAClick = () => {
-    trackCTAClick('book_call', 'hero');
+  const handleApplyClick = () => {
+    trackApplyClick('hero');
+  };
+
+  const handleBookCallClick = () => {
+    trackBookCallClick('hero');
   };
 
   const handleVideoPlay = () => {
@@ -139,10 +143,10 @@ export default function Hero() {
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleCTAClick}>
+            <Button size="lg" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>
               APPLY TO THE COHORT
             </Button>
-            <Button size="lg" variant="outline" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-transparent text-white border border-white/20 hover:border-brand-primary hover:text-brand-accent transition-all duration-300" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'>
+            <Button size="lg" variant="outline" className="h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-transparent text-white border border-white/20 hover:border-brand-primary hover:text-brand-accent transition-all duration-300" data-cal-link="myrealproduct/info" data-cal-namespace="info" data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}' onClick={handleBookCallClick}>
               Talk to the team
             </Button>
           </div>

@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Button } from './ui/Button';
 import { Check, Info, Sparkles } from 'lucide-react';
 import { useEffect } from 'react';
-import { trackCTAClick, trackSectionView, trackExternalLink } from '../lib/posthog';
+import { trackApplyClick, trackSectionView, trackExternalLink } from '../lib/posthog';
 
 const FEATURES = [
   "4 Week Product Building Live Workshops (Not a recording)",
@@ -19,8 +19,8 @@ export default function Pricing() {
     trackSectionView('pricing');
   }, []);
 
-  const handleCTAClick = () => {
-    trackCTAClick('book_call', 'pricing');
+  const handleApplyClick = () => {
+    trackApplyClick('pricing');
   };
 
   const handleDealsClick = () => {
@@ -59,7 +59,7 @@ export default function Pricing() {
               </h2>
               <p className="text-brand-text/60 text-sm font-mono uppercase tracking-wider mb-10">One-time payment</p>
 
-              <Button size="lg" className="w-full h-14 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleCTAClick}>
+              <Button size="lg" className="w-full h-14 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>
                 APPLY TO THE COHORT
               </Button>
               

@@ -2,7 +2,7 @@ import { motion } from 'motion/react';
 import { Button } from './ui/Button';
 import { Check } from 'lucide-react';
 import { useEffect } from 'react';
-import { trackSectionView, trackCTAClick } from '../lib/posthog';
+import { trackSectionView, trackApplyClick } from '../lib/posthog';
 
 const LOGOS = [
   "/images/logos/Screenshot-2025-09-12-at-10.03.27-AM-1.webp",
@@ -57,8 +57,8 @@ export default function Syllabus() {
     trackSectionView('syllabus');
   }, []);
 
-  const handleCTAClick = () => {
-    trackCTAClick('book_call', 'syllabus');
+  const handleApplyClick = () => {
+    trackApplyClick('syllabus');
   };
 
   return (
@@ -172,7 +172,7 @@ export default function Syllabus() {
         </motion.div>
 
         <div className="mt-16 flex justify-center">
-          <Button size="lg" className="h-14 px-12 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleCTAClick}>
+          <Button size="lg" className="h-14 px-12 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>
             APPLY TO THE COHORT
           </Button>
         </div>

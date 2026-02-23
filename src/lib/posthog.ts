@@ -43,6 +43,40 @@ export const trackCTAClick = (ctaType: string, location: string) => {
   });
 };
 
+// Track Apply button clicks (Tally form)
+export const trackApplyClick = (location: string) => {
+  trackEvent('apply_clicked', {
+    location: location,
+    page: window.location.pathname,
+  });
+};
+
+// Track Book Call button clicks (Cal.com)
+export const trackBookCallClick = (location: string) => {
+  trackEvent('book_call_clicked', {
+    location: location,
+    page: window.location.pathname,
+  });
+};
+
+// Track Tally form submission
+export const trackTallySubmission = (formId: string, responseId?: string) => {
+  trackEvent('application_submitted', {
+    form_id: formId,
+    response_id: responseId,
+    page: window.location.pathname,
+  });
+};
+
+// Track Cal.com booking
+export const trackCalBooking = (eventType: string, bookingId?: string) => {
+  trackEvent('call_booked', {
+    event_type: eventType,
+    booking_id: bookingId,
+    page: window.location.pathname,
+  });
+};
+
 // Track section views
 export const trackSectionView = (sectionName: string) => {
   trackEvent('section_viewed', {

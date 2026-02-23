@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from './ui/Button';
 import { Plus, Minus } from 'lucide-react';
-import { trackSectionView, trackFAQInteraction, trackCTAClick } from '../lib/posthog';
+import { trackSectionView, trackFAQInteraction, trackApplyClick } from '../lib/posthog';
 
 const FAQS = [
   {
@@ -56,8 +56,8 @@ export default function FAQ() {
     trackFAQInteraction(question, isOpening ? 'expand' : 'collapse');
   };
 
-  const handleCTAClick = () => {
-    trackCTAClick('book_call', 'faq');
+  const handleApplyClick = () => {
+    trackApplyClick('faq');
   };
 
   return (
@@ -75,7 +75,7 @@ export default function FAQ() {
             <p className="text-brand-text mb-8">
               Some of the most common questions. Can't find the right answer? Book an info call with us.
             </p>
-            <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleCTAClick}>
+            <Button size="lg" className="w-full sm:w-auto h-12 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>
               APPLY TO THE COHORT
             </Button>
           </div>

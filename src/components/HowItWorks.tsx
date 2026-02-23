@@ -1,5 +1,6 @@
 import { motion } from 'motion/react';
 import { FileText, Users, CheckCircle, ArrowRight } from 'lucide-react';
+import { trackApplyClick } from '../lib/posthog';
 
 const STEPS = [
   {
@@ -65,6 +66,7 @@ export default function HowItWorks() {
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.15, duration: 0.5 }}
                 className={`relative flex flex-col items-center text-center group ${index === 0 ? 'cursor-pointer' : ''}`}
+                onClick={index === 0 ? () => trackApplyClick('how_it_works') : undefined}
                 {...(index === 0 ? { 'data-tally-open': 'D4N6gl', 'data-tally-layout': 'modal', 'data-tally-width': '500', 'data-tally-form-events-forwarding': '1' } : {})}
               >
                 {/* Step number + icon circle */}

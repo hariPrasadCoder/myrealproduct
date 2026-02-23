@@ -1,7 +1,12 @@
 import { motion } from 'motion/react';
 import { Button } from './ui/Button';
+import { trackApplyClick } from '../lib/posthog';
 
 export default function Navbar() {
+  const handleApplyClick = () => {
+    trackApplyClick('navbar');
+  };
+
   return (
     <motion.nav
       initial={{ y: -100 }}
@@ -14,7 +19,7 @@ export default function Navbar() {
           MyRealProduct
         </div>
         
-        <Button size="sm" className="hidden md:flex h-10 px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1">
+        <Button size="sm" className="hidden md:flex h-10 px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>
           APPLY
         </Button>
       </div>

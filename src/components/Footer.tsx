@@ -1,6 +1,11 @@
 import { Button } from './ui/Button';
+import { trackApplyClick } from '../lib/posthog';
 
 export default function Footer() {
+  const handleApplyClick = () => {
+    trackApplyClick('footer');
+  };
+
   return (
     <footer className="bg-brand-dark border-t border-white/5 pt-24 pb-12">
       <div className="container mx-auto px-4">
@@ -10,7 +15,7 @@ export default function Footer() {
             Ready to build your <br />
             <span className="text-gradient">AI Future?</span>
           </h2>
-          <Button size="lg" className="text-lg font-semibold tracking-widest uppercase px-12 h-16 rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1">
+          <Button size="lg" className="text-lg font-semibold tracking-widest uppercase px-12 h-16 rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>
             APPLY TO THE COHORT
           </Button>
         </div>
