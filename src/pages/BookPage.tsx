@@ -10,10 +10,11 @@ import {
   ArrowRight,
   Check,
   Lock,
-  Mail,
   Linkedin,
   ExternalLink,
-  Terminal,
+  LayoutList,
+  Share2,
+  Copy,
   Zap,
   Code2,
   Cpu,
@@ -57,32 +58,193 @@ const RESOURCE_COLORS: Record<string, string> = {
   docs: 'text-green-400 bg-green-400/10 border-green-400/20',
 };
 
+// ─── 3D Book Mockup ──────────────────────────────────────────────────────────
+
+function Book3D() {
+  const [hovered, setHovered] = useState(false);
+
+  const COVER_W = 300;
+  const COVER_H = 420;
+  const SPINE_W = 56;
+
+  return (
+    <div style={{ perspective: '1100px' }} className="flex items-center justify-center py-10">
+      <motion.div
+        className="relative cursor-pointer select-none"
+        style={{ width: COVER_W, height: COVER_H, transformStyle: 'preserve-3d' }}
+        animate={
+          hovered
+            ? {
+                rotateY: [-22, -14, -30, -18, -26, -22],
+                rotateX: [4, 9, 1, 8, 3, 4],
+                y: [0, -14, -6, -18, -9, -14, 0],
+              }
+            : { rotateY: -22, rotateX: 4, y: 0 }
+        }
+        transition={
+          hovered
+            ? { duration: 3, ease: 'easeInOut', repeat: Infinity, repeatType: 'loop' }
+            : { duration: 0.6, ease: [0.4, 0, 0.2, 1] }
+        }
+        onHoverStart={() => setHovered(true)}
+        onHoverEnd={() => setHovered(false)}
+      >
+        {/* Spine */}
+        <div
+          className="absolute top-1 bottom-1 flex flex-col items-center justify-between py-4"
+          style={{
+            left: -SPINE_W,
+            width: SPINE_W,
+            background: 'linear-gradient(to right, #030306, #060610, #0b0b18)',
+            borderRadius: '3px 0 0 3px',
+            boxShadow: '-4px 4px 20px rgba(0,0,0,0.7)',
+          }}
+        >
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
+          <span style={{
+            writingMode: 'vertical-rl',
+            transform: 'rotate(180deg)',
+            fontSize: 7,
+            fontFamily: 'monospace',
+            color: 'rgba(255,255,255,0.18)',
+            letterSpacing: '0.3em',
+            textTransform: 'uppercase',
+            whiteSpace: 'nowrap',
+          }}>
+            31 day AI Engineer Challenge
+          </span>
+          <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'rgba(255,255,255,0.08)' }} />
+        </div>
+
+        {/* Front cover */}
+        <div
+          className="absolute inset-0 overflow-hidden"
+          style={{
+            background: 'linear-gradient(150deg, #0f0f20 0%, #080812 55%, #050510 100%)',
+            borderRadius: '0 3px 3px 0',
+            boxShadow: hovered
+              ? '8px 16px 48px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.06), 0 0 40px rgba(69,61,200,0.15)'
+              : '5px 10px 32px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05)',
+            transition: 'box-shadow 0.4s ease',
+          }}
+        >
+          {/* Corner glow */}
+          <div style={{
+            position: 'absolute', top: -30, left: -30, width: 140, height: 140, borderRadius: '50%',
+            background: 'radial-gradient(circle, rgba(69,61,200,0.18) 0%, transparent 70%)',
+            pointerEvents: 'none',
+          }} />
+
+          <div style={{ position: 'absolute', inset: 0, padding: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+            {/* Top label */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+              <div style={{ height: 1, width: 22, background: 'rgba(130,122,255,0.4)' }} />
+              <span style={{ fontSize: 10, fontFamily: 'monospace', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.3em', textTransform: 'uppercase' }}>MRP</span>
+            </div>
+
+            {/* Title */}
+            <div>
+              <p style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(130,122,255,0.6)', textTransform: 'uppercase', letterSpacing: '0.2em', marginBottom: 16 }}>
+                31-Day Program
+              </p>
+              <h2 style={{ fontFamily: 'Outfit, sans-serif', fontWeight: 700, color: 'white', lineHeight: 1.15, marginBottom: 16, fontSize: 24 }}>
+                31 day{' '}
+                <span style={{ background: 'linear-gradient(to right, #827AFF, #5E55E5, #c4c0ff)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+                  AI Engineer
+                </span>
+                <br />
+                Challenge
+              </h2>
+              <div style={{ height: 3, width: 44, background: '#453DC8', borderRadius: 4 }} />
+            </div>
+
+            {/* Bottom */}
+            <p style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+              MyRealProduct
+            </p>
+          </div>
+        </div>
+
+        {/* Page stack (right edge) */}
+        <div
+          className="absolute top-1 bottom-1"
+          style={{
+            right: -7,
+            width: 7,
+            borderRadius: '0 2px 2px 0',
+            background: 'repeating-linear-gradient(90deg, #1c1c28 0px, #1c1c28 1px, #131320 1px, #131320 3px)',
+          }}
+        />
+      </motion.div>
+    </div>
+  );
+}
+
 // ─── Landing Gate ────────────────────────────────────────────────────────────
 
 function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
-  const [email, setEmail] = useState('');
-  const [submitting, setSubmitting] = useState(false);
-  const [error, setError] = useState('');
+  const iframeLoadCount = useRef(0);
+  const emailRef = useRef('subscriber');
+  const didNavigate = useRef(false);
 
-  const handleSubmit = (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    const trimmed = email.trim().toLowerCase();
-    if (!trimmed || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
-      setError('Enter a valid email address.');
-      return;
+  const handleSubmitComplete = useCallback(() => {
+    if (didNavigate.current) return;
+    didNavigate.current = true;
+    const email = emailRef.current;
+    localStorage.setItem(STORAGE_KEY, email);
+    identifyUser(email, { source: 'book_gate_tally', page: '/book' });
+    trackEvent('book_email_submitted', { email });
+    onAccess(email);
+  }, [onAccess]);
+
+  // Iframe load counter — first load = form ready, second load = thank-you page = submitted
+  const handleIframeLoad = useCallback(() => {
+    iframeLoadCount.current += 1;
+    if (iframeLoadCount.current >= 2) {
+      handleSubmitComplete();
     }
-    setSubmitting(true);
-    setError('');
+  }, [handleSubmitComplete]);
 
-    // Store in localStorage
-    localStorage.setItem(STORAGE_KEY, trimmed);
+  useEffect(() => {
+    // Load Tally embed script
+    const TALLY_SRC = 'https://tally.so/widgets/embed.js';
+    const loadEmbeds = () => {
+      if (typeof (window as any).Tally !== 'undefined') {
+        (window as any).Tally.loadEmbeds();
+      } else {
+        document.querySelectorAll('iframe[data-tally-src]:not([src])').forEach(el => {
+          (el as HTMLIFrameElement).src = (el as HTMLElement & { dataset: DOMStringMap }).dataset.tallySrc ?? '';
+        });
+      }
+    };
+    if (!document.querySelector(`script[src="${TALLY_SRC}"]`)) {
+      const s = document.createElement('script');
+      s.src = TALLY_SRC;
+      s.onload = loadEmbeds;
+      s.onerror = loadEmbeds;
+      document.body.appendChild(s);
+    } else {
+      loadEmbeds();
+    }
 
-    // Identify in PostHog
-    identifyUser(trimmed, { source: 'book_gate', page: '/book' });
-    trackEvent('book_email_submitted', { email: trimmed });
-
-    setTimeout(() => onAccess(trimmed), 400);
-  };
+    // Also try postMessage to capture the submitted email
+    const handleMessage = (e: MessageEvent) => {
+      let data = e.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch { return; }
+      }
+      if (data?.type === 'TallyFormSubmitted') {
+        const fields: { type: string; label: string; value: unknown }[] = data?.data?.fields ?? [];
+        const emailField = fields.find(
+          f => f.type === 'INPUT_EMAIL' || String(f.label ?? '').toLowerCase().includes('email')
+        );
+        if (emailField?.value) emailRef.current = String(emailField.value);
+        handleSubmitComplete();
+      }
+    };
+    window.addEventListener('message', handleMessage);
+    return () => window.removeEventListener('message', handleMessage);
+  }, [handleSubmitComplete]);
 
   const BENEFITS = [
     {
@@ -136,89 +298,95 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
       </nav>
 
       {/* Hero */}
-      <section className="relative pt-36 pb-24 px-4 overflow-hidden">
+      <section className="relative pt-32 pb-16 px-4 overflow-hidden" id="hero">
         {/* Background glow */}
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[500px] bg-brand-primary/8 rounded-full blur-[150px] pointer-events-none" />
         <div className="bg-grid-pattern absolute inset-0 opacity-30" />
 
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/15 border border-brand-primary/30 text-brand-accent text-xs font-mono tracking-widest uppercase mb-8"
-          >
-            <BookOpen size={12} />
-            Free Ebook — 31 Days
-          </motion.div>
+        <div className="relative z-10 max-w-6xl mx-auto">
+          <div className="flex flex-col lg:flex-row items-center gap-10 lg:gap-16">
 
-          {/* Title */}
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="text-5xl md:text-7xl font-display font-semibold leading-[1.05] mb-6 tracking-tight"
-          >
-            31 Day{' '}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-accent to-white">
-              AI Engineer
-            </span>
-            <br />
-            Challenge
-          </motion.h1>
+            {/* ── Left: text + form ── */}
+            <div className="flex-1 text-center lg:text-left max-w-xl mx-auto lg:mx-0">
+              {/* Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-primary/15 border border-brand-primary/30 text-brand-accent text-xs font-mono tracking-widest uppercase mb-8"
+              >
+                <BookOpen size={12} />
+                Free Ebook — 31 Days
+              </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-lg md:text-xl text-brand-text/70 max-w-2xl mx-auto mb-12 leading-relaxed"
-          >
-            Go from <span className="text-white font-medium">zero to building production AI systems</span> in 31 days.
-            One concept, one task, curated resources — every single day.
-          </motion.p>
-
-          {/* Email Gate */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="max-w-md mx-auto mb-6"
-          >
-            <div className="bg-brand-card/80 border border-white/10 rounded-sm p-6 backdrop-blur-sm">
-              <div className="flex items-center gap-2 mb-4">
-                <Lock size={14} className="text-brand-accent" />
-                <span className="text-sm font-mono text-brand-text/60 uppercase tracking-widest">
-                  Free access — enter your email
+              {/* Title */}
+              <motion.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.1 }}
+                className="text-5xl md:text-6xl font-display font-semibold leading-[1.05] mb-6 tracking-tight"
+              >
+                31 Day{' '}
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-accent to-white">
+                  AI Engineer
                 </span>
-              </div>
-              <form onSubmit={handleSubmit} className="flex flex-col gap-3">
-                <div className="relative">
-                  <Mail size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-brand-text/40" />
-                  <input
-                    type="email"
-                    placeholder="you@example.com"
-                    value={email}
-                    onChange={e => { setEmail(e.target.value); setError(''); }}
-                    className="w-full bg-brand-dark border border-white/10 rounded-sm pl-10 pr-4 py-3 text-sm text-white placeholder-brand-text/30 focus:outline-none focus:border-brand-accent/50 transition-colors"
+                <br />
+                Challenge
+              </motion.h1>
+
+              <motion.p
+                initial={{ opacity: 0, y: 16 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="text-lg text-brand-text/70 mb-10 leading-relaxed"
+              >
+                Go from <span className="text-white font-medium">zero to building production AI systems</span> in 31 days.
+                One concept, one task, curated resources — every single day.
+              </motion.p>
+
+              {/* Tally Email Gate */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.3 }}
+                id="email-gate"
+              >
+                <div className="bg-brand-card/80 border border-white/10 rounded-sm p-6 backdrop-blur-sm">
+                  <div className="flex items-center gap-2 mb-4">
+                    <Lock size={14} className="text-brand-accent" />
+                    <span className="text-sm font-mono text-brand-text/60 uppercase tracking-widest">
+                      Free access — enter your email
+                    </span>
+                  </div>
+                  <iframe
+                    data-tally-src="https://tally.so/embed/4428Gd?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1&formEventsForwarding=1"
+                    loading="lazy"
+                    width="100%"
+                    height="177"
+                    frameBorder={0}
+                    marginHeight={0}
+                    marginWidth={0}
+                    title="MyRealProduct Book"
+                    onLoad={handleIframeLoad}
                   />
+                  <p className="text-xs text-brand-text/30 text-center mt-1">
+                    No spam. Just the ebook. Stored locally in your browser.
+                  </p>
                 </div>
-                {error && (
-                  <p className="text-red-400 text-xs font-mono">{error}</p>
-                )}
-                <Button
-                  type="submit"
-                  disabled={submitting}
-                  className="w-full h-12 bg-white text-black hover:bg-brand-accent hover:text-black font-medium tracking-widest uppercase text-sm rounded-sm transition-all"
-                >
-                  {submitting ? 'Opening book...' : 'Get Free Access →'}
-                </Button>
-              </form>
-              <p className="text-xs text-brand-text/30 text-center mt-3">
-                No spam. Just the ebook. Stored locally in your browser.
-              </p>
+              </motion.div>
             </div>
-          </motion.div>
+
+            {/* ── Right: 3D Book ── */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.7, delay: 0.25 }}
+              className="flex-1 flex items-center justify-center lg:justify-end"
+            >
+              <Book3D />
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -253,6 +421,25 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Book GIF */}
+      <section className="py-12 px-4">
+        <div className="max-w-3xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+            className="rounded-sm overflow-hidden border border-white/8"
+          >
+            <img
+              src="/images/Book.gif"
+              alt="31 Day AI Engineer Challenge preview"
+              className="w-full h-auto"
+            />
+          </motion.div>
         </div>
       </section>
 
@@ -312,7 +499,7 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
               ))}
             </div>
             <Button
-              onClick={() => document.querySelector('input[type="email"]')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => document.getElementById('email-gate')?.scrollIntoView({ behavior: 'smooth' })}
               className="h-12 px-8 bg-white text-black hover:bg-brand-accent hover:text-black font-medium tracking-widest uppercase text-sm rounded-sm"
             >
               Get Free Access →
@@ -332,17 +519,105 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
   );
 }
 
+// ─── Book Cover ───────────────────────────────────────────────────────────────
+
+function CoverPage() {
+  return (
+    <div
+      className="h-full flex flex-col p-10 select-none relative overflow-hidden"
+      style={{ background: 'linear-gradient(150deg, #0f0f20 0%, #080812 55%, #050510 100%)', minHeight: '100%' }}
+    >
+      {/* Corner glow */}
+      <div className="absolute -top-16 -left-16 w-72 h-72 rounded-full pointer-events-none"
+        style={{ background: 'radial-gradient(circle, rgba(69,61,200,0.15) 0%, transparent 65%)' }} />
+
+      {/* Top label */}
+      <div className="flex items-center gap-3 relative z-10">
+        <div className="h-px w-6 bg-brand-primary/50" />
+        <span className="text-[9px] font-mono text-white/25 uppercase tracking-[0.35em]">MyRealProduct</span>
+      </div>
+
+      {/* Main content */}
+      <div className="flex-1 flex flex-col justify-center relative z-10 py-10">
+        <p className="text-[10px] font-mono text-brand-accent/60 uppercase tracking-[0.3em] mb-6">
+          31-Day Program
+        </p>
+        <h1
+          className="font-display font-bold text-white leading-[1.0] mb-6"
+          style={{ fontSize: 'clamp(2.8rem, 7vw, 4.5rem)' }}
+        >
+          31 day{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent via-brand-secondary to-white">
+            AI Engineer
+          </span>
+          {' '}Challenge
+        </h1>
+        <div className="flex items-center gap-2 mb-7">
+          <div className="h-[2px] w-10 bg-brand-primary rounded-full" />
+          <div className="h-px w-16 bg-brand-primary/25 rounded-full" />
+        </div>
+        <p className="text-brand-text/45 text-sm font-light leading-loose max-w-xs">
+          From Zero to Production AI Systems.
+          <br />
+          One concept. One task. Every day.
+        </p>
+      </div>
+
+      {/* Bottom bar */}
+      <div className="flex items-end justify-between pt-6 border-t border-white/5 relative z-10">
+        <div>
+          <p className="text-[9px] font-mono text-white/15 uppercase tracking-widest mb-1">Free Ebook</p>
+          <p className="text-[10px] text-white/20 font-mono">31 Days · 150+ Resources</p>
+        </div>
+        <p className="font-display font-semibold text-white/20 text-base tracking-wide">MRP</p>
+      </div>
+    </div>
+  );
+}
+
+// ─── Page flip variants ────────────────────────────────────────────────────────
+
+const pageVariants = {
+  enter: (dir: 'next' | 'prev') => ({
+    rotateY: dir === 'next' ? 18 : -18,
+    x: dir === 'next' ? '5%' : '-5%',
+    opacity: 0,
+    scale: 0.97,
+  }),
+  center: { rotateY: 0, x: 0, opacity: 1, scale: 1 },
+  exit: (dir: 'next' | 'prev') => ({
+    rotateY: dir === 'next' ? -18 : 18,
+    x: dir === 'next' ? '-5%' : '5%',
+    opacity: 0,
+    scale: 0.97,
+  }),
+};
+
+const pageTransition = { duration: 0.38, ease: [0.4, 0, 0.2, 1] };
+
 // ─── Book Reader ─────────────────────────────────────────────────────────────
 
 function BookReader({ email }: { email: string }) {
-  const [currentPage, setCurrentPage] = useState(0); // 0 = day 1, ..., 30 = day 31, 31 = final CTA
+  const [currentPage, setCurrentPage] = useState(-1); // -1 = cover, 0-30 = days, 31 = final CTA
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [showNav, setShowNav] = useState(false);
+  const [showShare, setShowShare] = useState(false);
+  const [copied, setCopied] = useState(false);
   const contentRef = useRef<HTMLDivElement>(null);
 
+  const BOOK_URL = 'https://myrealproduct.com/book';
+  const SHARE_TEXT = 'Check out this free ebook: go from zero to building production AI systems in 31 days.';
+
+  const handleCopyLink = useCallback(async () => {
+    await navigator.clipboard.writeText(BOOK_URL);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, []);
+
+  const isCover = currentPage === -1;
   const isLastPage = currentPage === TOTAL_DAYS;
-  const day = isLastPage ? null : BOOK_CONTENT[currentPage];
-  const progress = ((currentPage + 1) / (TOTAL_DAYS + 1)) * 100;
+  const day = (!isCover && !isLastPage) ? BOOK_CONTENT[currentPage] : null;
+  const progress = isCover ? 0 : ((currentPage + 1) / (TOTAL_DAYS + 1)) * 100;
 
   const goTo = useCallback((idx: number, dir: 'next' | 'prev') => {
     setDirection(dir);
@@ -356,7 +631,7 @@ function BookReader({ email }: { email: string }) {
   }, [currentPage, goTo]);
 
   const goPrev = useCallback(() => {
-    if (currentPage > 0) goTo(currentPage - 1, 'prev');
+    if (currentPage > -1) goTo(currentPage - 1, 'prev');
   }, [currentPage, goTo]);
 
   // Keyboard nav
@@ -371,10 +646,14 @@ function BookReader({ email }: { email: string }) {
 
   // Update page title
   useEffect(() => {
-    document.title = day
-      ? `Day ${day.day}: ${day.title} — 31 Day AI Engineer Challenge`
-      : '31 Day AI Engineer Challenge — Complete!';
-  }, [day]);
+    if (isCover) {
+      document.title = '31 Day AI Engineer Challenge — Free Ebook';
+    } else if (day) {
+      document.title = `Day ${day.day}: ${day.title} — 31 Day AI Engineer Challenge`;
+    } else {
+      document.title = '31 Day AI Engineer Challenge — Complete!';
+    }
+  }, [day, isCover]);
 
   const weekLabel =
     day?.week === 5
@@ -384,95 +663,236 @@ function BookReader({ email }: { email: string }) {
       : '';
 
   return (
-    <div className="min-h-screen bg-brand-dark text-white flex flex-col">
+    // ── Desk ──
+    <div className="min-h-screen bg-[#020205] text-white flex flex-col items-center justify-center p-4 md:p-8 overflow-hidden">
       <div className="noise-overlay" />
 
-      {/* ── Header ── */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-brand-dark/80 backdrop-blur-xl border-b border-white/5">
-        <div className="max-w-5xl mx-auto px-4 py-3 flex items-center gap-4">
-          {/* Logo */}
-          <a href="/" className="font-display font-bold text-white text-sm shrink-0 hover:text-brand-accent transition-colors">
-            MyRealProduct
-          </a>
+      {/* Subtle desk glow */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_60%,rgba(69,61,200,0.06),transparent)]" />
 
-          {/* Progress bar */}
-          <div className="flex-1 flex items-center gap-3">
-            <div className="flex-1 h-1 bg-white/5 rounded-full overflow-hidden">
-              <motion.div
-                className="h-full bg-gradient-to-r from-brand-primary to-brand-accent rounded-full"
-                animate={{ width: `${progress}%` }}
-                transition={{ duration: 0.4 }}
-              />
-            </div>
-            <span className="text-xs font-mono text-brand-text/40 shrink-0">
-              {isLastPage ? '31/31' : `${currentPage + 1}/31`}
+      {/* ── Book wrapper ── */}
+      <div className="relative w-full" style={{ maxWidth: '860px' }}>
+
+        {/* Hardcover top board */}
+        <div className="absolute left-0 right-[-9px] -top-[5px] h-[5px] rounded-t-[2px]"
+          style={{ background: 'linear-gradient(to bottom, #1e1e30, #111120)' }} />
+        {/* Hardcover bottom board */}
+        <div className="absolute left-0 right-[-9px] -bottom-[5px] h-[5px] rounded-b-[2px]"
+          style={{ background: 'linear-gradient(to top, #1e1e30, #111120)' }} />
+
+        {/* Page-stack depth (right edge) */}
+        <div className="absolute right-[-9px] top-[3px] bottom-[3px] w-[7px] rounded-r-[3px] bg-[#191926]" />
+        <div className="absolute right-[-5px] top-[1px] bottom-[1px] w-[4px] rounded-r-[2px] bg-[#141422]" />
+
+        {/* ── Book ── */}
+        <div
+          className="relative flex rounded-[3px] overflow-hidden"
+          style={{
+            height: 'min(calc(100vh - 48px), 900px)',
+            minHeight: '560px',
+            boxShadow: '0 32px 100px rgba(0,0,0,0.85), 0 0 0 1px rgba(255,255,255,0.04)',
+          }}
+        >
+          {/* Spine */}
+          <div className="w-10 shrink-0 flex flex-col items-center justify-between py-6 select-none relative"
+            style={{ background: 'linear-gradient(to right, #030306, #07070f, #0b0b18)', borderRight: '1px solid rgba(255,255,255,0.05)' }}
+          >
+            {/* Spine outer-edge highlight (light catching left edge) */}
+            <div className="absolute left-0 top-0 bottom-0 w-[2px]"
+              style={{ background: 'linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.08) 50%, rgba(255,255,255,0.03))' }} />
+            {/* Top rivet */}
+            <div className="w-2 h-2 rounded-full bg-white/8 border border-white/5 shrink-0" />
+            {/* Title */}
+            <span
+              className="text-[8px] font-mono text-white/20 uppercase tracking-[0.32em] whitespace-nowrap"
+              style={{ writingMode: 'vertical-rl', transform: 'rotate(180deg)' }}
+            >
+              31 Day AI Engineer Challenge
             </span>
+            {/* Bottom rivet */}
+            <div className="w-2 h-2 rounded-full bg-white/8 border border-white/5 shrink-0" />
           </div>
 
-          {/* Day/Week indicator */}
-          {day && (
-            <div className={`hidden md:flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono ${WEEK_BADGE_COLORS[day.week]}`}>
-              <span>{weekLabel}</span>
-              <span className="opacity-50">·</span>
-              <span>Day {day.day}</span>
-            </div>
-          )}
+          {/* ── Page area ── */}
+          <div className="flex-1 flex flex-col bg-[#0d0d16] overflow-hidden">
 
-          {/* Day picker toggle */}
-          <button
-            onClick={() => setShowNav(v => !v)}
-            className="text-brand-text/40 hover:text-white transition-colors"
-            title="Jump to day"
-          >
-            <Terminal size={16} />
-          </button>
-        </div>
+            {/* ── Header (inside book) ── */}
+            <header className="shrink-0 bg-[#0a0a12]/90 backdrop-blur-sm border-b border-white/5 z-10">
+              <div className="px-4 py-3 flex items-center gap-4">
+                <a href="/" className="font-display font-bold text-white text-sm shrink-0 hover:text-brand-accent transition-colors">
+                  MyRealProduct
+                </a>
 
-        {/* Day picker dropdown */}
-        <AnimatePresence>
-          {showNav && (
-            <motion.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -8 }}
-              className="border-t border-white/5 bg-brand-dark/95 backdrop-blur-xl px-4 py-4"
-            >
-              <div className="max-w-5xl mx-auto">
-                <p className="text-xs font-mono text-brand-text/40 uppercase tracking-widest mb-3">Jump to day</p>
-                <div className="flex flex-wrap gap-2">
-                  {BOOK_CONTENT.map((d, i) => (
-                    <button
-                      key={i}
-                      onClick={() => { goTo(i, i > currentPage ? 'next' : 'prev'); setShowNav(false); }}
-                      className={`w-8 h-8 text-xs rounded-sm border transition-all ${
-                        i === currentPage
-                          ? 'bg-brand-primary border-brand-primary text-white'
-                          : i < currentPage
-                          ? 'bg-white/5 border-white/10 text-white/40'
-                          : 'border-white/10 text-brand-text/40 hover:border-brand-accent/50 hover:text-white'
-                      }`}
-                    >
-                      {d.day}
-                    </button>
-                  ))}
+                <div className="flex-1 flex items-center gap-3">
+                  <div className="flex-1 h-0.5 bg-white/5 rounded-full overflow-hidden">
+                    <motion.div
+                      className="h-full bg-gradient-to-r from-brand-primary to-brand-accent rounded-full"
+                      animate={{ width: `${progress}%` }}
+                      transition={{ duration: 0.4 }}
+                    />
+                  </div>
+                  <span className="text-xs font-mono text-brand-text/40 shrink-0">
+                    {isCover ? 'Cover' : isLastPage ? '31/31' : `${currentPage + 1}/31`}
+                  </span>
                 </div>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
 
-      {/* ── Main content ── */}
-      <main ref={contentRef} className="flex-1 overflow-y-auto pt-20 pb-24">
-        <AnimatePresence mode="wait">
-          {!isLastPage && day ? (
-            <motion.div
-              key={currentPage}
-              initial={{ opacity: 0, x: direction === 'next' ? 40 : -40 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: direction === 'next' ? -40 : 40 }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-              className="max-w-4xl mx-auto px-4 py-10"
+                {day && (
+                  <div className={`hidden md:flex items-center gap-2 px-3 py-1 rounded-full border text-xs font-mono ${WEEK_BADGE_COLORS[day.week]}`}>
+                    <span>{weekLabel}</span>
+                    <span className="opacity-50">·</span>
+                    <span>Day {day.day}</span>
+                  </div>
+                )}
+
+                <button
+                  onClick={() => { setShowNav(v => !v); setShowShare(false); }}
+                  className={`transition-colors ${showNav ? 'text-white' : 'text-brand-text/40 hover:text-white'}`}
+                  title="Chapters"
+                >
+                  <LayoutList size={16} />
+                </button>
+
+                <button
+                  onClick={() => { setShowShare(v => !v); setShowNav(false); }}
+                  className={`transition-colors ${showShare ? 'text-white' : 'text-brand-text/40 hover:text-white'}`}
+                  title="Share this book"
+                >
+                  <Share2 size={16} />
+                </button>
+              </div>
+
+              {/* Day picker dropdown */}
+              <AnimatePresence>
+                {showNav && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="border-t border-white/5 bg-[#080810]/95 px-4 py-4"
+                  >
+                    <p className="text-xs font-mono text-brand-text/40 uppercase tracking-widest mb-3">Jump to day</p>
+                    <div className="flex flex-wrap gap-2">
+                      {BOOK_CONTENT.map((d, i) => (
+                        <button
+                          key={i}
+                          onClick={() => { goTo(i, i > currentPage ? 'next' : 'prev'); setShowNav(false); }}
+                          className={`w-8 h-8 text-xs rounded-sm border transition-all ${
+                            i === currentPage
+                              ? 'bg-brand-primary border-brand-primary text-white'
+                              : i < currentPage
+                              ? 'bg-white/5 border-white/10 text-white/40'
+                              : 'border-white/10 text-brand-text/40 hover:border-brand-accent/50 hover:text-white'
+                          }`}
+                        >
+                          {d.day}
+                        </button>
+                      ))}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* Share panel */}
+              <AnimatePresence>
+                {showShare && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    className="border-t border-white/5 bg-[#080810]/95 px-4 py-4"
+                  >
+                    <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
+                      {/* GIF preview */}
+                      <div className="w-32 shrink-0 rounded-sm overflow-hidden border border-white/10">
+                        <img src="/images/Book.gif" alt="Book preview" className="w-full h-auto" />
+                      </div>
+
+                      {/* Share info + actions */}
+                      <div className="flex-1 min-w-0">
+                        <p className="text-sm font-medium text-white mb-0.5">31 day AI Engineer Challenge</p>
+                        <p className="text-xs text-brand-text/50 mb-3 font-mono">{BOOK_URL}</p>
+                        <div className="flex flex-wrap gap-2">
+                          {/* Copy link */}
+                          <button
+                            onClick={handleCopyLink}
+                            className={`flex items-center gap-1.5 px-3 py-1.5 rounded-sm border text-xs font-mono transition-all ${
+                              copied
+                                ? 'border-brand-accent/50 bg-brand-accent/10 text-brand-accent'
+                                : 'border-white/10 text-brand-text/60 hover:border-white/30 hover:text-white'
+                            }`}
+                          >
+                            <Copy size={12} />
+                            {copied ? 'Copied!' : 'Copy link'}
+                          </button>
+
+                          {/* WhatsApp */}
+                          <a
+                            href={`https://wa.me/?text=${encodeURIComponent(SHARE_TEXT + ' ' + BOOK_URL)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackEvent('book_shared', { platform: 'whatsapp' })}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-white/10 text-brand-text/60 hover:border-green-500/40 hover:text-green-400 text-xs font-mono transition-all"
+                          >
+                            WhatsApp
+                          </a>
+
+                          {/* Twitter / X */}
+                          <a
+                            href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(SHARE_TEXT)}&url=${encodeURIComponent(BOOK_URL)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackEvent('book_shared', { platform: 'twitter' })}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-white/10 text-brand-text/60 hover:border-sky-500/40 hover:text-sky-400 text-xs font-mono transition-all"
+                          >
+                            X / Twitter
+                          </a>
+
+                          {/* LinkedIn */}
+                          <a
+                            href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(BOOK_URL)}`}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={() => trackEvent('book_shared', { platform: 'linkedin' })}
+                            className="flex items-center gap-1.5 px-3 py-1.5 rounded-sm border border-white/10 text-brand-text/60 hover:border-blue-500/40 hover:text-blue-400 text-xs font-mono transition-all"
+                          >
+                            LinkedIn
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </header>
+
+            {/* ── Main content (inside book) ── */}
+            <main ref={contentRef} className="flex-1 overflow-y-auto" style={{ perspective: '1400px' }}>
+              <AnimatePresence mode="wait" custom={direction}>
+                {isCover ? (
+                  <motion.div
+                    key="cover"
+                    custom={direction}
+                    variants={pageVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={pageTransition}
+                    className="h-full"
+                    style={{ transformOrigin: 'center center' }}
+                  >
+                    <CoverPage />
+                  </motion.div>
+                ) : !isLastPage && day ? (
+                  <motion.div
+                    key={currentPage}
+                    custom={direction}
+                    variants={pageVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={pageTransition}
+                    className="max-w-3xl mx-auto px-6 py-8"
+                    style={{ transformOrigin: 'center center' }}
             >
               {/* Week intro banner (first day of each week) */}
               {([1, 8, 15, 22, 28].includes(day.day)) && (
@@ -603,16 +1023,19 @@ function BookReader({ email }: { email: string }) {
                 </a>
               </div>
             </motion.div>
-          ) : (
-            /* ── Final CTA Page ── */
-            <motion.div
-              key="final"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -30 }}
-              transition={{ duration: 0.4 }}
-              className="max-w-4xl mx-auto px-4 py-16 text-center"
-            >
+                ) : (
+                  /* ── Final CTA Page ── */
+                  <motion.div
+                    key="final"
+                    custom={direction}
+                    variants={pageVariants}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    transition={pageTransition}
+                    className="max-w-3xl mx-auto px-6 py-12 text-center"
+                    style={{ transformOrigin: 'center center' }}
+                  >
               {/* Completion badge */}
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-400 text-xs font-mono uppercase tracking-widest mb-10">
                 <Check size={12} />
@@ -637,7 +1060,7 @@ function BookReader({ email }: { email: string }) {
                   <p className="text-brand-text/60 text-sm leading-relaxed mb-6">
                     Take a screenshot of your deployed project. Post it on LinkedIn.
                     Tag <span className="text-white font-medium">@MyRealProduct</span> and{' '}
-                    <span className="text-white font-medium">Hari Prasad Ranganathan</span>.
+                    <span className="text-white font-medium">Hari Prasad Renganathan</span>.
                     Use <span className="text-brand-accent font-mono">#MyRealProduct</span> and{' '}
                     <span className="text-brand-accent font-mono">#31DayAIChallenge</span>.
                   </p>
@@ -683,7 +1106,7 @@ function BookReader({ email }: { email: string }) {
                       Apply to the Cohort <ArrowRight size={14} />
                     </a>
                     <a
-                      href="https://www.linkedin.com/in/hariprasadranganathan/"
+                      href="https://www.linkedin.com/in/hariprasad20/"
                       target="_blank"
                       rel="noopener noreferrer"
                       onClick={() => trackEvent('book_final_cta_clicked', { type: 'linkedin' })}
@@ -699,52 +1122,79 @@ function BookReader({ email }: { email: string }) {
               <p className="text-brand-text/30 text-sm font-mono">
                 {email && `Sent to: ${email} — but the book lives here in your browser.`}
               </p>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </main>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </main>
 
-      {/* ── Bottom Navigation ── */}
-      <div className="fixed bottom-0 left-0 right-0 z-40 bg-brand-dark/90 backdrop-blur-xl border-t border-white/5 px-4 py-3">
-        <div className="max-w-4xl mx-auto flex items-center justify-between gap-4">
-          <Button
-            onClick={goPrev}
-            disabled={currentPage === 0}
-            variant="outline"
-            className="flex items-center gap-2 h-10 px-5 text-sm border-white/10 hover:border-white/30 disabled:opacity-20"
-          >
-            <ChevronLeft size={16} />
-            <span className="hidden sm:inline">Previous</span>
-          </Button>
+            {/* ── Bottom Navigation (inside book) ── */}
+            <div className="shrink-0 bg-[#0a0a12]/90 backdrop-blur-sm border-t border-white/5 px-4 py-3">
+              <div className="flex items-center justify-between gap-4">
+                <Button
+                  onClick={goPrev}
+                  disabled={isCover}
+                  variant="outline"
+                  className="flex items-center gap-2 h-9 px-4 text-sm border-white/10 hover:border-white/30 disabled:opacity-20"
+                >
+                  <ChevronLeft size={15} />
+                  <span className="hidden sm:inline">Previous</span>
+                </Button>
 
-          {/* Page dots (compact) */}
-          <div className="flex items-center gap-1.5 overflow-hidden max-w-[200px] sm:max-w-xs">
-            {Array.from({ length: TOTAL_DAYS + 1 }).map((_, i) => (
-              <button
-                key={i}
-                onClick={() => goTo(i, i > currentPage ? 'next' : 'prev')}
-                className={`shrink-0 rounded-full transition-all ${
-                  i === currentPage
-                    ? 'w-4 h-1.5 bg-brand-accent'
-                    : i < currentPage
-                    ? 'w-1.5 h-1.5 bg-white/20'
-                    : 'w-1.5 h-1.5 bg-white/8'
-                }`}
-                title={i < TOTAL_DAYS ? `Day ${i + 1}` : 'Completion'}
-              />
-            ))}
+                {/* Page dots — sliding window of 9 around current page */}
+                {(() => {
+                  const TOTAL_ITEMS = TOTAL_DAYS + 2; // cover + 31 days + final = 33
+                  const WINDOW = 9;
+                  // Map currentPage (-1..31) to display index (0..32)
+                  const activeIdx = currentPage + 1;
+                  const winStart = Math.max(0, Math.min(activeIdx - Math.floor(WINDOW / 2), TOTAL_ITEMS - WINDOW));
+                  const winEnd = Math.min(TOTAL_ITEMS - 1, winStart + WINDOW - 1);
+                  return (
+                    <div className="flex items-center gap-1.5">
+                      {Array.from({ length: winEnd - winStart + 1 }, (_, k) => {
+                        const displayIdx = winStart + k;
+                        const page = displayIdx - 1; // back to -1..31
+                        const isActive = page === currentPage;
+                        const isPast = page < currentPage;
+                        // Shrink dots at the edges of the window
+                        const edgeDist = Math.min(k, winEnd - winStart - k);
+                        const isEdge = edgeDist === 0;
+                        return (
+                          <button
+                            key={displayIdx}
+                            onClick={() => goTo(page, page > currentPage ? 'next' : 'prev')}
+                            title={page === -1 ? 'Cover' : page < TOTAL_DAYS ? `Day ${page + 1}` : 'Completion'}
+                            className="shrink-0 rounded-full transition-all"
+                            style={{
+                              width: isActive ? 16 : isEdge ? 4 : 6,
+                              height: 6,
+                              background: isActive
+                                ? 'var(--color-brand-accent, #827AFF)'
+                                : isPast
+                                ? 'rgba(255,255,255,0.25)'
+                                : 'rgba(255,255,255,0.1)',
+                              opacity: isEdge ? 0.4 : 1,
+                            }}
+                          />
+                        );
+                      })}
+                    </div>
+                  );
+                })()}
+
+                <Button
+                  onClick={goNext}
+                  disabled={currentPage === TOTAL_DAYS}
+                  className="flex items-center gap-2 h-9 px-4 text-sm bg-white text-black hover:bg-brand-accent hover:text-black rounded-sm disabled:opacity-20"
+                >
+                  <span className="hidden sm:inline">
+                    {isCover ? 'Open' : currentPage === TOTAL_DAYS - 1 ? 'Finish' : 'Next'}
+                  </span>
+                  <ChevronRight size={15} />
+                </Button>
+              </div>
+            </div>
+
           </div>
-
-          <Button
-            onClick={goNext}
-            disabled={currentPage === TOTAL_DAYS}
-            className="flex items-center gap-2 h-10 px-5 text-sm bg-white text-black hover:bg-brand-accent hover:text-black rounded-sm disabled:opacity-20"
-          >
-            <span className="hidden sm:inline">
-              {currentPage === TOTAL_DAYS - 1 ? 'Finish' : 'Next'}
-            </span>
-            <ChevronRight size={16} />
-          </Button>
         </div>
       </div>
     </div>
@@ -755,7 +1205,18 @@ function BookReader({ email }: { email: string }) {
 
 export default function BookPage() {
   const [accessEmail, setAccessEmail] = useState<string | null>(() => {
-    return localStorage.getItem(STORAGE_KEY);
+    // Check localStorage first
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) return stored;
+    // Check if Tally redirected back with ?submitted=1
+    if (new URLSearchParams(window.location.search).get('submitted') === '1') {
+      const fallback = 'subscriber';
+      localStorage.setItem(STORAGE_KEY, fallback);
+      // Clean the URL param without a page reload
+      window.history.replaceState({}, '', window.location.pathname);
+      return fallback;
+    }
+    return null;
   });
 
   useEffect(() => {
