@@ -138,7 +138,8 @@ function Book3D() {
           <div style={{ position: 'absolute', inset: 0, padding: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             {/* Top label */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ height: 1, width: 22, background: 'rgba(130,122,255,0.4)' }} />
+              <img src="/favicon.png" alt="MRP" style={{ width: 16, height: 16, opacity: 0.25, borderRadius: 3 }} />
+              <div style={{ height: 1, width: 16, background: 'rgba(130,122,255,0.4)' }} />
               <span style={{ fontSize: 10, fontFamily: 'monospace', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.3em', textTransform: 'uppercase' }}>MRP</span>
             </div>
 
@@ -159,9 +160,12 @@ function Book3D() {
             </div>
 
             {/* Bottom */}
-            <p style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
-              MyRealProduct
-            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <img src="/favicon.png" alt="MRP" style={{ width: 14, height: 14, opacity: 0.15, borderRadius: 3 }} />
+              <p style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+                MyRealProduct
+              </p>
+            </div>
           </div>
         </div>
 
@@ -285,7 +289,8 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-brand-dark/50 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
-          <a href="/" className="text-xl font-bold font-display tracking-tight text-white hover:text-brand-accent transition-colors">
+          <a href="/" className="flex items-center gap-2.5 text-xl font-bold font-display tracking-tight text-white hover:text-brand-accent transition-colors">
+            <img src="/favicon.png" alt="MRP" width={28} height={28} className="rounded-md opacity-90" />
             MyRealProduct
           </a>
           <a
@@ -533,6 +538,7 @@ function CoverPage() {
 
       {/* Top label */}
       <div className="flex items-center gap-3 relative z-10">
+        <img src="/favicon.png" alt="MRP" width={20} height={20} style={{ opacity: 0.25, borderRadius: 4 }} />
         <div className="h-px w-6 bg-brand-primary/50" />
         <span className="text-[9px] font-mono text-white/25 uppercase tracking-[0.35em]">MyRealProduct</span>
       </div>
@@ -569,7 +575,7 @@ function CoverPage() {
           <p className="text-[9px] font-mono text-white/15 uppercase tracking-widest mb-1">Free Ebook</p>
           <p className="text-[10px] text-white/20 font-mono">31 Days · 150+ Resources</p>
         </div>
-        <p className="font-display font-semibold text-white/20 text-base tracking-wide">MRP</p>
+        <img src="/favicon.png" alt="MRP" width={28} height={28} style={{ opacity: 0.18, borderRadius: 5 }} />
       </div>
     </div>
   );
@@ -585,25 +591,38 @@ const WEEK_TOC = [
   { week: 5, label: 'Final',  days: 'Days 28–31', title: 'Ship Something Real',                      tags: ['End-to-End', 'Deploy', 'Portfolio', 'Ship It'],                  color: '#d97706' },
 ];
 
+const TECH_LOGOS = [
+  { name: 'Python',      slug: 'python',      hex: '3776AB' },
+  { name: 'OpenAI',      slug: 'openai',      hex: 'e0e0e0' },
+  { name: 'LangChain',   slug: 'langchain',   hex: '1CD2A7' },
+  { name: 'LangGraph',   slug: 'langgraph',   hex: '5bbad5' },
+  { name: 'Streamlit',   slug: 'streamlit',   hex: 'FF4B4B' },
+  { name: 'Docker',      slug: 'docker',      hex: '2496ED' },
+  { name: 'GitHub',      slug: 'github',      hex: 'e0e0e0' },
+  { name: 'AWS',         slug: 'amazonaws',   hex: 'FF9900' },
+  { name: 'HuggingFace', slug: 'huggingface', hex: 'FFD21E' },
+  { name: 'Anthropic',   slug: 'anthropic',   hex: 'D4A76A' },
+];
+
 function TOCPage() {
   return (
     <div className="h-full flex flex-col px-8 py-7 overflow-y-auto">
-      <div className="mb-5">
+      <div className="mb-4">
         <p className="text-xs font-mono text-brand-accent/50 uppercase tracking-[0.3em] mb-1.5">Table of Contents</p>
         <h1 className="text-3xl font-display font-bold text-white">What's inside</h1>
       </div>
-      <div className="flex flex-col gap-2.5 flex-1">
+      <div className="flex flex-col gap-2 flex-1">
         {WEEK_TOC.map(w => (
-          <div key={w.week} className="flex gap-3 p-3.5 rounded-sm border border-white/5 bg-white/[0.02]">
+          <div key={w.week} className="flex gap-3 p-3 rounded-sm border border-white/5 bg-white/[0.02]">
             <div className="w-[3px] rounded-full shrink-0 self-stretch" style={{ background: w.color }} />
             <div className="flex-1 min-w-0">
-              <div className="flex items-baseline justify-between gap-2 mb-2">
-                <p className="text-base font-medium text-white leading-snug">{w.title}</p>
+              <div className="flex items-baseline justify-between gap-2 mb-1.5">
+                <p className="text-[0.9375rem] font-medium text-white leading-snug">{w.title}</p>
                 <span className="text-xs font-mono shrink-0" style={{ color: w.color + 'aa' }}>{w.days}</span>
               </div>
               <div className="flex flex-wrap gap-1">
                 {w.tags.map(tag => (
-                  <span key={tag} className="text-[11px] font-mono px-1.5 py-0.5 rounded border border-white/8 text-brand-text/40 bg-white/[0.03]">
+                  <span key={tag} className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-white/8 text-brand-text/40 bg-white/[0.03]">
                     {tag}
                   </span>
                 ))}
@@ -612,7 +631,27 @@ function TOCPage() {
           </div>
         ))}
       </div>
-      <p className="text-[11px] font-mono text-brand-text/20 mt-4 pt-3 border-t border-white/5">31 days · 5 weeks · 150+ curated resources</p>
+
+      {/* Tech logos grid */}
+      <div className="mt-4 pt-3 border-t border-white/[0.08]">
+        <p className="text-[10px] font-mono text-brand-text/25 uppercase tracking-[0.25em] mb-2.5">Tools & Frameworks</p>
+        <div className="grid grid-cols-5 gap-2">
+          {TECH_LOGOS.map(logo => (
+            <div key={logo.name} className="flex flex-col items-center gap-1 py-2 px-1 rounded bg-white/[0.02] border border-white/[0.05]">
+              <img
+                src={`https://cdn.simpleicons.org/${logo.slug}/${logo.hex}`}
+                alt={logo.name}
+                width={20}
+                height={20}
+                onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+              />
+              <span className="text-[8px] font-mono text-brand-text/35 text-center leading-none">{logo.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-[11px] font-mono text-brand-text/20 mt-3 pt-3 border-t border-white/5">31 days · 5 weeks · 150+ curated resources</p>
     </div>
   );
 }
