@@ -138,7 +138,8 @@ function Book3D() {
           <div style={{ position: 'absolute', inset: 0, padding: 32, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
             {/* Top label */}
             <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
-              <div style={{ height: 1, width: 22, background: 'rgba(130,122,255,0.4)' }} />
+              <img src="/favicon.png" alt="MRP" style={{ width: 16, height: 16, opacity: 0.25, borderRadius: 3 }} />
+              <div style={{ height: 1, width: 16, background: 'rgba(130,122,255,0.4)' }} />
               <span style={{ fontSize: 10, fontFamily: 'monospace', color: 'rgba(255,255,255,0.2)', letterSpacing: '0.3em', textTransform: 'uppercase' }}>MRP</span>
             </div>
 
@@ -159,9 +160,12 @@ function Book3D() {
             </div>
 
             {/* Bottom */}
-            <p style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
-              MyRealProduct
-            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+              <img src="/favicon.png" alt="MRP" style={{ width: 14, height: 14, opacity: 0.15, borderRadius: 3 }} />
+              <p style={{ fontSize: 11, fontFamily: 'monospace', color: 'rgba(255,255,255,0.15)', textTransform: 'uppercase', letterSpacing: '0.2em' }}>
+                MyRealProduct
+              </p>
+            </div>
           </div>
         </div>
 
@@ -285,7 +289,8 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
       {/* Navbar */}
       <nav className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 bg-brand-dark/50 backdrop-blur-xl border-b border-white/5">
         <div className="max-w-7xl mx-auto w-full flex items-center justify-between">
-          <a href="/" className="text-xl font-bold font-display tracking-tight text-white hover:text-brand-accent transition-colors">
+          <a href="/" className="flex items-center gap-2.5 text-xl font-bold font-display tracking-tight text-white hover:text-brand-accent transition-colors">
+            <img src="/favicon.png" alt="MRP" width={28} height={28} className="rounded-md opacity-90" />
             MyRealProduct
           </a>
           <a
@@ -533,6 +538,7 @@ function CoverPage() {
 
       {/* Top label */}
       <div className="flex items-center gap-3 relative z-10">
+        <img src="/favicon.png" alt="MRP" width={20} height={20} style={{ opacity: 0.25, borderRadius: 4 }} />
         <div className="h-px w-6 bg-brand-primary/50" />
         <span className="text-[9px] font-mono text-white/25 uppercase tracking-[0.35em]">MyRealProduct</span>
       </div>
@@ -569,7 +575,161 @@ function CoverPage() {
           <p className="text-[9px] font-mono text-white/15 uppercase tracking-widest mb-1">Free Ebook</p>
           <p className="text-[10px] text-white/20 font-mono">31 Days · 150+ Resources</p>
         </div>
-        <p className="font-display font-semibold text-white/20 text-base tracking-wide">MRP</p>
+        <img src="/favicon.png" alt="MRP" width={28} height={28} style={{ opacity: 0.18, borderRadius: 5 }} />
+      </div>
+    </div>
+  );
+}
+
+// ─── Front Matter Pages ───────────────────────────────────────────────────────
+
+const WEEK_TOC = [
+  { week: 1, label: 'Week 1', days: 'Days 1–7',   title: 'Build Before You Feel Ready',              tags: ['LLMs', 'OpenAI API', 'Prompting', 'Python', 'First Deploy'],    color: '#453DC8' },
+  { week: 2, label: 'Week 2', days: 'Days 8–14',  title: 'Retrieval Is Where Engineers Are Made',    tags: ['RAG', 'Embeddings', 'Vector DB', 'Semantic Search', 'Chunking'], color: '#7c3aed' },
+  { week: 3, label: 'Week 3', days: 'Days 15–21', title: 'Agents and Decision Systems',              tags: ['Agents', 'Tool Use', 'ReAct', 'Memory', 'Planning'],             color: '#db2777' },
+  { week: 4, label: 'Week 4', days: 'Days 22–27', title: 'Production Thinking',                      tags: ['Evals', 'Guardrails', 'Monitoring', 'Safety', 'Cost'],           color: '#059669' },
+  { week: 5, label: 'Final',  days: 'Days 28–31', title: 'Ship Something Real',                      tags: ['End-to-End', 'Deploy', 'Portfolio', 'Ship It'],                  color: '#d97706' },
+];
+
+const TECH_LOGOS = [
+  { name: 'Python',      slug: 'python',      hex: '3776AB' },
+  { name: 'OpenAI',      slug: 'openai',      hex: 'e0e0e0' },
+  { name: 'LangChain',   slug: 'langchain',   hex: '1CD2A7' },
+  { name: 'LangGraph',   slug: 'langgraph',   hex: '5bbad5' },
+  { name: 'Streamlit',   slug: 'streamlit',   hex: 'FF4B4B' },
+  { name: 'Docker',      slug: 'docker',      hex: '2496ED' },
+  { name: 'GitHub',      slug: 'github',      hex: 'e0e0e0' },
+  { name: 'AWS',         slug: 'amazonaws',   hex: 'FF9900' },
+  { name: 'HuggingFace', slug: 'huggingface', hex: 'FFD21E' },
+  { name: 'Anthropic',   slug: 'anthropic',   hex: 'D4A76A' },
+];
+
+function TOCPage() {
+  return (
+    <div className="h-full flex flex-col px-8 py-7 overflow-y-auto">
+      <div className="mb-4">
+        <p className="text-xs font-mono text-brand-accent/50 uppercase tracking-[0.3em] mb-1.5">Table of Contents</p>
+        <h1 className="text-3xl font-display font-bold text-white">What's inside</h1>
+      </div>
+      <div className="flex flex-col gap-2 flex-1">
+        {WEEK_TOC.map(w => (
+          <div key={w.week} className="flex gap-3 p-3 rounded-sm border border-white/5 bg-white/[0.02]">
+            <div className="w-[3px] rounded-full shrink-0 self-stretch" style={{ background: w.color }} />
+            <div className="flex-1 min-w-0">
+              <div className="flex items-baseline justify-between gap-2 mb-1.5">
+                <p className="text-[0.9375rem] font-medium text-white leading-snug">{w.title}</p>
+                <span className="text-xs font-mono shrink-0" style={{ color: w.color + 'aa' }}>{w.days}</span>
+              </div>
+              <div className="flex flex-wrap gap-1">
+                {w.tags.map(tag => (
+                  <span key={tag} className="text-[10px] font-mono px-1.5 py-0.5 rounded border border-white/8 text-brand-text/40 bg-white/[0.03]">
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+
+      {/* Tech logos grid */}
+      <div className="mt-4 pt-3 border-t border-white/[0.08]">
+        <p className="text-[10px] font-mono text-brand-text/25 uppercase tracking-[0.25em] mb-2.5">Tools & Frameworks</p>
+        <div className="grid grid-cols-5 gap-2">
+          {TECH_LOGOS.map(logo => (
+            <div key={logo.name} className="flex flex-col items-center gap-1 py-2 px-1 rounded bg-white/[0.02] border border-white/[0.05]">
+              <img
+                src={`https://cdn.simpleicons.org/${logo.slug}/${logo.hex}`}
+                alt={logo.name}
+                width={20}
+                height={20}
+                onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none'; }}
+              />
+              <span className="text-[8px] font-mono text-brand-text/35 text-center leading-none">{logo.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <p className="text-[11px] font-mono text-brand-text/20 mt-3 pt-3 border-t border-white/5">31 days · 5 weeks · 150+ curated resources</p>
+    </div>
+  );
+}
+
+function IntroPage() {
+  return (
+    <div className="h-full flex flex-col px-8 py-7 overflow-y-auto">
+      <div className="mb-5">
+        <p className="text-xs font-mono text-brand-accent/50 uppercase tracking-[0.3em] mb-1.5">Introduction</p>
+        <h1 className="text-3xl font-display font-bold text-white leading-tight">
+          Yeah, another AI book.
+          <br />
+          <span className="text-brand-text/35">Except this one actually works.</span>
+        </h1>
+      </div>
+      <div className="flex-1 overflow-y-auto space-y-3.5 text-[0.9375rem] text-brand-text/65 leading-relaxed">
+        <p>
+          Real talk. There are a million AI tutorials out there. Most of them show you how to call an API and call it a "project." You build a chatbot nobody uses. You watch a 4-hour video and forget everything by Thursday.
+        </p>
+        <p>
+          <span className="text-white font-medium">This is different.</span> Every day for 31 days, you get one concept, one task, and the exact resources you need. No rabbit holes. No prerequisites nobody warned you about. Just a clear next step, every single day.
+        </p>
+        <p>
+          By Day 7 you'll have shipped something. By Day 31 you'll have a portfolio that proves you know what you're doing. Not just that you watched videos about it.
+        </p>
+        <p>
+          The 31-day format works because of momentum. One small win a day compounds into something you're genuinely proud of at the end of the month. And when you've built something real, the concepts stick. Because they're not abstract anymore.
+        </p>
+        <div className="border-l-2 border-brand-primary/40 pl-4 py-0.5 my-1">
+          <p className="text-white/70 italic text-base">
+            "The best way to learn AI is to build with it. Not read about it. Not watch it. Build."
+          </p>
+        </div>
+        <p>
+          So if you learn by doing (and if you picked this up, you probably do) you're in exactly the right place.
+        </p>
+        <p className="text-white font-medium">Let's build.</p>
+      </div>
+    </div>
+  );
+}
+
+function AboutPage() {
+  return (
+    <div className="h-full flex flex-col px-8 py-7 overflow-y-auto">
+      <div className="mb-5">
+        <p className="text-xs font-mono text-brand-accent/50 uppercase tracking-[0.3em] mb-1.5">About</p>
+        <h1 className="text-3xl font-display font-bold text-white leading-tight">
+          Who is{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-accent to-brand-secondary">
+            MyRealProduct?
+          </span>
+        </h1>
+      </div>
+      <div className="flex-1 overflow-y-auto space-y-3.5 text-[0.9375rem] text-brand-text/65 leading-relaxed">
+        <p>
+          MyRealProduct started with one question:{' '}
+          <span className="text-white">why do engineers who complete AI courses still struggle to build anything real?</span>
+        </p>
+        <p>
+          The answer was pretty obvious once we saw it. Most courses teach concepts in isolation. You learn about RAG. You learn about agents. You get a certificate. But you never put it all together into something you could actually show an employer, a client, or the world.
+        </p>
+        <p>
+          So we built something different.{' '}
+          <span className="text-white font-medium">A 4-week cohort where engineers build end-to-end AI products with a real team, live mentorship, and weekly sessions with people who have actually shipped AI in production.</span>
+        </p>
+        <p>
+          This ebook is our way of giving back. 31 days, completely free, no strings attached. We genuinely want you to build something real. Whether you ever join our cohort or not.
+        </p>
+        <p>
+          If you finish the 31 days and want to go deeper, come find us at{' '}
+          <a href="https://myrealproduct.com" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline">
+            myrealproduct.com
+          </a>.
+        </p>
+        <p className="text-brand-text/30 text-xs font-mono pt-2">
+          Now stop reading about us. Go to Day 1.
+        </p>
       </div>
     </div>
   );
@@ -598,7 +758,9 @@ const pageTransition = { duration: 0.38, ease: [0.4, 0, 0.2, 1] };
 // ─── Book Reader ─────────────────────────────────────────────────────────────
 
 function BookReader({ email }: { email: string }) {
-  const [currentPage, setCurrentPage] = useState(-1); // -1 = cover, 0-30 = days, 31 = final CTA
+  // -1=cover, 0=TOC, 1=Intro, 2=About, 3-33=Days 1-31, 34=Final CTA
+  const FRONT_PAGES = 3;
+  const [currentPage, setCurrentPage] = useState(-1);
   const [direction, setDirection] = useState<'next' | 'prev'>('next');
   const [showNav, setShowNav] = useState(false);
   const [showShare, setShowShare] = useState(false);
@@ -615,20 +777,21 @@ function BookReader({ email }: { email: string }) {
   }, []);
 
   const isCover = currentPage === -1;
-  const isLastPage = currentPage === TOTAL_DAYS;
-  const day = (!isCover && !isLastPage) ? BOOK_CONTENT[currentPage] : null;
-  const progress = isCover ? 0 : ((currentPage + 1) / (TOTAL_DAYS + 1)) * 100;
+  const isFrontMatter = currentPage >= 0 && currentPage < FRONT_PAGES;
+  const isLastPage = currentPage === TOTAL_DAYS + FRONT_PAGES;
+  const day = (!isCover && !isFrontMatter && !isLastPage) ? BOOK_CONTENT[currentPage - FRONT_PAGES] : null;
+  const progress = (isCover || isFrontMatter) ? 0 : ((currentPage - FRONT_PAGES + 1) / (TOTAL_DAYS + 1)) * 100;
 
   const goTo = useCallback((idx: number, dir: 'next' | 'prev') => {
     setDirection(dir);
     setCurrentPage(idx);
     contentRef.current?.scrollTo({ top: 0, behavior: 'smooth' });
-    trackEvent('book_page_viewed', { day: idx + 1, direction: dir });
+    trackEvent('book_page_viewed', { page_idx: idx, direction: dir });
   }, []);
 
   const goNext = useCallback(() => {
-    if (currentPage < TOTAL_DAYS) goTo(currentPage + 1, 'next');
-  }, [currentPage, goTo]);
+    if (currentPage < TOTAL_DAYS + FRONT_PAGES) goTo(currentPage + 1, 'next');
+  }, [currentPage, goTo, FRONT_PAGES]);
 
   const goPrev = useCallback(() => {
     if (currentPage > -1) goTo(currentPage - 1, 'prev');
@@ -646,14 +809,14 @@ function BookReader({ email }: { email: string }) {
 
   // Update page title
   useEffect(() => {
-    if (isCover) {
+    if (isCover || isFrontMatter) {
       document.title = '31 Day AI Engineer Challenge — Free Ebook';
     } else if (day) {
       document.title = `Day ${day.day}: ${day.title} — 31 Day AI Engineer Challenge`;
     } else {
       document.title = '31 Day AI Engineer Challenge — Complete!';
     }
-  }, [day, isCover]);
+  }, [day, isCover, isFrontMatter]);
 
   const weekLabel =
     day?.week === 5
@@ -732,7 +895,7 @@ function BookReader({ email }: { email: string }) {
                     />
                   </div>
                   <span className="text-xs font-mono text-brand-text/40 shrink-0">
-                    {isCover ? 'Cover' : isLastPage ? '31/31' : `${currentPage + 1}/31`}
+                    {isCover ? 'Cover' : isFrontMatter ? ['TOC', 'Intro', 'About'][currentPage] : isLastPage ? '31/31' : `${currentPage - FRONT_PAGES + 1}/31`}
                   </span>
                 </div>
 
@@ -775,11 +938,11 @@ function BookReader({ email }: { email: string }) {
                       {BOOK_CONTENT.map((d, i) => (
                         <button
                           key={i}
-                          onClick={() => { goTo(i, i > currentPage ? 'next' : 'prev'); setShowNav(false); }}
+                          onClick={() => { goTo(i + FRONT_PAGES, i + FRONT_PAGES > currentPage ? 'next' : 'prev'); setShowNav(false); }}
                           className={`w-8 h-8 text-xs rounded-sm border transition-all ${
-                            i === currentPage
+                            i + FRONT_PAGES === currentPage
                               ? 'bg-brand-primary border-brand-primary text-white'
-                              : i < currentPage
+                              : i + FRONT_PAGES < currentPage
                               ? 'bg-white/5 border-white/10 text-white/40'
                               : 'border-white/10 text-brand-text/40 hover:border-brand-accent/50 hover:text-white'
                           }`}
@@ -869,18 +1032,20 @@ function BookReader({ email }: { email: string }) {
             <main ref={contentRef} className="flex-1 overflow-y-auto" style={{ perspective: '1400px' }}>
               <AnimatePresence mode="wait" custom={direction}>
                 {isCover ? (
-                  <motion.div
-                    key="cover"
-                    custom={direction}
-                    variants={pageVariants}
-                    initial="enter"
-                    animate="center"
-                    exit="exit"
-                    transition={pageTransition}
-                    className="h-full"
-                    style={{ transformOrigin: 'center center' }}
-                  >
+                  <motion.div key="cover" custom={direction} variants={pageVariants} initial="enter" animate="center" exit="exit" transition={pageTransition} className="h-full" style={{ transformOrigin: 'center center' }}>
                     <CoverPage />
+                  </motion.div>
+                ) : currentPage === 0 ? (
+                  <motion.div key="toc" custom={direction} variants={pageVariants} initial="enter" animate="center" exit="exit" transition={pageTransition} className="h-full" style={{ transformOrigin: 'center center' }}>
+                    <TOCPage />
+                  </motion.div>
+                ) : currentPage === 1 ? (
+                  <motion.div key="intro" custom={direction} variants={pageVariants} initial="enter" animate="center" exit="exit" transition={pageTransition} className="h-full" style={{ transformOrigin: 'center center' }}>
+                    <IntroPage />
+                  </motion.div>
+                ) : currentPage === 2 ? (
+                  <motion.div key="about" custom={direction} variants={pageVariants} initial="enter" animate="center" exit="exit" transition={pageTransition} className="h-full" style={{ transformOrigin: 'center center' }}>
+                    <AboutPage />
                   </motion.div>
                 ) : !isLastPage && day ? (
                   <motion.div
@@ -1142,7 +1307,7 @@ function BookReader({ email }: { email: string }) {
 
                 {/* Page dots — sliding window of 9 around current page */}
                 {(() => {
-                  const TOTAL_ITEMS = TOTAL_DAYS + 2; // cover + 31 days + final = 33
+                  const TOTAL_ITEMS = TOTAL_DAYS + FRONT_PAGES + 2; // cover + front matter + 31 days + final
                   const WINDOW = 9;
                   // Map currentPage (-1..31) to display index (0..32)
                   const activeIdx = currentPage + 1;
@@ -1162,7 +1327,7 @@ function BookReader({ email }: { email: string }) {
                           <button
                             key={displayIdx}
                             onClick={() => goTo(page, page > currentPage ? 'next' : 'prev')}
-                            title={page === -1 ? 'Cover' : page < TOTAL_DAYS ? `Day ${page + 1}` : 'Completion'}
+                            title={page === -1 ? 'Cover' : page === 0 ? 'TOC' : page === 1 ? 'Intro' : page === 2 ? 'About' : page < TOTAL_DAYS + FRONT_PAGES ? `Day ${page - FRONT_PAGES + 1}` : 'Completion'}
                             className="shrink-0 rounded-full transition-all"
                             style={{
                               width: isActive ? 16 : isEdge ? 4 : 6,
@@ -1187,7 +1352,7 @@ function BookReader({ email }: { email: string }) {
                   className="flex items-center gap-2 h-9 px-4 text-sm bg-white text-black hover:bg-brand-accent hover:text-black rounded-sm disabled:opacity-20"
                 >
                   <span className="hidden sm:inline">
-                    {isCover ? 'Open' : currentPage === TOTAL_DAYS - 1 ? 'Finish' : 'Next'}
+                    {isCover ? 'Open' : currentPage === TOTAL_DAYS + FRONT_PAGES - 1 ? 'Finish' : 'Next'}
                   </span>
                   <ChevronRight size={15} />
                 </Button>
