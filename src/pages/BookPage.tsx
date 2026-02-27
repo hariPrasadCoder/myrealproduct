@@ -667,28 +667,16 @@ function IntroPage() {
           <span className="text-brand-text/35">Except this one actually works.</span>
         </h1>
       </div>
-      <div className="flex-1 overflow-y-auto space-y-3.5 text-[0.9375rem] text-brand-text/65 leading-relaxed">
-        <p>
-          Real talk. There are a million AI tutorials out there. Most of them show you how to call an API and call it a "project." You build a chatbot nobody uses. You watch a 4-hour video and forget everything by Thursday.
-        </p>
-        <p>
-          <span className="text-white font-medium">This is different.</span> Every day for 31 days, you get one concept, one task, and the exact resources you need. No rabbit holes. No prerequisites nobody warned you about. Just a clear next step, every single day.
-        </p>
-        <p>
-          By Day 7 you'll have shipped something. By Day 31 you'll have a portfolio that proves you know what you're doing. Not just that you watched videos about it.
-        </p>
-        <p>
-          The 31-day format works because of momentum. One small win a day compounds into something you're genuinely proud of at the end of the month. And when you've built something real, the concepts stick. Because they're not abstract anymore.
-        </p>
-        <div className="border-l-2 border-brand-primary/40 pl-4 py-0.5 my-1">
-          <p className="text-white/70 italic text-base">
-            "The best way to learn AI is to build with it. Not read about it. Not watch it. Build."
-          </p>
-        </div>
-        <p>
-          So if you learn by doing (and if you picked this up, you probably do) you're in exactly the right place.
-        </p>
-        <p className="text-white font-medium">Let's build.</p>
+      <div className="flex-1 overflow-y-auto text-[0.9375rem] text-brand-text/65 leading-relaxed space-y-4">
+        <p>Most AI tutorials have you call an API and call it a project. You build a chatbot nobody uses. You forget everything by Thursday.</p>
+        <p><span className="text-white font-medium">This is different:</span></p>
+        <ul className="space-y-2">
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>One concept, one task, one clear next step. Every day for 31 days</span></li>
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>By Day 7 you'll have shipped something real</span></li>
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>By Day 31 you'll have a portfolio that proves it</span></li>
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>Small wins compound. Concepts stick when you build with them</span></li>
+        </ul>
+        <p className="text-white font-medium pt-1">You learn by doing. So let's build.</p>
       </div>
     </div>
   );
@@ -706,30 +694,22 @@ function AboutPage() {
           </span>
         </h1>
       </div>
-      <div className="flex-1 overflow-y-auto space-y-3.5 text-[0.9375rem] text-brand-text/65 leading-relaxed">
-        <p>
-          MyRealProduct started with one question:{' '}
-          <span className="text-white">why do engineers who complete AI courses still struggle to build anything real?</span>
-        </p>
-        <p>
-          The answer was pretty obvious once we saw it. Most courses teach concepts in isolation. You learn about RAG. You learn about agents. You get a certificate. But you never put it all together into something you could actually show an employer, a client, or the world.
-        </p>
-        <p>
-          So we built something different.{' '}
-          <span className="text-white font-medium">A 4-week cohort where engineers build end-to-end AI products with a real team, live mentorship, and weekly sessions with people who have actually shipped AI in production.</span>
-        </p>
-        <p>
-          This ebook is our way of giving back. 31 days, completely free, no strings attached. We genuinely want you to build something real. Whether you ever join our cohort or not.
-        </p>
-        <p>
-          If you finish the 31 days and want to go deeper, come find us at{' '}
+      <div className="flex-1 overflow-y-auto text-[0.9375rem] text-brand-text/65 leading-relaxed space-y-4">
+        <p>Most courses teach concepts in isolation. You learn RAG. You learn agents. You get a certificate. But you never put it all together into something real.</p>
+        <p><span className="text-white font-medium">In the MyRealProduct cohort, you get:</span></p>
+        <ul className="space-y-2">
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>4 weeks building a real AI product end-to-end with a team</span></li>
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>Live mentorship from engineers who've shipped AI in production</span></li>
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>A portfolio piece you can actually show employers and clients</span></li>
+          <li className="flex items-start gap-2"><span className="text-brand-accent mt-1">→</span><span>A community of engineers who build, not just study</span></li>
+        </ul>
+        <p className="text-brand-text/65 text-sm pt-1">
+          Apply at{' '}
           <a href="https://myrealproduct.com" target="_blank" rel="noopener noreferrer" className="text-brand-accent hover:underline">
             myrealproduct.com
-          </a>.
+          </a>
         </p>
-        <p className="text-brand-text/30 text-xs font-mono pt-2">
-          Now stop reading about us. Go to Day 1.
-        </p>
+        <p className="text-brand-text/30 text-xs font-mono">Now go to Day 1.</p>
       </div>
     </div>
   );
@@ -1348,7 +1328,7 @@ function BookReader({ email }: { email: string }) {
 
                 <Button
                   onClick={goNext}
-                  disabled={currentPage === TOTAL_DAYS}
+                  disabled={currentPage === TOTAL_DAYS + FRONT_PAGES}
                   className="flex items-center gap-2 h-9 px-4 text-sm bg-white text-black hover:bg-brand-accent hover:text-black rounded-sm disabled:opacity-20"
                 >
                   <span className="hidden sm:inline">
