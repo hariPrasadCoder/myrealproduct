@@ -12,7 +12,7 @@ const PILLARS = [
     icon: Users,
     title: 'Builder Stories',
     description:
-      'Real founders and engineers sharing their journey — the wins, the failures, and the critical pivots.',
+      'Real founders and engineers sharing their journey: the wins, the failures, and the critical pivots.',
   },
   {
     icon: Zap,

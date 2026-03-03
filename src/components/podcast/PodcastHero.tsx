@@ -82,6 +82,13 @@ export default function PodcastHero() {
         >
           <div className="h-[1px] w-8 sm:w-12 bg-gradient-to-r from-transparent to-brand-accent/60" />
           <span className="text-xs sm:text-sm font-mono text-brand-accent tracking-[0.3em] uppercase">The MRP Podcast</span>
+          <span className="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-red-500/10 border border-red-500/30">
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75" />
+              <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-red-500" />
+            </span>
+            <span className="text-[10px] font-mono tracking-widest text-red-400 uppercase">Live</span>
+          </span>
           <div className="h-[1px] w-8 sm:w-12 bg-gradient-to-l from-transparent to-brand-accent/60" />
         </motion.div>
 
@@ -92,9 +99,9 @@ export default function PodcastHero() {
           transition={{ duration: 0.7, delay: 0.1 }}
           className="text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-display tracking-tighter mb-10 leading-[1.1] sm:leading-[1.05]"
         >
-          <span className="font-light text-white/70 tracking-tight block mb-2">Inside the</span>
-          <span className="font-semibold text-transparent bg-clip-text bg-gradient-to-br from-white via-white to-brand-accent pb-2 pr-2">
-            AI build room.
+          <span className="font-light text-white/40 tracking-tight block mb-2">the</span>
+          <span className="font-semibold pb-2 pr-2">
+            <span className="text-white/25">Re</span><span className="text-brand-accent" style={{ textShadow: '0 0 20px rgba(130,122,255,0.8)' }}>A</span><span className="text-white/25">l</span><span className="text-brand-accent" style={{ textShadow: '0 0 20px rgba(130,122,255,0.8)' }}>i</span><span className="text-white/25">ty Show.</span>
           </span>
         </motion.h1>
 
@@ -189,8 +196,9 @@ export default function PodcastHero() {
         >
           {[
             { value: '2,000+', label: 'AI ENGINEERS COACHED' },
-            { value: '5+', label: 'STARTUPS LAUNCHED' },
-            { value: '4 Weeks', label: 'AVERAGE TIME TO SHIP' },
+            { value: '1,555+', label: 'EVENT ATTENDEES' },
+            { value: 'Weekly', label: 'NEW EPISODES' },
+            { value: '60 min', label: 'PER EPISODE' },
           ].map((stat) => (
             <div key={stat.label} className="flex flex-col items-center">
               <span className="text-2xl sm:text-3xl font-display font-semibold text-white">

@@ -21,12 +21,6 @@ export default function PodcastFooter() {
 
           <div className="flex items-center gap-6 text-xs text-brand-text/30">
             <a
-              href="#subscribe"
-              className="px-4 py-2 rounded-sm bg-white/[0.05] border border-white/10 text-[11px] font-mono tracking-[0.2em] text-white hover:bg-white hover:text-black hover:border-white transition-all uppercase"
-            >
-              SUBSCRIBE
-            </a>
-            <a
               href="mailto:contact@myrealproduct.com"
               className="hover:text-white transition-colors"
             >

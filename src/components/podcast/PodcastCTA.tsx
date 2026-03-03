@@ -1,18 +1,20 @@
+import { useEffect } from 'react';
 import { motion } from 'motion/react';
-import { Youtube, ArrowUpRight } from 'lucide-react';
-
-const YOUTUBE_URL = 'https://www.youtube.com/@MyRealProduct'; // replace with actual channel URL
-
-const PLATFORMS = [
-  {
-    name: 'YouTube',
-    icon: Youtube,
-    href: YOUTUBE_URL,
-    description: 'Watch full episodes & subscribe',
-  },
-];
 
 export default function PodcastCTA() {
+  useEffect(() => {
+    const w = 'https://tally.so/widgets/embed.js';
+    if (typeof (window as any).Tally !== 'undefined') {
+      (window as any).Tally.loadEmbeds();
+    } else if (!document.querySelector(`script[src="${w}"]`)) {
+      const s = document.createElement('script');
+      s.src = w;
+      s.onload = () => (window as any).Tally?.loadEmbeds();
+      s.onerror = () => (window as any).Tally?.loadEmbeds();
+      document.body.appendChild(s);
+    }
+  }, []);
+
   return (
     <section className="py-28 md:py-36 bg-brand-dark relative overflow-hidden border-t border-white/5">
       {/* Background glow */}
@@ -24,7 +26,7 @@ export default function PodcastCTA() {
         }}
       />
 
-      <div className="container mx-auto px-4 max-w-4xl relative z-10">
+      <div className="container mx-auto px-4 max-w-2xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -57,39 +59,21 @@ export default function PodcastCTA() {
             <span className="text-white/30">an episode.</span>
           </h2>
 
-          <p className="text-lg text-brand-text/60 font-light max-w-lg mx-auto mb-16 leading-relaxed">
-            Subscribe on YouTube and get notified
-            the moment a new episode drops.
+          <p className="text-lg text-brand-text/60 font-light max-w-lg mx-auto mb-12 leading-relaxed">
+            Drop your email and we'll notify you the moment a new episode drops.
           </p>
 
-          {/* Platform card */}
-          <div className="grid sm:grid-cols-1 gap-4 max-w-xs mx-auto">
-            {PLATFORMS.map((p, i) => (
-              <motion.a
-                key={i}
-                href={p.href}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="group flex flex-col items-center gap-3 p-6 rounded-sm border border-white/[0.06] bg-white/[0.02] hover:bg-white/[0.05] hover:border-brand-primary/25 transition-all duration-500"
-              >
-                <div className="w-12 h-12 rounded-full bg-brand-primary/10 flex items-center justify-center group-hover:bg-brand-primary/20 transition-colors">
-                  <p.icon size={20} className="text-brand-accent" />
-                </div>
-                <span className="text-sm font-display font-semibold text-white">
-                  {p.name}
-                </span>
-                <span className="text-[11px] text-brand-text/40 font-light">
-                  {p.description}
-                </span>
-                <ArrowUpRight
-                  size={14}
-                  className="text-brand-text/20 group-hover:text-brand-accent transition-colors"
-                />
-              </motion.a>
-            ))}
-          </div>
+          {/* Tally embed */}
+          <iframe
+            data-tally-src="https://tally.so/embed/QKAqjg?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+            loading="lazy"
+            width="100%"
+            height="177"
+            frameBorder={0}
+            marginHeight={0}
+            marginWidth={0}
+            title="MyRealProduct Podcast"
+          />
         </motion.div>
       </div>
     </section>

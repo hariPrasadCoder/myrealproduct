@@ -17,7 +17,7 @@ export default function PodcastNavbar() {
             className="flex items-center gap-2 text-brand-text/50 hover:text-white transition-colors text-xs font-mono tracking-wider uppercase"
           >
             <ArrowLeft size={14} />
-            <span className="hidden sm:inline">Back</span>
+            <span className="hidden sm:inline">MyRealProduct</span>
           </Link>
           <div className="w-px h-5 bg-white/10 hidden sm:block" />
           <div className="font-display font-bold text-white tracking-tight">

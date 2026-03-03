@@ -26,7 +26,7 @@ export default function PodcastHost() {
               <div className="relative aspect-[3/4] overflow-hidden rounded-sm border border-white/10 grayscale hover:grayscale-0 transition-all duration-700 group">
                 <img
                   src="/images/hari-prasad.webp"
-                  alt="Hari Prasad — Host of The MRP Podcast"
+                  alt="Hari Prasad, Host of The MRP Podcast"
                   className="w-full h-full object-cover object-top"
                 />
                 {/* Bottom gradient overlay */}
@@ -71,7 +71,7 @@ export default function PodcastHost() {
             <div className="space-y-6 text-base md:text-lg text-brand-text/75 font-light leading-relaxed max-w-xl">
               <p>
                 <span className="text-white font-medium">
-                  Hari doesn't just talk about AI — he builds with it.
+                  Hari doesn't just talk about AI. He builds with it.
                 </span>{' '}
                 After working with 5+ early-stage startups to launch their first
                 AI-powered products, he realized most of the industry's
@@ -80,11 +80,11 @@ export default function PodcastHost() {
               <p>
                 The MRP Podcast changes that. Every episode, Hari brings a fellow
                 builder to the mic and extracts the lessons that took them years to
-                learn — so you can apply them in weeks.
+                learn, so you can apply them in weeks.
               </p>
               <p className="text-white/50 text-sm italic border-l-2 border-brand-primary/40 pl-4">
                 "I've helped 2,000+ people break into AI. This podcast is the next
-                chapter — making those conversations public."
+                chapter. Making those conversations public."
               </p>
             </div>
 

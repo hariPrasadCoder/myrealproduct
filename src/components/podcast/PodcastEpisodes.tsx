@@ -65,15 +65,6 @@ export default function PodcastEpisodes() {
                 <Play size={18} fill="currentColor" className="group-hover:scale-110 transition-transform" />
                 Play Trailer
               </button>
-              
-              <div className="flex flex-col">
-                <span className="text-xs font-mono text-brand-text/50 uppercase tracking-widest flex items-center gap-2">
-                  <Headphones size={14}/> Available on all
-                </span>
-                <span className="text-sm text-brand-text/80 mt-1">
-                  major podcast platforms
-                </span>
-              </div>
             </div>
           </motion.div>
 
@@ -87,30 +78,29 @@ export default function PodcastEpisodes() {
           >
             {/* The Poster Artwork Card */}
             <div className="relative aspect-[4/5] rounded-xl overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] border border-white/10 group bg-brand-card flex items-center justify-center">
-              
-              {/* Fallback pattern in case image isn't loaded */}
-              <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay z-0" />
-              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 to-transparent z-0" />
-              
-              {/* Replace this src with your actual uploaded poster image */}
-              <img 
-                src="/images/episode-1-poster.jpg" 
-                alt="Episode 1 Poster" 
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105 z-10"
-                // Hide broken image icon styling while you don't have the image file yet
-                onError={(e) => {
-                  e.currentTarget.style.display = 'none';
-                }}
+
+              {/* Background texture */}
+              <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/20 via-brand-card to-black/60 z-0" />
+              <div className="absolute inset-0 opacity-[0.04] z-0"
+                style={{ backgroundImage: 'repeating-linear-gradient(0deg, transparent, transparent 30px, rgba(255,255,255,1) 30px, rgba(255,255,255,1) 31px), repeating-linear-gradient(90deg, transparent, transparent 30px, rgba(255,255,255,1) 30px, rgba(255,255,255,1) 31px)' }}
               />
 
-              {/* Placeholder text (visble only if image is missing) */}
-              <div className="relative z-0 text-center px-6">
-                <p className="font-mono text-brand-accent tracking-widest text-xs uppercase mb-2">Upload Poster Here</p>
-                <p className="text-brand-text/50 text-sm font-light">src="/images/episode-1-poster.jpg"</p>
+              {/* Centered content */}
+              <div className="relative z-10 flex flex-col items-center justify-center gap-6 px-8 text-center">
+                <div className="w-16 h-16 rounded-full border border-brand-accent/30 bg-brand-accent/10 flex items-center justify-center">
+                  <Headphones size={28} className="text-brand-accent/60" />
+                </div>
+                <div>
+                  <p className="text-white/80 font-display font-semibold text-lg mb-1">Episode 01</p>
+                  <p className="text-brand-text/40 text-xs font-mono tracking-widest uppercase">Poster coming soon</p>
+                </div>
               </div>
 
-              {/* Subtle glare effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-tr from-white/0 via-white/0 to-white/20 opacity-0 group-hover:opacity-100 transition-opacity duration-700 z-20 pointer-events-none" />
+              {/* Corner accent lines */}
+              <div className="absolute top-4 left-4 w-6 h-6 border-t border-l border-brand-accent/30 z-10" />
+              <div className="absolute top-4 right-4 w-6 h-6 border-t border-r border-brand-accent/30 z-10" />
+              <div className="absolute bottom-4 left-4 w-6 h-6 border-b border-l border-brand-accent/30 z-10" />
+              <div className="absolute bottom-4 right-4 w-6 h-6 border-b border-r border-brand-accent/30 z-10" />
             </div>
           </motion.div>
 
