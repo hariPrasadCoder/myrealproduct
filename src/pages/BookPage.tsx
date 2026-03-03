@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async';
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import {
@@ -808,6 +809,14 @@ function BookReader({ email }: { email: string }) {
   return (
     // ── Desk ──
     <div className="min-h-screen bg-[#020205] text-white flex flex-col items-center justify-center p-4 md:p-8 overflow-hidden">
+      <Helmet>
+        <title>Free AI Book — 31 Days to Your First AI Product | MyRealProduct</title>
+        <meta name="description" content="A free 31-day guide to building your first AI product. Step-by-step lessons covering AI agents, RAG, LLMs, and deployment — by Hari Prasad." />
+        <link rel="canonical" href="https://www.myrealproduct.com/book" />
+        <meta property="og:title" content="Free AI Book — 31 Days to Your First AI Product" />
+        <meta property="og:description" content="A free 31-day guide to building your first AI product. Step-by-step lessons covering AI agents, RAG, LLMs, and deployment." />
+        <meta property="og:url" content="https://www.myrealproduct.com/book" />
+      </Helmet>
       <div className="noise-overlay" />
 
       {/* Subtle desk glow */}

@@ -1,0 +1,37 @@
+# MyRealProduct
+
+> MyRealProduct is an AI education platform that teaches engineers how to build, ship, and deploy end-to-end AI products. Founded by Hari Prasad, a TEDx speaker and AI educator who has coached 2,000+ engineers.
+
+## What We Do
+
+MyRealProduct runs a 4-week live cohort where software engineers and aspiring AI builders learn to build real AI-powered products from scratch. The program covers AI Agents, RAG (Retrieval-Augmented Generation), LLMs, AWS deployment, and go-to-market strategy.
+
+Unlike courses that teach theory, MyRealProduct focuses on shipping real products that solve real problems.
+
+## Who It's For
+
+- Software engineers wanting to break into AI
+- Developers who want to build and launch AI products
+- Founders building AI-powered startups
+- Anyone who wants to go from zero to a deployed AI product in 4 weeks
+
+## Pages
+
+- [Home](https://www.myrealproduct.com/): Main landing page with cohort details, curriculum, testimonials, and pricing
+- [Podcast](https://www.myrealproduct.com/podcast): The MRP Podcast — real conversations with AI engineers and founders on how AI products are actually built
+- [Free Book](https://www.myrealproduct.com/book): A free 31-day guide to building your first AI product
+
+## About the Founder
+
+Hari Prasad is an AI engineer, TEDx speaker, and educator who has helped 2,000+ people break into AI. He has worked with 5+ early-stage startups to launch their first AI-powered products.
+
+- LinkedIn: https://www.linkedin.com/in/hariprasad20/
+- Email: contact@myrealproduct.com
+
+## The MRP Podcast
+
+"The MRP Podcast" (also known as the ReAlity Show) features unfiltered conversations with AI builders — founders, engineers, and practitioners sharing the real story behind building AI products. Hosted by Hari Prasad. Episodes air weekly, ~60 minutes each.
+
+## Key Topics Covered
+
+AI product development, LLMs, AI agents, RAG, vector databases, AWS deployment, AI startups, breaking into AI, AI engineering, go-to-market for AI products
