@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MRP Podcast - LinkedIn Poster</title>
+    <!-- Tailwind CSS for rapid styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- html-to-image for accurate rendering of modern CSS (masks, filters, blend modes) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+    <style>
+        /* Import official website fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+        
+        :root {
+            --brand-dark: #050508;
+            --brand-primary: #453DC8;
+            --brand-accent: #827AFF;
+        }
+        
+        body {
+            background-color: #1a1a24; /* Darker than body to make poster pop */
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 40px;
+            padding-bottom: 80px;
+            color: white;
+        }
+
+        .font-display { font-family: 'Outfit', sans-serif; }
+        .font-sans { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .font-mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+        /* The Poster Canvas (4:5 Aspect Ratio for LinkedIn / IG) */
+        .poster-wrapper {
+            transform-origin: top center;
+            transform: scale(0.65); 
+            box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .poster-canvas {
+            width: 1080px;
+            height: 1350px;
+            background-color: var(--brand-dark);
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Ambient glowing lights in corners */
+        .ambient-glow-1 {
+            position: absolute;
+            top: -200px;
+            right: -200px;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(130,122,255,0.4) 0%, transparent 65%);
+            filter: blur(80px);
+            z-index: 0;
+            pointer-events: none;
+        }
+        .ambient-glow-2 {
+            position: absolute;
+            bottom: -200px;
+            left: -300px;
+            width: 1000px;
+            height: 1000px;
+            background: radial-gradient(circle, rgba(69,61,200,0.5) 0%, transparent 65%);
+            filter: blur(100px);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Textural overlays */
+        .poster-noise {
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.15;
+            mix-blend-mode: overlay;
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        /* Large guest photo styling */
+        .guest-photo-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 75%; /* Limit the height so face stays up top and bottom is dark for text */
+            z-index: 2;
+            /* Flawless fade into the black floor */
+            -webkit-mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+            mask-image: linear-gradient(to bottom, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 100%);
+        }
+        
+        .guest-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            /* High-contrast grayscale filter */
+            filter: grayscale(1) brightness(0.9) contrast(1.2);
+            opacity: 0.9;
+        }
+
+        /* Abstract Circle graphics */
+        .abstract-circle {
+            position: absolute;
+            top: 150px;
+            right: 150px;
+            width: 800px;
+            height: 800px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.05);
+            z-index: 1;
+        }
+        .abstract-circle::before {
+            content: '';
+            position: absolute;
+            inset: -40px;
+            border-radius: 50%;
+            border: 1px dashed rgba(130,122,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="mb-6 flex flex-col items-center gap-4">
+        <p class="text-white/50 font-mono text-sm uppercase tracking-widest text-center">
+            LinkedIn & Instagram Ready (1080 x 1350)
+        </p>
+        <button onclick="downloadPoster()" class="bg-[#827AFF] hover:bg-[#453DC8] text-white font-mono uppercase tracking-[0.1em] text-xs px-6 py-3 rounded-sm transition-colors shadow-lg shadow-[#827AFF]/20">
+            Download High-Res Poster
+        </button>
+    </div>
+
+    <!-- Wrapper properly scales the viewing experience without messing up canvas dimensions -->
+    <div class="poster-wrapper">
+        <!-- The actual exact canvas node -->
+        <div class="poster-canvas" id="poster-node">
+            
+            <!-- Background Effects -->
+            <div class="ambient-glow-1"></div>
+            <div class="ambient-glow-2"></div>
+            <div class="poster-noise"></div>
+            
+            <div class="abstract-circle"></div>
+
+            <!-- 
+               GUEST PHOTO
+               Top aligned, masked bottom so face is entirely visible and text area is dark.
+            -->
+            <div class="guest-photo-wrapper">
+                <img src="./public/images/hari-prasad.webp" alt="Guest Silhouette" class="guest-photo">
+            </div>
+
+            <!-- Foreground Content Layer -->
+            <div class="absolute inset-0 z-20 flex flex-col justify-between p-[80px]">
+                
+                <!-- Top Header Row -->
+                <div class="flex justify-between items-start w-full drop-shadow-md">
+                    <!-- Eyebrow Badge -->
+                    <div class="flex items-center gap-4 bg-[#050508]/80 border border-white/10 px-8 py-3 rounded-full backdrop-blur-md">
+                        <div class="w-3 h-3 rounded-full bg-[#827AFF] shadow-[0_0_10px_#827AFF]"></div>
+                        <span class="font-mono text-sm tracking-[0.25em] text-white uppercase">The MRP Podcast</span>
+                    </div>
+
+                    <!-- Date Badge -->
+                    <div class="text-right bg-[#050508]/80 border border-[#827AFF]/30 px-6 py-2 rounded-[4px] backdrop-blur-md">
+                        <p class="font-mono text-[#827AFF] tracking-[0.2em] uppercase text-xs mb-1">Premiering</p>
+                        <p class="font-display text-2xl font-semibold text-white">MAR 24</p>
+                    </div>
+                </div>
+
+                <!-- Main Titles (Bottom Left Aligned) -->
+                <div class="mt-auto drop-shadow-xl z-30">
+                    
+                    <div class="mb-14">
+                        <h3 class="font-mono tracking-[0.3em] text-[#827AFF] text-lg mb-4 uppercase drop-shadow-md">Featuring</h3>
+                        <h1 class="text-[100px] leading-[0.9] font-display font-bold tracking-tighter text-white uppercase">
+                            HARI PRASAD
+                        </h1>
+                        <p class="mt-4 font-sans text-2xl text-white/70 tracking-wide font-light">
+                            AI Engineer <span class="text-[#827AFF] mx-2">•</span> Stealth Startup
+                        </p>
+                    </div>
+                    
+                    <!-- Quote or Topic -->
+                    <div class="border-l-[3px] border-[#827AFF] pl-6 mb-16 max-w-[850px] bg-gradient-to-r from-[#050508]/80 to-transparent py-4 backdrop-blur-[2px]">
+                        <h2 class="text-4xl leading-[1.3] font-display font-light text-white shadow-sm">
+                            "The reality of shipping <span class="text-[#827AFF] font-medium">AI agents</span> to production."
+                        </h2>
+                    </div>
+
+                </div>
+
+                <!-- Footer Bar (Host + Branding) -->
+                <div class="flex items-center justify-between border-t border-white/20 pt-10 drop-shadow-md">
+                    
+                    <!-- Host Details -->
+                    <div class="flex items-center gap-6">
+                        <!-- Hosted By Image (Change if you need a different static host pic) -->
+                        <img src="./public/images/hari-prasad.webp" class="w-16 h-16 rounded-full border border-[#827AFF]/50 object-cover p-1">
+                        <div>
+                            <p class="font-mono text-xs tracking-[0.2em] text-[#827AFF] uppercase mb-1 drop-shadow-sm">Hosted by</p>
+                            <p class="text-2xl font-display font-medium text-white">Hari Prasad</p>
+                        </div>
+                    </div>
+
+                    <!-- Call to Action / Platform -->
+                    <div class="text-right">
+                        <p class="text-xl font-display font-semibold text-white mb-2 tracking-wide">🎙️ Only on the MRP podcast</p>
+                        <p class="font-mono text-xs tracking-[0.2em] text-white/50 uppercase">YouTube</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Download Script -->
+    <script>
+        function downloadPoster() {
+            const btn = document.querySelector('button');
+            const originalText = btn.innerText;
+            btn.innerText = 'Generating HD Image...';
+            btn.style.opacity = '0.5';
+            btn.style.pointerEvents = 'none';
+
+            const node = document.getElementById('poster-node');
+            const wrapper = document.querySelector('.poster-wrapper');
+            
+            // Temporarily reset zoom to 1 to guarantee 100% accurate rendering scaling
+            wrapper.style.transform = 'scale(1)';
+
+            // Give the browser a tiny delay to reflow the layout before snapshotting
+            setTimeout(() => {
+                htmlToImage.toPng(node, {
+                    quality: 1,
+                    pixelRatio: 2, // 2x gives us extremely sharp text and high high-res (2160x2700)
+                    width: 1080,
+                    height: 1350,
+                    style: {
+                        transform: 'none', // Override any CSS transforms inside the library handling
+                        margin: 0
+                    }
+                })
+                .then(function (dataUrl) {
+                    const link = document.createElement('a');
+                    link.download = 'MRP-Podcast-HD.png';
+                    link.href = dataUrl;
+                    link.click();
+                })
+                .catch(function (error) {
+                    console.error('oops, something went wrong!', error);
+                    alert("Error: To download images with complex CSS filters, you must run this file via a local server (like the VS Code 'Live Server' extension) to prevent cross-origin/CORS security blocks on the images.");
+                })
+                .finally(function () {
+                    // Re-apply scale for browser viewing
+                    wrapper.style.transform = 'scale(0.65)';
+                    btn.innerText = originalText;
+                    btn.style.opacity = '1';
+                    btn.style.pointerEvents = 'auto';
+                });
+            }, 100);
+        }
+    </script>
+</body>
+</html>

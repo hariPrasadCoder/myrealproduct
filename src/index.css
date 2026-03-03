@@ -75,3 +75,8 @@
   border-color: rgba(134, 104, 255, 0.3);
   background: rgba(32, 32, 47, 0.7);
 }
+
+@keyframes podcast-ring-rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
