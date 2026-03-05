@@ -21,7 +21,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     day: 'Mon',
     time: '2:00 – 3:00 PM ET',
     imagePath: '/images/podcast_guests/soundarya.jpeg',
-    lumaUrl: '',
+    lumaUrl: 'https://luma.com/8f3jrth1',
     linkedinUrl: 'https://www.linkedin.com/in/soundarya-balasubramani/',
   },
   {
@@ -33,7 +33,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     day: 'Wed',
     time: '2:00 – 3:00 PM ET',
     imagePath: '/images/podcast_guests/karun.png',
-    lumaUrl: '',
+    lumaUrl: 'https://luma.com/niw5r74j',
     linkedinUrl: 'https://www.linkedin.com/in/karunt/',
   },
   {
@@ -45,7 +45,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     day: 'Fri',
     time: '2:00 – 3:00 PM ET',
     imagePath: '/images/podcast_guests/varun.jpg',
-    lumaUrl: '',
+    lumaUrl: 'https://luma.com/qxwcf23q',
     linkedinUrl: 'https://www.linkedin.com/in/vnegandhi/',
   },
 ];

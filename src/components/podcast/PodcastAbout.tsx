@@ -42,9 +42,9 @@ export default function PodcastAbout() {
               The Format
             </p>
             <h2 className="text-4xl sm:text-5xl font-display font-medium text-white leading-[1.1] mb-6 shadow-sm">
-              Real careers. <br />
-              <span className="text-white/30">As AI rewrites</span><br />
-              <span className="text-white/30">the rules.</span>
+              Two voices. <br />
+              <span className="text-white/30">One conversation.</span><br />
+              <span className="text-white/30">Zero BS.</span>
             </h2>
             <p className="text-base text-brand-text/70 font-light leading-relaxed">
               Every week, someone doing the work tells us what is actually happening, what AI is changing, and how they are navigating it.
