@@ -3,28 +3,24 @@ import { Mic2, Users, Zap, Brain } from 'lucide-react';
 
 const PILLARS = [
   {
-    icon: Brain,
-    title: 'Deep Dives',
-    description:
-      'Beyond the hype. Breaking down how AI products actually get built, deployed, and scaled in production.',
+    icon: Users,
+    title: 'Real Career Stories',
+    description: 'What actually moved the needle. From people who have done it.',
   },
   {
-    icon: Users,
-    title: 'Builder Stories',
-    description:
-      'Real founders and engineers sharing their journey: the wins, the failures, and the critical pivots.',
+    icon: Brain,
+    title: "AI's Actual Impact",
+    description: 'How AI is reshaping roles and industries. No hype.',
   },
   {
     icon: Zap,
-    title: 'Actionable Takeaways',
-    description:
-      'Every episode delivers concrete frameworks, tools, and strategies you can apply to your own builds.',
+    title: 'Future-Proof Thinking',
+    description: 'Moves from guests already ahead of the curve.',
   },
   {
     icon: Mic2,
-    title: 'Unfiltered',
-    description:
-      'No scripts. No sponsors dictating content. Just honest, raw conversations between real practitioners.',
+    title: 'No Filter',
+    description: 'What worked. What failed. What is coming next.',
   },
 ];
 
@@ -51,7 +47,7 @@ export default function PodcastAbout() {
               <span className="text-white/30">Zero BS.</span>
             </h2>
             <p className="text-base text-brand-text/70 font-light leading-relaxed">
-              Every episode, we sit down with an AI builder and have the conversation you wish you could overhear. No fluff. Just what actually works.
+              Every week, someone doing the work tells us what is actually happening, what AI is changing, and how they are navigating it.
             </p>
           </motion.div>
 
@@ -71,10 +67,10 @@ export default function PodcastAbout() {
                   <pillar.icon size={20} className="text-brand-accent group-hover:text-white transition-colors" />
                 </div>
                 
-                <h3 className="text-xl font-display font-semibold text-white mb-3">
+                <h3 className="text-xl font-display font-semibold text-white mb-2">
                   {pillar.title}
                 </h3>
-                <p className="text-sm text-brand-text/60 leading-relaxed font-light">
+                <p className="text-sm text-brand-text/50 leading-relaxed font-light">
                   {pillar.description}
                 </p>
                 

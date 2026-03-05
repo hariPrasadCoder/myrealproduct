@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MRP Posters — Soundarya Balasubramani</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html-to-image/1.11.11/html-to-image.min.js"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap');
+
+    :root {
+      --brand-dark: #050508;
+      --brand-accent: #827AFF;
+      --brand-primary: #453DC8;
+    }
+
+    body {
+      background-color: #0b0b14;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: white;
+      padding: 48px 24px 100px;
+    }
+
+    .font-display { font-family: 'Outfit', sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace; }
+
+    /* ── Shared bg effects ── */
+    .amb-tl {
+      position: absolute; top: -180px; right: -180px;
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(130,122,255,0.38) 0%, transparent 65%);
+      filter: blur(80px); z-index: 0; pointer-events: none;
+    }
+    .amb-br {
+      position: absolute; bottom: -180px; left: -240px;
+      width: 900px; height: 900px;
+      background: radial-gradient(circle, rgba(69,61,200,0.45) 0%, transparent 65%);
+      filter: blur(100px); z-index: 0; pointer-events: none;
+    }
+    .noise {
+      position: absolute; inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.12; mix-blend-mode: overlay; z-index: 10; pointer-events: none;
+    }
+    /* Show name */
+    .sn-dim  { color: rgba(255,255,255,0.18); }
+    .sn-acc  { color: #827AFF; text-shadow: 0 0 22px rgba(130,122,255,0.85); }
+
+    /* ════════════════════════════════════════
+       FORMAT 1 — PORTRAIT 1080 × 1350
+    ════════════════════════════════════════ */
+    .p1-outer {
+      position: relative;
+      width: 486px; height: 607px; /* 1080 * 0.45  /  1350 * 0.45 */
+      margin: 0 auto; overflow: visible;
+    }
+    .p1-wrapper {
+      position: absolute; top: 0; left: 0;
+      transform-origin: top left; transform: scale(0.45);
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 40px 120px -20px rgba(0,0,0,0.95);
+    }
+    .p1-canvas {
+      width: 1080px; height: 1350px;
+      background: var(--brand-dark);
+      position: relative; overflow: hidden;
+    }
+    .p1-photo {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 76%; z-index: 2;
+      -webkit-mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 55%, transparent 100%);
+    }
+    .p1-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      filter: grayscale(1) brightness(0.85) contrast(1.25); opacity: 0.9;
+    }
+    .p1-ring {
+      position: absolute; top: 140px; right: 130px;
+      width: 820px; height: 820px; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.04); z-index: 1;
+    }
+    .p1-ring::before {
+      content: ''; position: absolute; inset: -42px; border-radius: 50%;
+      border: 1px dashed rgba(130,122,255,0.1);
+    }
+
+    /* ════════════════════════════════════════
+       FORMAT 2 — SQUARE 1080 × 1080
+    ════════════════════════════════════════ */
+    .p2-outer {
+      position: relative;
+      width: 486px; height: 486px;
+      margin: 0 auto; overflow: visible;
+    }
+    .p2-wrapper {
+      position: absolute; top: 0; left: 0;
+      transform-origin: top left; transform: scale(0.45);
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 40px 120px -20px rgba(0,0,0,0.95);
+    }
+    .p2-canvas {
+      width: 1080px; height: 1080px;
+      background: var(--brand-dark);
+      position: relative; overflow: hidden;
+    }
+    .p2-photo {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 62%; z-index: 2;
+      -webkit-mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+      mask-image: linear-gradient(to bottom, black 50%, transparent 100%);
+    }
+    .p2-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      filter: grayscale(1) brightness(0.85) contrast(1.25); opacity: 0.9;
+    }
+
+    /* ════════════════════════════════════════
+       FORMAT 3 — YOUTUBE 1280 × 720
+    ════════════════════════════════════════ */
+    .p3-outer {
+      position: relative;
+      width: 640px; height: 360px;
+      margin: 0 auto; overflow: visible;
+    }
+    .p3-wrapper {
+      position: absolute; top: 0; left: 0;
+      transform-origin: top left; transform: scale(0.5);
+      border-radius: 4px; overflow: hidden;
+      box-shadow: 0 40px 120px -20px rgba(0,0,0,0.95);
+    }
+    .p3-canvas {
+      width: 1280px; height: 720px;
+      background: var(--brand-dark);
+      position: relative; overflow: hidden;
+    }
+    .p3-photo {
+      position: absolute; top: 0; right: 0;
+      width: 620px; height: 100%; z-index: 2;
+      -webkit-mask-image: linear-gradient(to left, black 40%, transparent 100%);
+      mask-image: linear-gradient(to left, black 40%, transparent 100%);
+    }
+    .p3-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: top center;
+      filter: grayscale(1) brightness(0.85) contrast(1.25); opacity: 0.9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Page header -->
+  <div style="max-width:680px;margin:0 auto 56px;text-align:center;">
+    <p class="mono" style="color:#827AFF;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;margin-bottom:8px;">MRP Podcast · Poster Suite</p>
+    <h1 class="font-display" style="font-size:28px;font-weight:700;color:white;">Soundarya Balasubramani</h1>
+    <p class="mono" style="color:rgba(255,255,255,0.3);font-size:12px;margin-top:6px;">3 formats · download individually</p>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FORMAT 1 · LinkedIn / Instagram Portrait  1080 × 1350  -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <div style="max-width:640px;margin:0 auto 20px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 4px;">
+    <div>
+      <p class="mono" style="font-size:10px;color:#827AFF;letter-spacing:0.25em;text-transform:uppercase;">Format 01</p>
+      <p class="font-display" style="font-size:18px;font-weight:600;color:white;margin-top:2px;">LinkedIn / Instagram Portrait</p>
+      <p class="mono" style="font-size:11px;color:rgba(255,255,255,0.3);">1080 × 1350 px · 4:5</p>
+    </div>
+    <button id="btn-p1" onclick="dl('poster-p1','wrapper-p1',1080,1350,'soundarya-linkedin-portrait.png','btn-p1')"
+      style="background:#827AFF;color:white;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;border:none;border-radius:3px;cursor:pointer;transition:background 0.2s;"
+      onmouseover="this.style.background='#453DC8'" onmouseout="this.style.background='#827AFF'">
+      Download
+    </button>
+  </div>
+
+  <div class="p1-outer" style="margin-bottom:80px;">
+    <div class="p1-wrapper" id="wrapper-p1">
+      <div class="p1-canvas" id="poster-p1">
+
+        <div class="amb-tl"></div>
+        <div class="amb-br"></div>
+        <div class="noise"></div>
+        <div class="p1-ring"></div>
+
+        <!-- Photo -->
+        <div class="p1-photo">
+          <img src="../public/images/podcast_guests/soundarya.jpeg" alt="Soundarya Balasubramani">
+        </div>
+
+        <!-- Content -->
+        <div style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:space-between;padding:80px;">
+
+          <!-- Top row -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;width:100%;">
+            <!-- Show title -->
+            <div>
+              <p class="font-display sn-dim" style="font-size:26px;font-weight:300;line-height:1;margin-bottom:4px;">the</p>
+              <h2 class="font-display" style="font-size:62px;font-weight:700;line-height:0.9;letter-spacing:-2px;">
+                <span class="sn-dim">Re</span><span class="sn-acc">A</span><span class="sn-dim">l</span><span class="sn-acc">i</span><span class="sn-dim">ty Show.</span>
+              </h2>
+            </div>
+            <!-- Date badge -->
+            <div style="background:rgba(5,5,8,0.82);border:1px solid rgba(130,122,255,0.28);padding:14px 26px;border-radius:4px;backdrop-filter:blur(14px);text-align:right;">
+              <p class="mono" style="color:#827AFF;font-size:10px;letter-spacing:0.22em;text-transform:uppercase;margin-bottom:4px;">Live on</p>
+              <p class="font-display" style="font-size:26px;font-weight:600;color:white;line-height:1.1;">MON, MAR 9</p>
+              <p class="mono" style="font-size:11px;color:rgba(255,255,255,0.38);margin-top:3px;">2:00 PM ET</p>
+            </div>
+          </div>
+
+          <!-- Bottom block -->
+          <div style="margin-top:auto;">
+
+            <!-- Episode title — HERO -->
+            <div style="margin-bottom:40px;">
+              <p class="mono" style="letter-spacing:0.32em;color:#827AFF;font-size:15px;margin-bottom:18px;text-transform:uppercase;">Episode Topic</p>
+              <h1 class="font-display" style="font-size:66px;line-height:1.05;font-weight:700;letter-spacing:-2px;color:white;max-width:920px;">
+                Why <span style="color:#827AFF;text-shadow:0 0 32px rgba(130,122,255,0.6);">Writing Online</span> Can Change Your Career (and Your Life)
+              </h1>
+            </div>
+
+            <!-- Guest byline — secondary -->
+            <div style="display:flex;align-items:center;gap:20px;margin-bottom:56px;padding:20px 24px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;max-width:720px;">
+              <img src="../public/images/podcast_guests/soundarya.jpeg" style="width:64px;height:64px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid rgba(130,122,255,0.4);flex-shrink:0;">
+              <div>
+                <p class="mono" style="font-size:10px;letter-spacing:0.22em;color:#827AFF;text-transform:uppercase;margin-bottom:4px;">with</p>
+                <p class="font-display" style="font-size:30px;font-weight:600;color:white;line-height:1.1;">Soundarya Balasubramani</p>
+                <p class="mono" style="font-size:13px;color:rgba(255,255,255,0.45);margin-top:4px;">3× Author · Ex-Salesforce PM · Founder</p>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Footer -->
+          <div style="display:flex;align-items:center;justify-content:space-between;border-top:1px solid rgba(255,255,255,0.12);padding-top:32px;">
+            <div style="display:flex;align-items:center;gap:22px;">
+              <img src="../public/images/hari-prasad.webp" style="width:62px;height:62px;border-radius:50%;border:1px solid rgba(130,122,255,0.45);object-fit:cover;padding:4px;">
+              <div>
+                <p class="mono" style="font-size:10px;letter-spacing:0.22em;color:#827AFF;text-transform:uppercase;margin-bottom:3px;">Hosted by</p>
+                <p class="font-display" style="font-size:24px;font-weight:500;color:white;">Hari Prasad</p>
+              </div>
+            </div>
+            <div style="text-align:right;">
+              <p class="font-display" style="font-size:18px;font-weight:600;color:white;margin-bottom:4px;">MRP Podcast</p>
+              <p class="mono" style="font-size:10px;letter-spacing:0.18em;color:rgba(255,255,255,0.32);text-transform:uppercase;">myrealproduct.com</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FORMAT 2 · Square  1080 × 1080                        -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <div style="max-width:640px;margin:0 auto 20px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 4px;">
+    <div>
+      <p class="mono" style="font-size:10px;color:#827AFF;letter-spacing:0.25em;text-transform:uppercase;">Format 02</p>
+      <p class="font-display" style="font-size:18px;font-weight:600;color:white;margin-top:2px;">Square</p>
+      <p class="mono" style="font-size:11px;color:rgba(255,255,255,0.3);">1080 × 1080 px · 1:1</p>
+    </div>
+    <button id="btn-p2" onclick="dl('poster-p2','wrapper-p2',1080,1080,'soundarya-square.png','btn-p2')"
+      style="background:#827AFF;color:white;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;border:none;border-radius:3px;cursor:pointer;"
+      onmouseover="this.style.background='#453DC8'" onmouseout="this.style.background='#827AFF'">
+      Download
+    </button>
+  </div>
+
+  <div class="p2-outer" style="margin-bottom:80px;">
+    <div class="p2-wrapper" id="wrapper-p2">
+      <div class="p2-canvas" id="poster-p2">
+
+        <div class="amb-tl" style="width:700px;height:700px;top:-120px;right:-120px;"></div>
+        <div class="amb-br" style="width:700px;height:700px;bottom:-120px;left:-160px;"></div>
+        <div class="noise"></div>
+
+        <!-- Photo (full width, fades bottom) -->
+        <div class="p2-photo">
+          <img src="../public/images/podcast_guests/soundarya.jpeg" alt="Soundarya Balasubramani">
+        </div>
+
+        <!-- Content -->
+        <div style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:space-between;padding:64px;">
+
+          <!-- Top row: show title + date badge -->
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;width:100%;">
+            <div>
+              <p class="font-display sn-dim" style="font-size:20px;font-weight:300;line-height:1;margin-bottom:2px;">the</p>
+              <h2 class="font-display" style="font-size:48px;font-weight:700;line-height:0.9;letter-spacing:-1.5px;">
+                <span class="sn-dim">Re</span><span class="sn-acc">A</span><span class="sn-dim">l</span><span class="sn-acc">i</span><span class="sn-dim">ty Show.</span>
+              </h2>
+            </div>
+            <div style="background:rgba(5,5,8,0.82);border:1px solid rgba(130,122,255,0.28);padding:10px 20px;border-radius:4px;text-align:right;">
+              <p class="mono" style="color:#827AFF;font-size:10px;letter-spacing:0.2em;text-transform:uppercase;margin-bottom:2px;">Live on</p>
+              <p class="font-display" style="font-size:22px;font-weight:600;color:white;">MON, MAR 9</p>
+            </div>
+          </div>
+
+          <!-- Bottom block -->
+          <div style="margin-top:auto;">
+
+            <!-- Episode title — HERO -->
+            <p class="mono" style="letter-spacing:0.3em;color:#827AFF;font-size:11px;margin-bottom:14px;text-transform:uppercase;">Episode Topic</p>
+            <h1 class="font-display" style="font-size:52px;line-height:1.05;font-weight:700;letter-spacing:-1.5px;color:white;max-width:900px;margin-bottom:28px;">
+              Why <span style="color:#827AFF;text-shadow:0 0 28px rgba(130,122,255,0.6);">Writing Online</span> Can Change Your Career (and Your Life)
+            </h1>
+
+            <!-- Guest byline — secondary -->
+            <div style="display:flex;align-items:center;justify-content:space-between;">
+              <div style="display:flex;align-items:center;gap:16px;padding:14px 18px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;">
+                <img src="../public/images/podcast_guests/soundarya.jpeg" style="width:52px;height:52px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid rgba(130,122,255,0.4);flex-shrink:0;">
+                <div>
+                  <p class="mono" style="font-size:9px;letter-spacing:0.22em;color:#827AFF;text-transform:uppercase;margin-bottom:3px;">with</p>
+                  <p class="font-display" style="font-size:22px;font-weight:600;color:white;line-height:1.1;">Soundarya Balasubramani</p>
+                  <p class="mono" style="font-size:12px;color:rgba(255,255,255,0.4);margin-top:3px;">3× Author · Ex-Salesforce PM · Founder</p>
+                </div>
+              </div>
+              <!-- Host -->
+              <div style="display:flex;align-items:center;gap:14px;">
+                <img src="../public/images/hari-prasad.webp" style="width:48px;height:48px;border-radius:50%;border:1px solid rgba(130,122,255,0.45);object-fit:cover;padding:3px;">
+                <div>
+                  <p class="mono" style="font-size:9px;letter-spacing:0.2em;color:#827AFF;text-transform:uppercase;margin-bottom:2px;">Hosted by</p>
+                  <p class="font-display" style="font-size:18px;font-weight:500;color:white;">Hari Prasad</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ═══════════════════════════════════════════════════════ -->
+  <!-- FORMAT 3 · YouTube Thumbnail  1280 × 720              -->
+  <!-- ═══════════════════════════════════════════════════════ -->
+
+  <div style="max-width:680px;margin:0 auto 20px;display:flex;align-items:flex-end;justify-content:space-between;padding:0 4px;">
+    <div>
+      <p class="mono" style="font-size:10px;color:#827AFF;letter-spacing:0.25em;text-transform:uppercase;">Format 03</p>
+      <p class="font-display" style="font-size:18px;font-weight:600;color:white;margin-top:2px;">YouTube Thumbnail</p>
+      <p class="mono" style="font-size:11px;color:rgba(255,255,255,0.3);">1280 × 720 px · 16:9</p>
+    </div>
+    <button id="btn-p3" onclick="dl('poster-p3','wrapper-p3',1280,720,'soundarya-youtube-thumbnail.png','btn-p3')"
+      style="background:#827AFF;color:white;font-family:ui-monospace,monospace;font-size:11px;letter-spacing:0.12em;text-transform:uppercase;padding:10px 22px;border:none;border-radius:3px;cursor:pointer;"
+      onmouseover="this.style.background='#453DC8'" onmouseout="this.style.background='#827AFF'">
+      Download
+    </button>
+  </div>
+
+  <div class="p3-outer" style="margin-bottom:80px;">
+    <div class="p3-wrapper" id="wrapper-p3">
+      <div class="p3-canvas" id="poster-p3">
+
+        <div class="amb-tl" style="width:600px;height:600px;top:-100px;right:-80px;"></div>
+        <div class="amb-br" style="width:600px;height:600px;bottom:-100px;left:-120px;"></div>
+        <div class="noise"></div>
+
+        <!-- Photo (right side, fades left) -->
+        <div class="p3-photo">
+          <img src="../public/images/podcast_guests/soundarya.jpeg" alt="Soundarya Balasubramani">
+        </div>
+
+        <!-- Content (left side) -->
+        <div style="position:absolute;inset:0;z-index:20;display:flex;flex-direction:column;justify-content:space-between;padding:52px 68px;">
+
+          <!-- Top: show title + live badge -->
+          <div style="display:flex;align-items:flex-start;justify-content:space-between;">
+            <div>
+              <p class="font-display sn-dim" style="font-size:17px;font-weight:300;line-height:1;margin-bottom:2px;">the</p>
+              <h2 class="font-display" style="font-size:40px;font-weight:700;line-height:0.9;letter-spacing:-1px;">
+                <span class="sn-dim">Re</span><span class="sn-acc">A</span><span class="sn-dim">l</span><span class="sn-acc">i</span><span class="sn-dim">ty Show.</span>
+              </h2>
+            </div>
+            <!-- Live chip -->
+            <div style="display:flex;align-items:center;gap:8px;background:rgba(5,5,8,0.85);border:1px solid rgba(130,122,255,0.3);padding:9px 16px;border-radius:4px;">
+              <span style="width:7px;height:7px;border-radius:50%;background:#827AFF;flex-shrink:0;box-shadow:0 0 8px rgba(130,122,255,0.8);"></span>
+              <p class="mono" style="color:#827AFF;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;white-space:nowrap;">Live · Mon Mar 9 · 2 PM ET</p>
+            </div>
+          </div>
+
+          <!-- Middle: episode title HERO + guest byline -->
+          <div>
+            <p class="mono" style="letter-spacing:0.3em;color:#827AFF;font-size:11px;margin-bottom:12px;text-transform:uppercase;">Episode Topic</p>
+            <h1 class="font-display" style="font-size:54px;line-height:1.05;font-weight:700;letter-spacing:-1.5px;color:white;max-width:620px;">
+              Why <span style="color:#827AFF;text-shadow:0 0 28px rgba(130,122,255,0.6);">Writing Online</span> Can Change Your Career
+            </h1>
+            <!-- Guest byline — secondary -->
+            <div style="display:flex;align-items:center;gap:14px;margin-top:20px;padding:12px 16px;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:6px;max-width:560px;">
+              <img src="../public/images/podcast_guests/soundarya.jpeg" style="width:44px;height:44px;border-radius:50%;object-fit:cover;object-position:top center;border:2px solid rgba(130,122,255,0.4);flex-shrink:0;">
+              <div>
+                <p class="mono" style="font-size:9px;letter-spacing:0.22em;color:#827AFF;text-transform:uppercase;margin-bottom:2px;">with</p>
+                <p class="font-display" style="font-size:20px;font-weight:600;color:white;line-height:1.1;">Soundarya Balasubramani</p>
+                <p class="mono" style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:2px;">3× Author · Ex-Salesforce PM · Founder</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bottom: host -->
+          <div style="display:flex;align-items:center;gap:14px;">
+            <img src="../public/images/hari-prasad.webp" style="width:46px;height:46px;border-radius:50%;border:1px solid rgba(130,122,255,0.45);object-fit:cover;padding:3px;">
+            <div>
+              <p class="mono" style="font-size:10px;letter-spacing:0.2em;color:#827AFF;text-transform:uppercase;margin-bottom:2px;">Hosted by</p>
+              <p class="font-display" style="font-size:18px;font-weight:500;color:white;">Hari Prasad</p>
+            </div>
+            <p class="mono" style="margin-left:auto;font-size:10px;letter-spacing:0.15em;color:rgba(255,255,255,0.25);text-transform:uppercase;">myrealproduct.com</p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <script>
+    function dl(nodeId, wrapperId, w, h, filename, btnId) {
+      const btn = document.getElementById(btnId);
+      const orig = btn.innerText;
+      btn.innerText = 'Generating…';
+      btn.style.opacity = '0.5';
+      btn.style.pointerEvents = 'none';
+
+      const node = document.getElementById(nodeId);
+      const wrapper = document.getElementById(wrapperId);
+      const origTransform = wrapper.style.transform;
+      wrapper.style.transform = 'scale(1)';
+
+      setTimeout(() => {
+        htmlToImage.toPng(node, { quality: 1, pixelRatio: 2, width: w, height: h })
+          .then(dataUrl => {
+            const a = document.createElement('a');
+            a.download = filename;
+            a.href = dataUrl;
+            a.click();
+          })
+          .catch(err => {
+            console.error(err);
+            alert('Could not generate image. Open this file via a local server (e.g. VS Code Live Server) to avoid CORS blocks on the photos.');
+          })
+          .finally(() => {
+            wrapper.style.transform = origTransform;
+            btn.innerText = orig;
+            btn.style.opacity = '1';
+            btn.style.pointerEvents = 'auto';
+          });
+      }, 120);
+    }
+  </script>
+
+</body>
+</html>
