@@ -49,8 +49,8 @@ export default function PodcastEpisodePage() {
               <ArrowLeft size={14} />
               <span>All Episodes</span>
             </Link>
-            <div className="w-px h-5 bg-white/10" />
-            <Link to="/" className="font-display font-bold text-white tracking-tight text-sm hover:text-brand-accent transition-colors">
+            <div className="w-px h-5 bg-white/10 hidden sm:block" />
+            <Link to="/" className="hidden sm:block font-display font-bold text-white tracking-tight text-sm hover:text-brand-accent transition-colors">
               MyRealProduct
             </Link>
           </div>
@@ -123,7 +123,7 @@ export default function PodcastEpisodePage() {
             </div>
 
             {/* Mobile-only photo */}
-            <div className="lg:hidden mb-8 w-32 h-32 rounded-2xl overflow-hidden border border-white/10">
+            <div className="lg:hidden mb-8 w-2/3 aspect-square rounded-2xl overflow-hidden border border-white/10">
               <img src={episode.imagePath} alt={episode.guestName} className="w-full h-full object-cover object-top" />
             </div>
 
