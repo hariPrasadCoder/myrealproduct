@@ -30,7 +30,7 @@ Hi [Manager's Name],
 
 Hope you're well. I wanted to reach out about a learning opportunity I'm genuinely excited about and think could bring real value to our team.
 
-I've come across a hands-on AI product building program (MyRealProduct) that takes you from identifying a real problem all the way to building and shipping a live AI product in 4 weeks. It's not a course where you watch videos. You leave with something actually built and deployed.
+I've come across a hands-on AI product building program (MyRealProduct.com) that takes you from identifying a real problem all the way to building and shipping a live AI product in 4 weeks. It's not a course where you watch videos. You leave with something actually built and deployed.
 
 What I'd walk away with:
 - Hands-on experience building and shipping a real AI product
@@ -201,16 +201,16 @@ export default function Reimbursement() {
               <div className="flex-1 overflow-y-auto p-6">
                 <div className="bg-brand-dark/50 border border-white/6 rounded-xl p-6">
                   <pre className="text-brand-text/70 text-sm leading-7 whitespace-pre-wrap font-sans">
-                    {LETTER.split(/(\[.*?\]|MyRealProduct)/).map((part, i) => {
+                    {LETTER.split(/(\[.*?\]|MyRealProduct\.com)/).map((part, i) => {
                       if (part.startsWith('[')) {
                         return (
                           <mark key={i} className="bg-brand-primary/20 text-brand-accent rounded px-0.5 font-medium" style={{ fontStyle: 'normal' }}>
                             {part}
                           </mark>
                         );
-                      } else if (part === 'MyRealProduct') {
+                      } else if (part === 'MyRealProduct.com') {
                         return (
-                          <a key={i} href="https://www.myrealproduct.com" target="_blank" rel="noopener noreferrer" className="text-brand-accent underline underline-offset-2 hover:text-white transition-colors">
+                          <a key={i} href="https://myrealproduct.com/" target="_blank" rel="noopener noreferrer" className="text-brand-accent underline underline-offset-2 hover:text-white transition-colors">
                             {part}
                           </a>
                         );
