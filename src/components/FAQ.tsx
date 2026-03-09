@@ -2,9 +2,9 @@ import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from './ui/Button';
 import { Plus, Minus } from 'lucide-react';
-import { trackSectionView, trackFAQInteraction, trackApplyClick } from '../lib/posthog';
+import { trackSectionView, trackFAQInteraction, trackApplyClick, trackBookCallClick } from '../lib/posthog';
 
-const FAQS = [
+const FAQS: { q: string; a: string; calLink?: string }[] = [
   {
     q: "What are the prerequisites to join?",
     a: "Only basic Python knowledge. Everything else, including AI tools, product frameworks, and deployment, will be taught during the workshop."
@@ -39,7 +39,8 @@ const FAQS = [
   },
   {
     q: "I’m not a “tech person.” Can I still join?",
-    a: "No. You are expected to have basic Python skills to get the best out of this workshop. If you have never written a single line of code in your life, maybe this is not for you. Write to us (contact@myrealproduct.com), happy to send some resources to get started."
+    a: "Basic Python knowledge helps you get the most out of the cohort. That said, product managers and non-technical folks have joined previous cohorts and successfully built their own products end to end. If you're unsure whether this is right for you, book a call with us and we'll help you figure it out.",
+    calLink: "myrealproduct/info"
   }
 ];
 
@@ -108,7 +109,19 @@ export default function FAQ() {
                         transition={{ duration: 0.3 }}
                       >
                         <div className="px-6 pb-6 text-brand-text leading-relaxed border-t border-white/5 pt-4">
-                          {faq.a}
+                          {faq.a.replace('book a call with us', '')}
+                          {faq.calLink ? (
+                            <button
+                              data-cal-link={faq.calLink}
+                              data-cal-namespace="info"
+                              data-cal-config='{"layout":"month_view","useSlotsViewOnSmallScreen":"true"}'
+                              onClick={() => trackBookCallClick('faq')}
+                              className="text-brand-accent underline underline-offset-2 hover:text-white transition-colors cursor-pointer"
+                            >
+                              book a call with us
+                            </button>
+                          ) : null}
+                          {faq.calLink ? ' and we\'ll help you figure it out.' : ''}
                         </div>
                       </motion.div>
                     )}
