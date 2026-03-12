@@ -9,6 +9,7 @@ export interface PodcastEpisode {
   imagePath: string;
   lumaUrl: string;
   linkedinUrl: string;
+  youtubeUrl?: string;
 }
 
 export const PODCAST_EPISODES: PodcastEpisode[] = [
@@ -23,6 +24,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     imagePath: '/images/podcast_guests/karun.png',
     lumaUrl: 'https://luma.com/niw5r74j',
     linkedinUrl: 'https://www.linkedin.com/in/karunt/',
+    youtubeUrl: 'https://youtube.com/live/4OPAX4eZE_w?feature=share',
   },
   {
     slug: 'varun-negandhi',
@@ -35,6 +37,18 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     imagePath: '/images/podcast_guests/varun.jpg',
     lumaUrl: 'https://luma.com/qxwcf23q',
     linkedinUrl: 'https://www.linkedin.com/in/vnegandhi/',
+  },
+  {
+    slug: 'sowmya-podila',
+    guestName: 'Sowmya Podila',
+    role: 'Applied Gen AI @Target | Ex-AWS, Ex-Gartner | Gen AI Speaker & Host',
+    episodeTitle: 'How to Land an AI Role at a Fortune 500',
+    date: 'March 16',
+    day: 'Mon',
+    time: '2:00 – 3:00 PM ET',
+    imagePath: '/images/podcast_guests/sowmya.jpeg',
+    lumaUrl: 'https://luma.com/g8veuf49',
+    linkedinUrl: 'https://www.linkedin.com/in/sowmyapodila/',
   },
   {
     slug: 'soundarya-balasubramani',

@@ -4,6 +4,7 @@ import PodcastHero from '../components/podcast/PodcastHero';
 import PodcastAbout from '../components/podcast/PodcastAbout';
 import PodcastHost from '../components/podcast/PodcastHost';
 import PodcastAllEpisodes from '../components/podcast/PodcastAllEpisodes';
+import PodcastPastEpisodes from '../components/podcast/PodcastPastEpisodes';
 import PodcastCTA from '../components/podcast/PodcastCTA';
 import PodcastFooter from '../components/podcast/PodcastFooter';
 
@@ -45,6 +46,7 @@ export default function PodcastPage() {
       <PodcastHost />
       <div id="episodes">
         <PodcastAllEpisodes />
+        <PodcastPastEpisodes />
       </div>
       <div id="subscribe">
         <PodcastCTA />

@@ -1,9 +1,20 @@
 import { useParams, Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { motion } from 'motion/react';
-import { ArrowLeft, Calendar, Clock, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, Calendar, Clock, ArrowUpRight, Youtube } from 'lucide-react';
 import { PODCAST_EPISODES } from '../data/podcastEpisodes';
 import PodcastFooter from '../components/podcast/PodcastFooter';
+
+function getYoutubeEmbedUrl(url: string): string {
+  // Handles: youtube.com/live/ID, youtu.be/ID, youtube.com/watch?v=ID
+  const liveMatch = url.match(/youtube\.com\/live\/([^?&]+)/);
+  if (liveMatch) return `https://www.youtube.com/embed/${liveMatch[1]}`;
+  const watchMatch = url.match(/[?&]v=([^&]+)/);
+  if (watchMatch) return `https://www.youtube.com/embed/${watchMatch[1]}`;
+  const shortMatch = url.match(/youtu\.be\/([^?&]+)/);
+  if (shortMatch) return `https://www.youtube.com/embed/${shortMatch[1]}`;
+  return url;
+}
 
 export default function PodcastEpisodePage() {
   const { slug } = useParams<{ slug: string }>();
@@ -54,7 +65,11 @@ export default function PodcastEpisodePage() {
               MyRealProduct
             </Link>
           </div>
-          {episode.lumaUrl ? (
+          {episode.youtubeUrl ? (
+            <span className="text-[11px] font-mono tracking-wider px-4 py-2 rounded-sm bg-white/[0.06] border border-white/10 text-white/30 uppercase font-semibold cursor-default">
+              Event Closed
+            </span>
+          ) : episode.lumaUrl ? (
             <a
               href={episode.lumaUrl}
               target="_blank"
@@ -127,13 +142,19 @@ export default function PodcastEpisodePage() {
               <img src={episode.imagePath} alt={episode.guestName} className="w-full h-full object-cover object-top" />
             </div>
 
-            {/* Live badge */}
+            {/* Live / Recorded badge */}
             <div className="flex items-center gap-2 mb-8">
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75" />
-                <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-accent" />
+              {episode.youtubeUrl ? (
+                <Youtube size={12} className="text-brand-accent" />
+              ) : (
+                <span className="relative flex h-1.5 w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-accent opacity-75" />
+                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-brand-accent" />
+                </span>
+              )}
+              <span className="text-[10px] font-mono tracking-widest text-brand-accent uppercase">
+                {episode.youtubeUrl ? 'Recorded' : 'Live Recording'}
               </span>
-              <span className="text-[10px] font-mono tracking-widest text-brand-accent uppercase">Live Recording</span>
             </div>
 
             {/* Guest name + role */}
@@ -164,8 +185,20 @@ export default function PodcastEpisodePage() {
               </div>
             </div>
 
-            {/* RSVP */}
-            {episode.lumaUrl ? (
+            {/* RSVP / Watch */}
+            {episode.youtubeUrl ? (
+              <div className="flex flex-wrap items-center gap-4">
+                <div className="inline-flex items-center justify-center px-6 py-3 rounded-sm bg-white/[0.06] border border-white/10 text-white/30 font-semibold uppercase tracking-widest text-sm cursor-default self-start">
+                  Event Closed
+                </div>
+                <a
+                  href={`#recording`}
+                  className="inline-flex items-center justify-center gap-3 px-8 py-3 rounded-sm bg-[#FF0000]/10 border border-[#FF0000]/30 text-white hover:bg-[#FF0000]/20 transition-all font-semibold uppercase tracking-widest text-sm self-start"
+                >
+                  <Youtube size={15} /> Watch Recording
+                </a>
+              </div>
+            ) : episode.lumaUrl ? (
               <a
                 href={episode.lumaUrl}
                 target="_blank"
@@ -184,6 +217,30 @@ export default function PodcastEpisodePage() {
 
         </div>
       </section>
+
+      {/* YouTube embed */}
+      {episode.youtubeUrl && (
+        <section id="recording" className="py-16 md:py-20 border-t border-white/5">
+          <div className="container mx-auto px-4 max-w-4xl">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <p className="text-[10px] font-mono tracking-[0.3em] text-brand-accent uppercase mb-6">Full Recording</p>
+              <div className="w-full aspect-video rounded-xl overflow-hidden border border-white/10">
+                <iframe
+                  src={getYoutubeEmbedUrl(episode.youtubeUrl)}
+                  title={episode.episodeTitle}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="w-full h-full"
+                />
+              </div>
+            </motion.div>
+          </div>
+        </section>
+      )}
 
       {/* Host section */}
       <section className="py-16 md:py-20 border-t border-white/5 relative overflow-hidden">

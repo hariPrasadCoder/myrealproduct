@@ -32,7 +32,7 @@ export default function PodcastAllEpisodes() {
           <div className="absolute left-[5.5rem] sm:left-[6.5rem] top-0 bottom-0 w-px bg-gradient-to-b from-brand-accent/40 via-brand-accent/10 to-transparent hidden sm:block" />
 
           <div className="space-y-6">
-            {PODCAST_EPISODES.map((ep, i) => (
+            {PODCAST_EPISODES.filter((ep) => !ep.youtubeUrl).map((ep, i) => (
               <motion.div
                 key={ep.slug}
                 initial={{ opacity: 0, y: 20 }}
