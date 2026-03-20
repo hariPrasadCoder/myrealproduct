@@ -37,6 +37,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     imagePath: '/images/podcast_guests/varun.jpg',
     lumaUrl: 'https://luma.com/qxwcf23q',
     linkedinUrl: 'https://www.linkedin.com/in/vnegandhi/',
+    youtubeUrl: 'https://youtube.com/live/j-p9qXMXxrc?feature=share',
   },
   {
     slug: 'sowmya-podila',
@@ -49,6 +50,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     imagePath: '/images/podcast_guests/sowmya.jpeg',
     lumaUrl: 'https://luma.com/g8veuf49',
     linkedinUrl: 'https://www.linkedin.com/in/sowmyapodila/',
+    youtubeUrl: 'https://youtube.com/live/k5ZxHZY6GKw?feature=share',
   },
   {
     slug: 'soundarya-balasubramani',
@@ -61,5 +63,6 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     imagePath: '/images/podcast_guests/soundarya.jpeg',
     lumaUrl: 'https://luma.com/8f3jrth1',
     linkedinUrl: 'https://www.linkedin.com/in/soundarya-balasubramani/',
+    youtubeUrl: 'https://youtube.com/live/wGffAkt1kUM?feature=share',
   },
 ];

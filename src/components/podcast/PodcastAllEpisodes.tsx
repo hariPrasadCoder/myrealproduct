@@ -31,6 +31,12 @@ export default function PodcastAllEpisodes() {
           {/* Vertical line */}
           <div className="absolute left-[5.5rem] sm:left-[6.5rem] top-0 bottom-0 w-px bg-gradient-to-b from-brand-accent/40 via-brand-accent/10 to-transparent hidden sm:block" />
 
+          {PODCAST_EPISODES.filter((ep) => !ep.youtubeUrl).length === 0 ? (
+            <p className="text-brand-text/40 text-sm font-mono">
+              No upcoming episodes right now. Stay tuned for more.
+            </p>
+          ) : null}
+
           <div className="space-y-6">
             {PODCAST_EPISODES.filter((ep) => !ep.youtubeUrl).map((ep, i) => (
               <motion.div
