@@ -5,6 +5,7 @@ import JoinPage from './pages/JoinPage';
 import BookPage from './pages/BookPage';
 import PodcastPage from './pages/PodcastPage';
 import PodcastEpisodePage from './pages/PodcastEpisodePage';
+import AgendaSpring26Page from './pages/AgendaSpring26Page';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ export default function App() {
         <Route path="/book" element={<BookPage />} />
         <Route path="/podcast" element={<PodcastPage />} />
         <Route path="/podcast/:slug" element={<PodcastEpisodePage />} />
+        <Route path="/agenda/spring26" element={<AgendaSpring26Page />} />
       </Routes>
     </BrowserRouter>
   );
