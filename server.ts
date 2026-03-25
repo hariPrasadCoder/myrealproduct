@@ -58,13 +58,35 @@ function injectMeta(html: string, title: string, description: string, image: str
 
 function resolvePageMeta(pathname: string, html: string): string {
   if (pathname === '/enterprise') {
-    return injectMeta(
+    const enterpriseJsonLd = `<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "Enterprise AI Training — MyRealProduct",
+      "description": "Personalised AI training programmes for business teams. Custom curriculum built around your workflows, live hands-on workshops, and ongoing monthly retainer support.",
+      "provider": {
+        "@type": "Organization",
+        "name": "MyRealProduct",
+        "url": "https://www.myrealproduct.com",
+        "email": "contact@myrealproduct.com"
+      },
+      "areaServed": ["GB", "Worldwide"],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "Business teams — Marketing, Finance, Legal, HR, Operations"
+      },
+      "url": "https://www.myrealproduct.com/enterprise"
+    }
+    </script>`;
+    let updated = injectMeta(
       html,
       'Enterprise AI Training — MyRealProduct',
       'Give your team an unfair advantage with AI. Personalised training built around your workflows, with ongoing monthly support. London, UK + Virtual Worldwide.',
       '/og-preview.png',
       `${BASE_URL}/enterprise`
     );
+    updated = updated.replace('</head>', `${enterpriseJsonLd}\n  </head>`);
+    return updated;
   }
 
   if (pathname === '/podcast') {

@@ -18,6 +18,7 @@ Unlike courses that teach theory, MyRealProduct focuses on shipping real product
 ## Pages
 
 - [Home](https://www.myrealproduct.com/): Main landing page with cohort details, curriculum, testimonials, and pricing
+- [Enterprise](https://www.myrealproduct.com/enterprise): Personalised AI training for non-technical business teams — Marketing, Finance, Legal, HR, and Operations. Custom curriculum, live workshops, and an ongoing monthly retainer. Based in London, UK, available virtually worldwide.
 - [Podcast](https://www.myrealproduct.com/podcast): The MRP Podcast — real conversations with AI engineers and founders on how AI products are actually built
 - [Free Book](https://www.myrealproduct.com/book): A free 31-day guide to building your first AI product
 
@@ -32,6 +33,16 @@ Hari Prasad is an AI engineer, TEDx speaker, and educator who has helped 2,000+ 
 
 "The MRP Podcast" (also known as the ReAlity Show) features unfiltered conversations with AI builders — founders, engineers, and practitioners sharing the real story behind building AI products. Hosted by Hari Prasad. Episodes air weekly, ~60 minutes each.
 
+## Enterprise AI Training
+
+MyRealProduct offers bespoke AI training programmes for businesses and non-technical teams. We map your team's workflows, build a custom curriculum around your actual use cases, and deliver live hands-on workshops. Post-training, we offer a monthly retainer for ongoing workflow audits, AI tool updates, and always-on support.
+
+- Target teams: Marketing, Finance, Legal, HR, Operations
+- Tools covered: Claude Code, Cursor, n8n, OpenAI, LangChain, LangGraph, Agentic AI, MCP, GitHub Copilot, Gemini
+- Integrates with: Salesforce, HubSpot, Slack, Notion, Microsoft 365, Google Workspace
+- Location: London, UK and Virtual Worldwide
+- Contact: contact@myrealproduct.com
+
 ## Key Topics Covered
 
-AI product development, LLMs, AI agents, RAG, vector databases, AWS deployment, AI startups, breaking into AI, AI engineering, go-to-market for AI products
+AI product development, LLMs, AI agents, RAG, vector databases, AWS deployment, AI startups, breaking into AI, AI engineering, go-to-market for AI products, enterprise AI training, AI upskilling for teams, workplace AI adoption, business AI transformation
