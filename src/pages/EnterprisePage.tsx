@@ -51,8 +51,12 @@ const AFTER = [
 
 export default function EnterprisePage() {
   useEffect(() => {
+    document.title = 'Enterprise AI Training — MyRealProduct';
     trackSectionView('enterprise_page');
     trackEvent('enterprise_page_viewed', { page: '/enterprise' });
+    return () => {
+      document.title = 'MyRealProduct — Build an End-to-End AI Product in 4 Weeks';
+    };
   }, []);
 
   const handleDiscoveryCallClick = (location: string) => {
