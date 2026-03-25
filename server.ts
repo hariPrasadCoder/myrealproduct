@@ -53,7 +53,7 @@ function injectMeta(html: string, title: string, description: string, image: str
     <meta name="twitter:title" content="${title}" />
     <meta name="twitter:description" content="${description}" />
     <meta name="twitter:image" content="${absImage}" />`;
-  return html.replace('</head>', `${meta}\n  </head>`);
+  return html.replace('<head>', `<head>${meta}`);
 }
 
 function resolvePageMeta(pathname: string, html: string): string {
