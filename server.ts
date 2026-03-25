@@ -57,6 +57,16 @@ function injectMeta(html: string, title: string, description: string, image: str
 }
 
 function resolvePageMeta(pathname: string, html: string): string {
+  if (pathname === '/enterprise') {
+    return injectMeta(
+      html,
+      'Enterprise AI Training — MyRealProduct',
+      'Give your team an unfair advantage with AI. Personalised training built around your workflows, with ongoing monthly support. London, UK + Virtual Worldwide.',
+      '/og-preview.png',
+      `${BASE_URL}/enterprise`
+    );
+  }
+
   if (pathname === '/podcast') {
     return injectMeta(
       html,
