@@ -87,10 +87,11 @@ export default function EnterprisePage() {
           </a>
 
           <button
-            className="h-10 px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300"
+            className="h-10 px-4 lg:px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300 whitespace-nowrap"
             onClick={() => handleDiscoveryCallClick('navbar')}
           >
-            Book a Discovery Call
+            <span className="hidden sm:inline">Book a Discovery Call</span>
+            <span className="sm:hidden">Book a Call</span>
           </button>
         </div>
       </motion.nav>
