@@ -116,50 +116,42 @@ const WEEKS: Week[] = [
       },
       {
         type: 'todos',
+        deadline: 'Apr 3 (Fri)',
         dayGroups: [
           {
-            dayLabel: 'Day 1',
+            dayLabel: 'Day 1 (Sat)',
             items: [
-              { text: 'Week 2 Submission Template', link: { label: 'here', href: '#' } },
+              { text: 'Week 2 Submission Template', link: { label: 'Open Template', href: 'https://docs.google.com/presentation/d/1AHHFum9s4pZQDDPOvA9UxaRSl1rwp6qYV_YZY8QXPOI/edit?usp=sharing' } },
               { text: 'Figure out 1-line solution & #1 feature' },
               { text: 'Define how the user journey looks like' },
               { text: 'Vibe code your basic app using Replit AI' },
             ],
           },
           {
-            dayLabel: 'Day 2',
+            dayLabel: 'Day 2 (Sun)',
             note: 'Watch these reference videos to understand about App development',
             items: [
-              {
-                text: '',
-                link: { label: 'Project setup & management – Github, VScode, Jira', href: '#', note: '40 mins' },
-              },
-              { text: '', link: { label: 'Streamlit 101', href: '#', note: '11 mins' } },
-              { text: '', link: { label: 'Cursor AI 101', href: '#', note: '12 mins' } },
-              { text: '', link: { label: 'Supabase SQL', href: '#', note: '40 mins' } },
+              { text: 'Project setup & management – Github, VScode, Jira', link: { label: '40 mins', href: 'https://youtu.be/4Gja-yphkYY' } },
+              { text: 'Streamlit 101', link: { label: '11 mins', href: 'https://youtu.be/D0D4Pa22iG0?si=OvX2qCUmKQJOGwHy' } },
+              { text: 'Cursor AI 101', link: { label: '12 mins', href: 'https://youtu.be/JLJtuEDcO1g?si=f6abWzWvsioTZcQ6' } },
+              { text: 'Supabase SQL', link: { label: '40 mins', href: 'https://youtu.be/M6cfT2pqpSc?si=2ESlqPj5xk58Uj7c' } },
             ],
           },
           {
-            dayLabel: 'Day 3',
+            dayLabel: 'Day 3 (Mon)',
             note: 'Watch these videos on Advanced AI Development',
             items: [
-              { text: '', link: { label: 'RAG 101', href: '#', note: '42 mins' } },
-              { text: '', link: { label: 'Agentic AI 101', href: '#', note: '12 mins' } },
-              { text: '', link: { label: 'LangGraph 101', href: '#', note: '30 mins' } },
+              { text: 'RAG 101', link: { label: '42 mins', href: 'https://youtu.be/Io56LloELW0' } },
+              { text: 'Agentic AI 101', link: { label: '12 mins', href: 'https://youtu.be/A_y9FeKNYb4' } },
+              { text: 'LangGraph 101', link: { label: '30 mins', href: 'https://youtu.be/vNlf5kW_23E' } },
             ],
           },
           {
-            dayLabel: 'Day 4 – 6',
+            dayLabel: 'Day 4 – 6 (Tue – Thu)',
             note: 'Build your Advanced AI app on top of the basic app from Day 1',
             items: [
-              {
-                text: 'Submit',
-                link: { label: 'here', href: '#', note: 'Deadline: Dec 27' },
-              },
-              {
-                text: '',
-                link: { label: 'Book office hours', href: '#', note: 'Ask Me Anything' },
-              },
+              { text: 'Submit Your Work (Deadline: Apr 3, Fri)', link: { label: 'Submit Here', href: 'https://forms.gle/YjToyfmGuv4P9Q9o6' } },
+              { text: "Don't miss the office hours (Mar 31 - 10am EST) — Claude Code Webinar", link: { label: 'Join Here', href: 'https://meet.google.com/bjh-hxav-tib' } },
             ],
           },
         ],
@@ -387,7 +379,7 @@ function TodoActionCard({ item, index }: { item: BulletItem; index: number }) {
     >
       <div className="flex items-center gap-3 min-w-0">
         <span className="text-lg shrink-0">{icon}</span>
-        <span className="text-sm font-medium text-white/80 truncate">{item.text}</span>
+        <span className="text-sm font-medium text-white/80">{item.text}</span>
       </div>
       <span className="shrink-0 text-xs font-semibold text-amber-400 border border-amber-500/30 rounded-lg px-3 py-1.5 bg-amber-500/10 group-hover:bg-amber-500/20 group-hover:translate-x-0.5 transition-all duration-200 whitespace-nowrap">
         {item.link.label} →
@@ -466,34 +458,21 @@ function ContentList({ items, type }: { items: BulletItem[]; type: Section['type
 }
 
 function DayGroupList({ dayGroups }: { dayGroups: DayGroup[] }) {
-  const dayAccents = [
-    { border: 'border-brand-primary/30', bg: 'bg-brand-primary/5', label: 'text-brand-accent' },
-    { border: 'border-sky-500/30', bg: 'bg-sky-500/5', label: 'text-sky-400' },
-    { border: 'border-emerald-500/30', bg: 'bg-emerald-500/5', label: 'text-emerald-400' },
-    { border: 'border-amber-500/30', bg: 'bg-amber-500/5', label: 'text-amber-400' },
-  ];
-
   return (
-    <div className="space-y-3">
-      {dayGroups.map((group, i) => {
-        const accent = dayAccents[i % dayAccents.length];
-        return (
-          <div key={i} className={`rounded-xl border ${accent.border} ${accent.bg} overflow-hidden`}>
-            {/* Day label bar */}
-            <div className={`flex flex-wrap items-center gap-2 px-4 py-2.5 border-b ${accent.border}`}>
-              <span className={`text-[11px] font-bold uppercase tracking-widest ${accent.label}`}>
-                {group.dayLabel}
-              </span>
-              {group.note && (
-                <span className="text-xs text-brand-text/45 italic">— {group.note}</span>
-              )}
-            </div>
-            <div className="p-4">
-              <ContentList items={group.items} type="todos" />
-            </div>
+    <div className="space-y-5">
+      {dayGroups.map((group, i) => (
+        <div key={i} className="space-y-2">
+          <div className="flex flex-wrap items-baseline gap-2 pb-0.5">
+            <span className="text-[11px] font-bold uppercase tracking-widest text-amber-400/80">
+              {group.dayLabel}
+            </span>
+            {group.note && (
+              <span className="text-xs text-brand-text/40 italic">— {group.note}</span>
+            )}
           </div>
-        );
-      })}
+          <ContentList items={group.items} type="todos" />
+        </div>
+      ))}
     </div>
   );
 }
@@ -711,7 +690,7 @@ export default function AgendaSpring26Page() {
             {/* Week overview pills */}
             <div className="flex flex-wrap justify-center gap-2 mt-8">
               {WEEKS.map((w, i) => {
-                const locked = i > 0;
+                const locked = i > 1;
                 return (
                   <button
                     key={i}
@@ -744,7 +723,7 @@ export default function AgendaSpring26Page() {
                   index={i}
                   isOpen={openWeek === i}
                   onToggle={() => toggle(i)}
-                  locked={i > 0}
+                  locked={i > 1}
                 />
               </div>
             ))}
