@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
+import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -22,12 +23,23 @@ interface DayGroup {
   items: BulletItem[];
 }
 
+interface TeamResult {
+  name: string;
+  score: string;
+  color: 'red' | 'green' | 'yellow';
+  product: string;
+  feedback: string;
+  improvement: string;
+}
+
 interface Section {
-  type: 'lecture' | 'breakout' | 'takehome' | 'todos' | 'reference';
+  type: 'lecture' | 'breakout' | 'takehome' | 'todos' | 'reference' | 'results';
   duration?: string;
   items?: BulletItem[];
   dayGroups?: DayGroup[];
   deadline?: string;
+  teamResults?: TeamResult[];
+  closingNote?: string;
 }
 
 interface Week {
@@ -151,7 +163,7 @@ const WEEKS: Week[] = [
             note: 'Build your Advanced AI app on top of the basic app from Day 1',
             items: [
               { text: 'Submit Your Work (Deadline: Apr 3, Fri)', link: { label: 'Submit Here', href: 'https://forms.gle/YjToyfmGuv4P9Q9o6' } },
-              { text: "Don't miss the office hours (Mar 31 - 10am EST) — Claude Code Webinar", link: { label: 'Join Here', href: 'https://meet.google.com/bjh-hxav-tib' } },
+              { text: "Don't miss the office hours (Mar 31, 10am EST): Claude Code Webinar", link: { label: 'Join Here', href: 'https://meet.google.com/bjh-hxav-tib' } },
             ],
           },
         ],
@@ -296,6 +308,14 @@ const SECTION_META: Record<
     border: 'border-rose-500/25',
     dot: 'bg-rose-500',
   },
+  results: {
+    label: 'Week 1 Results',
+    icon: '🏆',
+    accent: 'text-yellow-400',
+    bg: 'bg-[#1A1500]',
+    border: 'border-yellow-500/25',
+    dot: 'bg-yellow-500',
+  },
 };
 
 const WEEK_COLORS = [
@@ -336,6 +356,10 @@ const SECTION_BULLET: Record<Section['type'], { prefix: (i: number) => React.Rea
   },
   reference: {
     prefix: () => <span className="shrink-0 text-rose-400/60 text-sm leading-none mt-[2px]">↗</span>,
+    textCls: 'text-brand-text/85',
+  },
+  results: {
+    prefix: () => <span className="shrink-0 text-yellow-400/60 text-sm leading-none mt-[2px]">★</span>,
     textCls: 'text-brand-text/85',
   },
 };
@@ -467,12 +491,77 @@ function DayGroupList({ dayGroups }: { dayGroups: DayGroup[] }) {
               {group.dayLabel}
             </span>
             {group.note && (
-              <span className="text-xs text-brand-text/40 italic">— {group.note}</span>
+              <span className="text-xs text-brand-text/40 italic">· {group.note}</span>
             )}
           </div>
           <ContentList items={group.items} type="todos" />
         </div>
       ))}
+    </div>
+  );
+}
+
+const TEAM_STYLES: Record<TeamResult['color'], { bg: string; border: string; accent: string; badge: string; rank: string }> = {
+  red:    { bg: 'bg-red-500/5',    border: 'border-red-500/20',    accent: 'text-red-400',    badge: 'bg-red-500/10 border-red-500/30 text-red-300',    rank: 'text-red-400' },
+  green:  { bg: 'bg-emerald-500/5', border: 'border-emerald-500/20', accent: 'text-emerald-400', badge: 'bg-emerald-500/10 border-emerald-500/30 text-emerald-300', rank: 'text-emerald-400' },
+  yellow: { bg: 'bg-yellow-500/5', border: 'border-yellow-500/20', accent: 'text-yellow-400', badge: 'bg-yellow-500/10 border-yellow-500/30 text-yellow-300', rank: 'text-yellow-400' },
+};
+
+function ResultsSection({ section }: { section: Section }) {
+  const teams = section.teamResults ?? [];
+
+  return (
+    <div className="space-y-5">
+      {/* Leaderboard */}
+      <div className="rounded-xl border border-white/8 bg-white/3 overflow-hidden">
+        <div className="px-4 py-2.5 border-b border-white/8">
+          <span className="text-[11px] font-bold uppercase tracking-widest text-yellow-400/80">Leaderboard</span>
+        </div>
+        <div className="divide-y divide-white/5">
+          {teams.map((team, i) => {
+            const s = TEAM_STYLES[team.color];
+            return (
+              <div key={i} className="flex items-center gap-4 px-4 py-3">
+                <span className={`shrink-0 text-[11px] font-bold w-5 ${s.rank}`}>#{i + 1}</span>
+                <span className={`text-sm font-semibold ${s.accent} flex-1`}>{team.name}</span>
+                <span className={`text-xs font-bold px-2.5 py-1 rounded-lg border ${s.badge}`}>{team.score}</span>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* Team feedback cards */}
+      {teams.map((team, i) => {
+        const s = TEAM_STYLES[team.color];
+        return (
+          <div key={i} className={`rounded-xl border ${s.border} ${s.bg} overflow-hidden`}>
+            {/* Card header */}
+            <div className={`flex flex-wrap items-center justify-between gap-2 px-4 py-3 border-b ${s.border}`}>
+              <div className="flex items-center gap-2.5">
+                <span className={`text-sm font-bold ${s.accent}`}>{team.name}</span>
+                <span className="text-xs text-brand-text/40 italic">{team.product}</span>
+              </div>
+              <span className={`text-xs font-bold px-2.5 py-1 rounded-lg border ${s.badge}`}>{team.score}</span>
+            </div>
+            {/* Feedback body */}
+            <div className="px-4 py-3.5 space-y-3">
+              <p className="text-sm text-brand-text/75 leading-relaxed">{team.feedback}</p>
+              <div className={`flex items-start gap-2 rounded-lg border ${s.border} ${s.bg} px-3 py-2.5`}>
+                <span className={`shrink-0 text-xs font-bold uppercase tracking-wide ${s.accent} mt-0.5`}>Work on:</span>
+                <p className="text-sm text-brand-text/70 leading-relaxed">{team.improvement}</p>
+              </div>
+            </div>
+          </div>
+        );
+      })}
+
+      {/* Closing note */}
+      {section.closingNote && (
+        <p className="text-xs text-brand-text/45 italic border-t border-white/5 pt-3 leading-relaxed">
+          {section.closingNote}
+        </p>
+      )}
     </div>
   );
 }
@@ -504,13 +593,14 @@ function SectionCard({ section }: { section: Section }) {
 
       {/* Body */}
       <div className="p-5 space-y-4">
-        {section.items && <ContentList items={section.items} type={section.type} />}
+        {section.type === 'results' && <ResultsSection section={section} />}
+        {section.items && section.type !== 'results' && <ContentList items={section.items} type={section.type} />}
         {section.dayGroups && <DayGroupList dayGroups={section.dayGroups} />}
 
         {section.type === 'todos' && section.dayGroups && (
           <p className="text-xs text-brand-text/40 italic border-t border-white/5 pt-3 leading-relaxed">
             <span className="not-italic font-semibold text-white/45">Note:</span> Day 2 to Day 6 is
-            optional. You can submit the Day 1 app — but that won't get you a job as an AI Engineer.
+            optional. You can submit the Day 1 app, but that won't get you a job as an AI Engineer.
           </p>
         )}
       </div>
@@ -586,7 +676,7 @@ function WeekCard({ week, index, isOpen, onToggle, locked }: {
             </h3>
 
             {locked ? (
-              <p className="text-xs text-brand-text/35 mt-2 italic">Coming soon — unlocks after Week {week.number - 1}</p>
+              <p className="text-xs text-brand-text/35 mt-2 italic">Coming soon. Unlocks after Week {week.number - 1}</p>
             ) : (
               <div className="flex flex-wrap gap-1.5 mt-2.5">
                 {week.sections.map((s) => {
@@ -654,7 +744,7 @@ export default function AgendaSpring26Page() {
         <title>Spring '26 Agenda | MyRealProduct</title>
         <meta
           name="description"
-          content="Full agenda for MyRealProduct Spring 2026 cohort — 4 weeks of ideation, MVP building, deployment, and launch."
+          content="Full agenda for MyRealProduct Spring 2026 cohort: 4 weeks of ideation, MVP building, deployment, and launch."
         />
       </Helmet>
 
@@ -684,11 +774,21 @@ export default function AgendaSpring26Page() {
               <span className="text-gradient">Agenda</span>
             </h1>
             <p className="text-brand-text/70 text-base sm:text-lg max-w-xl mx-auto leading-relaxed">
-              Four weeks. From raw idea to live AI product — shipped, deployed, and in front of real users.
+              Four weeks. From raw idea to live AI product: shipped, deployed, and in front of real users.
             </p>
 
+            {/* Leaderboard button */}
+            <div className="mt-6">
+              <Link
+                to="/leaderboard/spring26"
+                className="inline-flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-200"
+              >
+                🏆 Week 1 Results
+              </Link>
+            </div>
+
             {/* Week overview pills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-8">
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
               {WEEKS.map((w, i) => {
                 const locked = i > 1;
                 return (

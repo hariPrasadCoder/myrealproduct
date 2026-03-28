@@ -6,6 +6,7 @@ import BookPage from './pages/BookPage';
 import PodcastPage from './pages/PodcastPage';
 import PodcastEpisodePage from './pages/PodcastEpisodePage';
 import AgendaSpring26Page from './pages/AgendaSpring26Page';
+import LeaderboardSpring26Page from './pages/LeaderboardSpring26Page';
 import EnterprisePage from './pages/EnterprisePage';
 
 function ScrollToTop() {
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/podcast" element={<PodcastPage />} />
         <Route path="/podcast/:slug" element={<PodcastEpisodePage />} />
         <Route path="/agenda/spring26" element={<AgendaSpring26Page />} />
+        <Route path="/leaderboard/spring26" element={<LeaderboardSpring26Page />} />
         <Route path="/enterprise" element={<EnterprisePage />} />
       </Routes>
     </BrowserRouter>
