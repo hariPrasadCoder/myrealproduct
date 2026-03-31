@@ -57,6 +57,16 @@ function injectMeta(html: string, title: string, description: string, image: str
 }
 
 function resolvePageMeta(pathname: string, html: string): string {
+  if (pathname === '/resources/claude-code-101') {
+    return injectMeta(
+      html,
+      'Claude Code 101 — Cheatsheet by Hari Prasad',
+      'A practical Claude Code cheatsheet covering installation, plans, /init, CLAUDE.md, context management, plan mode, and more. By Hari Prasad of MyRealProduct.',
+      '/og-preview.png',
+      `${BASE_URL}/resources/claude-code-101`
+    );
+  }
+
   if (pathname === '/enterprise') {
     const enterpriseJsonLd = `<script type="application/ld+json">
     {
