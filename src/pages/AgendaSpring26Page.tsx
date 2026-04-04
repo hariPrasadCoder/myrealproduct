@@ -33,7 +33,7 @@ interface TeamResult {
 }
 
 interface Section {
-  type: 'lecture' | 'breakout' | 'takehome' | 'todos' | 'reference' | 'results';
+  type: 'lecture' | 'breakout' | 'takehome' | 'todos' | 'reference' | 'results' | 'community';
   duration?: string;
   items?: BulletItem[];
   dayGroups?: DayGroup[];
@@ -200,13 +200,26 @@ const WEEKS: Week[] = [
       },
       {
         type: 'todos',
-        deadline: 'Jan 1',
+        deadline: 'Apr 10',
         items: [
-          { text: 'Week 3 Submission Template', link: { label: 'here', href: '#' } },
-          { text: 'Submit', link: { label: 'here', href: '#' } },
+          { text: 'Week 3 Submission Template', link: { label: 'Open Template', href: 'https://docs.google.com/presentation/d/1chBRh0_pe8bioBOPlKuvs3446z9RQket-NaicY6gvww/edit?usp=sharing' } },
+          { text: 'Submit Your Work', link: { label: 'Submit Here', href: 'https://forms.gle/29kmo6wWoNGPHVWd9' } },
           {
-            text: '',
-            link: { label: 'Book office hours', href: '#', note: 'Ask Me Anything' },
+            text: 'LLM Evals + Testing Session & MRP Office Hours',
+            link: { label: 'Join Here', href: 'https://meet.google.com/bjh-hxav-tib', note: 'Apr 7, 4–5pm EST' },
+          },
+        ],
+      },
+      {
+        type: 'community',
+        items: [
+          {
+            text: 'Review us on Trustpilot',
+            link: { label: 'Leave a Review', href: 'https://www.trustpilot.com/review/myrealproduct.com', note: 'Help us grow this community for future builders' },
+          },
+          {
+            text: 'Next batch starts May 1st week. Know someone who should join?',
+            link: { label: 'Share myrealproduct.com', href: 'https://myrealproduct.com', note: 'Or drop us their name and we\'ll reach out' },
           },
         ],
       },
@@ -215,7 +228,7 @@ const WEEKS: Week[] = [
         items: [
           {
             text: 'Intro to AWS S3, IAM, EC2 & Domain connection',
-            link: { label: 'Deployment 101', href: '#' },
+            link: { label: 'Deployment 101', href: 'https://www.youtube.com/watch?v=GG7liFsjF_U' },
           },
         ],
       },
@@ -309,12 +322,20 @@ const SECTION_META: Record<
     dot: 'bg-rose-500',
   },
   results: {
-    label: 'Week 1 Results',
+    label: 'Leaderboard',
     icon: '🏆',
     accent: 'text-yellow-400',
     bg: 'bg-[#1A1500]',
     border: 'border-yellow-500/25',
     dot: 'bg-yellow-500',
+  },
+  community: {
+    label: 'Help Us Grow',
+    icon: '🤝',
+    accent: 'text-brand-accent',
+    bg: 'bg-[#0E0E1F]',
+    border: 'border-brand-primary/40',
+    dot: 'bg-brand-primary',
   },
 };
 
@@ -362,6 +383,10 @@ const SECTION_BULLET: Record<Section['type'], { prefix: (i: number) => React.Rea
     prefix: () => <span className="shrink-0 text-yellow-400/60 text-sm leading-none mt-[2px]">★</span>,
     textCls: 'text-brand-text/85',
   },
+  community: {
+    prefix: () => <span className="shrink-0 text-brand-accent/60 text-sm leading-none mt-[2px]">→</span>,
+    textCls: 'text-brand-text/85',
+  },
 };
 
 function InlineLink({ link }: { link: LinkItem }) {
@@ -382,6 +407,7 @@ function InlineLink({ link }: { link: LinkItem }) {
 
 // Action card for todo items that have links
 function TodoActionCard({ item, index }: { item: BulletItem; index: number }) {
+  const [open, setOpen] = useState(false);
   const icons = ['📄', '📝', '📅', '🔗'];
   const icon = icons[index % icons.length];
 
@@ -394,27 +420,138 @@ function TodoActionCard({ item, index }: { item: BulletItem; index: number }) {
     );
   }
 
-  return (
-    <a
-      href={item.link.href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex items-center justify-between gap-4 p-3.5 rounded-xl border border-amber-500/15 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-500/35 transition-all duration-200 group"
-    >
+  const embedUrl = getYouTubeEmbedUrl(item.link.href);
+
+  const inner = (
+    <>
       <div className="flex items-center gap-3 min-w-0">
-        <span className="text-lg shrink-0">{icon}</span>
-        <span className="text-sm font-medium text-white/80">{item.text}</span>
+        <span className="text-lg shrink-0">{embedUrl ? '▶' : icon}</span>
+        <div className="flex flex-col min-w-0">
+          <span className="text-sm font-medium text-white/80">{item.text}</span>
+          {item.link.note && (
+            <span className="text-xs text-brand-text/50 mt-0.5">{item.link.note}</span>
+          )}
+        </div>
       </div>
       <span className="shrink-0 text-xs font-semibold text-amber-400 border border-amber-500/30 rounded-lg px-3 py-1.5 bg-amber-500/10 group-hover:bg-amber-500/20 group-hover:translate-x-0.5 transition-all duration-200 whitespace-nowrap">
         {item.link.label} →
       </span>
-    </a>
+    </>
+  );
+
+  return (
+    <>
+      {embedUrl ? (
+        <button
+          onClick={() => setOpen(true)}
+          className="w-full flex items-center justify-between gap-4 p-3.5 rounded-xl border border-amber-500/15 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-500/35 transition-all duration-200 group text-left"
+        >
+          {inner}
+        </button>
+      ) : (
+        <a
+          href={item.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between gap-4 p-3.5 rounded-xl border border-amber-500/15 bg-amber-500/5 hover:bg-amber-500/10 hover:border-amber-500/35 transition-all duration-200 group"
+        >
+          {inner}
+        </a>
+      )}
+      {open && embedUrl && (
+        <VideoModal title={item.text || item.link.label} embedUrl={embedUrl} onClose={() => setOpen(false)} />
+      )}
+    </>
+  );
+}
+
+function getYouTubeEmbedUrl(href: string): string | null {
+  const match = href.match(/(?:youtube\.com\/watch\?v=|youtu\.be\/)([^&?/]+)/);
+  return match ? `https://www.youtube.com/embed/${match[1]}?autoplay=1` : null;
+}
+
+function VideoModal({ title, embedUrl, onClose }: { title: string; embedUrl: string; onClose: () => void }) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+      onClick={onClose}
+    >
+      <div
+        className="relative w-full max-w-3xl rounded-2xl overflow-hidden border border-white/10 shadow-2xl bg-black"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between px-4 py-3 border-b border-white/10">
+          <span className="text-sm font-medium text-white/80 truncate">{title}</span>
+          <button
+            onClick={onClose}
+            className="shrink-0 ml-3 text-white/40 hover:text-white transition-colors text-lg leading-none"
+          >
+            ✕
+          </button>
+        </div>
+        <div className="aspect-video w-full">
+          <iframe
+            src={embedUrl}
+            className="w-full h-full"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+          />
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function ReferenceCard({ item }: { item: BulletItem }) {
+  const [open, setOpen] = useState(false);
+  if (!item.link) return <p className="text-sm text-brand-text/75">{item.text}</p>;
+
+  const embedUrl = getYouTubeEmbedUrl(item.link.href);
+
+  const cardContent = (
+    <>
+      <div className="flex items-center gap-2.5">
+        <span className="text-base">{embedUrl ? '▶' : '📖'}</span>
+        <div>
+          <p className="text-sm font-medium text-white/80">{item.link.label}</p>
+          {item.text && <p className="text-xs text-brand-text/50 mt-0.5">{item.text}</p>}
+        </div>
+      </div>
+      <span className="shrink-0 text-xs text-rose-400 group-hover:translate-x-0.5 transition-transform">
+        {embedUrl ? '▶' : '↗'}
+      </span>
+    </>
+  );
+
+  return (
+    <>
+      {embedUrl ? (
+        <button
+          onClick={() => setOpen(true)}
+          className="w-full flex items-center justify-between gap-4 p-3 rounded-xl border border-rose-500/20 bg-rose-500/5 hover:bg-rose-500/10 hover:border-rose-500/35 transition-all duration-200 group text-left"
+        >
+          {cardContent}
+        </button>
+      ) : (
+        <a
+          href={item.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between gap-4 p-3 rounded-xl border border-rose-500/20 bg-rose-500/5 hover:bg-rose-500/10 hover:border-rose-500/35 transition-all duration-200 group"
+        >
+          {cardContent}
+        </a>
+      )}
+      {open && embedUrl && (
+        <VideoModal title={item.link.label} embedUrl={embedUrl} onClose={() => setOpen(false)} />
+      )}
+    </>
   );
 }
 
 function ContentList({ items, type }: { items: BulletItem[]; type: Section['type'] }) {
-  // To-dos get a special card-style treatment
-  if (type === 'todos') {
+  // To-dos and community items get a special card-style treatment
+  if (type === 'todos' || type === 'community') {
     return (
       <div className="space-y-2">
         {items.map((item, i) => (
@@ -429,27 +566,7 @@ function ContentList({ items, type }: { items: BulletItem[]; type: Section['type
     return (
       <div className="space-y-2">
         {items.map((item, i) => (
-          <div key={i}>
-            {item.link ? (
-              <a
-                href={item.link.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-between gap-4 p-3 rounded-xl border border-rose-500/20 bg-rose-500/5 hover:bg-rose-500/10 hover:border-rose-500/35 transition-all duration-200 group"
-              >
-                <div className="flex items-center gap-2.5">
-                  <span className="text-base">📖</span>
-                  <div>
-                    <p className="text-sm font-medium text-white/80">{item.link.label}</p>
-                    {item.text && <p className="text-xs text-brand-text/50 mt-0.5">{item.text}</p>}
-                  </div>
-                </div>
-                <span className="shrink-0 text-xs text-rose-400 group-hover:translate-x-0.5 transition-transform">↗</span>
-              </a>
-            ) : (
-              <p className="text-sm text-brand-text/75">{item.text}</p>
-            )}
-          </div>
+          <ReferenceCard key={i} item={item} />
         ))}
       </div>
     );
@@ -783,14 +900,14 @@ export default function AgendaSpring26Page() {
                 to="/leaderboard/spring26"
                 className="inline-flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-200"
               >
-                🏆 Week 1 Results
+                🏆 Leaderboard
               </Link>
             </div>
 
             {/* Week overview pills */}
             <div className="flex flex-wrap justify-center gap-2 mt-4">
               {WEEKS.map((w, i) => {
-                const locked = i > 1;
+                const locked = i > 2;
                 return (
                   <button
                     key={i}
@@ -823,7 +940,7 @@ export default function AgendaSpring26Page() {
                   index={i}
                   isOpen={openWeek === i}
                   onToggle={() => toggle(i)}
-                  locked={i > 1}
+                  locked={i > 2}
                 />
               </div>
             ))}
