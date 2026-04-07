@@ -9,6 +9,7 @@ import AgendaSpring26Page from './pages/AgendaSpring26Page';
 import LeaderboardSpring26Page from './pages/LeaderboardSpring26Page';
 import EnterprisePage from './pages/EnterprisePage';
 import ClaudeCode101Page from './pages/ClaudeCode101Page';
+import LLMTesting101Page from './pages/LLMTesting101Page';
 
 function ScrollToTop() {
   const { pathname } = useLocation();
@@ -32,6 +33,7 @@ export default function App() {
         <Route path="/leaderboard/spring26" element={<LeaderboardSpring26Page />} />
         <Route path="/enterprise" element={<EnterprisePage />} />
         <Route path="/resources/claude-code-101" element={<ClaudeCode101Page />} />
+        <Route path="/resources/llmops-101" element={<LLMTesting101Page />} />
       </Routes>
     </BrowserRouter>
   );
