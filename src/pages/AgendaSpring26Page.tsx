@@ -272,6 +272,19 @@ const WEEKS: Week[] = [
           { text: "It's been a wonderful journey! Hope you had fun 🙂" },
         ],
       },
+      {
+        type: 'community',
+        items: [
+          {
+            text: 'Review us on Trustpilot',
+            link: { label: 'Leave a Review', href: 'https://www.trustpilot.com/review/myrealproduct.com', note: 'Help us grow this community for future builders' },
+          },
+          {
+            text: 'Next batch starts May 1st week. Know someone who should join?',
+            link: { label: 'Share myrealproduct.com', href: 'https://myrealproduct.com', note: 'Or drop us their name and we\'ll reach out' },
+          },
+        ],
+      },
     ],
   },
 ];
@@ -550,9 +563,71 @@ function ReferenceCard({ item }: { item: BulletItem }) {
   );
 }
 
+function CommunitySection({ items }: { items: BulletItem[] }) {
+  const referralItem = items.find(it => it.link?.href === 'https://myrealproduct.com');
+  const reviewItem = items.find(it => it.link?.href.includes('trustpilot'));
+
+  return (
+    <div className="space-y-3">
+      {/* Referral bonus card */}
+      {referralItem?.link && (
+        <a
+          href={referralItem.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between gap-4 p-4 rounded-xl border border-brand-primary/30 bg-brand-primary/10 hover:bg-brand-primary/20 hover:border-brand-primary/50 transition-all duration-200 group"
+        >
+          <div className="flex items-center gap-4">
+            <div className="shrink-0 w-12 h-12 rounded-xl bg-brand-primary/20 border border-brand-primary/30 flex items-center justify-center text-2xl">
+              💸
+            </div>
+            <div>
+              <div className="flex items-baseline gap-2">
+                <span className="text-2xl font-bold text-brand-accent">$100</span>
+                <span className="text-sm text-white/50">per referral</span>
+              </div>
+              <p className="text-xs text-white/50 mt-0.5">Know a builder? Refer them and earn when they join.</p>
+            </div>
+          </div>
+          <span className="shrink-0 text-xs font-semibold text-brand-accent border border-brand-primary/40 rounded-lg px-3 py-1.5 bg-brand-primary/10 group-hover:bg-brand-primary/20 group-hover:translate-x-0.5 transition-all duration-200 whitespace-nowrap">
+            Share →
+          </span>
+        </a>
+      )}
+      {/* Trustpilot review */}
+      {reviewItem?.link && (
+        <a
+          href={reviewItem.link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="flex items-center justify-between gap-4 p-3.5 rounded-xl border border-white/8 bg-white/3 hover:bg-white/6 hover:border-white/15 transition-all duration-200 group"
+        >
+          <div className="flex items-center gap-3">
+            <span className="text-lg shrink-0">⭐</span>
+            <div>
+              <span className="text-sm font-medium text-white/70">{reviewItem.text}</span>
+              {reviewItem.link.note && (
+                <p className="text-xs text-white/35 mt-0.5">{reviewItem.link.note}</p>
+              )}
+            </div>
+          </div>
+          <span className="shrink-0 text-xs font-semibold text-white/40 border border-white/10 rounded-lg px-3 py-1.5 bg-white/5 group-hover:bg-white/10 group-hover:translate-x-0.5 transition-all duration-200 whitespace-nowrap">
+            {reviewItem.link.label} →
+          </span>
+        </a>
+      )}
+    </div>
+  );
+}
+
 function ContentList({ items, type }: { items: BulletItem[]; type: Section['type'] }) {
-  // To-dos and community items get a special card-style treatment
-  if (type === 'todos' || type === 'community') {
+  // Community gets its own visual layout
+  if (type === 'community') {
+    return <CommunitySection items={items} />;
+  }
+
+  // To-dos get a special card-style treatment
+  if (type === 'todos') {
     return (
       <div className="space-y-2">
         {items.map((item, i) => (

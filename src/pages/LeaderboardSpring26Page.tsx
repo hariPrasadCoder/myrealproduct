@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
-// Week 1 — ordered by Week 1 rank
+// Week 1 - ordered by Week 1 rank
 const W1_TEAMS = [
   {
     rank: 1,
@@ -49,7 +49,7 @@ const W1_SCORE_CRITERIA = [
 
 const W1_TOTALS = ['23/25', '22/25', '20.5/25'];
 
-// Week 2 — ordered by Week 2 rank
+// Week 2 - ordered by Week 2 rank
 const W2_TEAMS = [
   {
     rank: 1,
@@ -94,12 +94,56 @@ const W2_SCORE_CRITERIA = [
 // W2_TOTALS ordered to match W2_TEAMS (Yellow, Red, Green)
 const W2_TOTALS = ['23/25', '22/25', '21/25'];
 
-// ─── Total leaderboard (Week 1 + Week 2) ──────────────────────────────────────
-// W1: Red 23, Green 22, Yellow 20.5  →  W2: Yellow 23, Red 22, Green 21
+// Week 3 - ordered by Week 3 rank
+const W3_TEAMS = [
+  {
+    rank: 1,
+    name: 'Team Green',
+    score: '23.5/25',
+    color: 'green' as const,
+    product: 'AI copilot for used car buyers.',
+    feedback:
+      'Best deployment of the week. The onboarding form felt polished and premium, exactly what a first-time user needs to feel confident. Even as an MVP, the product is already useful, which is a high bar to clear this early. The UI quality stands out: clean, intentional, and far from the usual prototype look.',
+    improvement: 'Ask AI and the car listings feel like separate tools right now. The unlock is connecting them: a user should be able to find a listing, then immediately ask AI about it in context. When those two features talk to each other, the product clicks into place.',
+  },
+  {
+    rank: 2,
+    name: 'Team Red',
+    score: '21/25',
+    color: 'red' as const,
+    product: 'Expense tracker with actionable spending insights.',
+    feedback:
+      'Two separate products submitted this week when the goal was one combined product. That is the main miss. But within each product, the execution is genuinely impressive. The UI does not look like Streamlit at all, the app is thoughtful, and they tested their own product thoroughly enough to catch real issues. That kind of self-awareness is rare.',
+    improvement: 'The login flow has a bug: clicking the login link sends users to localhost instead of the live app. That breaks the experience for any real user immediately. Fix that first. And for next week, combine the two products into one: that integration is where the real value lives.',
+  },
+  {
+    rank: 3,
+    name: 'Team Yellow',
+    score: 'N/A',
+    color: 'yellow' as const,
+    product: 'WarmPath: LinkedIn network intelligence for job seekers.',
+    feedback:
+      'Could not evaluate this week. There is no sign-up or login flow, and the deployed app returns a network error. The UI is visible but the product is not functional for real users.',
+    improvement: 'Get the app fully deployed and accessible. Authentication is a requirement. Users need to be able to sign up and log in. Once those basics are in place, the underlying product can be evaluated properly.',
+  },
+];
+
+const W3_SCORE_CRITERIA = [
+  { label: 'Deployment & Accessibility',  scores: ['5/5',  '4/5',  'N/A'] },
+  { label: 'Authentication & Onboarding', scores: ['5/5',  '3/5',  'N/A'] },
+  { label: 'Core Feature Functionality',  scores: ['4/5',  '5/5',  'N/A'] },
+  { label: 'UI/UX Quality',               scores: ['5/5',  '5/5',  'N/A'] },
+  { label: 'Product Completeness',        scores: ['4.5/5', '4/5', 'N/A'] },
+];
+
+const W3_TOTALS = ['23.5/25', '21/25', 'N/A'];
+
+// ─── Total leaderboard (Week 1 + Week 2 + Week 3) ─────────────────────────────
+// W1: Red 23, Green 22, Yellow 20.5  →  W2: Yellow 23, Red 22, Green 21  →  W3: Green 23, Red 20, Yellow N/A
 const TOTAL_TEAMS = [
-  { rank: 1, name: 'Team Red',    color: 'red'    as const, w1: '23',   w2: '22',   total: '45/50'  },
-  { rank: 2, name: 'Team Yellow', color: 'yellow' as const, w1: '20.5', w2: '23',   total: '43.5/50'},
-  { rank: 3, name: 'Team Green',  color: 'green'  as const, w1: '22',   w2: '21',   total: '43/50'  },
+  { rank: 1, name: 'Team Green',  color: 'green'  as const, w1: '22',   w2: '21',   w3: '23.5', total: '66.5/75' },
+  { rank: 2, name: 'Team Red',    color: 'red'    as const, w1: '23',   w2: '22',   w3: '21',   total: '66/75'   },
+  { rank: 3, name: 'Team Yellow', color: 'yellow' as const, w1: '20.5', w2: '23',   w3: 'N/A',  total: '43.5'   },
 ];
 
 // ─── Styles ───────────────────────────────────────────────────────────────────
@@ -216,6 +260,15 @@ function LeaderboardTable({ teams, scores, totals }: {
 
 const WEEKS = [
   {
+    key: 'w3',
+    label: 'Week 3',
+    subtitle: 'Deployed Product Testing',
+    teams: W3_TEAMS,
+    scores: W3_SCORE_CRITERIA,
+    totals: W3_TOTALS,
+    note: 'This week was about shipping something real that a stranger can use. Team Green cleared that bar. Team Red showed impressive execution but split the effort across two products instead of one. Team Yellow is on hold. They will get a chance to fix the deployment and be re-evaluated.',
+  },
+  {
     key: 'w2',
     label: 'Week 2',
     subtitle: 'MVP Prototype and Demo',
@@ -236,14 +289,14 @@ const WEEKS = [
 ];
 
 export default function LeaderboardSpring26Page() {
-  const [activeWeek, setActiveWeek] = useState<'w1' | 'w2'>('w2');
+  const [activeWeek, setActiveWeek] = useState<'w1' | 'w2' | 'w3'>('w3');
   const week = WEEKS.find(w => w.key === activeWeek)!;
 
   return (
     <main className="bg-brand-dark min-h-screen text-white selection:bg-brand-primary/30 selection:text-white">
       <Helmet>
         <title>Leaderboard | MyRealProduct Spring 2026</title>
-        <meta name="description" content="Week 1 and Week 2 leaderboard and score breakdown for MyRealProduct Spring 2026 cohort." />
+        <meta name="description" content="Week 1, Week 2, and Week 3 leaderboard and score breakdown for MyRealProduct Spring 2026 cohort." />
         <link rel="canonical" href="https://www.myrealproduct.com/leaderboard/spring26" />
       </Helmet>
 
@@ -270,7 +323,7 @@ export default function LeaderboardSpring26Page() {
         >
           <div className="flex items-baseline justify-between">
             <h2 className="text-xs font-bold uppercase tracking-widest text-white/40">Overall Standings</h2>
-            <span className="text-xs text-brand-text/35">out of 50</span>
+            <span className="text-xs text-brand-text/35">out of 75</span>
           </div>
           <div className="rounded-2xl border border-white/8 bg-brand-card overflow-hidden">
             <table className="w-full text-sm">
@@ -279,6 +332,7 @@ export default function LeaderboardSpring26Page() {
                   <th className="text-left px-5 py-3 text-xs font-bold uppercase tracking-widest text-white/40">Team</th>
                   <th className="text-left px-4 py-3 text-xs font-bold uppercase tracking-widest text-white/40">Wk 1</th>
                   <th className="text-left px-4 py-3 text-xs font-bold uppercase tracking-widest text-white/40">Wk 2</th>
+                  <th className="text-left px-4 py-3 text-xs font-bold uppercase tracking-widest text-white/40">Wk 3</th>
                   <th className="text-left px-4 py-3 text-xs font-bold uppercase tracking-widest text-white/40">Total</th>
                 </tr>
               </thead>
@@ -295,6 +349,7 @@ export default function LeaderboardSpring26Page() {
                       </td>
                       <td className={`px-4 py-3 ${s.col}`}>{team.w1}</td>
                       <td className={`px-4 py-3 ${s.col}`}>{team.w2}</td>
+                      <td className={`px-4 py-3 ${s.col}`}>{team.w3}</td>
                       <td className={`px-4 py-3 font-bold ${s.accent}`}>{team.total}</td>
                     </tr>
                   );
@@ -316,7 +371,7 @@ export default function LeaderboardSpring26Page() {
             {WEEKS.map(w => (
               <button
                 key={w.key}
-                onClick={() => setActiveWeek(w.key as 'w1' | 'w2')}
+                onClick={() => setActiveWeek(w.key as 'w1' | 'w2' | 'w3')}
                 className={`px-5 py-2 rounded-lg text-sm font-semibold transition-all duration-200 ${
                   activeWeek === w.key
                     ? 'bg-brand-primary text-white shadow-sm'
