@@ -264,10 +264,11 @@ const WEEKS: Week[] = [
       },
       {
         type: 'todos',
-        deadline: 'Jan 9',
+        deadline: 'Apr 17',
         items: [
-          { text: 'Week 4 Submission Template', link: { label: 'here', href: '#' } },
-          { text: 'Submit', link: { label: 'here', href: '#' } },
+          { text: 'Week 4 Submission Template', link: { label: 'Open Template', href: 'https://docs.google.com/presentation/d/1NZyU02aQMVFj2P2xFKNLhHU7arW4ddmj80O0iNxSG9Q/edit?usp=sharing' } },
+          { text: 'Submit Your Work', link: { label: 'Submit Here', href: 'https://forms.gle/A5H5j9BTLRprKTMN9' } },
+          { text: 'Demo Day: present your product to the cohort.', link: { label: 'Join Here', href: 'https://meet.google.com/vhy-xxsz-tsx', note: 'Apr 18 (Sat), 12-1:30pm EST' } },
           { text: "It's been a wonderful journey! Hope you had fun 🙂" },
         ],
       },
@@ -907,7 +908,7 @@ export default function AgendaSpring26Page() {
             {/* Week overview pills */}
             <div className="flex flex-wrap justify-center gap-2 mt-4">
               {WEEKS.map((w, i) => {
-                const locked = i > 2;
+                const locked = i > 3;
                 return (
                   <button
                     key={i}
@@ -940,7 +941,7 @@ export default function AgendaSpring26Page() {
                   index={i}
                   isOpen={openWeek === i}
                   onToggle={() => toggle(i)}
-                  locked={i > 2}
+                  locked={i > 3}
                 />
               </div>
             ))}
