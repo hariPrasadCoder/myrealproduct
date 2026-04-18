@@ -1,5 +1,5 @@
-import { motion, AnimatePresence } from 'motion/react';
-import { useState, useEffect } from 'react';
+import { motion, AnimatePresence, useInView, useMotionValue, useSpring } from 'motion/react';
+import { useState, useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import {
   ArrowRight,
@@ -15,8 +15,44 @@ import {
   Shield,
   TrendingUp,
   Clock,
+  Users,
+  Zap,
 } from 'lucide-react';
 import { trackEvent, trackSectionView } from '../lib/posthog';
+import Particles from '../components/Particles';
+
+const TICKER_ITEMS = [
+  'Done-For-You Applications',
+  '$142k+ Avg AI Role Salary',
+  'Highly Selective',
+  '6-Month Partnership',
+  '30-Min Free Consultation',
+  'AI-Era Roles Only',
+  'EMI Available',
+  'Daily Job Applications',
+  'Interview Coaching',
+  'LinkedIn Transformation',
+];
+
+function CountUp({ target, suffix = '' }: { target: number; suffix?: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const inView = useInView(ref, { once: true });
+  const motionVal = useMotionValue(0);
+  const spring = useSpring(motionVal, { stiffness: 60, damping: 20 });
+  const [display, setDisplay] = useState('0');
+
+  useEffect(() => {
+    if (inView) motionVal.set(target);
+  }, [inView, target, motionVal]);
+
+  useEffect(() => {
+    return spring.on('change', v => {
+      setDisplay(Math.round(v).toString());
+    });
+  }, [spring]);
+
+  return <span ref={ref}>{display}{suffix}</span>;
+}
 
 const SERVICES = [
   {
@@ -163,38 +199,19 @@ export default function AgencyPage() {
     trackSectionView('agency_page');
     trackEvent('agency_page_viewed', { page: '/agency' });
 
-    // Load Cal.com embed
-    (function (C: any, A: string, L: string) {
-      const p = (a: any, ar: any) => { a.q.push(ar); };
-      const d = C.document;
-      C.Cal = C.Cal || function (...args: any[]) {
-        const cal = C.Cal;
-        if (!cal.loaded) {
-          cal.ns = {};
-          cal.q = cal.q || [];
-          const s = d.createElement('script');
-          s.src = A;
-          d.head.appendChild(s);
-          cal.loaded = true;
-        }
-        if (args[0] === L) {
-          const api = (...a: any[]) => p(api, a);
-          const ns = args[1];
-          api.q = api.q || [];
-          if (typeof ns === 'string') {
-            cal.ns[ns] = cal.ns[ns] || api;
-            p(cal.ns[ns], args);
-            p(cal, ['initNamespace', ns]);
-          } else p(cal, args);
-          return;
-        }
-        p(cal, args);
-      };
-    })(window, 'https://app.cal.com/embed/embed.js', 'init');
-
-    const cal = (window as any).Cal;
-    cal('init', 'mrp-agency-call', { origin: 'https://app.cal.com' });
-    cal.ns['mrp-agency-call']('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+    // Cal.com script is already loaded globally in index.html — just init the namespace
+    const initCal = () => {
+      const cal = (window as any).Cal;
+      if (cal) {
+        cal('init', 'mrp-agency-call', { origin: 'https://app.cal.com' });
+        cal.ns['mrp-agency-call']('ui', { hideEventTypeDetails: false, layout: 'month_view' });
+      }
+    };
+    if ((window as any).Cal) {
+      initCal();
+    } else {
+      window.addEventListener('load', initCal, { once: true });
+    }
   }, []);
 
   const handleConsultationClick = (location: string) => {
@@ -204,17 +221,86 @@ export default function AgencyPage() {
   return (
     <div className="bg-brand-dark min-h-screen text-white selection:bg-brand-primary/30">
       <Helmet>
-        <title>MRP Employment Agency: Land Your AI-Era Role in 6 Months</title>
-        <meta
-          name="description"
-          content="A highly selective 6-month career partnership. We rebuild your profile, apply on your behalf, and get you placed in an AI-era role. $10k. EMI available."
-        />
+        {/* Primary */}
+        <title>MRP Employment Agency — Land Your AI-Era Role in 6 Months</title>
+        <meta name="description" content="A highly selective 6-month career partnership. We rebuild your profile, apply for jobs on your behalf daily, and get you placed in an AI-era role. $10k, EMI available." />
+        <meta name="keywords" content="AI jobs, AI career, employment agency, job placement, AI-era roles, career coaching, resume review, LinkedIn optimization, interview prep, done-for-you job applications, MRP agency" />
+        <meta name="author" content="MyRealProduct" />
+        <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.myrealproduct.com/agency" />
-        <meta property="og:title" content="MRP Employment Agency: Land Your AI-Era Role" />
-        <meta
-          property="og:description"
-          content="We don't take everyone. We take the people we can truly win for."
-        />
+
+        {/* Open Graph */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.myrealproduct.com/agency" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:title" content="MRP Employment Agency — Land Your AI-Era Role in 6 Months" />
+        <meta property="og:description" content="We apply for jobs on your behalf, every day. Resume, LinkedIn, interview prep and a full opportunity pipeline — for 6 months. Highly selective. $10k, EMI available." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-agency.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="MRP Employment Agency — Your next job should be in AI. We'll get you there." />
+
+        {/* Twitter / X */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="MRP Employment Agency — Land Your AI-Era Role" />
+        <meta name="twitter:description" content="We apply for jobs on your behalf, every day. 6-month career partnership. Highly selective. Book a free 30-min consultation." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-agency.png" />
+        <meta name="twitter:image:alt" content="MRP Employment Agency — Your next job should be in AI." />
+
+        {/* JSON-LD */}
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "Service",
+              "@id": "https://www.myrealproduct.com/agency#service",
+              "name": "MRP Employment Agency",
+              "description": "A highly selective 6-month career partnership for professionals ready to step into AI-era roles. Includes resume overhaul, LinkedIn transformation, project portfolio, interview coaching, done-for-you job applications, and curated opportunity pipeline.",
+              "url": "https://www.myrealproduct.com/agency",
+              "provider": {
+                "@type": "Organization",
+                "@id": "https://www.myrealproduct.com/#organization",
+                "name": "MyRealProduct",
+                "url": "https://www.myrealproduct.com"
+              },
+              "offers": {
+                "@type": "Offer",
+                "price": "10000",
+                "priceCurrency": "USD",
+                "availability": "https://schema.org/LimitedAvailability",
+                "url": "https://www.myrealproduct.com/agency"
+              },
+              "serviceType": "Career Coaching and Job Placement",
+              "areaServed": "Worldwide",
+              "audience": {
+                "@type": "Audience",
+                "audienceType": "Professionals transitioning into AI-era roles"
+              }
+            },
+            {
+              "@type": "FAQPage",
+              "mainEntity": [
+                {
+                  "@type": "Question",
+                  "name": "Who is MRP Employment Agency for?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "Professionals serious about breaking into AI-era roles — pivoting from non-technical backgrounds, levelling up within tech, or re-entering the market." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "How much does MRP Employment Agency cost?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "$10,000 for a full 6-month partnership. EMI options are available — you don't have to pay in full upfront." }
+                },
+                {
+                  "@type": "Question",
+                  "name": "What happens if I don't land a job in 6 months?",
+                  "acceptedAnswer": { "@type": "Answer", "text": "We work until you land. If you're actively engaged and following the plan, we don't walk away at the 6-month mark." }
+                }
+              ]
+            }
+          ]
+        })}</script>
       </Helmet>
 
       <div className="noise-overlay" />
@@ -240,49 +326,105 @@ export default function AgencyPage() {
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
       <section className="relative min-h-screen flex flex-col items-center justify-center text-center px-4 pt-24 pb-32 overflow-hidden">
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-brand-primary/8 rounded-full blur-[130px]" />
+        {/* Grid overlay */}
+        <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+
+        {/* Particles */}
+        <Particles particleCount={50} className="z-[1] opacity-50" />
+
+        {/* Ambient glow */}
+        <div className="absolute inset-0 pointer-events-none z-[2]">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[600px] bg-brand-primary/10 rounded-full blur-[130px]" />
         </div>
 
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="font-display font-medium text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-4xl leading-[1.05] mb-6"
-        >
-          Your next job<br />should be in AI.{' '}
-          <span className="text-gradient">We'll get you there.</span>
-        </motion.h1>
+        {/* HUD left */}
+        <div className="absolute top-32 left-10 hidden lg:flex flex-col gap-4 opacity-25 z-[3]">
+          <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-brand-accent">
+            <Users size={11} />
+            <span>SELECTIVE_INTAKE</span>
+          </div>
+          <div className="w-px h-20 bg-gradient-to-b from-brand-accent to-transparent" />
+        </div>
 
-        <motion.p
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.15 }}
-          className="text-lg md:text-xl text-brand-text/60 max-w-xl leading-relaxed mb-10"
-        >
-          A highly selective 6-month career partnership. Resume, LinkedIn,
-          interview prep, and daily applications. All done with you.
-          We don't take everyone.
-        </motion.p>
+        {/* HUD right */}
+        <div className="absolute top-32 right-10 hidden lg:flex flex-col gap-4 items-end opacity-25 z-[3]">
+          <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-brand-accent">
+            <span>AI_ERA_ROLES</span>
+            <Zap size={11} />
+          </div>
+          <div className="w-px h-20 bg-gradient-to-b from-brand-accent to-transparent" />
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.28 }}
-          className="flex flex-col items-center gap-4"
-        >
-          <button
-            onClick={() => handleConsultationClick('hero')}
-            {...CAL_ATTRS}
-            className="flex items-center gap-3 bg-white text-black font-semibold tracking-widest uppercase text-sm px-10 h-14 rounded-sm hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.12)]"
+        <div className="relative z-[4] flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="inline-flex items-center gap-2 bg-white/5 border border-white/10 rounded-full px-4 py-1.5 text-xs font-mono tracking-widest uppercase text-brand-text/80 mb-8"
           >
-            Book Free Consultation <ArrowRight size={16} />
-          </button>
-          <p className="text-xs text-brand-text/35 tracking-wide">
-            $10,000 · 6 months · EMI available
-          </p>
-        </motion.div>
+            <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
+            Accepting Applications
+          </motion.div>
+
+          <motion.h1
+            initial={{ opacity: 0, y: 24, filter: 'blur(8px)' }}
+            animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            className="font-display font-medium text-5xl md:text-7xl lg:text-8xl tracking-tight max-w-4xl leading-[1.05] mb-6"
+          >
+            Your next job<br />should be in AI.{' '}
+            <span className="relative inline-block">
+              <span className="absolute inset-0 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary blur-2xl opacity-40" />
+              <span className="relative text-gradient">We'll get you there.</span>
+            </span>
+          </motion.h1>
+
+          <motion.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
+            className="text-lg md:text-xl text-brand-text/60 max-w-xl leading-relaxed mb-10"
+          >
+            A highly selective 6-month career partnership. Resume, LinkedIn,
+            interview prep, and daily applications. All done with you.
+            We don't take everyone.
+          </motion.p>
+
+          <motion.div
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.38 }}
+            className="flex flex-col items-center gap-4"
+          >
+            <button
+              onClick={() => handleConsultationClick('hero')}
+              {...CAL_ATTRS}
+              className="flex items-center gap-3 bg-white text-black font-semibold tracking-widest uppercase text-sm px-10 h-14 rounded-sm hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.12)]"
+            >
+              Book Free Consultation <ArrowRight size={16} />
+            </button>
+            <p className="text-xs text-brand-text/35 tracking-wide">
+              $10,000 · 6 months · EMI available
+            </p>
+          </motion.div>
+        </div>
       </section>
+
+      {/* ── Ticker ───────────────────────────────────────────────────────── */}
+      <div className="border-y border-white/5 py-4 overflow-hidden bg-brand-card/30">
+        <motion.div
+          className="flex gap-12 whitespace-nowrap"
+          animate={{ x: ['0%', '-50%'] }}
+          transition={{ repeat: Infinity, ease: 'linear', duration: 30 }}
+        >
+          {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+            <span key={i} className="flex items-center gap-3 text-xs font-mono tracking-widest uppercase text-brand-text/40 shrink-0">
+              <span className="w-1 h-1 rounded-full bg-brand-accent/60" />
+              {item}
+            </span>
+          ))}
+        </motion.div>
+      </div>
 
       {/* ── Reality Check ────────────────────────────────────────────────── */}
       <section className="py-24 border-t border-white/5">
@@ -434,10 +576,13 @@ export default function AgencyPage() {
                       { role: 'ML Platform Lead', company: 'Vercel', time: '5h ago' },
                       { role: 'AI Strategy Lead', company: 'Figma', time: '8h ago' },
                     ].map((app, i) => (
-                      <div
+                      <motion.div
                         key={i}
+                        initial={{ opacity: 0, x: -10 }}
+                        whileInView={{ opacity: 1 - i * 0.15, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: i * 0.1, duration: 0.4 }}
                         className="flex items-center justify-between px-4 py-3 gap-4"
-                        style={{ opacity: 1 - i * 0.15 }}
                       >
                         <div>
                           <p className="text-sm text-white font-medium leading-none mb-1">{app.role}</p>
@@ -447,7 +592,7 @@ export default function AgencyPage() {
                           <span className="text-xs text-green-400/80 font-mono">{app.time}</span>
                           <CheckCircle2 size={13} className="text-green-400/60" />
                         </div>
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                   <div className="px-4 py-3 border-t border-white/5 text-center">
@@ -507,17 +652,22 @@ export default function AgencyPage() {
           </motion.div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-12">
-            {ROI_STATS.map((stat, i) => (
+            {[
+              { prefix: '$', target: 142, suffix: 'k+', label: 'Average AI role base salary in 2025' },
+              { prefix: '', target: 35, suffix: '×', label: 'Salary uplift vs. non-AI equivalent role', divisor: 10 },
+              { prefix: '', target: 6, suffix: ' mo', label: 'Average time to placement with our support' },
+              { prefix: '~', target: 14, suffix: '×', label: 'ROI on your $10k investment (year one alone)' },
+            ].map((stat, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, y: 16, scale: 0.95 }}
+                whileInView={{ opacity: 1, y: 0, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                transition={{ delay: i * 0.12, type: 'spring', stiffness: 80 }}
                 className="bg-brand-card border border-white/5 rounded-sm p-6 text-center"
               >
                 <div className="font-display text-3xl md:text-4xl font-medium text-white mb-2">
-                  {stat.figure}
+                  {stat.prefix}<CountUp target={stat.target} suffix={stat.suffix} />
                 </div>
                 <div className="text-xs text-brand-text/50 leading-snug">{stat.label}</div>
               </motion.div>
