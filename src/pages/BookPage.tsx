@@ -23,6 +23,7 @@ import {
   BarChart3,
 } from 'lucide-react';
 import { Button } from '../components/ui/Button';
+import Footer from '../components/Footer';
 import { BOOK_CONTENT, WEEK_INTROS } from '../data/bookContent';
 import { identifyUser, trackEvent } from '../lib/posthog';
 
@@ -514,13 +515,7 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-white/5 py-8 px-4">
-        <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="font-display font-bold text-lg text-white">MyRealProduct</div>
-          <p className="text-sm text-brand-text/40">© 2026 MyRealProduct. All rights reserved.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

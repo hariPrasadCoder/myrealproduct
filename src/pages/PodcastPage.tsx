@@ -6,7 +6,7 @@ import PodcastHost from '../components/podcast/PodcastHost';
 import PodcastAllEpisodes from '../components/podcast/PodcastAllEpisodes';
 import PodcastPastEpisodes from '../components/podcast/PodcastPastEpisodes';
 import PodcastCTA from '../components/podcast/PodcastCTA';
-import PodcastFooter from '../components/podcast/PodcastFooter';
+import Footer from '../components/Footer';
 
 export default function PodcastPage() {
   const podcastSchema = {
@@ -51,7 +51,7 @@ export default function PodcastPage() {
       <div id="subscribe">
         <PodcastCTA />
       </div>
-      <PodcastFooter />
+      <Footer />
     </main>
   );
 }

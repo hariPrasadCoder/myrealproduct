@@ -2,6 +2,7 @@ import { motion } from 'motion/react';
 import { Quote } from 'lucide-react';
 import { useState, useRef, useEffect } from 'react';
 import { trackSectionView, trackVideoInteraction } from '../lib/posthog';
+import TrustpilotReviews from './TrustpilotReviews';
 
 const REVIEWS = [
   {
@@ -197,6 +198,17 @@ export default function Testimonials() {
           </div>
 
         </div>
+
+        {/* Trustpilot Reviews */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.2 }}
+          className="mt-16"
+        >
+          <TrustpilotReviews />
+        </motion.div>
       </div>
     </section>
   );

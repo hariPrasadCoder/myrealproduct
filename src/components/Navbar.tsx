@@ -1,11 +1,13 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from './ui/Button';
-import { BookOpen, Mic, Menu, X } from 'lucide-react';
+import { BookOpen, Mic, Menu, X, ChevronDown } from 'lucide-react';
 import { trackApplyClick, trackEvent } from '../lib/posthog';
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [resourcesOpen, setResourcesOpen] = useState(false);
+  const resourcesRef = useRef<HTMLDivElement>(null);
 
   const handleApplyClick = () => {
     trackApplyClick('navbar');
@@ -16,6 +18,16 @@ export default function Navbar() {
     trackEvent('navbar_book_clicked');
     setOpen(false);
   };
+
+  useEffect(() => {
+    const handler = (e: MouseEvent) => {
+      if (resourcesRef.current && !resourcesRef.current.contains(e.target as Node)) {
+        setResourcesOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handler);
+    return () => document.removeEventListener('mousedown', handler);
+  }, []);
 
   return (
     <>
@@ -33,20 +45,58 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* Desktop */}
             <a
-              href="/podcast"
-              className="hidden lg:flex items-center gap-2 h-10 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white transition-all duration-300"
-            >
-              <Mic size={13} />
-              Podcast
-            </a>
-            <a
-              href="/book"
-              onClick={handleBookClick}
+              href="/enterprise"
               className="hidden lg:flex items-center gap-2 h-10 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white border border-white/10 hover:border-white/30 rounded-sm transition-all duration-300"
             >
-              <BookOpen size={13} />
-              Free Book
+              For Enterprises
             </a>
+
+            {/* Free Resources dropdown */}
+            <div ref={resourcesRef} className="relative hidden lg:block">
+              <button
+                onClick={() => setResourcesOpen(v => !v)}
+                className="flex items-center gap-1.5 h-10 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white transition-all duration-300"
+              >
+                Free Resources
+                <ChevronDown size={12} className={`transition-transform duration-200 ${resourcesOpen ? 'rotate-180' : ''}`} />
+              </button>
+
+              <AnimatePresence>
+                {resourcesOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -6 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -6 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute right-0 top-full mt-2 w-44 bg-brand-dark/95 backdrop-blur-xl border border-white/10 py-1"
+                  >
+                    <a
+                      href="/podcast"
+                      onClick={() => setResourcesOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-3 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white hover:bg-white/5 transition-all"
+                    >
+                      <Mic size={12} />
+                      Podcast
+                    </a>
+                    <a
+                      href="/book"
+                      onClick={() => { handleBookClick(); setResourcesOpen(false); }}
+                      className="flex items-center gap-2.5 px-4 py-3 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white hover:bg-white/5 transition-all"
+                    >
+                      <BookOpen size={12} />
+                      Free Book
+                    </a>
+                    <a
+                      href="/resources"
+                      onClick={() => setResourcesOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-3 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white hover:bg-white/5 transition-all border-t border-white/5"
+                    >
+                      101 Cheatsheets
+                    </a>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             <Button
               size="sm"
@@ -83,8 +133,16 @@ export default function Navbar() {
             className="fixed top-[65px] left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex flex-col gap-3 lg:hidden"
           >
             <a
+              href="/enterprise"
+              className="flex items-center h-11 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white border border-white/10 hover:border-white/20 rounded-sm transition-all"
+              onClick={() => setOpen(false)}
+            >
+              For Enterprises
+            </a>
+            <a
               href="/podcast"
               className="flex items-center gap-2 h-11 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white transition-all"
+              onClick={() => setOpen(false)}
             >
               <Mic size={13} />
               Podcast

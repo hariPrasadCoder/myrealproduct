@@ -3,6 +3,8 @@ import { Quote, Building2, CheckCircle2, ArrowRight, ArrowUpRight, Terminal, Glo
 import { useEffect } from 'react';
 import Marquee from '../components/Marquee';
 import Particles from '../components/Particles';
+import TrustpilotReviews from '../components/TrustpilotReviews';
+import Footer from '../components/Footer';
 import { trackEvent, trackSectionView, trackExternalLink } from '../lib/posthog';
 
 const REVIEWS = [
@@ -86,13 +88,21 @@ export default function EnterprisePage() {
             MyRealProduct
           </a>
 
-          <button
-            className="h-10 px-4 lg:px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300 whitespace-nowrap"
-            onClick={() => handleDiscoveryCallClick('navbar')}
-          >
-            <span className="hidden sm:inline">Book a Discovery Call</span>
-            <span className="sm:hidden">Book a Call</span>
-          </button>
+          <div className="flex items-center gap-3">
+            <a
+              href="/"
+              className="hidden sm:flex items-center h-10 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white border border-white/10 hover:border-white/30 rounded-sm transition-all duration-300"
+            >
+              For Individuals
+            </a>
+            <button
+              className="h-10 px-4 lg:px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300 whitespace-nowrap"
+              onClick={() => handleDiscoveryCallClick('navbar')}
+            >
+              <span className="hidden sm:inline">Book a Discovery Call</span>
+              <span className="sm:hidden">Book a Call</span>
+            </button>
+          </div>
         </div>
       </motion.nav>
 
@@ -156,7 +166,7 @@ export default function EnterprisePage() {
         <div className="container mx-auto px-4 relative z-10 max-w-5xl text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="relative">
 
-            <div className="inline-flex items-center gap-3 mb-10">
+            <div className="inline-flex flex-wrap items-center justify-center gap-3 mb-10">
               <div className="flex items-center gap-2 border border-white/10 rounded-sm px-4 py-2">
                 <Building2 size={12} className="text-brand-accent" />
                 <span className="text-xs font-mono uppercase tracking-widest text-white/50">
@@ -507,6 +517,86 @@ export default function EnterprisePage() {
               </motion.div>
             ))}
           </div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: 0.2 }}
+            className="mt-10"
+          >
+            <TrustpilotReviews />
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── UN / UNITAR Section ─────────────────────────────────────────── */}
+      <section className="py-32 border-t border-white/5 relative overflow-hidden">
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[500px] h-[500px] bg-brand-primary/5 rounded-full blur-[120px] pointer-events-none" />
+
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+            {/* Left */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <span className="text-brand-primary font-mono text-xs tracking-widest uppercase mb-6 block">
+                Institutional Trust
+              </span>
+              <h2 className="text-4xl md:text-5xl font-display font-medium text-white leading-tight mb-8">
+                When the United Nations needed to train professionals in AI,<br />
+                <span className="text-white/30">they called us.</span>
+              </h2>
+              <p className="text-brand-text/50 leading-relaxed mb-8">
+                UNITAR's Pathway to Prosperity Programme, backed by Google, brought us in to teach AI Engineering to early- and mid-career professionals across Selangor, Malaysia. Live workshops. Hands-on from day one. Participants built functional AI agents from scratch.
+              </p>
+              <a
+                href="https://www.linkedin.com/posts/pathwaytoprosperity-selangor-ai-ugcPost-7424323689925558272-0iIu?utm_source=share&utm_medium=member_desktop&rcm=ACoAACUWx_AByf8rhNVmX00bRlKH3l_daXlmIc0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-sm font-mono text-white/50 hover:text-white border border-white/10 hover:border-white/30 px-5 py-3 transition-colors"
+              >
+                See the programme <ArrowUpRight size={14} />
+              </a>
+            </motion.div>
+
+            {/* Right */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.15 }}
+              className="border border-white/10 bg-white/[0.02] p-10 space-y-8"
+            >
+              {/* Logos */}
+              <div className="flex items-center gap-6 pb-8 border-b border-white/8">
+                <img src="/logos/unitar.png" alt="UNITAR" className="h-10 w-auto grayscale opacity-90" style={{ mixBlendMode: 'screen' }} />
+                <span className="text-white/20 text-2xl font-thin">×</span>
+                <img src="/logos/google.png" alt="Google" className="h-6 w-auto grayscale opacity-70" />
+              </div>
+
+              {/* Details */}
+              <div className="space-y-5">
+                {[
+                  { label: "Programme", value: "Pathway to Prosperity" },
+                  { label: "Location", value: "Selangor, Malaysia" },
+                  { label: "Format", value: "Live workshops · No-code AI tools" },
+                  { label: "Outcome", value: "Professionals built AI agents from scratch" },
+                ].map((item) => (
+                  <div key={item.label} className="flex items-start justify-between gap-4">
+                    <span className="text-xs font-mono text-white/30 uppercase tracking-widest shrink-0 pt-0.5">{item.label}</span>
+                    <span className="text-sm text-white/70 text-right">{item.value}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
@@ -562,7 +652,7 @@ export default function EnterprisePage() {
                 </p>
               </div>
 
-              <div className="mt-16 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
+              <div className="mt-10 pt-8 border-t border-white/10 grid grid-cols-2 md:grid-cols-4 gap-8">
                 <div>
                   <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-2">Experience</p>
                   <p className="text-white font-medium">5+ Years in AI</p>
@@ -634,23 +724,7 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="border-t border-white/5 py-12">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="text-xl font-bold font-display tracking-tight text-white">
-              MyRealProduct
-            </div>
-            <div className="flex gap-8 text-sm text-brand-text/60">
-              <a href="/" className="hover:text-white transition-colors">For Individuals</a>
-              <a href="mailto:contact@myrealproduct.com" className="hover:text-white transition-colors">contact@myrealproduct.com</a>
-            </div>
-            <div className="text-sm text-brand-text/40">
-              © 2026 MyRealProduct. All rights reserved.
-            </div>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

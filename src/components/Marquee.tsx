@@ -6,7 +6,7 @@ const LOGOS = [
   { src: "/logos/3.png", alt: "Fox News Media", needsInvert: false, size: "" },
   { src: "/logos/4.png", alt: "NBC News", needsInvert: true, size: "big" },
   { src: "/logos/5.png", alt: "ABC News", needsInvert: true, size: "big" },
-  { src: "/logos/6.png", alt: "United Nations", needsInvert: true, size: "xl" },
+  { src: "/logos/unitar.png", alt: "UNITAR", needsInvert: false, size: "xl", blendScreen: true },
 ];
 
 export default function Marquee() {

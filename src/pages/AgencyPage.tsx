@@ -19,6 +19,7 @@ import {
   Zap,
 } from 'lucide-react';
 import { trackEvent, trackSectionView } from '../lib/posthog';
+import Footer from '../components/Footer';
 import Particles from '../components/Particles';
 
 const TICKER_ITEMS = [
@@ -877,23 +878,7 @@ export default function AgencyPage() {
         </div>
       </section>
 
-      {/* ── Footer ───────────────────────────────────────────────────────── */}
-      <footer className="border-t border-white/5 py-12">
-        <div className="container mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-brand-text/40">
-          <a href="/" className="text-xl font-bold font-display tracking-tight text-white hover:text-brand-accent transition-colors">
-            MyRealProduct
-          </a>
-          <div className="flex gap-8">
-            <a href="mailto:contact@myrealproduct.com" className="hover:text-white transition-colors">
-              Contact
-            </a>
-            <a href="/" className="hover:text-white transition-colors">
-              Home
-            </a>
-          </div>
-          <div>© 2026 MyRealProduct. All rights reserved.</div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

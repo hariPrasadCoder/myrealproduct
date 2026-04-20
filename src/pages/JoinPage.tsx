@@ -1,4 +1,5 @@
 import { motion } from 'motion/react';
+import Footer from '../components/Footer';
 import { Check, Info, Sparkles, Quote, ArrowRight } from 'lucide-react';
 import { Button } from '../components/ui/Button';
 import { useState, useRef } from 'react';
@@ -330,14 +331,7 @@ export default function JoinPage() {
         </div>
       </section>
 
-      {/* Simple Footer */}
-      <footer className="py-8 border-t border-white/10">
-        <div className="container mx-auto px-4 text-center">
-          <p className="text-xs text-white/40 font-mono">
-            © {new Date().getFullYear()} MyRealProduct. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </main>
   );
 }
