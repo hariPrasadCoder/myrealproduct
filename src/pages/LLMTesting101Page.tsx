@@ -471,6 +471,17 @@ export default function LLMTesting101Page() {
         <meta property="og:url" content="https://www.myrealproduct.com/resources/llmops-101" />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "LLMOps 101 — Cheatsheet",
+          "description": "A practical LLMOps cheatsheet: LLM evals, LLM-as-judge, golden datasets, LiteLLM AI gateway, Langfuse observability, prompt versioning, and cost tracking.",
+          "url": "https://www.myrealproduct.com/resources/llmops-101",
+          "author": { "@type": "Person", "name": "Hari Prasad", "url": "https://www.myrealproduct.com" },
+          "publisher": { "@type": "Organization", "name": "MyRealProduct", "url": "https://www.myrealproduct.com" },
+          "isAccessibleForFree": true,
+          "inLanguage": "en"
+        })}</script>
         <link
           href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&display=swap"
           rel="stylesheet"

@@ -811,6 +811,19 @@ function BookReader({ email }: { email: string }) {
         <meta property="og:title" content="Free AI Book — 31 Days to Your First AI Product" />
         <meta property="og:description" content="A free 31-day guide to building your first AI product. Step-by-step lessons covering AI agents, RAG, LLMs, and deployment." />
         <meta property="og:url" content="https://www.myrealproduct.com/book" />
+        <meta property="og:type" content="book" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Book",
+          "name": "31 Days to Your First AI Product",
+          "description": "A free 31-day guide to building your first AI product. Step-by-step lessons covering AI agents, RAG, LLMs, and deployment.",
+          "url": "https://www.myrealproduct.com/book",
+          "author": { "@type": "Person", "name": "Hari Prasad", "url": "https://www.myrealproduct.com" },
+          "publisher": { "@type": "Organization", "name": "MyRealProduct", "url": "https://www.myrealproduct.com" },
+          "isAccessibleForFree": true,
+          "inLanguage": "en"
+        })}</script>
       </Helmet>
       <div className="noise-overlay" />
 

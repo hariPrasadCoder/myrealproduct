@@ -1,6 +1,7 @@
 import { motion } from 'motion/react';
 import { ArrowUpRight } from 'lucide-react';
 import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import Footer from '../components/Footer';
 
 const RESOURCES = [
@@ -30,6 +31,24 @@ export default function ResourcesPage() {
 
   return (
     <div className="bg-brand-dark min-h-screen">
+      <Helmet>
+        <title>Free AI Resources & Cheatsheets — MyRealProduct</title>
+        <meta name="description" content="Free AI cheatsheets by Hari Prasad — Claude Code 101, LLMOps 101, and more. Practical, no-fluff references for AI engineers and builders." />
+        <link rel="canonical" href="https://www.myrealproduct.com/resources" />
+        <meta property="og:title" content="Free AI Resources & Cheatsheets — MyRealProduct" />
+        <meta property="og:description" content="Free AI cheatsheets by Hari Prasad — Claude Code 101, LLMOps 101, and more. Practical, no-fluff references for AI engineers and builders." />
+        <meta property="og:url" content="https://www.myrealproduct.com/resources" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "CollectionPage",
+          "name": "Free AI Resources & Cheatsheets",
+          "description": "Free AI cheatsheets by Hari Prasad covering Claude Code, LLMOps, and more.",
+          "url": "https://www.myrealproduct.com/resources",
+          "publisher": { "@type": "Organization", "name": "MyRealProduct", "url": "https://www.myrealproduct.com" }
+        })}</script>
+      </Helmet>
       <div className="noise-overlay" />
 
       {/* Navbar */}

@@ -447,6 +447,17 @@ export default function ClaudeCode101Page() {
         <meta property="og:url" content="https://www.myrealproduct.com/resources/claude-code-101" />
         <meta property="og:type" content="article" />
         <meta name="twitter:card" content="summary_large_image" />
+        <script type="application/ld+json">{JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "TechArticle",
+          "headline": "Claude Code 101 — Cheatsheet",
+          "description": "A practical Claude Code cheatsheet covering installation, plans, /init, CLAUDE.md, context management, plan mode, and more.",
+          "url": "https://www.myrealproduct.com/resources/claude-code-101",
+          "author": { "@type": "Person", "name": "Hari Prasad", "url": "https://www.myrealproduct.com" },
+          "publisher": { "@type": "Organization", "name": "MyRealProduct", "url": "https://www.myrealproduct.com" },
+          "isAccessibleForFree": true,
+          "inLanguage": "en"
+        })}</script>
         <link
           href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;1,9..144,300&display=swap"
           rel="stylesheet"
