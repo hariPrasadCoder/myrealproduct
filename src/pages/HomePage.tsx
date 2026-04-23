@@ -5,6 +5,7 @@ import Marquee from '../components/Marquee';
 import HowItWorks from '../components/HowItWorks';
 import Testimonials from '../components/Testimonials';
 import Syllabus from '../components/Syllabus';
+import StorySlider from '../components/StorySlider';
 import Reimbursement from '../components/Reimbursement';
 import Founder from '../components/Founder';
 import FAQ from '../components/FAQ';
@@ -37,6 +38,7 @@ export default function HomePage() {
       <Marquee />
       <Testimonials />
       <HowItWorks />
+      <StorySlider />
       <Syllabus />
       <Reimbursement />
       <Founder />

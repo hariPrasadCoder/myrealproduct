@@ -1,0 +1,55 @@
+# Escaping the "Tutorial Trap": How a Busy Data Analyst Broke Her Mental Blocks to Build AI
+
+If you look at LinkedIn today, the narrative around learning AI is exhausting. 
+
+Every day, "gurus" tell you to read five different books, watch a free 20-hour Stanford lecture, and master the theoretical mathematics behind neural networks before you are allowed to build anything. 
+
+For Praveena, a Data Analyst based in New York, this advice wasn't just unhelpful—it was paralyzing. 
+
+"It puts you in this endless tutorial loop," Praveena explains. "You spend months, or even years, watching videos, and you still won't feel comfortable. Something new will keep coming out, and you will always be in that mode of feeling like you need to learn more before you start."
+
+Praveena didn’t have time for endless tutorials. As a working mom who commutes 3 to 4 hours a day on top of an 8-hour workday, her free time is practically nonexistent. 
+
+"By the time I get home, I have no juice left to do anything," she admits with a laugh. 
+
+But she knew she needed to adapt to the changing tech landscape. She just needed a way to do it that actually fit into the reality of a busy professional's life. That search brought her to the MyRealProduct (MRP) AI Engineering Cohort. 
+
+### Shattering the "I'm Not a Developer" Myth
+
+Before joining MRP, Praveena suffered from a mental block that stops thousands of tech professionals in their tracks: she thought she was "just" a data person. 
+
+"In my mind, I was always just this data analyst," she says. "I didn't have this idea that I could actually build software. I thought you had to be a full-level software developer to even try."
+
+She attended an orientation session with MRP lead mentor, Hari, and asked him directly if her lack of heavy software engineering experience would hold her back. His answer changed her entire trajectory. 
+
+Hari explained that the modern AI landscape isn't about perfectly memorizing syntax—it’s about having the willingness to try, fail, and learn the tools. 
+
+"He made everything so simple," Praveena recalls. "Every week he would introduce us to things like GitHub, and he would explain it using simple analogies so you didn't feel intimidated. My biggest takeaway is that once you get past that mental block of *'I've never done this before,'* the possibilities are so much bigger than you think."
+
+### Acting as the TPM: Learning to Build
+
+Inside the cohort, the focus shifted immediately from theory to execution. 
+
+Working with a team, Praveena stepped out of her traditional analyst role and naturally adapted into a Technical Product Manager (TPM) position. Together, using tools like Replit and advanced LLMs, her team built a grocery recommendation application that automatically scanned food ingredients and flagged them for specific dietary restrictions.
+
+It wasn't a perfectly smooth journey building real software never is. But the experience of collaborating, defining requirements, and pushing an AI product across the finish line provided a massive shift in perspective. 
+
+"The biggest learning for me wasn't just technical," Praveena notes. "It was the fact that doing this course opened up a new mindset. I realized I don't have to restrict myself. With AI tools today, I can get creative and actually build things."
+
+### Praveena’s Warning: Navigating the Hype
+
+As someone who has successfully navigated the daunting task of upskilling while managing a demanding life schedule, Praveena has a stark warning for others looking to enter the AI space. 
+
+"Be careful," she advises. "There are a lot of people out there selling expensive bootcamps and coaching just to profit off job seekers who are feeling vulnerable. Nobody can know everything about AI right now. Instead of trying to chase that, or trying to boil the ocean by learning everything at once, just start."
+
+Her ultimate advice for crossing the threshold from beginner to builder is refreshingly practical: 
+
+"Try to build something. Make mistakes. Learning from building is always better than doing endless tutorials."
+
+### The Journey Continues
+
+Praveena is the first to admit that her AI journey is still a work in progress. She hasn't magically quit her job to launch a massive Silicon Valley startup, and that is exactly what makes her story so powerful. 
+
+She is a real professional, balancing a real life, who refused to be left behind by the AI wave. She broke her mental blocks, learned how to build, and transformed the way she views her own capabilities. 
+
+And in the modern tech landscape, that mindset is the ultimate competitive advantage. 
