@@ -3,7 +3,8 @@
 @theme {
   --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
   --font-display: "Outfit", ui-sans-serif, system-ui, sans-serif;
-  
+  --font-reading: "Inter", "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+
   --color-brand-dark: #050508;
   --color-brand-card: #0E0E14;
   --color-brand-terminal: #14141E;
@@ -16,6 +17,11 @@
 }
 
 @layer base {
+  html, body {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   body {
     background-color: var(--color-brand-dark);
     color: var(--color-brand-text);
@@ -28,6 +34,11 @@
     font-family: var(--font-display);
     color: white;
     letter-spacing: -0.02em;
+  }
+
+  img, video {
+    max-width: 100%;
+    height: auto;
   }
 }
 
@@ -79,4 +90,273 @@
 @keyframes podcast-ring-rotate {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
+}
+
+/* === Story article typography ===
+   A clean, editorial reading experience for the long-form story pages.
+   Inter is used because it is purpose-built for on-screen long-form
+   reading: open shapes, generous x-height, optical letter spacing.
+   Sized mobile-first so phones get a comfortable ~17px rhythm and
+   desktops scale up to ~21px without ever feeling cramped. */
+.story-prose {
+  font-family: var(--font-reading);
+  font-size: 1.0625rem; /* ~17px on mobile, comfortable for narrow widths */
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.82);
+  letter-spacing: -0.003em;
+  font-feature-settings: "ss01", "cv01", "cv02", "cv11";
+  max-width: 68ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (min-width: 640px) {
+  .story-prose {
+    font-size: 1.1875rem; /* 19px on tablet */
+    line-height: 1.8;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-prose {
+    font-size: 1.3125rem; /* 21px on desktop */
+    line-height: 1.85;
+  }
+}
+
+.story-prose > p {
+  margin-top: 1.6em;
+  margin-bottom: 1.6em;
+}
+
+.story-prose > p:first-child {
+  margin-top: 0;
+}
+
+.story-prose > * + img,
+.story-prose > img + * {
+  margin-top: 2.5em;
+}
+
+.story-prose > h2 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: white;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+  margin-top: 2.5em;
+  margin-bottom: 0.85em;
+}
+
+@media (min-width: 640px) {
+  .story-prose > h2 {
+    font-size: 1.875rem;
+    margin-top: 3em;
+    margin-bottom: 1em;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-prose > h2 {
+    font-size: 2rem;
+    margin-top: 3.5em;
+  }
+}
+
+.story-prose > h2::before {
+  content: "";
+  display: block;
+  width: 32px;
+  height: 2px;
+  background-color: var(--color-brand-accent);
+  margin-bottom: 1rem;
+  opacity: 0.7;
+}
+
+@media (min-width: 640px) {
+  .story-prose > h2::before {
+    width: 36px;
+    margin-bottom: 1.25rem;
+  }
+}
+
+.story-prose strong {
+  color: white;
+  font-weight: 600;
+}
+
+.story-prose em {
+  font-style: italic;
+  color: rgba(255, 255, 255, 0.95);
+}
+
+.story-prose img {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Explicit tiny image style for selected story photos */
+.story-prose img.story-image-small {
+  width: min(20rem, 100%);
+  max-width: 20rem;
+  height: auto;
+}
+
+/* Crop variant for story-image-small when top landscape needs trimming */
+.story-prose img.story-image-crop {
+  height: 20rem;
+  object-fit: cover;
+}
+
+@media (min-width: 640px) {
+  .story-prose img {
+    margin-top: 3em;
+    margin-bottom: 3em;
+  }
+
+  .story-prose img.story-image-small {
+    width: min(24rem, 100%);
+    max-width: 24rem;
+  }
+
+  .story-prose img.story-image-crop {
+    height: 24rem;
+  }
+}
+
+/* Lead paragraph (the "deck" right under the title) */
+.story-prose .story-lead {
+  font-family: var(--font-reading);
+  font-size: 1.25rem; /* 20px on mobile */
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.96);
+  letter-spacing: -0.012em;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (min-width: 640px) {
+  .story-prose .story-lead {
+    font-size: 1.5rem; /* 24px on tablet */
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-prose .story-lead {
+    font-size: 1.6875rem; /* ~27px on desktop */
+  }
+}
+
+/* Inline blockquote: short attributed quote with a subtle accent bar */
+.story-prose .story-quote {
+  margin: 2em 0;
+  padding: 0.25em 0 0.25em 1.125rem;
+  border-left: 2px solid var(--color-brand-accent);
+  font-family: var(--font-reading);
+  font-size: 1.125rem; /* 18px on mobile */
+  line-height: 1.55;
+  color: white;
+  font-weight: 400;
+  font-style: italic;
+  letter-spacing: -0.01em;
+}
+
+@media (min-width: 640px) {
+  .story-prose .story-quote {
+    margin: 2.75em 0;
+    padding-left: 1.5em;
+    font-size: 1.375rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-prose .story-quote {
+    font-size: 1.5rem;
+  }
+}
+
+.story-prose .story-quote p {
+  margin: 0;
+}
+
+/* Pull quote: a centered, oversized quote used near the end of articles */
+.story-prose .story-pullquote {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 1.375rem; /* 22px on mobile */
+  line-height: 1.4;
+  color: white;
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: -0.015em;
+  margin: 2.5em auto;
+  max-width: 30ch;
+}
+
+@media (min-width: 640px) {
+  .story-prose .story-pullquote {
+    font-size: 1.625rem;
+    margin: 3em auto;
+    max-width: 36ch;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-prose .story-pullquote {
+    font-size: 2rem;
+  }
+}
+
+/* Callout: a soft, low-contrast highlight for the brand-colored takeaways */
+.story-prose .story-callout {
+  background: linear-gradient(
+    180deg,
+    rgba(130, 122, 255, 0.06) 0%,
+    rgba(130, 122, 255, 0.02) 100%
+  );
+  border: 1px solid rgba(130, 122, 255, 0.18);
+  border-radius: 0.875rem;
+  padding: 1.25rem 1.25rem;
+  margin: 2.25em 0;
+  font-family: var(--font-reading);
+  font-size: 1rem; /* 16px on mobile */
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.92);
+  font-weight: 400;
+}
+
+@media (min-width: 640px) {
+  .story-prose .story-callout {
+    border-radius: 1rem;
+    padding: 1.75rem 1.75rem;
+    margin: 3em 0;
+    font-size: 1.125rem;
+    line-height: 1.7;
+  }
+}
+
+@media (min-width: 1024px) {
+  .story-prose .story-callout {
+    font-size: 1.25rem;
+    padding: 2rem 2.25rem;
+  }
+}
+
+.story-prose .story-callout p {
+  margin: 0;
+}
+
+.story-callout-eyebrow {
+  display: block;
+  font-family: var(--font-sans);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-brand-accent);
+  margin-bottom: 0.875rem;
+  font-weight: 600;
 }

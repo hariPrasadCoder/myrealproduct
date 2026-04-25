@@ -7,35 +7,21 @@ import Navbar from "../components/Navbar";
 
 const STORIES = [
   {
-    title: "\"I was drowning in AI tools. Here's how I finally figured it out.\" (Denise's Story)",
+    title: "\"I was drowning in AI tools. Here's how I finally figured it out.\"",
     excerpt: "Denise was stuck reading articles and watching tutorials. She didn't need another list of AI tools; she needed a proper system to get started.",
     href: "/story/denise",
     image: "/articles/denise_1.jpeg",
     author: "Denise",
   },
   {
-    title: "\"I Thought Building an AI Product Was Impossible\" — How Aprotiim Finally Launched His First App (Aprotiim's Story)",
-    excerpt: "He didn't need another tutorial on how a neural network functions. He needed to know how to build a complete, user-facing application.",
-    href: "/story/aprotiim",
-    image: "/articles/aprotiim_1.jpeg",
-    author: "Aprotiim",
-  },
-  {
-    title: "Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment (Digvijay's Story)",
-    excerpt: "His projects were getting stuck on his local laptop. He needed to learn how to build an end-to-end, live product.",
+    title: "Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment",
+    excerpt: "His projects were getting stuck on his local laptop. He needed to learn how to build an end to end, live product.",
     href: "/story/digvijay",
     image: "/articles/digvijay_1.jpeg",
     author: "Digvijay",
   },
   {
-    title: "Why a Stanford-Certified Data Scientist Joined the MyRealProduct Cohort Twice (Debisree's Story)",
-    excerpt: "She wanted to transition her career toward the highly coveted 'AI Engineer' path. To bridge that gap, she didn't just join once - she joined twice.",
-    href: "/story/debisree",
-    image: "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
-    author: "Debisree",
-  },
-  {
-    title: "Why a 15-Year Citibank Veteran Joined the AI Cohort to Learn Product Building (Rajesh's Story)",
+    title: "Why a 15 Year Citibank Veteran Joined the AI Cohort to Learn Product Building",
     excerpt: "He recognized a fundamental shift in the industry: AI was leveling the playing field.",
     href: "/story/rajesh",
     image: "/articles/rajesh_1.jpeg",
@@ -43,28 +29,43 @@ const STORIES = [
     imageClass: "object-cover object-[center_30%]",
   },
   {
-    title: "Escaping the \"YouTube Trap\": How Joan Built Her First AI App (Joan's Story)",
+    title: "Why a Stanford Certified Data Scientist Joined the MyRealProduct Cohort Twice",
+    excerpt: "She wanted to transition her career toward the highly coveted 'AI Engineer' path. To bridge that gap, she didn't just join once, she joined twice.",
+    href: "/story/debisree",
+    image: "/images/stanford.png",
+    author: "Debisree",
+    imageClass: "object-contain bg-white p-8",
+  },
+  {
+    title: "\"I Thought Building an AI Product Was Impossible\": How Aprotiim Finally Launched His First App",
+    excerpt: "He didn't need another tutorial on how a neural network functions. He needed to know how to build a complete, user facing application.",
+    href: "/story/aprotiim",
+    image: "/articles/aprotiim_1.jpeg",
+    author: "Aprotiim",
+  },
+  {
+    title: "Escaping the \"YouTube Trap\": How Joan Built Her First AI App",
     excerpt: "She didn't have proper guidance on where to go or what to look out for. It was a crazy path.",
     href: "/story/joan",
     image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
     author: "Joan",
   },
   {
-    title: "How MyRealProduct Helped Padmapriya Bridge the Gap Between Traditional Education and Building AI Agents (Padmapriya's Story)",
+    title: "How MyRealProduct Helped Padmapriya Bridge the Gap Between Traditional Education and Building AI Agents",
     excerpt: "She didn't need another theoretical seminar or a recorded university lecture. She needed to get her hands dirty with practical, modern tools.",
     href: "/story/padmapriya",
     image: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
     author: "Padmapriya",
   },
   {
-    title: "Escaping the \"Tutorial Trap\": How a Busy Data Analyst Broke Her Mental Blocks to Build AI (Praveena's Story)",
+    title: "Escaping the \"Tutorial Trap\": How a Busy Data Analyst Broke Her Mental Blocks to Build AI",
     excerpt: "She was always just a data analyst. She didn't have the idea that she could actually build software.",
     href: "/story/praveena",
     image: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80",
     author: "Praveena",
   },
   {
-    title: "Escaping the \"AI News Cycle\": How a Data Science Grad Stopped Reading and Started Building (Saahithi's Story)",
+    title: "Escaping the \"AI News Cycle\": How a Data Science Grad Stopped Reading and Started Building",
     excerpt: "She was caught in the 'AI News Cycle,' reading everything, but doing nothing.",
     href: "/story/saahithi",
     image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
@@ -74,17 +75,17 @@ const STORIES = [
 
 export default function StoriesPage() {
   useEffect(() => {
-    document.title = "Success Stories — MyRealProduct";
+    document.title = "Success Stories, MyRealProduct";
     return () => {
-      document.title = "MyRealProduct — Build an End-to-End AI Product in 4 Weeks";
+      document.title = "MyRealProduct, Build an End to End AI Product in 4 Weeks";
     };
   }, []);
 
   return (
     <div className="bg-brand-dark min-h-screen text-white">
       <Helmet>
-        <title>Success Stories — MyRealProduct</title>
-        <meta name="description" content="Read real stories of how people learned to build AI products end-to-end, overcoming the overwhelm to build real business impact." />
+        <title>Success Stories, MyRealProduct</title>
+        <meta name="description" content="Read real stories of how people learned to build AI products end to end, overcoming the overwhelm to build real business impact." />
       </Helmet>
       
       <Navbar />
@@ -103,7 +104,7 @@ export default function StoriesPage() {
             Stories
           </h1>
           <p className="text-brand-text/50 text-lg max-w-2xl mx-auto leading-relaxed">
-            Meet the people who stopped chasing tutorials and started building real, end-to-end AI applications.
+            Meet the people who stopped chasing tutorials and started building real, end to end AI applications.
           </p>
         </motion.div>
 

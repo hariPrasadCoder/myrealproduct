@@ -1,171 +1,171 @@
 import { motion } from "motion/react";
-import { Link } from "react-router-dom";
-import { ChevronLeft } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import { StoryBottomNavigation, StoryTopNavigation } from "../components/story/StoryPageNavigation";
+import { StoryMetaHighlights } from "../components/story/StoryMetaHighlights";
 
 export default function PraveenaStoryPage() {
   return (
-    <div className="bg-brand-dark min-h-screen text-white selection:bg-brand-primary/30">
+    <div className="bg-brand-dark min-h-screen text-white">
       <Helmet>
-        <title>Escaping the Tutorial Trap: Praveena's Story — MyRealProduct</title>
+        <title>Escaping the Tutorial Trap: Praveena's Story, MyRealProduct</title>
         <meta name="description" content="Discover how a busy Data Analyst broke her mental blocks to build AI." />
       </Helmet>
 
       <Navbar />
 
-      <main className="pt-32 pb-24">
-        <article className="container mx-auto px-4 max-w-3xl">
-          <Link 
-            to="/story"
-            className="inline-flex items-center text-brand-primary/80 hover:text-brand-primary font-mono text-sm uppercase tracking-wider mb-12 transition-colors group"
-          >
-            <ChevronLeft className="w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" />
-            Back to Stories
-          </Link>
+      <main className="pt-24 sm:pt-28 md:pt-32 pb-16 sm:pb-20 md:pb-24">
+        <StoryTopNavigation currentStory="praveena" />
 
-          <header className="mb-16 text-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              <span className="text-brand-primary font-mono text-sm tracking-widest uppercase mb-6 block">
-                Praveena's Story
-              </span>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-display font-medium text-white leading-tight mb-8">
-                Escaping the "Tutorial Trap": How a Busy Data Analyst Broke Her Mental Blocks to Build AI
-              </h1>
-              
-              <div className="flex items-center justify-center gap-4 text-white/50 font-mono text-sm">
-                <span>April 2026</span>
-                <span>•</span>
-                <span>4 min read</span>
-              </div>
-            </motion.div>
-          </header>
-
-          <motion.div 
+        <div className="container mx-auto px-4 max-w-4xl">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="prose prose-invert lg:prose-lg mx-auto prose-headings:font-display prose-headings:font-normal prose-a:text-brand-primary hover:prose-a:text-brand-primary/80 prose-img:rounded-2xl"
+            transition={{ duration: 0.5 }}
+            className="text-center pt-10 sm:pt-12 md:pt-16 pb-8 sm:pb-10"
           >
-            <img 
-              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=80" 
-              alt="Data Infrastructure Abstract" 
-              className="max-w-lg mx-auto block bg-white/5 p-2 rounded-2xl mb-12 object-cover object-center aspect-video"
+            <span className="text-brand-primary font-mono text-[11px] sm:text-xs tracking-[0.18em] sm:tracking-widest uppercase mb-5 sm:mb-6 block">
+              Success Story
+            </span>
+            <h1 className="text-[26px] sm:text-[34px] md:text-5xl lg:text-6xl font-display font-medium text-white leading-[1.15] sm:leading-tight mb-5 sm:mb-8">
+              Escaping the "Tutorial Trap": How a Busy Data Analyst Broke Her Mental Blocks to Build AI
+            </h1>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+          >
+            <StoryMetaHighlights
+              storyteller="Praveena"
+              date="April 2026"
+              highlights={[
+                {
+                  value: "Stepped into the TPM seat",
+                  label:
+                    "Led product decisions on a grocery recommendation app for dietary needs.",
+                },
+                {
+                  value: "Mindset broke open",
+                  label:
+                    "Realized she could build software, not just analyze data.",
+                },
+              ]}
+            />
+          </motion.div>
+        </div>
+
+        <div className="container mx-auto px-4 max-w-3xl">
+          <motion.article
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="story-prose"
+          >
+            <p className="story-lead">
+              If you look at LinkedIn today, the narrative around learning AI can feel exhausting.
+            </p>
+
+            <img
+              src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=1200&q=80"
+              alt="Data infrastructure abstract"
+              className="max-w-lg mx-auto block rounded-2xl object-cover border border-white/10 bg-white/5 p-2"
             />
 
             <p>
-              If you look at LinkedIn today, the narrative around learning AI is exhausting.
+              Every day, people tell you to read endless books, watch long lectures, and master all the theory before building anything.
+            </p>
+
+            <blockquote className="story-quote">
+              <p>
+                "It puts you in an endless tutorial loop. You keep learning, but you still do not feel ready to build."
+              </p>
+            </blockquote>
+
+            <p>
+              For Praveena, a Data Analyst based in New York, this advice was paralyzing. As a working mom with a long commute and a full workday, she did not have spare hours for endless tutorials.
             </p>
 
             <p>
-              Every day, "gurus" tell you to read five different books, watch a free 20-hour Stanford lecture, and master the theoretical mathematics behind neural networks before you are allowed to build anything.
+              She knew she needed to adapt to the changing landscape, but she needed a path that fit a real professional schedule. That search brought her to the MyRealProduct (MRP) AI Engineering Cohort.
+            </p>
+
+            <h2>Shattering the "I'm Not a Developer" Myth</h2>
+
+            <p>
+              Before joining MRP, Praveena carried a mental block shared by many professionals: she believed she was "just" a data person and not someone who could build products.
+            </p>
+
+            <blockquote className="story-quote">
+              <p>
+                "In my mind, I was always just this data analyst. I did not think I could actually build software."
+              </p>
+            </blockquote>
+
+            <p>
+              She asked Hari directly whether her lack of deep software engineering background would hold her back. His answer changed her trajectory.
             </p>
 
             <p>
-              For Praveena, a Data Analyst based in New York, this advice wasn't just unhelpful - it was paralyzing.
+              She learned that modern AI execution is less about memorizing syntax and more about willingness to experiment, debug, and iterate with the right tools.
             </p>
 
-            <p>
-              "It puts you in this endless tutorial loop," Praveena explains. "You spend months, or even years, watching videos, and you still won't feel comfortable. Something new will keep coming out, and you will always be in that mode of feeling like you need to learn more before you start."
-            </p>
-
-            <p>
-              Praveena didn't have time for endless tutorials. As a working mom who commutes 3 to 4 hours a day on top of an 8-hour workday, her free time is practically nonexistent.
-            </p>
-
-            <p>
-              "By the time I get home, I have no juice left to do anything," she admits with a laugh.
-            </p>
-
-            <p>
-              But she knew she needed to adapt to the changing tech landscape. She just needed a way to do it that actually fit into the reality of a busy professional's life. That search brought her to the MyRealProduct (MRP) AI Engineering Cohort.
-            </p>
-
-            <h3 className="text-brand-primary uppercase tracking-widest text-sm font-mono mt-12 mb-6">Shattering the "I'm Not a Developer" Myth</h3>
-
-            <p>
-              Before joining MRP, Praveena suffered from a mental block that stops thousands of tech professionals in their tracks: she thought she was "just" a data person.
-            </p>
-
-            <p>
-              "In my mind, I was always just this data analyst," she says. "I didn't have this idea that I could actually build software. I thought you had to be a full-level software developer to even try."
-            </p>
-
-            <p>
-              She attended an orientation session with MRP lead mentor, Hari, and asked him directly if her lack of heavy software engineering experience would hold her back. His answer changed her entire trajectory.
-            </p>
-
-            <p>
-              Hari explained that the modern AI landscape isn't about perfectly memorizing syntax - it's about having the willingness to try, fail, and learn the tools.
-            </p>
-
-            <p>
-              "He made everything so simple," Praveena recalls. "Every week he would introduce us to things like GitHub, and he would explain it using simple analogies so you didn't feel intimidated. My biggest takeaway is that once you get past that mental block of <em>'I've never done this before,'</em> the possibilities are so much bigger than you think."
-            </p>
-
-            <h3 className="text-brand-primary uppercase tracking-widest text-sm font-mono mt-12 mb-6">Acting as the TPM: Learning to Build</h3>
+            <h2>Acting as the TPM: Learning to Build</h2>
 
             <p>
               Inside the cohort, the focus shifted immediately from theory to execution.
             </p>
 
             <p>
-              Working with a team, Praveena stepped out of her traditional analyst role and naturally adapted into a Technical Product Manager (TPM) position. Together, using tools like Replit and advanced LLMs, her team built a grocery recommendation application that automatically scanned food ingredients and flagged them for specific dietary restrictions.
+              Working with her team, Praveena naturally stepped into a Technical Product Manager role. Together, they built a grocery recommendation application that scanned ingredients and flagged dietary restrictions.
             </p>
+
+            <div className="story-callout">
+              <span className="story-callout-eyebrow">Mindset shift</span>
+              <p>
+                "My biggest learning was mindset. I realized I do not have to restrict myself. With AI tools today, I can get creative and actually build things."
+              </p>
+            </div>
 
             <p>
-              It wasn't a perfectly smooth journey building real software never is. But the experience of collaborating, defining requirements, and pushing an AI product across the finish line provided a massive shift in perspective.
+              It was not a perfectly smooth journey, but collaborating, defining requirements, and shipping a real product gave her a major shift in confidence.
             </p>
 
-            <p>
-              "The biggest learning for me wasn't just technical," Praveena notes. "It was the fact that doing this course opened up a new mindset. I realized I don't have to restrict myself. With AI tools today, I can get creative and actually build things."
-            </p>
+            <h2>Praveena's Warning: Navigating the Hype</h2>
 
-            <h3 className="text-brand-primary uppercase tracking-widest text-sm font-mono mt-12 mb-6">Praveena's Warning: Navigating the Hype</h3>
-
-            <p>
-              As someone who has successfully navigated the daunting task of upskilling while managing a demanding life schedule, Praveena has a stark warning for others looking to enter the AI space.
-            </p>
-
-            <img 
-              src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80" 
-              alt="Data Code Output" 
-              className="max-w-md mx-auto block bg-white/5 p-2 rounded-2xl my-12 object-cover aspect-[4/3]"
+            <img
+              src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=1200&q=80"
+              alt="Code and data output"
+              className="w-full rounded-2xl shadow-2xl border border-white/10"
             />
 
             <p>
-              "Be careful," she advises. "There are a lot of people out there selling expensive bootcamps and coaching just to profit off job seekers who are feeling vulnerable. Nobody can know everything about AI right now. Instead of trying to chase that, or trying to boil the ocean by learning everything at once, just start."
+              As someone who upskilled while managing a demanding schedule, Praveena has a clear warning: be careful of overpriced promises that target vulnerable job seekers.
             </p>
 
             <p>
-              Her ultimate advice for crossing the threshold from beginner to builder is refreshingly practical:
+              Nobody can know everything in AI right now. Instead of trying to learn all of it at once, start small and build consistently.
             </p>
 
-            <p>
+            <p className="story-pullquote">
               "Try to build something. Make mistakes. Learning from building is always better than doing endless tutorials."
             </p>
 
-            <h3 className="text-brand-primary uppercase tracking-widest text-sm font-mono mt-12 mb-6">The Journey Continues</h3>
+            <h2>The Journey Continues</h2>
 
             <p>
-              Praveena is the first to admit that her AI journey is still a work in progress. She hasn't magically quit her job to launch a massive Silicon Valley startup, and that is exactly what makes her story so powerful.
+              Praveena is the first to say her AI journey is still in progress. She did not quit everything overnight, and that is exactly what makes her story credible.
             </p>
 
             <p>
-              She is a real professional, balancing a real life, who refused to be left behind by the AI wave. She broke her mental blocks, learned how to build, and transformed the way she views her own capabilities.
+              She is a real professional balancing a real life, and she refused to be left behind. She broke her mental blocks, learned to build, and changed the way she sees her capabilities.
             </p>
 
-            <p>
-              And in the modern tech landscape, that mindset is the ultimate competitive advantage.
-            </p>
-
-          </motion.div>
-        </article>
+            <StoryBottomNavigation currentStory="praveena" />
+          </motion.article>
+        </div>
       </main>
 
       <Footer />
