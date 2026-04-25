@@ -19,6 +19,20 @@ export default function DebisreeStoryPage() {
       <Helmet>
         <title>Why a Stanford Certified Data Scientist Joined the MyRealProduct Cohort Twice, Debisree's Story</title>
         <meta name="description" content="Discover why Debisree, a Stanford-certified data scientist, joined the MRP cohort twice to master Agentic RAG and AI deployment." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/debisree" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/debisree" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Why a Stanford Certified Data Scientist Joined the MRP Cohort Twice — Debisree's Story" />
+        <meta property="og:description" content="Discover why Debisree, a Stanford-certified data scientist, joined the MRP cohort twice to master Agentic RAG and AI deployment." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Why a Stanford Certified Data Scientist Joined the MRP Cohort Twice — Debisree's Story" />
+        <meta name="twitter:description" content="Discover why Debisree, a Stanford-certified data scientist, joined the MRP cohort twice to master Agentic RAG and AI deployment." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />

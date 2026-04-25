@@ -19,6 +19,20 @@ export default function RajeshStoryPage() {
       <Helmet>
         <title>Why a 15 Year Citibank Veteran Joined the AI Cohort to Learn Product Building, Rajesh's Story</title>
         <meta name="description" content="Discover how a 15-year backend veteran learned product building and AI deployment inside the MyRealProduct cohort." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/rajesh" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/rajesh" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Why a 15-Year Citibank Veteran Joined the AI Cohort — Rajesh's Story" />
+        <meta property="og:description" content="Discover how a 15-year backend veteran learned product building and AI deployment inside the MyRealProduct cohort." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Why a 15-Year Citibank Veteran Joined the AI Cohort — Rajesh's Story" />
+        <meta name="twitter:description" content="Discover how a 15-year backend veteran learned product building and AI deployment inside the MyRealProduct cohort." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />

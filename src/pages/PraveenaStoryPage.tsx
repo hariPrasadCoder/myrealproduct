@@ -11,6 +11,20 @@ export default function PraveenaStoryPage() {
       <Helmet>
         <title>Escaping the Tutorial Trap: Praveena's Story, MyRealProduct</title>
         <meta name="description" content="Discover how a busy Data Analyst broke her mental blocks to build AI." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/praveena" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/praveena" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Escaping the Tutorial Trap — Praveena's Story" />
+        <meta property="og:description" content="Discover how a busy Data Analyst broke her mental blocks to build AI." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Escaping the Tutorial Trap — Praveena's Story" />
+        <meta name="twitter:description" content="Discover how a busy Data Analyst broke her mental blocks to build AI." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />

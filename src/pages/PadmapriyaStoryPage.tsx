@@ -11,6 +11,20 @@ export default function PadmapriyaStoryPage() {
       <Helmet>
         <title>Bridging the Gap: Padmapriya's Story, MyRealProduct</title>
         <meta name="description" content="Discover how Padmapriya bridged the gap between traditional education and building AI agents." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/padmapriya" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/padmapriya" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Bridging the Gap — Padmapriya's Story" />
+        <meta property="og:description" content="Discover how Padmapriya bridged the gap between traditional education and building AI agents." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Bridging the Gap — Padmapriya's Story" />
+        <meta name="twitter:description" content="Discover how Padmapriya bridged the gap between traditional education and building AI agents." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />

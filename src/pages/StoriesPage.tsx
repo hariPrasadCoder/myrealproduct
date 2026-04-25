@@ -86,6 +86,20 @@ export default function StoriesPage() {
       <Helmet>
         <title>Success Stories, MyRealProduct</title>
         <meta name="description" content="Read real stories of how people learned to build AI products end to end, overcoming the overwhelm to build real business impact." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Success Stories — MyRealProduct" />
+        <meta property="og:description" content="Read real stories of how people learned to build AI products end to end, overcoming the overwhelm to build real business impact." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Success Stories — MyRealProduct" />
+        <meta name="twitter:description" content="Real people. Real AI products. Read how our alumni went from tutorials to shipping." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
       
       <Navbar />

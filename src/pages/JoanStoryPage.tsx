@@ -11,6 +11,20 @@ export default function JoanStoryPage() {
       <Helmet>
         <title>Escaping the YouTube Trap: Joan's Story, MyRealProduct</title>
         <meta name="description" content="Discover how Joan built her first AI app and took her skills to the enterprise." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/joan" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/joan" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Escaping the YouTube Trap — Joan's Story" />
+        <meta property="og:description" content="Discover how Joan built her first AI app and took her skills to the enterprise." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Escaping the YouTube Trap — Joan's Story" />
+        <meta name="twitter:description" content="Discover how Joan built her first AI app and took her skills to the enterprise." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />

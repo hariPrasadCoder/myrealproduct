@@ -19,6 +19,20 @@ export default function DeniseStoryPage() {
       <Helmet>
         <title>"I was drowning in AI tools. Here's how I finally figured it out.", Denise's Story</title>
         <meta name="description" content="Discover how Denise moved from the 'dashboard trap' to building powerful, end to end AI applications using Cursor, Python, and Streamlit." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/denise" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/denise" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="&quot;I was drowning in AI tools. Here's how I finally figured it out.&quot; — Denise's Story" />
+        <meta property="og:description" content="Discover how Denise moved from the 'dashboard trap' to building powerful, end to end AI applications using Cursor, Python, and Streamlit." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="&quot;I was drowning in AI tools. Here's how I finally figured it out.&quot; — Denise's Story" />
+        <meta name="twitter:description" content="Discover how Denise moved from the 'dashboard trap' to building powerful, end to end AI applications using Cursor, Python, and Streamlit." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />

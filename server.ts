@@ -7,6 +7,18 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DIST = path.join(__dirname, 'dist');
 const BASE_URL = 'https://www.myrealproduct.com';
 
+const STORIES = [
+  { slug: 'aprotiim', title: '"I Thought Building an AI Product Was Impossible" — Aprotiim\'s Story', description: 'Read how Aprotiim moved past YouTube tutorials and finally launched his first end to end AI product.' },
+  { slug: 'debisree', title: 'Why a Stanford Certified Data Scientist Joined the MRP Cohort Twice — Debisree\'s Story', description: 'Discover why Debisree, a Stanford-certified data scientist, joined the MRP cohort twice to master Agentic RAG and AI deployment.' },
+  { slug: 'denise', title: '"I was drowning in AI tools. Here\'s how I finally figured it out." — Denise\'s Story', description: "Discover how Denise moved from the 'dashboard trap' to building powerful, end to end AI applications using Cursor, Python, and Streamlit." },
+  { slug: 'digvijay', title: 'Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment — Digvijay\'s Story', description: 'Read how Digvijay went from getting stuck on localhost to confidently deploying an end to end AI product to the cloud.' },
+  { slug: 'joan', title: "Escaping the YouTube Trap — Joan's Story", description: 'Discover how Joan built her first AI app and took her skills to the enterprise.' },
+  { slug: 'padmapriya', title: "Bridging the Gap — Padmapriya's Story", description: 'Discover how Padmapriya bridged the gap between traditional education and building AI agents.' },
+  { slug: 'praveena', title: "Escaping the Tutorial Trap — Praveena's Story", description: 'Discover how a busy Data Analyst broke her mental blocks to build AI.' },
+  { slug: 'rajesh', title: "Why a 15-Year Citibank Veteran Joined the AI Cohort — Rajesh's Story", description: 'Discover how a 15-year backend veteran learned product building and AI deployment inside the MyRealProduct cohort.' },
+  { slug: 'saahithi', title: "Escaping the AI News Cycle — Saahithi's Story", description: 'How a Data Science Grad Stopped Reading and Started Building.' },
+];
+
 const EPISODES = [
   {
     slug: 'soundarya-balasubramani',
@@ -97,6 +109,24 @@ function resolvePageMeta(pathname: string, html: string): string {
     );
     updated = updated.replace('</head>', `${enterpriseJsonLd}\n  </head>`);
     return updated;
+  }
+
+  if (pathname === '/story') {
+    return injectMeta(
+      html,
+      'Success Stories — MyRealProduct',
+      'Read real stories of how people learned to build AI products end to end, overcoming the overwhelm to build real business impact.',
+      '/og-preview.png',
+      `${BASE_URL}/story`
+    );
+  }
+
+  const storyMatch = pathname.match(/^\/story\/([^/]+)$/);
+  if (storyMatch) {
+    const story = STORIES.find((s) => s.slug === storyMatch[1]);
+    if (story) {
+      return injectMeta(html, story.title, story.description, '/og-preview.png', `${BASE_URL}/story/${story.slug}`);
+    }
   }
 
   if (pathname === '/podcast') {

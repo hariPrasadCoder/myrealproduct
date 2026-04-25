@@ -19,6 +19,20 @@ export default function DigvijayStoryPage() {
       <Helmet>
         <title>Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment, Digvijay's Story</title>
         <meta name="description" content="Read how Digvijay went from getting stuck on localhost to confidently deploying an end to end AI product to the cloud." />
+        <link rel="canonical" href="https://www.myrealproduct.com/story/digvijay" />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content="https://www.myrealproduct.com/story/digvijay" />
+        <meta property="og:site_name" content="MyRealProduct" />
+        <meta property="og:title" content="Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment — Digvijay's Story" />
+        <meta property="og:description" content="Read how Digvijay went from getting stuck on localhost to confidently deploying an end to end AI product to the cloud." />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:site" content="@myrealproduct" />
+        <meta name="twitter:title" content="Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment — Digvijay's Story" />
+        <meta name="twitter:description" content="Read how Digvijay went from getting stuck on localhost to confidently deploying an end to end AI product to the cloud." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
 
       <Navbar />
