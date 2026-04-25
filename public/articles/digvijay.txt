@@ -1,0 +1,49 @@
+# Beyond Localhost: How a Senior ML Engineer Finally Conquered AI Deployment
+
+There is a quiet secret in the tech industry: you can be brilliant at machine learning, but still have no idea how to actually launch a product. 
+
+Digvijay knows this firsthand. With a Master’s degree in AI and experience working as a Senior Machine Learning Engineer, he already knew how to build models. But when an unexpected layoff forced him to re-evaluate his skill set, he realized he had a glaring blind spot. 
+
+"I had tried building projects, but they never made it to the end," Digvijay admits. "I could never fully socialize them. Whether it was an issue with setting up the website or handling payments, I always struggled with the deployment part."
+
+His projects were getting stuck on his local laptop. He needed to learn how to build an end-to-end, live product. That specific bottleneck is what led him to the MyRealProduct (MRP) AI Engineering Cohort. 
+
+### The Illusion of the "Fancy" Problem
+
+When Digvijay entered the cohort, he was initially paralyzed by the pressure to build something incredibly complex. As an engineer, the default mindset is often to search for the most technically difficult problem to solve. 
+
+But MRP lead mentor Hari quickly dismantled that approach. 
+
+"Hari told us that you don't have to have a very fancy problem to create a great solution," Digvijay recalls. "He gave the example of Uber—it's a simple problem: people need a ride, so let's fix that. That advice shifted how I thought about my own project. I started looking at problems that actually make a social impact, specifically in the healthcare domain, rather than just chasing complexity."
+
+### Pushing Through the Wall
+
+Even with a clear idea, building an end-to-end AI product is a grind. During the first week of the cohort, Digvijay hit a wall of burnout and laziness. 
+
+It was Hari's direct, no-nonsense mentorship that pulled him back in. 
+
+"Hari kept motivating me. He just said, *'Just spend two hours a day. Just think about it for two hours,'*" Digvijay says. "And taking it just two hours at a time is what basically led me to work properly on the idea."
+
+Once he was back in the trenches, the real technical upskilling began. Digvijay was already familiar with Python, but MRP pushed him into uncharted territory. He was forced to learn how to build robust code with limited resources, utilizing tools like Streamlit and Replit. 
+
+But his biggest victory was finally conquering his ultimate nemesis: deployment. 
+
+"The deployment part—setting up a reverse proxy with Nginx, purchasing a domain, and making it robust—was what I was really struggling with," he explains. "But with Hari's framework, I finally understood how to deploy things in a custom way without paying for heavily expensive, high-tier hosting."
+
+### From the Cohort to the Real World
+
+The true measure of any tech cohort is whether the skills survive outside the classroom. For Digvijay, the return on investment was immediate. 
+
+Recently, he was working on a highly complex research project involving medical image processing. The team needed a way to securely spin up a website to handle the data outside of a local environment. 
+
+"That is exactly when I remembered how I used the reverse proxy and Nginx in MRP," Digvijay says. "I was able to set up the website, purchase the domain, and deploy it. The MRP experience helped me immensely. But more than the technical part, it taught me a problem-solving mindset—just not giving up when things aren't working."
+
+### The Reality of the Modern Tech Landscape
+
+Today, a lot of traditional software engineers are hesitant to learn generative AI, preferring to wait and see what happens. As a Senior ML Engineer, Digvijay views that hesitation as a career trap. 
+
+"In the tech space, you have to keep upskilling. You cannot sit back, or you will become outdated," he warns. "Three or four years ago, everyone was focused on classical ML. Then ChatGPT came out, and everything changed. Every two or three years, something new will come up."
+
+His advice to anyone navigating the modern AI landscape is simple: stay humble, and focus on the problem first. 
+
+"Never assume that you have learned everything. Keep an open mind," Digvijay advises. "Focus on the problem. The tools will change, but if you know how to solve the problem, you can always learn the necessary tools to achieve it."

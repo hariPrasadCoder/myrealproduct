@@ -1,0 +1,51 @@
+# Escaping the "AI News Cycle": How a Data Science Grad Stopped Reading and Started Building
+
+If you are trying to break into the tech industry right now, your daily routine probably looks something like this: You wake up, check your phone, and see that three new AI models have just been released. 
+
+For Saahithi, who had just graduated with her Master’s degree in Data Science, that constant flood of information was becoming paralyzing. 
+
+"AI was blooming," Saahithi recalls. "It felt like every single day there was a new technology, a new theory, or a new concept being released. I was trying to catch up with everything, looking at courses to learn the basic theory of how LLMs worked. But I was completely new to actually building with it."
+
+She was caught in the "AI News Cycle" ,reading everything, but doing nothing. 
+
+That changed when she started following MyRealProduct (MRP) lead mentor Hari on LinkedIn. Reading his newsletter, one specific piece of advice struck a chord with her: *If you want to learn AI, you have to learn it by doing.*
+
+Realizing she needed a practical starting point to break out of her learning paralysis, Saahithi joined the live MRP AI Engineering Cohort. 
+
+### The Brainstorm: Problems over Solutions
+
+When Saahithi entered the cohort, she expected to immediately start coding. Instead, she was met with a completely different framework. 
+
+"In the very first orientation call, we were asked to stop thinking about solutions, and start thinking about problems," she explains. 
+
+She was grouped with a team of professionals from entirely different industries , from education to finance. That cross-industry collaboration sparked a massive shift in perspective. "We were sharing different problems, and because everyone was from a completely different stream, the perspectives and solutions were all different. Those interactions were incredibly interesting."
+
+Her team ultimately decided to solve a problem they were all deeply familiar with: the struggle of self-learning. They built an **AI Learning Mentor** , an application equipped with a dynamic chatbot designed to guide users step-by-step through building their own tech projects. 
+
+### The Trenches: Bugs, APIs, and the Power of Community
+
+In Weeks 2 and 3, the team dove into the actual engineering. Saahithi was introduced to rapid app-building environments like Replit, which she had never touched before. 
+
+But building real software comes with real roadblocks. Once the team integrated the Gemini API to power their chatbot, they hit a wall. 
+
+"We were trying to get the bot to suggest roadmaps and real-world projects based on a user's specific skill set," Saahithi notes. "But the responses from the API were repetitive, and the system was running really slow. We didn't know how to make it faster."
+
+In a standard online course, this is the exact moment a student might give up. But inside the MRP ecosystem, Saahithi had a lifeline. 
+
+They reached out to Hari, who immediately tapped into the MRP network. He connected Saahithi's team with an MRP alumni who had previously worked extensively with that specific API. The alumni jumped in, helped them debug the system, and successfully optimized the response times. 
+
+### Beyond Localhost: The Final Push
+
+With the application running smoothly, the final hurdle was taking it live. 
+
+For many data science graduates, local environments are comfortable, but cloud deployment is a foreign language. "Deploying everything on AWS, connecting our EC2 instance with a custom domain, and actually making it public to the world... that was completely new to me," Saahithi says. 
+
+But she did it. She crossed the finish line. 
+
+### The New Normal
+
+Today, Saahithi is no longer just reading the news , she is actively participating in the AI wave. She is taking the theories, workflows, and deployment skills she learned at MRP and integrating them directly into her Data Science career and personal projects. 
+
+When asked what advice she has for other professionals who are feeling overwhelmed by the endless announcements from OpenAI and tech companies, her answer is simple. 
+
+"I was in that exact same situation," she relates. "Every single day the news says there is a new model or concept. But if you just sit there looking at the news, it isn't going to help you go anywhere. You can't learn it all at once. You just need to start somewhere, pick something, and build."

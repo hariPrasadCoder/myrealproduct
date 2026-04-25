@@ -1,0 +1,49 @@
+# Why a Stanford-Certified Data Scientist Joined the MyRealProduct Cohort Twice
+
+If you work in the data industry today, you know the reality of the landscape: it is moving at lightning speed. 
+
+Debisree, an industry Data Scientist, understands this better than anyone. "This is a field where the advancements are happening at lightning speed," she explains. "You have to adapt. You have to learn the new technology. Otherwise, you will feel stuck."
+
+While she was already well-versed in traditional data science, she knew the industry was shifting. She wanted to transition her career toward the highly coveted "AI Engineer" path, which required a deep understanding of advanced concepts like Agentic RAG and end-to-end deployment. 
+
+To bridge that gap, she didn't just join the MyRealProduct (MRP) AI Cohort once—she joined it twice. 
+
+### The Enterprise-Grade Network
+
+Debisree first attended the cohort in October. But when lead mentor Hari announced a new, specialized iteration focused specifically on the AI Engineer career path, she immediately re-enrolled. 
+
+"I wanted to grow further in my career towards this specific path," Debisree notes. "I liked Hari’s courses because they are super structured and methodical. They don't smother you with tons of useless stuff."
+
+The second time around, the environment was completely different. Hari had implemented an interview-based selection process for the cohort, meaning the room was filled with serious, senior-level practitioners. 
+
+"The difference in experience was massive," she says. "I was grouped with two people who have been working in the industry for a long time—one from Amazon and one from Citibank. The group was highly knowledgeable and proactive. Even though the cohort is technically finished, we are still continuing our work together to make our product more advanced."
+
+### Building the "Intelligent Networking App"
+
+Debisree is no stranger to product building. Having recently completed the Ignite program at Stanford Business School, she already had a deep understanding of how to brainstorm, validate, and take a product to market. 
+
+Combined with her highly experienced MRP teammates, they bypassed basic ideas and tackled a complex, real-world problem: LinkedIn network overload. 
+
+"When you are on LinkedIn these days, you feel overwhelmed with too many people, but you don't actually know most of them personally," Debisree explains. 
+
+To solve this, the team built an **Intelligent Networking App**. It acts as an AI semantic wrapper on top of your existing connections. "Let's say you want to apply to Amazon, but you have too many connections there and don't know who to approach for a referral. This app queries your network based on past affiliations, mutual friends, and work history to categorize your connections into 'warm' and 'cold' networks, guiding you on exactly who to ask."
+
+### Mastering AWS and Cloud Deployment
+
+When it came to the execution phase, the team divided and conquered using advanced tools like Claude. While her teammate finalized the application's build, Debisree took total ownership of the hardest part of software engineering: deployment. 
+
+Running an AI app on a local laptop is easy; securely deploying it to the cloud is what separates beginners from true AI Engineers. 
+
+"I solely took care of the AWS deployment," she says proudly. "Hari’s videos were super helpful. I followed them step-by-step to learn the entire strategy—starting from buying the domain, to configuring all the security protocols, to setting up the proxy. I learned a lot."
+
+Today, she is taking those exact deployment strategies, along with her new knowledge of vector search and Agentic RAG, and applying them directly to her enterprise day job and personal projects. 
+
+### The Antidote to "Course Overload"
+
+When asked what advice she has for other Data Scientists who know they need to learn AI but feel overwhelmed by where to start, Debisree points out a massive flaw in the current education market. 
+
+"Balancing a full-time job and upskilling is not easy," she warns. "If you try to go take a massive online course, it can be completely overwhelming. You just get lost. Taking a huge course is sometimes not a fruitful way to learn."
+
+Instead, she advocates for the MRP approach: lean, project-based, and highly focused. 
+
+"Hari makes it super simple," she concludes. "It’s very structured. He gives you exactly the working knowledge you need to build on top of. Try to keep your eyes on what is new, and then just try to build something. That is the best way to learn."

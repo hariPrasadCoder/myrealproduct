@@ -1,0 +1,46 @@
+
+# How MyRealProduct Helped Padmapriya Bridge the Gap Between Traditional Education and Building AI Agents
+
+For many professionals, getting a Master’s degree feels like the final step to being career-ready. But when Padmapriya was completing her Master’s, she hit an unexpected wall. 
+
+"I realized that a lot of base concepts—like the basics for coding, SQL, or anything related to AI—were not covered," Padmapriya recalls. "The things I found were all very, very advanced concepts. It was too much for me to understand."
+
+Like so many others, she tried the self-learning route. She spent her summer trying to teach herself SQL and AI fundamentals. But balancing her time while searching for the right materials felt like a full-time job in itself. 
+
+She realized she didn't need another theoretical seminar or a recorded university lecture. She needed to get her hands dirty with practical, modern tools. That realization led her directly to the MyRealProduct (MRP) AI cohort. 
+
+### "Learning By Doing" and the Power of the Network
+
+Padmapriya joined MRP for two very specific reasons: she wanted practical, hands-on experience, and she wanted to be surrounded by driven people. 
+
+"The only reason I signed up was because it was not very theoretical," she explains. "I had signed up for MOOCs or workshops where they just run code in front of you. But MRP is something that you learn by *doing*. You have mentors, and it’s a small, limited set of people."
+
+Almost immediately, the value of the MRP network became clear. She was paired with a team of three other professionals to build an AI application from scratch. Together, they ideated a project designed to help beginners find the exact AI educational resources they needed—a problem Padmapriya knew all too well.
+
+Working in that group dynamic changed everything. "They were in the same boat that I was, upskilling in order to find jobs," she says. "Some were already working in the industry. Interacting with them helped me understand what kind of alternative tools they were using in their actual roles. I had never even come across the names of some of these tools before this course."
+
+### Mentorship That Extends Beyond the Code
+
+The MRP environment is notoriously fast-paced, designed to mirror the reality of the tech industry. For Padmapriya, lead mentor Hari’s teaching style was a wake-up call to how real engineering works.
+
+She remembers a specific week when Hari demonstrated how to quickly build an AI application. "It was very quick to digest, and a lot of teams were hesitating to get started," she laughs. "We knew it was possible, but we had to go back to the recordings and figure it out.
+
+But Hari’s mentorship didn't stop at the code. As Padmapriya progressed through the cohort, real life intervened: her practical upskilling was working, and she started getting calls for job interviews. 
+
+"What really helped me was getting in contact with Hari," Padmapriya emphasizes. "That was literally super helpful for me preparing for interviews. I was still a student, and he helped me navigate getting into a role and negotiating an offer. Every step of the process, Hari’s contact really helped me."
+
+### The Outcome: Building Real-World AI 
+
+Today, Padmapriya is no longer struggling to understand advanced, theoretical AI concepts. She is actively deploying them in the real world as a Supply Chain Transformation Specialist. 
+
+In her current role, she builds AI agents and applications specifically tailored to supply chain teams. 
+
+Looking back, she credits the MyRealProduct cohort with pulling back the curtain on what was actually possible in the industry. "Prior to MRP, my focus was on traditional machine learning," she says. "I had no clue about the real potential of modern AI. Getting that exposure really helped me understand what AI is capable of."
+
+### Her Advice to the Next Cohort
+
+When asked what advice she has for professionals looking to transition into AI, Padmapriya points right back to the MRP community. 
+
+"I think the network itself is the most invaluable asset," she says. "You get a network of people who are learning and sharing their knowledge, and you have access to mentors during the workshops. If you want to learn by doing, definitely sign up."
+
+Padmapriya’s journey proves that breaking into AI isn't just about having a perfect academic background. It’s about putting yourself in the right ecosystem, with the right mentors, and learning how to build solutions that actually matter. 

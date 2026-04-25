@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import Marquee from '../components/Marquee';
 import Particles from '../components/Particles';
 import TrustpilotReviews from '../components/TrustpilotReviews';
+import StorySlider from '../components/StorySlider';
 import Footer from '../components/Footer';
 import { trackEvent, trackSectionView, trackExternalLink } from '../lib/posthog';
 
@@ -530,6 +531,9 @@ export default function EnterprisePage() {
         </div>
       </section>
 
+      {/* ── Success Stories ─────────────────────────────────────────────── */}
+      <StorySlider />
+
       {/* ── UN / UNITAR Section ─────────────────────────────────────────── */}
       <section className="py-32 border-t border-white/5 relative overflow-hidden">
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.03] pointer-events-none" />
@@ -724,7 +728,7 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      <Footer />
+      <Footer hideCta />
     </div>
   );
 }

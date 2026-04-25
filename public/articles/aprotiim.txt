@@ -1,0 +1,45 @@
+# "I Thought Building an AI Product Was Impossible" — How Aprotiim Finally Launched His First App
+
+There is a frustrating stage in every developer's journey that nobody really talks about. 
+
+It’s the phase where you know the theory, you’ve watched the YouTube tutorials, and you’ve pushed a few basic projects to your GitHub. But when you sit down for a job interview, you realize something terrifying: a basic script isn't going to make you stand out. 
+
+Aprotiim was exactly here. While completing his Master’s degree—which didn't include AI in the curriculum , he took it upon himself to learn. 
+
+"I was following YouTube channels to learn the theory, and then the tools like LangChain," Aprotiim explains. "I built some basic AI agents and RAG architectures and pushed them to GitHub. But since I was looking for a job, I realized the projects I had done probably weren't good enough for an interview. I wanted an end-to-end product."
+
+He didn't need another tutorial on how a neural network functions. He needed to know how to build a complete, user-facing application. That drive is what brought him to the MyRealProduct (MRP) AI Cohort. 
+
+### The Illusion of the "Technical Wall"
+
+Because Aprotiim already had some baseline knowledge of AI frameworks, his biggest breakthrough in the cohort wasn't actually a piece of code. It was a complete shift in his product mindset. 
+
+In the tech world, beginners often assume the hardest part of building a product is writing the software. But in the very first week of MRP, Aprotiim learned that the code is secondary to the business case. 
+
+"Before jumping into the tools and starting to build, you have to identify the market gap," he notes. "Finding that gap and brainstorming how to leverage AI to solve it was completely new to me. Thinking about the entire lifecycle—from the problem to deployment—was an eye-opener."
+
+For his project, Aprotiim identified a highly relatable pain point: the overwhelming process of buying a used car. 
+
+He and his team built a comprehensive **Car Buying Assistant**. Instead of making users scour the internet, the application acts as a personalized broker. Users fill out a dynamic form detailing their preferences, and the app aggregates listings from over nine different US-based car websites to find the perfect match. It even features an integrated AI chatbot that answers complex questions about insurance documents and buying advice. 
+
+### The Era of "Vibe Coding"
+
+When it came time to actually build the application, Aprotiim utilized modern AI-assisted coding to move at lightning speed. 
+
+He notes that the heavy lifting of development is completely different today than it was even a year ago. By utilizing advanced models like Claude, technical roadblocks that used to take days to solve were cleared in minutes. 
+
+"Whatever bug I came across, the AI was able to solve it," Aprotiim says. "Giving proper prompts and using the proper model was really the only thing I needed to do."
+
+But getting the code to run on his laptop was only half the battle. The final hurdle was taking the application out of his local environment and putting it live on the internet. 
+
+"I had deployed things to the cloud before in other projects, but I had never attached a custom domain name to it," he explains. "Getting that domain name and making it your own official website... that part was new. It was really nice to finally have your own product."
+
+### The Founder Mindset
+
+Today, Aprotiim isn't just looking at AI as a way to pass a job interview. He is looking at it as a way to build actual businesses. 
+
+"I used to think that building and launching your own product was a massive deal that would take a monumental amount of effort," he laughs. "But after going through this cohort, I realized it’s not that hard. I feel motivated to launch more products. Once my visa allows me to monetize, I plan to build multiple websites like this and try my luck."
+
+When asked what advice he has for people who are intimidated by the constant flood of AI news and buzzwords, Aprotiim offers a refreshingly grounded perspective. 
+
+"Don't worry about the technical challenges," he advises. "With modern AI-assisted coding, technical challenges are no longer the main problem. The real deal is finding the *right problem* and making a business out of it. If you join MyRealProduct, you'll see it’s a great start. Once you build your first product, you will no longer feel scared or overwhelmed."
