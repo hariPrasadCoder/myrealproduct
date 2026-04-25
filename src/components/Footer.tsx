@@ -29,7 +29,7 @@ const NAV = [
   },
 ];
 
-export default function Footer() {
+export default function Footer({ hideCta }: { hideCta?: boolean }) {
   const handleApplyClick = () => {
     trackApplyClick('footer');
   };
@@ -39,7 +39,7 @@ export default function Footer() {
       <div className="container mx-auto px-4">
 
         {/* Final CTA */}
-        <div className="flex flex-col items-center text-center mb-24">
+        {!hideCta && <div className="flex flex-col items-center text-center mb-24">
           <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
             Ready to build your <br />
             <span className="text-gradient">AI Future?</span>
@@ -55,7 +55,7 @@ export default function Footer() {
           >
             APPLY TO THE COHORT
           </Button>
-        </div>
+        </div>}
 
         {/* Nav columns */}
         <div className="border-t border-white/5 pt-16 grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
