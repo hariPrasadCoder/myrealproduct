@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 import HomePage from './pages/HomePage';
 import JoinPage from './pages/JoinPage';
@@ -57,6 +57,7 @@ export default function App() {
         <Route path="/story/padmapriya" element={<PadmapriyaStoryPage />} />
         <Route path="/story/praveena" element={<PraveenaStoryPage />} />
         <Route path="/story/saahithi" element={<SaahithiStoryPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>
   );
