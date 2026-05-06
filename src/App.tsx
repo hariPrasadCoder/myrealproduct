@@ -22,6 +22,7 @@ import JoanStoryPage from "./pages/JoanStoryPage";
 import PadmapriyaStoryPage from "./pages/PadmapriyaStoryPage";
 import PraveenaStoryPage from "./pages/PraveenaStoryPage";
 import SaahithiStoryPage from "./pages/SaahithiStoryPage";
+import CommunityPage from './pages/CommunityPage';
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -57,6 +58,7 @@ export default function App() {
         <Route path="/story/padmapriya" element={<PadmapriyaStoryPage />} />
         <Route path="/story/praveena" element={<PraveenaStoryPage />} />
         <Route path="/story/saahithi" element={<SaahithiStoryPage />} />
+        <Route path="/community" element={<CommunityPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </BrowserRouter>

@@ -16,6 +16,7 @@ const NAV = [
       { href: '/book', text: 'Free Book' },
       { href: '/podcast', text: 'Podcast' },
       { href: '/resources', text: '101 Cheatsheets' },
+      { href: '/community', text: 'UFO Community' },
       { href: 'https://hariprasad00.substack.com/subscribe', text: 'Newsletter', external: true },
     ],
   },

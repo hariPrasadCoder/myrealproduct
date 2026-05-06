@@ -129,6 +129,47 @@ function resolvePageMeta(pathname: string, html: string): string {
     }
   }
 
+  if (pathname === '/community') {
+    const communityJsonLd = `<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "${BASE_URL}/community",
+      "name": "UFO - Until Full-Time Offer | Free Community by MyRealProduct",
+      "description": "A free WhatsApp community for international students, immigrants, and professionals navigating the US tech job search without a safety net. Founded by Hari Prasad.",
+      "url": "${BASE_URL}/community",
+      "isPartOf": { "@id": "${BASE_URL}/#website" },
+      "about": {
+        "@type": "Organization",
+        "name": "UFO Community",
+        "alternateName": "Until Full-Time Offer",
+        "description": "Free WhatsApp community for international students and immigrants in the US tech job market",
+        "founder": { "@id": "${BASE_URL}/#founder" },
+        "url": "${BASE_URL}/community",
+        "audience": {
+          "@type": "Audience",
+          "audienceType": "International students, immigrants, and professionals navigating the US tech job search"
+        }
+      },
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD",
+        "description": "Free WhatsApp community membership"
+      }
+    }
+    </script>`;
+    let updated = injectMeta(
+      html,
+      'UFO - Until Full-Time Offer | Free Community by MyRealProduct',
+      'Find your people. Land your offer. A free community for international students, immigrants, and professionals navigating the US tech job search without a safety net.',
+      '/og-community.png',
+      `${BASE_URL}/community`
+    );
+    updated = updated.replace('</head>', `${communityJsonLd}\n  </head>`);
+    return updated;
+  }
+
   if (pathname === '/podcast') {
     return injectMeta(
       html,

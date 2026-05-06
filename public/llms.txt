@@ -22,6 +22,7 @@ Unlike courses that teach theory, MyRealProduct focuses on shipping real product
 - [Podcast](https://www.myrealproduct.com/podcast): The MRP Podcast — real conversations with AI engineers and founders on how AI products are actually built
 - [Free Book](https://www.myrealproduct.com/book): A free 31-day guide to building your first AI product
 - [Claude Code 101](https://www.myrealproduct.com/resources/claude-code-101): A practical Claude Code cheatsheet — installation, plans, /init, CLAUDE.md, context management, plan mode, skills, and more
+- [UFO Community](https://www.myrealproduct.com/community): UFO (Until Full-Time Offer) is a free WhatsApp community by MyRealProduct for international students, immigrants, and professionals navigating the US tech job search without a safety net. Founded by Hari Prasad, who moved to the US on an F-1 visa with $88,000 in student loans. Free to join. Includes bi-weekly sessions, expert talks, offer stories, curated resources, and occasional office hours with Hari.
 
 ## About the Founder
 

@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Button } from './ui/Button';
-import { BookOpen, Mic, Menu, X, ChevronDown } from 'lucide-react';
+import { BookOpen, Mic, Menu, X, ChevronDown, Users } from 'lucide-react';
 import { trackApplyClick, trackEvent } from '../lib/posthog';
 
 export default function Navbar() {
@@ -94,6 +94,14 @@ export default function Navbar() {
                       101 Cheatsheets
                     </a>
                     <a
+                      href="/community"
+                      onClick={() => setResourcesOpen(false)}
+                      className="flex items-center gap-2.5 px-4 py-3 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white hover:bg-white/5 transition-all border-t border-white/5"
+                    >
+                      <Users size={12} />
+                      UFO Community
+                    </a>
+                    <a
                       href="https://hariprasad00.substack.com/subscribe"
                       target="_blank"
                       rel="noopener noreferrer"
@@ -141,6 +149,14 @@ export default function Navbar() {
             transition={{ duration: 0.2 }}
             className="fixed top-[65px] left-0 right-0 z-40 bg-brand-dark/95 backdrop-blur-xl border-b border-white/5 px-6 py-4 flex flex-col gap-3 lg:hidden"
           >
+            <a
+              href="/community"
+              className="flex items-center gap-2 h-11 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white transition-all"
+              onClick={() => setOpen(false)}
+            >
+              <Users size={13} />
+              UFO Community
+            </a>
             <a
               href="https://hariprasad00.substack.com/subscribe"
               target="_blank"

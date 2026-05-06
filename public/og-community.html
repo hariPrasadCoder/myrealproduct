@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1200" />
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600&display=swap');
+
+    body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #050508;
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: #fff;
+      position: relative;
+    }
+
+    .grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+    }
+
+    .glow {
+      position: absolute;
+      top: 50%;
+      left: 40%;
+      transform: translate(-50%, -50%);
+      width: 700px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(69,61,200,0.20) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .accent-line {
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(180deg, transparent, #453DC8 30%, #827AFF 70%, transparent);
+    }
+
+    /* Flags — atmospheric corners */
+    .flag {
+      position: absolute;
+      font-size: 80px;
+      opacity: 0.10;
+      line-height: 1;
+    }
+    .flag-us  { top: 30px;  right: 50px;  font-size: 110px; opacity: 0.18; }
+    .flag-in  { bottom: 40px; right: 180px; opacity: 0.10; }
+    .flag-gb  { top: 40px;  right: 200px; font-size: 55px;  opacity: 0.07; }
+    .flag-ca  { bottom: 50px; right: 60px;  font-size: 55px;  opacity: 0.07; }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 60px 80px;
+      height: 100%;
+      max-width: 800px;
+    }
+
+    .label {
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #827AFF;
+      margin-bottom: 20px;
+    }
+
+    .ufo {
+      font-family: 'Outfit', sans-serif;
+      font-size: 120px;
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -0.03em;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+
+    .acronym {
+      font-family: 'Outfit', sans-serif;
+      font-size: 18px;
+      font-weight: 400;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.30);
+      margin-bottom: 28px;
+    }
+
+    .divider {
+      width: 48px;
+      height: 1px;
+      background: rgba(255,255,255,0.15);
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 36px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.01em;
+      color: #ffffff;
+      margin-bottom: 16px;
+    }
+
+    h1 span {
+      color: rgba(255,255,255,0.45);
+    }
+
+    p {
+      font-size: 16px;
+      color: rgba(180,180,200,0.55);
+      line-height: 1.55;
+      max-width: 560px;
+      margin-bottom: 32px;
+    }
+
+    .pills {
+      display: flex;
+      gap: 12px;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 2px;
+      padding: 5px 14px;
+      font-family: monospace;
+      font-size: 11px;
+      letter-spacing: 0.10em;
+      text-transform: uppercase;
+      color: rgba(180,180,200,0.55);
+    }
+
+    .pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #4ade80;
+    }
+
+    .brand {
+      position: absolute;
+      bottom: 36px;
+      right: 60px;
+      font-family: 'Outfit', sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.22);
+      letter-spacing: -0.01em;
+    }
+  </style>
+</head>
+<body>
+  <div class="grid"></div>
+  <div class="glow"></div>
+  <div class="accent-line"></div>
+
+  <div class="flag flag-us">🇺🇸</div>
+  <div class="flag flag-in">🇮🇳</div>
+  <div class="flag flag-gb">🇬🇧</div>
+  <div class="flag flag-ca">🇨🇦</div>
+
+  <div class="content">
+    <div class="label">Free Community · By MyRealProduct</div>
+
+    <div class="ufo">UFO</div>
+    <div class="acronym">Until Full-Time Offer.</div>
+    <div class="divider"></div>
+
+    <h1>Find your people. <span>Land your offer.</span></h1>
+
+    <p>
+      A free community for international students, immigrants, and professionals
+      navigating the US tech job search without a safety net.
+    </p>
+
+    <div class="pills">
+      <div class="pill"><span class="pill-dot"></span>Free to join</div>
+      <div class="pill">WhatsApp Community</div>
+      <div class="pill">International Students</div>
+    </div>
+  </div>
+
+  <div class="brand">MyRealProduct</div>
+</body>
+</html>
