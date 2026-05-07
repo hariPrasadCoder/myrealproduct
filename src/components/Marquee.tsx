@@ -1,6 +1,8 @@
 import { motion } from 'motion/react';
 
 const LOGOS = [
+  { src: "/logos/BBC logo.png", alt: "BBC", needsInvert: false, size: "big", opacity: "opacity-80 hover:opacity-100" },
+  { src: "/logos/Tedx logo.png", alt: "TEDx", needsInvert: true, size: "big" },
   { src: "/logos/1.svg", alt: "The Associated Press", needsInvert: true, size: "" },
   { src: "/logos/2.png", alt: "Benzinga", needsInvert: true, size: "" },
   { src: "/logos/3.png", alt: "Fox News Media", needsInvert: false, size: "" },
@@ -38,16 +40,18 @@ export default function Marquee() {
               <img
                 src={logo.src}
                 alt={logo.alt}
-                className={`w-auto object-contain transition-opacity duration-300 grayscale mix-blend-screen ${
+                className={`w-auto object-contain transition-all duration-300 grayscale mix-blend-screen hover:[filter:none] hover:opacity-100 ${
                   logo.size === 'xl'
                     ? 'h-14 md:h-20 max-w-[160px] md:max-w-[220px]'
-                    : logo.size === 'big' 
-                    ? 'h-10 md:h-14 max-w-[130px] md:max-w-[180px]' 
+                    : logo.size === 'big'
+                    ? 'h-10 md:h-14 max-w-[130px] md:max-w-[180px]'
                     : 'h-7 md:h-9 max-w-[100px] md:max-w-[140px]'
                 } ${
-                  logo.needsInvert 
-                    ? 'invert opacity-50 hover:opacity-80' 
-                    : 'opacity-40 hover:opacity-70'
+                  logo.opacity
+                    ? logo.opacity
+                    : logo.needsInvert
+                    ? 'invert opacity-50'
+                    : 'opacity-40'
                 }`}
               />
             </div>

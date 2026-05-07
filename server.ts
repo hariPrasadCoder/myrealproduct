@@ -84,30 +84,62 @@ function resolvePageMeta(pathname: string, html: string): string {
     {
       "@context": "https://schema.org",
       "@type": "Service",
-      "name": "Enterprise AI Training — MyRealProduct",
-      "description": "Personalised AI training programmes for business teams. Custom curriculum built around your workflows, live hands-on workshops, and ongoing monthly retainer support.",
+      "name": "AI Happy Hour | Enterprise AI Training by MyRealProduct",
+      "description": "A guided workshop sprint for business teams. We sit with your team, cover AI essentials together, then build a complete end-to-end AI solution for a real problem before anyone leaves. In person or virtual.",
       "provider": {
         "@type": "Organization",
         "name": "MyRealProduct",
         "url": "https://www.myrealproduct.com",
         "email": "contact@myrealproduct.com"
       },
-      "areaServed": ["GB", "Worldwide"],
+      "areaServed": ["GB", "US", "Worldwide"],
       "audience": {
         "@type": "Audience",
-        "audienceType": "Business teams — Marketing, Finance, Legal, HR, Operations"
+        "audienceType": "Business teams in Marketing, Finance, Legal, HR, Operations, Customer Success"
       },
       "url": "https://www.myrealproduct.com/enterprise"
     }
     </script>`;
     let updated = injectMeta(
       html,
-      'Enterprise AI Training — MyRealProduct',
-      'Give your team an unfair advantage with AI. Personalised training built around your workflows, with ongoing monthly support. London, UK + Virtual Worldwide.',
+      'AI Happy Hour | Enterprise AI Training | MyRealProduct',
+      'A guided workshop sprint for your team. We show up, teach the essentials, and build a real AI solution together, end to end, before anyone leaves. In person or virtual.',
       '/og-preview.png',
       `${BASE_URL}/enterprise`
     );
     updated = updated.replace('</head>', `${enterpriseJsonLd}\n  </head>`);
+    return updated;
+  }
+
+  if (pathname === '/enterprise/hr') {
+    const hrJsonLd = `<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Service",
+      "name": "AI Happy Hour for HR Teams | MyRealProduct",
+      "description": "A hands-on AI workshop sprint built specifically for HR teams. We sit with your team and build real AI tools for screening, JD writing, onboarding, and compliance together, in one session.",
+      "provider": {
+        "@type": "Organization",
+        "name": "MyRealProduct",
+        "url": "https://www.myrealproduct.com",
+        "email": "contact@myrealproduct.com"
+      },
+      "areaServed": ["GB", "US", "Worldwide"],
+      "audience": {
+        "@type": "Audience",
+        "audienceType": "HR teams, Talent Acquisition, People Operations, HR Directors, CHROs"
+      },
+      "url": "https://www.myrealproduct.com/enterprise/hr"
+    }
+    </script>`;
+    let updated = injectMeta(
+      html,
+      'AI Happy Hour for HR Teams | MyRealProduct',
+      'A hands-on AI workshop sprint for HR teams. We build CV screeners, JD writers, and onboarding tools together in one session. No prior AI experience needed.',
+      '/og-preview.png',
+      `${BASE_URL}/enterprise/hr`
+    );
+    updated = updated.replace('</head>', `${hrJsonLd}\n  </head>`);
     return updated;
   }
 

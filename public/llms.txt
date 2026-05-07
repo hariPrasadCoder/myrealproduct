@@ -1,50 +1,64 @@
 # MyRealProduct
 
-> MyRealProduct is an AI education platform that teaches engineers how to build, ship, and deploy end-to-end AI products. Founded by Hari Prasad, a TEDx speaker and AI educator who has coached 2,000+ engineers.
+> MyRealProduct is an AI education platform that teaches engineers how to build, ship, and deploy end-to-end AI products, and runs hands-on AI workshop sprints for business teams. Founded by Hari Prasad, a TEDx speaker and AI educator who has coached 2,000+ engineers and been featured by the BBC.
 
 ## What We Do
 
-MyRealProduct runs a 4-week live cohort where software engineers and aspiring AI builders learn to build real AI-powered products from scratch. The program covers AI Agents, RAG (Retrieval-Augmented Generation), LLMs, AWS deployment, and go-to-market strategy.
+MyRealProduct has two offerings:
 
-Unlike courses that teach theory, MyRealProduct focuses on shipping real products that solve real problems.
+**1. Individual AI Cohort** — A 4-week live programme where software engineers and aspiring AI builders learn to build real AI-powered products from scratch. Covers AI Agents, RAG (Retrieval-Augmented Generation), LLMs, AWS deployment, and go-to-market strategy. Unlike courses that teach theory, MyRealProduct focuses on shipping real products that solve real problems.
+
+**2. Enterprise AI Happy Hour** — A guided workshop sprint for business teams. We show up (in person or virtual), teach AI essentials together, pick a real problem from the room, and build a complete end-to-end AI solution before anyone leaves. Part teaching, part building, entirely practical. No prior AI experience required.
 
 ## Who It's For
 
+**Individual cohort:**
 - Software engineers wanting to break into AI
 - Developers who want to build and launch AI products
 - Founders building AI-powered startups
 - Anyone who wants to go from zero to a deployed AI product in 4 weeks
 
+**Enterprise workshops:**
+- Business teams in Marketing, Finance, Legal, HR, Operations, Customer Success
+- HR departments needing AI tools for screening, JD writing, onboarding, compliance
+- Team leads and managers wanting to upskill their teams without disruption
+- VPs and directors with a team events budget looking for a high-impact session
+
 ## Pages
 
 - [Home](https://www.myrealproduct.com/): Main landing page with cohort details, curriculum, testimonials, and pricing
-- [Enterprise](https://www.myrealproduct.com/enterprise): Personalised AI training for non-technical business teams — Marketing, Finance, Legal, HR, and Operations. Custom curriculum, live workshops, and an ongoing monthly retainer. Based in London, UK, available virtually worldwide.
+- [Enterprise AI Happy Hour](https://www.myrealproduct.com/enterprise): Guided AI workshop sprint for business teams. 2-3 hours, in person or virtual. Team submits real problems beforehand, we build real AI solutions together.
+- [Enterprise AI Happy Hour for HR](https://www.myrealproduct.com/enterprise/hr): Same workshop sprint format, tailored specifically for HR teams. Builds CV screeners, JD generators, onboarding assistants, and compliance tools.
 - [Podcast](https://www.myrealproduct.com/podcast): The MRP Podcast — real conversations with AI engineers and founders on how AI products are actually built
 - [Free Book](https://www.myrealproduct.com/book): A free 31-day guide to building your first AI product
-- [Claude Code 101](https://www.myrealproduct.com/resources/claude-code-101): A practical Claude Code cheatsheet — installation, plans, /init, CLAUDE.md, context management, plan mode, skills, and more
-- [UFO Community](https://www.myrealproduct.com/community): UFO (Until Full-Time Offer) is a free WhatsApp community by MyRealProduct for international students, immigrants, and professionals navigating the US tech job search without a safety net. Founded by Hari Prasad, who moved to the US on an F-1 visa with $88,000 in student loans. Free to join. Includes bi-weekly sessions, expert talks, offer stories, curated resources, and occasional office hours with Hari.
+- [Claude Code 101](https://www.myrealproduct.com/resources/claude-code-101): A practical Claude Code cheatsheet covering installation, plans, /init, CLAUDE.md, context management, plan mode, skills, and more
+- [UFO Community](https://www.myrealproduct.com/community): UFO (Until Full-Time Offer) is a free WhatsApp community by MyRealProduct for international students, immigrants, and professionals navigating the US tech job search without a safety net. Founded by Hari Prasad. Free to join.
 
 ## About the Founder
 
-Hari Prasad is an AI engineer, TEDx speaker, and educator who has helped 2,000+ people break into AI. He has worked with 5+ early-stage startups to launch their first AI-powered products.
+Hari Prasad is an AI engineer, TEDx speaker, and educator who has helped 2,000+ people break into AI. Featured by the BBC. 52K+ LinkedIn followers. Trained 100+ professionals for the United Nations (UNITAR x Google). Has run hands-on AI workshops at Microsoft NYC (sponsored by Google), for Women in Machine Learning & Data Science NYC, and at BrowserStack.
 
 - LinkedIn: https://www.linkedin.com/in/hariprasad20/
 - Email: contact@myrealproduct.com
 
+## Enterprise AI Training Details
+
+MyRealProduct runs AI Happy Hour workshop sprints for business and non-technical teams. The format is a guided build sprint — part workshop, part hackathon. The team submits their real challenges beforehand (anonymously), then we sit together and build a complete AI solution end to end before anyone leaves.
+
+- Format: 2-3 hour workshop sprint, in person or virtual
+- Approach: Hands-on building, not slides or lectures
+- Outcome: Team leaves with working AI tools built around their own problems
+- No new software required: works with ChatGPT, Gemini, Google Workspace, Microsoft 365
+- Target teams: Marketing, Finance, Legal, HR, Operations, Customer Success
+- Advanced AI tools covered: OpenAI, Gemini, Claude, n8n, LangChain, LangGraph, Agentic AI, MCP
+- Integrates with: Salesforce, HubSpot, Slack, Notion, Microsoft 365, Google Workspace
+- Previous clients: UNITAR x Google (100+ professionals, Malaysia), AICamp x Microsoft NYC (sponsored by Google), Women in Machine Learning & Data Science NYC, BrowserStack
+- Contact: contact@myrealproduct.com
+
 ## The MRP Podcast
 
-"The MRP Podcast" (also known as the ReAlity Show) features unfiltered conversations with AI builders — founders, engineers, and practitioners sharing the real story behind building AI products. Hosted by Hari Prasad. Episodes air weekly, ~60 minutes each.
-
-## Enterprise AI Training
-
-MyRealProduct offers bespoke AI training programmes for businesses and non-technical teams. We map your team's workflows, build a custom curriculum around your actual use cases, and deliver live hands-on workshops. Post-training, we offer a monthly retainer for ongoing workflow audits, AI tool updates, and always-on support.
-
-- Target teams: Marketing, Finance, Legal, HR, Operations
-- Tools covered: Claude Code, Cursor, n8n, OpenAI, LangChain, LangGraph, Agentic AI, MCP, GitHub Copilot, Gemini
-- Integrates with: Salesforce, HubSpot, Slack, Notion, Microsoft 365, Google Workspace
-- Location: London, UK and Virtual Worldwide
-- Contact: contact@myrealproduct.com
+"The MRP Podcast" (also known as the ReAlity Show) features unfiltered conversations with AI builders — founders, engineers, and practitioners sharing the real story behind building AI products. Hosted by Hari Prasad. Episodes air weekly, approximately 60 minutes each.
 
 ## Key Topics Covered
 
-AI product development, LLMs, AI agents, RAG, vector databases, AWS deployment, AI startups, breaking into AI, AI engineering, go-to-market for AI products, enterprise AI training, AI upskilling for teams, workplace AI adoption, business AI transformation
+AI product development, LLMs, AI agents, RAG, vector databases, AWS deployment, AI startups, breaking into AI, AI engineering, go-to-market for AI products, enterprise AI training, AI upskilling for teams, workplace AI adoption, business AI transformation, AI Happy Hour, workshop sprint, hands-on AI workshop, team building with AI, HR AI tools

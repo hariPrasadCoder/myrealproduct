@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { Quote, Building2, CheckCircle2, ArrowUpRight, Terminal, Zap, Clock } from 'lucide-react';
+import { Quote, CheckCircle2, ArrowUpRight, Terminal, Users, Clock, Zap } from 'lucide-react';
 import { useEffect } from 'react';
 import Marquee from '../components/Marquee';
 import Particles from '../components/Particles';
@@ -31,42 +31,42 @@ const AI_TOOLS = [
   "Gemini", "LangChain", "LangGraph", "Agentic AI", "MCP", "Perplexity",
 ];
 
-const WORKFLOW_TOOLS = [
-  "Salesforce", "HubSpot", "Slack", "Notion", "Google Workspace",
-  "Microsoft 365", "Zapier", "Make",
+const HR_TOOLS = [
+  "Workday", "Greenhouse", "BambooHR", "Lever", "LinkedIn Recruiter",
+  "ADP", "Rippling", "Slack", "Notion", "Google Workspace",
 ];
 
-const INDUSTRIES = ["Marketing", "Finance", "Legal", "HR", "Operations", "Customer Success"];
+const HR_USE_CASES = ["Talent Acquisition", "Resume Screening", "Employee Onboarding", "HR Compliance", "People Analytics"];
 
 const BEFORE = [
-  "Hours lost to tasks AI could handle in minutes",
-  "Generic training your team forgets in a week",
-  "AI tools purchased. Rarely opened.",
-  "Watching competitors move faster",
+  "Screening 500+ CVs manually for every open role",
+  "Writing the same job description from scratch every time",
+  "Onboarding decks copied and edited for every new hire",
+  "Hours lost to compliance docs no one wants to write",
 ];
 
 const AFTER = [
-  "Your team builds AI tools for your actual work",
-  "Workflows automated. Hours saved every week.",
-  "Every person equipped with the right AI stack",
-  "Your team becomes your competitive edge",
+  "AI shortlists your top candidates in minutes",
+  "Job descriptions written in your voice, instantly",
+  "Onboarding automated and personalised per role",
+  "Compliance drafts done before your first coffee",
 ];
 
 const STEPS = [
   {
     number: "01",
-    title: "Tell us what's slowing your team down",
-    description: "Before the session, your team fills a short anonymous form. Real challenges only. We use them to build the entire agenda.",
+    title: "Tell us what's slowing your HR team down",
+    description: "Before the session, your team fills a short anonymous form. Screening bottlenecks, JD fatigue, onboarding admin, and we use all of it to build the agenda.",
   },
   {
     number: "02",
     title: "We run a 2–3 hour live session",
-    description: "In person or virtual. Short AI fundamentals, then straight into building. Your team spends most of the time actually making things.",
+    description: "In person or virtual. Short AI fundamentals for non-technical people, then your HR team spends most of the time actually building tools for their real problems.",
   },
   {
     number: "03",
     title: "Your team goes back to work with working tools",
-    description: "Not slides. Not theory. Custom AI tools they built themselves, ready to use the next morning.",
+    description: "Not slides. Not theory. A CV screener, a JD generator, an onboarding assistant, built by your team and ready to use the next morning.",
   },
 ];
 
@@ -74,51 +74,51 @@ const AGENDA = [
   {
     time: "Before",
     label: "Problem collection",
-    detail: "Your team submits their biggest work challenges anonymously. This becomes our curriculum. No generic content.",
+    detail: "Your HR team submits their biggest challenges: screening bottlenecks, JD writing, onboarding admin. These become the session curriculum.",
   },
   {
     time: "~30 min",
-    label: "AI fundamentals",
-    detail: "What works, what doesn't, and exactly what your team needs right now. No jargon, no fluff.",
+    label: "AI fundamentals for HR",
+    detail: "What AI can actually do in HR right now. No jargon, no code. Just what your team needs to know to get started.",
   },
   {
     time: "~90 min",
     label: "Build together",
-    detail: "Everyone builds a custom AI tool around a real submitted problem. We guide every step of the way.",
+    detail: "Everyone builds a custom AI tool for a real HR problem: a CV screener, a JD generator, an onboarding FAQ bot. We guide every step.",
   },
   {
     time: "End",
     label: "Demo + next steps",
-    detail: "Each person shows what they built. You leave with working tools and a clear plan for the week ahead.",
+    detail: "Each person shows what they built. You leave with working tools and a clear plan for putting them to use immediately.",
   },
 ];
 
-export default function EnterprisePage() {
+export default function EnterpriseHRPage() {
   useEffect(() => {
-    document.title = 'Enterprise AI Training | AI Happy Hour | MyRealProduct';
-    trackSectionView('enterprise_page');
-    trackEvent('enterprise_page_viewed', { page: '/enterprise' });
+    document.title = 'AI Happy Hour for HR Teams | MyRealProduct';
+    trackSectionView('enterprise_hr_page');
+    trackEvent('enterprise_hr_page_viewed', { page: '/enterprise/hr' });
     return () => {
       document.title = 'MyRealProduct | Build an End-to-End AI Product in 4 Weeks';
     };
   }, []);
 
   const handleBookSession = (location: string) => {
-    trackEvent('enterprise_book_session_clicked', { location, page: '/enterprise' });
+    trackEvent('enterprise_hr_book_session_clicked', { location, page: '/enterprise/hr' });
     if (typeof window !== 'undefined' && (window as any).Tally) {
       (window as any).Tally.openPopup('MeLd0l', { layout: 'modal', width: 500, hideTitle: true });
     }
   };
 
   const handleCustomProgramme = (location: string) => {
-    trackEvent('enterprise_custom_programme_clicked', { location, page: '/enterprise' });
+    trackEvent('enterprise_hr_custom_programme_clicked', { location, page: '/enterprise/hr' });
     if (typeof window !== 'undefined' && (window as any).Tally) {
       (window as any).Tally.openPopup('MeLd0l', { layout: 'modal', width: 500, hideTitle: true });
     }
   };
 
   const handleLinkedInClick = () => {
-    trackExternalLink('https://www.linkedin.com/in/hariprasad20/', 'enterprise_founder_linkedin');
+    trackExternalLink('https://www.linkedin.com/in/hariprasad20/', 'enterprise_hr_founder_linkedin');
   };
 
   return (
@@ -147,7 +147,7 @@ export default function EnterprisePage() {
               className="h-10 px-4 lg:px-6 text-xs font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)] transition-all duration-300 whitespace-nowrap"
               onClick={() => handleBookSession('navbar')}
             >
-              <span className="hidden sm:inline">Book Your Team's Session</span>
+              <span className="hidden sm:inline">Book Your HR Team's Session</span>
               <span className="sm:hidden">Book Now</span>
             </button>
           </div>
@@ -190,8 +190,8 @@ export default function EnterprisePage() {
 
         <div className="absolute top-32 left-10 hidden lg:flex flex-col gap-4 opacity-30 z-10">
           <div className="flex items-center gap-2 text-[10px] font-mono tracking-widest text-brand-accent">
-            <Terminal size={12} />
-            <span>ENTERPRISE_TRAINING</span>
+            <Users size={12} />
+            <span>FOR_HR_TEAMS</span>
           </div>
           <div className="w-px h-20 bg-gradient-to-b from-brand-accent to-transparent" />
         </div>
@@ -208,9 +208,9 @@ export default function EnterprisePage() {
 
             <div className="inline-flex flex-wrap items-center justify-center gap-3 mb-10">
               <div className="flex items-center gap-2 border border-white/10 rounded-sm px-4 py-2">
-                <Building2 size={12} className="text-brand-accent" />
+                <Users size={12} className="text-brand-accent" />
                 <span className="text-xs font-mono uppercase tracking-widest text-white/50">
-                  Enterprise AI Training
+                  For HR Teams
                 </span>
               </div>
               <div className="flex items-center gap-2 border border-white/10 rounded-sm px-4 py-2">
@@ -225,13 +225,13 @@ export default function EnterprisePage() {
               <span className="absolute -left-8 top-0 text-6xl font-thin text-white/5 hidden md:block font-mono">{'{'}</span>
               <span className="absolute -right-8 top-0 text-6xl font-thin text-white/5 hidden md:block font-mono">{'}'}</span>
               <h1 className="text-6xl md:text-8xl font-display font-medium text-white leading-[1] tracking-tight">
-                Your Team's<br />
+                Your HR Team's<br />
                 <span className="text-gradient">AI Happy Hour.</span>
               </h1>
             </div>
 
             <p className="text-lg md:text-xl text-brand-text/60 max-w-2xl mx-auto leading-relaxed mb-12">
-              We show up. Your team builds real AI tools for your actual work. No prior experience needed. No boring slides. Just a 2–3 hour session they'll actually remember.
+              We show up. Your HR team builds AI tools for screening, JDs, onboarding, and compliance, using tools they already have. No prior experience needed.
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -239,7 +239,7 @@ export default function EnterprisePage() {
                 className="h-14 px-12 text-sm font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_40px_-5px_rgba(255,255,255,0.25)] transition-all duration-300"
                 onClick={() => handleBookSession('hero')}
               >
-                Book Your Team's Session
+                Book Your HR Team's Session
               </button>
               <button
                 className="h-14 px-8 text-sm font-medium tracking-widest uppercase text-white/50 hover:text-white border border-white/10 hover:border-white/30 rounded-sm transition-all duration-300"
@@ -253,17 +253,17 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* ── Industries strip ────────────────────────────────────────────── */}
+      {/* ── HR use cases strip ──────────────────────────────────────────── */}
       <div className="border-y border-white/5 py-5 bg-brand-card overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap items-center justify-center gap-3 md:gap-8">
             <span className="text-xs font-mono text-white/30 uppercase tracking-widest shrink-0">
-              Teams we work with
+              HR challenges we solve
             </span>
             <div className="w-px h-4 bg-white/10 hidden md:block" />
-            {INDUSTRIES.map((ind) => (
-              <span key={ind} className="text-sm font-medium text-white/50 hover:text-white transition-colors cursor-default">
-                {ind}
+            {HR_USE_CASES.map((uc) => (
+              <span key={uc} className="text-sm font-medium text-white/50 hover:text-white transition-colors cursor-default">
+                {uc}
               </span>
             ))}
           </div>
@@ -294,7 +294,7 @@ export default function EnterprisePage() {
                 <span className="text-white/30">in those 2–3 hours.</span>
               </h2>
               <p className="text-brand-text/50 leading-relaxed">
-                Think of it as a guided workshop sprint. We sit with your team, cover the essentials together, then pick a real problem from the room and build a complete AI solution, end to end, before anyone leaves. Part teaching, part building, entirely practical.
+                Think of it as a guided workshop sprint built for HR. We sit together, cover the essentials, then pick a real challenge from the room: a CV screener, a JD writer, an onboarding bot, and build it end to end, together, before anyone leaves.
               </p>
             </motion.div>
 
@@ -334,10 +334,10 @@ export default function EnterprisePage() {
             className="text-center mb-16"
           >
             <span className="text-brand-primary font-mono text-xs tracking-widest uppercase mb-4 block">
-              The Transformation
+              The HR Transformation
             </span>
             <h2 className="text-4xl md:text-5xl font-display font-medium text-white">
-              What changes for your team.
+              What changes for your HR team.
             </h2>
           </motion.div>
 
@@ -380,70 +380,25 @@ export default function EnterprisePage() {
         </div>
       </section>
 
-      {/* ── Tools ───────────────────────────────────────────────────────── */}
-      <section className="py-28 border-t border-white/5 bg-brand-card">
-        <div className="container mx-auto px-4 max-w-5xl">
+      {/* ── No New Software ─────────────────────────────────────────────── */}
+      <section className="py-20 border-t border-white/5 bg-brand-card">
+        <div className="container mx-auto px-4 max-w-3xl text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-center mb-16"
           >
             <span className="text-brand-primary font-mono text-xs tracking-widest uppercase mb-4 block">
-              The AI Stack
+              No New Software
             </span>
-            <h2 className="text-3xl md:text-4xl font-display font-medium text-white mb-3">
-              We train your team on the tools<br className="hidden md:block" />
-              <span className="text-white/40"> that are changing how work gets done.</span>
+            <h2 className="text-3xl md:text-4xl font-display font-medium text-white mb-6">
+              We work with tools<br />
+              <span className="text-white/30">your team already has.</span>
             </h2>
-            <p className="text-brand-text/40 text-sm max-w-sm mx-auto">
-              And we connect them to the tools your team already uses.
+            <p className="text-brand-text/50 leading-relaxed max-w-xl mx-auto">
+              ChatGPT, Gemini, Google Workspace, Microsoft 365. If your team already has access, we build the session around those. No new licences, no IT requests, no friction.
             </p>
           </motion.div>
-
-          <div className="grid md:grid-cols-2 gap-8">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="border border-white/5 bg-brand-dark/60 p-8"
-            >
-              <p className="text-xs font-mono text-brand-accent/60 uppercase tracking-widest mb-6">Advanced AI Tools</p>
-              <div className="flex flex-wrap gap-2">
-                {AI_TOOLS.map((tool) => (
-                  <span
-                    key={tool}
-                    className="px-4 py-2 border border-white/10 hover:border-brand-accent/30 text-sm text-white/60 hover:text-white bg-brand-card rounded-sm transition-all duration-200 cursor-default"
-                  >
-                    {tool}
-                  </span>
-                ))}
-              </div>
-            </motion.div>
-
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="border border-white/5 bg-brand-dark/60 p-8"
-            >
-              <p className="text-xs font-mono text-white/30 uppercase tracking-widest mb-6">Connects With Your Existing Stack</p>
-              <div className="flex flex-wrap gap-2">
-                {WORKFLOW_TOOLS.map((tool) => (
-                  <span
-                    key={tool}
-                    className="px-4 py-2 border border-white/8 hover:border-white/20 text-sm text-white/40 hover:text-white/70 bg-brand-card rounded-sm transition-all duration-200 cursor-default"
-                  >
-                    {tool}
-                  </span>
-                ))}
-                <span className="px-4 py-2 border border-dashed border-white/8 text-sm text-white/20 rounded-sm cursor-default">
-                  + more
-                </span>
-              </div>
-            </motion.div>
-          </div>
         </div>
       </section>
 
@@ -463,7 +418,7 @@ export default function EnterprisePage() {
               </span>
               <h2 className="text-4xl md:text-5xl font-display font-medium text-white leading-tight">
                 What individuals say. <br />
-                <span className="text-white/30">Imagine this across your team.</span>
+                <span className="text-white/30">Imagine this across your HR team.</span>
               </h2>
             </motion.div>
             <motion.p
@@ -472,7 +427,7 @@ export default function EnterprisePage() {
               viewport={{ once: true }}
               className="text-brand-text/50 leading-relaxed"
             >
-              800+ professionals trained individually. Enterprise programmes give your entire team the same transformation, built around your business.
+              800+ professionals trained individually. Enterprise programmes give your entire HR team the same transformation, built around your workflows.
             </motion.p>
           </div>
 
@@ -550,8 +505,8 @@ export default function EnterprisePage() {
               className="lg:col-span-7 lg:pl-12 flex flex-col justify-center"
             >
               <h2 className="text-5xl md:text-7xl font-display font-medium text-white mb-12 leading-[0.9]">
-                Built AI Across Finance, <br />
-                <span className="text-white/30">Sales, and Analytics.</span>
+                Built AI Across HR, <br />
+                <span className="text-white/30">Finance, and Operations.</span>
               </h2>
 
               <div className="space-y-6 text-lg text-brand-text/80 font-light leading-relaxed max-w-2xl">
@@ -559,7 +514,7 @@ export default function EnterprisePage() {
                   <span className="text-white font-medium">I don't teach what sounds good in a demo.</span> I teach what works when the stakes are real. Production systems, real teams, real outcomes.
                 </p>
                 <p>
-                  At MyRealProduct, we understand your business first, then build training around it.
+                  At MyRealProduct, we understand your HR workflows first, then build the session around them.
                 </p>
               </div>
 
@@ -611,7 +566,7 @@ export default function EnterprisePage() {
             </span>
             <h2 className="text-4xl md:text-6xl font-display font-medium text-white leading-tight mb-6">
               Ready to book your<br />
-              <span className="text-white/30">team's session?</span>
+              <span className="text-white/30">HR team's session?</span>
             </h2>
             <p className="text-brand-text/50 leading-relaxed mb-10">
               Tell us about your team. We'll confirm your session and send a custom plan within 24 hours. No commitment. No hard sell.
@@ -621,7 +576,7 @@ export default function EnterprisePage() {
               className="h-14 px-12 text-sm font-medium tracking-widest uppercase bg-white hover:bg-brand-accent text-black rounded-sm shadow-[0_0_50px_-5px_rgba(255,255,255,0.2)] transition-all duration-300 mb-6"
               onClick={() => handleBookSession('cta')}
             >
-              Book Your Team's Session
+              Book Your HR Team's Session
             </button>
 
             <p className="text-xs font-mono text-white/25 uppercase tracking-widest">
