@@ -1,4 +1,4 @@
-import { useState, MouseEvent, SyntheticEvent } from 'react';
+import { useState, MouseEvent, SyntheticEvent, useRef } from 'react';
 import { motion } from 'motion/react';
 import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
 import SESSIONS, { Session } from '../data/sessions';
@@ -13,6 +13,7 @@ function SessionCard({ session, index }: SessionCardProps) {
   const [portraitMap, setPortraitMap] = useState<Record<number, boolean>>({});
   const hasMultiple = session.photos.length > 1;
   const isPortrait = portraitMap[photoIndex] ?? false;
+  const touchStartX = useRef<number | null>(null);
 
   const prev = (e: MouseEvent) => {
     e.stopPropagation();
@@ -28,6 +29,21 @@ function SessionCard({ session, index }: SessionCardProps) {
       setPortraitMap(prev => ({ ...prev, [idx]: true }));
     }
   };
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const delta = e.changedTouches[0].clientX - touchStartX.current;
+    if (Math.abs(delta) > 40) {
+      setPhotoIndex((i) =>
+        delta < 0
+          ? (i + 1) % session.photos.length
+          : (i - 1 + session.photos.length) % session.photos.length
+      );
+    }
+    touchStartX.current = null;
+  };
 
   return (
     <motion.div
@@ -38,7 +54,11 @@ function SessionCard({ session, index }: SessionCardProps) {
       className="group flex flex-col overflow-hidden border border-white/5 hover:border-white/12 transition-colors"
     >
       {/* ── Photo ─────────────────────────────────────────────────────── */}
-      <div className="relative h-72 overflow-hidden bg-brand-terminal shrink-0">
+      <div
+        className="relative h-72 overflow-hidden bg-brand-terminal shrink-0"
+        onTouchStart={hasMultiple ? handleTouchStart : undefined}
+        onTouchEnd={hasMultiple ? handleTouchEnd : undefined}
+      >
         <img
           src={session.photos[photoIndex]}
           alt={session.headline}
@@ -74,18 +94,18 @@ function SessionCard({ session, index }: SessionCardProps) {
         {/* Carousel */}
         {hasMultiple && (
           <>
-            <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center bg-black/60 border border-white/10 text-white/50 hover:text-white transition-all opacity-0 group-hover:opacity-100 z-10">
-              <ChevronLeft size={12} />
+            <button onClick={prev} className="absolute left-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/60 border border-white/10 text-white/70 hover:text-white transition-all md:opacity-0 md:group-hover:opacity-100 z-10">
+              <ChevronLeft size={14} />
             </button>
-            <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center bg-black/60 border border-white/10 text-white/50 hover:text-white transition-all opacity-0 group-hover:opacity-100 z-10">
-              <ChevronRight size={12} />
+            <button onClick={next} className="absolute right-2 top-1/2 -translate-y-1/2 w-7 h-7 flex items-center justify-center bg-black/60 border border-white/10 text-white/70 hover:text-white transition-all md:opacity-0 md:group-hover:opacity-100 z-10">
+              <ChevronRight size={14} />
             </button>
             <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex gap-1">
               {session.photos.map((_, i) => (
                 <button
                   key={i}
                   onClick={(e) => { e.stopPropagation(); setPhotoIndex(i); }}
-                  className={`rounded-full transition-all ${i === photoIndex ? 'w-3 h-[2px] bg-white' : 'w-[2px] h-[2px] bg-white/30'}`}
+                  className={`rounded-full transition-all ${i === photoIndex ? 'w-3 h-[3px] bg-white' : 'w-[3px] h-[3px] bg-white/40'}`}
                 />
               ))}
             </div>
