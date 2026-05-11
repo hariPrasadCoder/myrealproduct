@@ -196,13 +196,15 @@ export default function PastSessions() {
           </div>
         </div>
 
-          {/* grid — last card spans full width when count is odd */}
+          {/* grid — last card centred at normal card width when count is odd */}
         <div className="grid sm:grid-cols-2 gap-3">
           {SESSIONS.map((session, i) => {
             const isLastOdd = SESSIONS.length % 2 !== 0 && i === SESSIONS.length - 1;
             return (
-              <div key={i} className={isLastOdd ? 'sm:col-span-2' : ''}>
-                <SessionCard session={session} index={i} />
+              <div key={i} className={isLastOdd ? 'sm:col-span-2 flex sm:justify-center' : ''}>
+                <div className={isLastOdd ? 'w-full sm:max-w-[calc(50%-0.375rem)]' : 'contents'}>
+                  <SessionCard session={session} index={i} />
+                </div>
               </div>
             );
           })}
