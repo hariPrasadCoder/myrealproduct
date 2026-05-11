@@ -82,6 +82,22 @@ const SESSIONS: Session[] = [
     date: "2024",
     tag: "Workshop",
   },
+  {
+    photos: [
+      `${BASE}/FF%20Hackathon.jpeg`,
+      `${BASE}/FF%20Hackathon%202.jpeg`,
+      `${BASE}/FF%20Hackathon%203.jpeg`,
+    ],
+    logo: `${BASE}/FF%20logo.png`,
+    sponsorLogo: `${BASE}/AWS%20logo.png`,
+    company: "Founders Factory × AWS",
+    hostedBy: "Future Founders Hackathon",
+    headline: "Weekend AI sprint with early-stage founders in London",
+    event: "Future Founders AI Hackathon",
+    location: "London, UK",
+    date: "May 2026",
+    tag: "Hackathon",
+  },
 ];
 
 export default SESSIONS;

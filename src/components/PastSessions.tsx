@@ -183,6 +183,8 @@ export default function PastSessions() {
               { src: 'https://raw.githubusercontent.com/hariPrasadCoder/myrealproduct/main/public/sessions/Microsoft%20logo%20only.png', alt: 'Microsoft' },
               { src: 'https://raw.githubusercontent.com/hariPrasadCoder/myrealproduct/main/public/sessions/Browserstack%20logo.png', alt: 'BrowserStack' },
               { src: 'https://raw.githubusercontent.com/hariPrasadCoder/myrealproduct/main/public/sessions/WiMLDS%20logo.jpeg', alt: 'WiMLDS' },
+              { src: 'https://raw.githubusercontent.com/hariPrasadCoder/myrealproduct/main/public/sessions/FF%20logo.png', alt: 'Founders Factory' },
+              { src: 'https://raw.githubusercontent.com/hariPrasadCoder/myrealproduct/main/public/sessions/AWS%20logo.png', alt: 'AWS' },
             ].map((logo, i) => (
               <img
                 key={i}
@@ -194,11 +196,16 @@ export default function PastSessions() {
           </div>
         </div>
 
-          {/* 2×2 grid */}
+          {/* grid — last card spans full width when count is odd */}
         <div className="grid sm:grid-cols-2 gap-3">
-          {SESSIONS.map((session, i) => (
-            <SessionCard key={i} session={session} index={i} />
-          ))}
+          {SESSIONS.map((session, i) => {
+            const isLastOdd = SESSIONS.length % 2 !== 0 && i === SESSIONS.length - 1;
+            return (
+              <div key={i} className={isLastOdd ? 'sm:col-span-2' : ''}>
+                <SessionCard session={session} index={i} />
+              </div>
+            );
+          })}
         </div>
 
       </div>
