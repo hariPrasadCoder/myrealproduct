@@ -8,6 +8,7 @@ import PodcastEpisodePage from './pages/PodcastEpisodePage';
 import AgendaSpring26Page from './pages/AgendaSpring26Page';
 import AgendaSummer26Page from './pages/AgendaSummer26Page';
 import LeaderboardSpring26Page from './pages/LeaderboardSpring26Page';
+import LeaderboardSummer26Page from './pages/LeaderboardSummer26Page';
 import EnterprisePage from './pages/EnterprisePage';
 import EnterpriseHRPage from './pages/EnterpriseHRPage';
 import ResourcesPage from './pages/ResourcesPage';
@@ -46,6 +47,7 @@ export default function App() {
         <Route path="/agenda/spring26" element={<AgendaSpring26Page />} />
         <Route path="/agenda/summer26" element={<AgendaSummer26Page />} />
         <Route path="/leaderboard/spring26" element={<LeaderboardSpring26Page />} />
+        <Route path="/leaderboard/summer26" element={<LeaderboardSummer26Page />} />
         <Route path="/enterprise" element={<EnterprisePage />} />
         <Route path="/enterprise/hr" element={<EnterpriseHRPage />} />
         <Route path="/resources" element={<ResourcesPage />} />

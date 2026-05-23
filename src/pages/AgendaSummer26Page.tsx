@@ -964,10 +964,20 @@ export default function AgendaSummer26Page() {
               Four weeks. From raw idea to live AI product: shipped, deployed, and in front of real users.
             </p>
 
+            {/* Leaderboard button */}
+            <div className="mt-6">
+              <Link
+                to="/leaderboard/summer26"
+                className="inline-flex items-center gap-2 text-xs font-semibold px-5 py-2.5 rounded-full border border-yellow-500/30 bg-yellow-500/10 text-yellow-400 hover:bg-yellow-500/20 hover:border-yellow-500/50 transition-all duration-200"
+              >
+                🏆 Leaderboard
+              </Link>
+            </div>
+
             {/* Week overview pills */}
-            <div className="flex flex-wrap justify-center gap-2 mt-6">
+            <div className="flex flex-wrap justify-center gap-2 mt-4">
               {WEEKS.map((w, i) => {
-                const locked = i > 0;
+                const locked = i > 1;
                 return (
                   <button
                     key={i}
@@ -1000,7 +1010,7 @@ export default function AgendaSummer26Page() {
                   index={i}
                   isOpen={openWeek === i}
                   onToggle={() => toggle(i)}
-                  locked={i > 0}
+                  locked={i > 1}
                 />
               </div>
             ))}
