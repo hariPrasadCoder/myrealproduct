@@ -163,6 +163,7 @@ const WEEKS: Week[] = [
             note: 'Build your Advanced AI app on top of the basic app from Day 1',
             items: [
               { text: 'Submit Your Work (Deadline: May 29, Fri)', link: { label: 'Submit Here', href: 'https://forms.gle/YjToyfmGuv4P9Q9o6' } },
+              { text: "📝 Don't miss the office hours (May 26, 10am EST): Claude Code Webinar", link: { label: 'Join Here', href: 'https://meet.google.com/wft-ovky-cvb' } },
             ],
           },
         ],
