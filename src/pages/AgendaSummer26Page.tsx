@@ -204,6 +204,7 @@ const WEEKS: Week[] = [
         items: [
           { text: 'Week 3 Submission Template', link: { label: 'Open Template', href: 'https://docs.google.com/presentation/d/1chBRh0_pe8bioBOPlKuvs3446z9RQket-NaicY6gvww/edit?usp=sharing' } },
           { text: 'Submit Your Work', link: { label: 'Submit Here', href: 'https://forms.gle/29kmo6wWoNGPHVWd9' } },
+          { text: "📝 Don't miss the office hours (Jun 1, 10am EST): LLMops 101 & Evals 101", link: { label: 'Join Here', href: 'https://meet.google.com/wft-ovky-cvb' } },
         ],
       },
       {
@@ -978,7 +979,7 @@ export default function AgendaSummer26Page() {
             {/* Week overview pills */}
             <div className="flex flex-wrap justify-center gap-2 mt-4">
               {WEEKS.map((w, i) => {
-                const locked = i > 1;
+                const locked = i > 2;
                 return (
                   <button
                     key={i}
@@ -1011,7 +1012,7 @@ export default function AgendaSummer26Page() {
                   index={i}
                   isOpen={openWeek === i}
                   onToggle={() => toggle(i)}
-                  locked={i > 1}
+                  locked={i > 2}
                 />
               </div>
             ))}
