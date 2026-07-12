@@ -45,6 +45,12 @@ export default function Navbar() {
           <div className="flex items-center gap-3">
             {/* Desktop */}
             <a
+              href="/masterclass"
+              className="hidden lg:flex items-center gap-2 h-10 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white border border-white/10 hover:border-white/30 rounded-sm transition-all duration-300"
+            >
+              Masterclass
+            </a>
+            <a
               href="/enterprise"
               className="hidden lg:flex items-center gap-2 h-10 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white border border-white/10 hover:border-white/30 rounded-sm transition-all duration-300"
             >
@@ -165,6 +171,13 @@ export default function Navbar() {
               onClick={() => setOpen(false)}
             >
               Newsletter
+            </a>
+            <a
+              href="/masterclass"
+              className="flex items-center h-11 px-4 text-xs font-medium tracking-widest uppercase text-brand-text/60 hover:text-white border border-white/10 hover:border-white/20 rounded-sm transition-all"
+              onClick={() => setOpen(false)}
+            >
+              Masterclass
             </a>
             <a
               href="/enterprise"

@@ -11,6 +11,7 @@ import LeaderboardSpring26Page from './pages/LeaderboardSpring26Page';
 import LeaderboardSummer26Page from './pages/LeaderboardSummer26Page';
 import EnterprisePage from './pages/EnterprisePage';
 import EnterpriseHRPage from './pages/EnterpriseHRPage';
+import MasterclassPage from './pages/MasterclassPage';
 import ResourcesPage from './pages/ResourcesPage';
 import ClaudeCode101Page from './pages/ClaudeCode101Page';
 import LLMTesting101Page from './pages/LLMTesting101Page';
@@ -50,6 +51,7 @@ export default function App() {
         <Route path="/leaderboard/summer26" element={<LeaderboardSummer26Page />} />
         <Route path="/enterprise" element={<EnterprisePage />} />
         <Route path="/enterprise/hr" element={<EnterpriseHRPage />} />
+        <Route path="/masterclass" element={<MasterclassPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/resources/claude-code-101" element={<ClaudeCode101Page />} />
         <Route path="/resources/llmops-101" element={<LLMTesting101Page />} />

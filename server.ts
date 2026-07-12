@@ -226,6 +226,63 @@ function resolvePageMeta(pathname: string, html: string): string {
     }
   }
 
+  if (pathname === '/masterclass') {
+    const masterclassJsonLd = `<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Course",
+          "name": "The Five AI Masterclasses",
+          "description": "Become a Full Stack AI Engineer through five distinct masterclasses, from AI Power User to LLMOps Engineer.",
+          "provider": {
+            "@type": "Organization",
+            "name": "MyRealProduct",
+            "url": "${BASE_URL}"
+          },
+          "offers": {
+            "@type": "Offer",
+            "price": "99",
+            "priceCurrency": "USD",
+            "availability": "https://schema.org/PreOrder",
+            "url": "${BASE_URL}/masterclass"
+          }
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Why five masterclasses instead of one course?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Because knowing AI isn't one skill. Each masterclass is a distinct, in-demand skill, from using AI tools to running AI in production."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Should I buy a single masterclass or the bundle?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Buy a single masterclass if you know exactly which skill you need. Buy the bundle if you want the whole path, it is priced below buying all five individually."
+              }
+            }
+          ]
+        }
+      ]
+    }
+    </script>`;
+    let updated = injectMeta(
+      html,
+      'Become a Full Stack AI Engineer | MyRealProduct',
+      'Become a Full Stack AI Engineer through five distinct masterclasses, from AI Power User to LLMOps Engineer. Join the waitlist and lock in Early Bird pricing for life.',
+      '/og-preview.png',
+      `${BASE_URL}/masterclass`
+    );
+    updated = updated.replace('</head>', `${masterclassJsonLd}\n  </head>`);
+    return updated;
+  }
+
   return html;
 }
 
