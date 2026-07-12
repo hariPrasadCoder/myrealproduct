@@ -59,6 +59,15 @@ export const trackBookCallClick = (location: string) => {
   });
 };
 
+// Track Masterclass waitlist CTA clicks (per level)
+export const trackWaitlistCTAClick = (level: string, location?: string) => {
+  trackEvent('waitlist_cta_clicked', {
+    level: level,
+    location: location,
+    page: window.location.pathname,
+  });
+};
+
 // Track Tally form submission
 export const trackTallySubmission = (formId: string, responseId?: string) => {
   trackEvent('application_submitted', {
