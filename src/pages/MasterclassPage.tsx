@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, CheckCircle2, ArrowRight, Star } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import Particles from '../components/Particles';
 import { trackWaitlistCTAClick } from '../lib/posthog';
 
 // ─── Types ────────────────────────────────────────────────────────────────────
@@ -696,8 +697,38 @@ export default function MasterclassPage() {
 
         {/* ── Hero ── */}
         <section className="pt-44 pb-24 relative overflow-hidden">
-          <div className="absolute inset-0 z-0 bg-grid-pattern opacity-30 pointer-events-none" />
-          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-brand-primary/10 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
+          {/* Spline 3D Background, masked to hide outer ring, only inner glow visible */}
+          <div
+            className="absolute inset-0 z-0 pointer-events-none"
+            style={{
+              maskImage: 'radial-gradient(ellipse 48% 42% at 50% 45%, black 0%, rgba(0,0,0,0.5) 55%, transparent 100%)',
+              WebkitMaskImage: 'radial-gradient(ellipse 48% 42% at 50% 45%, black 0%, rgba(0,0,0,0.5) 55%, transparent 100%)',
+            }}
+          >
+            <div
+              className="absolute inset-0 mix-blend-screen opacity-[0.14]"
+              style={{ filter: 'saturate(0) brightness(1.0) contrast(1.05)' }}
+            >
+              <iframe
+                src="https://my.spline.design/glowingplanetparticles-nhVHji30IRoa5HBGe8yeDiTs"
+                frameBorder="0"
+                width="100%"
+                height="100%"
+                className="w-full h-full"
+              />
+            </div>
+            <div
+              className="absolute inset-0"
+              style={{
+                background: 'radial-gradient(ellipse 55% 48% at 50% 45%, rgba(69, 61, 200, 0.7) 0%, rgba(69, 61, 200, 0.3) 40%, transparent 70%)',
+                mixBlendMode: 'multiply',
+              }}
+            />
+          </div>
+
+          <div className="absolute inset-0 z-[1] bg-grid-pattern opacity-40 pointer-events-none" />
+          <Particles particleCount={60} className="z-[2] opacity-60" />
+          <div className="absolute top-[-10%] left-1/2 -translate-x-1/2 w-[1200px] h-[600px] bg-brand-primary/5 rounded-full blur-[150px] pointer-events-none mix-blend-screen" />
 
           <div className="container mx-auto px-4 relative z-10 max-w-4xl text-center">
             <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
@@ -708,10 +739,14 @@ export default function MasterclassPage() {
                 </span>
               </div>
 
-              <h1 className="text-5xl md:text-7xl font-display font-medium text-white leading-[1.05] tracking-tight mb-6">
-                Become a Full Stack<br />
-                <span className="text-gradient">AI Engineer.</span>
-              </h1>
+              <div className="relative">
+                <span className="absolute -left-8 top-0 text-6xl font-thin text-white/5 hidden md:block font-mono">{'{'}</span>
+                <span className="absolute -right-8 top-0 text-6xl font-thin text-white/5 hidden md:block font-mono">{'}'}</span>
+                <h1 className="text-5xl md:text-7xl font-display font-medium text-white leading-[1.05] tracking-tight mb-6">
+                  Become a Full Stack<br />
+                  <span className="text-gradient">AI Engineer.</span>
+                </h1>
+              </div>
 
               <p className="text-lg md:text-xl text-brand-text/60 max-w-2xl mx-auto leading-relaxed mb-10">
                 AI isn't one skill. It's five, and most courses only teach you the first one. This is the only
