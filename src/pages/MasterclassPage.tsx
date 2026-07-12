@@ -1,17 +1,7 @@
-import { useState, type ComponentType } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { motion, AnimatePresence } from 'motion/react';
-import {
-  Sparkles,
-  Hammer,
-  Database,
-  Workflow,
-  ShieldCheck,
-  ChevronDown,
-  CheckCircle2,
-  ArrowRight,
-  Star,
-} from 'lucide-react';
+import { ChevronDown, CheckCircle2, ArrowRight, Star } from 'lucide-react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { trackWaitlistCTAClick } from '../lib/posthog';
@@ -26,7 +16,6 @@ interface Level {
   modules: ModuleGroup[];
   outcome: string;
   status: 'recording' | 'waitlist';
-  icon: ComponentType<{ size?: number; className?: string }>;
 }
 
 interface ModuleGroup {
@@ -43,6 +32,9 @@ interface LevelColor {
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
+const thumbLarge = (n: number) => `/mrp-course-thumbnails/large/${n}.jpg`;
+const thumbSmall = (n: number) => `/mrp-course-thumbnails/thumb/${n}.jpg`;
+
 const LEVELS: Level[] = [
   {
     number: 1,
@@ -52,7 +44,6 @@ const LEVELS: Level[] = [
       "Stop using five percent of what AI can do. Master Claude, ChatGPT, Perplexity, and NotebookLM until reaching for the right tool becomes instinct, not guesswork.",
     outcome: "Walk away fluent across every major AI tool, with the Claude ecosystem as your unfair advantage.",
     status: 'recording',
-    icon: Sparkles,
     modules: [
       {
         category: 'Foundation: Start Here',
@@ -105,7 +96,6 @@ const LEVELS: Level[] = [
     oneLiner: 'Turn ideas into real, working products. Both no-code and code paths count, as long as something real ships.',
     outcome: 'Walk away having shipped and deployed a real AI product, live on the internet, not stuck in a doc.',
     status: 'waitlist',
-    icon: Hammer,
     modules: [
       {
         category: 'Foundation: Idea to MVP',
@@ -155,7 +145,6 @@ const LEVELS: Level[] = [
     oneLiner: "Make AI think with your own data. Build retrieval pipelines that don't hallucinate.",
     outcome: "Walk away with a working RAG pipeline that reasons over your own data accurately, not a demo that only works once.",
     status: 'waitlist',
-    icon: Database,
     modules: [
       {
         category: 'Foundation: How RAG Actually Works',
@@ -205,7 +194,6 @@ const LEVELS: Level[] = [
     oneLiner: 'Move from single prompts to multi-step, multi-agent systems you can actually see and debug.',
     outcome: 'Walk away having built and debugged a real multi-agent system, not just a single clever prompt.',
     status: 'waitlist',
-    icon: Workflow,
     modules: [
       {
         category: 'Foundation: Agentic Thinking',
@@ -255,7 +243,6 @@ const LEVELS: Level[] = [
     oneLiner: 'Ship AI that survives real users. Evals, monitoring, and deployment done right.',
     outcome: 'Walk away with the evals, monitoring, and deployment practices that make AI systems survive real users.',
     status: 'waitlist',
-    icon: ShieldCheck,
     modules: [
       {
         category: 'Foundation: What Production-Ready Means',
@@ -412,7 +399,6 @@ function Outcome({ text, colorClass }: { text: string; colorClass: string }) {
 
 function Level1Feature({ level }: { level: Level }) {
   const color = LEVEL_COLORS[0];
-  const Icon = level.icon;
 
   return (
     <motion.div
@@ -426,10 +412,8 @@ function Level1Feature({ level }: { level: Level }) {
         className="relative rounded-3xl border-2 border-brand-primary/60 bg-gradient-to-b from-[#1A1830] to-brand-card overflow-hidden"
         style={{ boxShadow: '0 0 70px -20px rgba(69,61,200,0.55)' }}
       >
-        <div className="absolute top-0 left-0 right-0 h-[3px] bg-gradient-to-r from-transparent via-brand-accent to-transparent" />
-
         <div className="p-7 sm:p-10">
-          <div className="flex flex-wrap items-center gap-2 mb-7">
+          <div className="flex flex-wrap items-center gap-2 mb-6">
             <span className="text-[10px] font-bold uppercase tracking-widest text-white bg-brand-primary rounded-full px-3 py-1">
               Level 1
             </span>
@@ -441,20 +425,19 @@ function Level1Feature({ level }: { level: Level }) {
             </span>
           </div>
 
-          <div className="flex items-start gap-5 mb-6">
-            <div
-              className="shrink-0 w-16 h-16 rounded-2xl flex items-center justify-center border border-brand-primary/50 bg-brand-terminal"
-              style={{ boxShadow: '0 0 24px rgba(69,61,200,0.4)' }}
-            >
-              <Icon size={26} className="text-brand-accent" />
-            </div>
-            <div>
-              <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-1.5">{level.topic}</p>
-              <h3 className="text-3xl sm:text-4xl font-display font-semibold text-white leading-tight">
-                The {level.role} Masterclass
-              </h3>
-            </div>
+          <div className="rounded-2xl overflow-hidden border border-white/10 mb-6">
+            <img
+              src={thumbLarge(level.number)}
+              alt={`Become an ${level.role}, the ${level.role} Masterclass`}
+              className="w-full aspect-video object-cover"
+              loading="eager"
+            />
           </div>
+
+          <p className="text-xs font-mono text-white/40 uppercase tracking-widest mb-1.5">{level.topic}</p>
+          <h3 className="text-2xl sm:text-3xl font-display font-semibold text-white leading-tight mb-6">
+            The {level.role} Masterclass
+          </h3>
 
           <p className="text-brand-text/60 leading-relaxed mb-8 max-w-2xl">{level.oneLiner}</p>
 
@@ -491,7 +474,6 @@ function LevelCard({
   onToggle: () => void;
 }) {
   const color = LEVEL_COLORS[colorIndex];
-  const Icon = level.icon;
 
   return (
     <motion.div
@@ -513,10 +495,15 @@ function LevelCard({
 
         <button onClick={onToggle} className="w-full flex items-center gap-5 px-6 sm:px-7 py-6 text-left">
           <div
-            className={`shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center border ${color.ring} bg-brand-terminal`}
+            className={`shrink-0 w-24 sm:w-28 aspect-video rounded-xl overflow-hidden border ${color.ring}`}
             style={{ boxShadow: `0 0 20px ${color.glow}` }}
           >
-            <Icon size={22} className={color.num} />
+            <img
+              src={thumbSmall(level.number)}
+              alt={`Become an ${level.role}, the ${level.role} Masterclass`}
+              className="w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
           <div className="flex-1 min-w-0">
@@ -554,6 +541,15 @@ function LevelCard({
               className="overflow-hidden"
             >
               <div className="px-6 sm:px-7 pb-7 space-y-5 border-t border-white/5 pt-5">
+                <div className={`rounded-xl overflow-hidden border ${color.ring}`}>
+                  <img
+                    src={thumbLarge(level.number)}
+                    alt={`Become an ${level.role}, the ${level.role} Masterclass`}
+                    className="w-full aspect-video object-cover"
+                    loading="lazy"
+                  />
+                </div>
+
                 <p className="text-brand-text/60 leading-relaxed">{level.oneLiner}</p>
 
                 <ModuleGroups groups={level.modules} colorClass={color.num} />
@@ -760,10 +756,9 @@ export default function MasterclassPage() {
               </p>
             </motion.div>
 
-            <div className="grid sm:grid-cols-5 gap-4">
+            <div className="grid grid-cols-2 sm:grid-cols-5 gap-4">
               {LEVELS.map((level, i) => {
                 const color = LEVEL_COLORS[i];
-                const Icon = level.icon;
                 return (
                   <motion.div
                     key={level.number}
@@ -771,17 +766,22 @@ export default function MasterclassPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.06 }}
-                    className="flex sm:flex-col items-center sm:text-center gap-4 sm:gap-3 border border-white/5 bg-brand-dark/60 p-5 rounded-2xl"
+                    className={`group border ${color.ring} bg-brand-dark/60 rounded-2xl overflow-hidden transition-transform duration-300 hover:-translate-y-1`}
                   >
-                    <div
-                      className={`shrink-0 w-11 h-11 rounded-xl flex items-center justify-center border ${color.ring} bg-brand-terminal`}
-                    >
-                      <Icon size={18} className={color.num} />
+                    <div className="aspect-video overflow-hidden bg-brand-terminal">
+                      <img
+                        src={thumbSmall(level.number)}
+                        alt={`Become an ${level.role}`}
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                        loading="lazy"
+                      />
                     </div>
-                    <div>
-                      <p className="text-[10px] font-mono text-white/30 uppercase tracking-widest mb-1">
+                    <div className="p-4">
+                      <span
+                        className={`inline-block text-xs font-bold uppercase tracking-widest ${color.num} border ${color.ring} rounded-full px-2.5 py-1 mb-2`}
+                      >
                         Level {level.number}
-                      </p>
+                      </span>
                       <p className="text-sm font-semibold text-white leading-snug">{level.role}</p>
                     </div>
                   </motion.div>
