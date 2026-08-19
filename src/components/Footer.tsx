@@ -41,10 +41,12 @@ export default function Footer({ hideCta }: { hideCta?: boolean }) {
 
         {/* Final CTA */}
         {!hideCta && <div className="flex flex-col items-center text-center mb-24">
-          <h2 className="text-4xl md:text-6xl font-bold mb-8 tracking-tight">
-            Ready to build your <br />
-            <span className="text-gradient">AI Future?</span>
+          <h2 className="text-4xl md:text-6xl font-bold mb-4 tracking-tight">
+            This Is Where The <span className="text-gradient">Searching Stops.</span>
           </h2>
+          <p className="text-lg md:text-xl text-brand-text mb-8">
+            Four weeks. One real product. Let’s build it.
+          </p>
           <Button
             size="lg"
             className="text-lg font-semibold tracking-widest uppercase px-12 h-16 rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)]"
@@ -54,7 +56,7 @@ export default function Footer({ hideCta }: { hideCta?: boolean }) {
             data-tally-form-events-forwarding="1"
             onClick={handleApplyClick}
           >
-            APPLY TO THE COHORT
+            CLAIM YOUR SEAT
           </Button>
         </div>}
 

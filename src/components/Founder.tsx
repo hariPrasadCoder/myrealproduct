@@ -69,7 +69,7 @@ export default function Founder() {
                 I realized most courses are stuck in 2023.
               </p>
               <p>
-                At MyRealProduct, I bring those same lessons to ambitious professionals who want to learn AI the right way – by building, shipping, and solving real problems.
+                At MyRealProduct, I bring those same lessons to ambitious professionals who want to learn AI the right way, by building, shipping, and solving real problems.
               </p>
             </div>
 
