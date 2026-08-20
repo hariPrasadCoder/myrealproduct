@@ -29,6 +29,12 @@ const NAV = [
       { href: 'https://www.trustpilot.com/review/myrealproduct.com', text: 'Trustpilot', external: true },
     ],
   },
+  {
+    label: 'Careers',
+    links: [
+      { href: 'https://tally.so/r/LZ4gk2', text: 'View open roles', external: true },
+    ],
+  },
 ];
 
 export default function Footer({ hideCta }: { hideCta?: boolean }) {
@@ -62,7 +68,7 @@ export default function Footer({ hideCta }: { hideCta?: boolean }) {
         </div>}
 
         {/* Nav columns */}
-        <div className="border-t border-white/5 pt-16 grid grid-cols-2 md:grid-cols-4 gap-10 mb-16">
+        <div className="border-t border-white/5 pt-16 grid grid-cols-2 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
 
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
