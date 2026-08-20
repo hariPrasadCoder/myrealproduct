@@ -1,28 +1,7 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { X, Copy, Check, Wallet, Send, Rocket } from 'lucide-react';
+import { X, Copy, Check, Wallet } from 'lucide-react';
 import { trackSectionView, trackEvent } from '../lib/posthog';
-
-const STEPS = [
-  {
-    icon: Wallet,
-    number: "01",
-    title: "Your company has a budget for this",
-    tag: "Most people never use it.",
-  },
-  {
-    icon: Send,
-    number: "02",
-    title: "We wrote the email you can send it to your manager",
-    tag: "Personalize two lines. Hit send.",
-  },
-  {
-    icon: Rocket,
-    number: "03",
-    title: "Enroll on your company's dime",
-    tag: "Join the cohort. Build. Ship.",
-  },
-];
 
 const LETTER = `Subject: Professional Development Request – AI Product Building
 
@@ -30,7 +9,7 @@ Hi [Manager's Name],
 
 Hope you're well. I wanted to reach out about a learning opportunity I'm genuinely excited about and think could bring real value to our team.
 
-I've come across a hands-on AI product building program (MyRealProduct.com) that takes you from identifying a real problem all the way to building and shipping a live AI product in 4 weeks. It's not a course where you watch videos. You leave with something actually built and deployed.
+I've come across a hands-on AI product building program (MyRealProduct.com) that takes you from identifying a real problem all the way to building and shipping a live AI product in 4 weeks, with a personal coach working with you daily, not a course you just watch. You leave with something actually built and deployed.
 
 What I'd walk away with:
 - Hands-on experience building and shipping a real AI product
@@ -42,7 +21,7 @@ How this helps the team:
 - [Describe a specific team use case, e.g., "We could prototype an internal AI tool" or "I could bring more informed thinking to our AI roadmap discussions"]
 - I think there's a real opportunity for us to move faster in this space once I have these skills hands-on
 
-The program costs $599.
+The program costs $1,999.
 
 Would it be possible to get this reimbursed through the company? Happy to share more details if helpful.
 
@@ -71,95 +50,29 @@ export default function Reimbursement() {
 
   return (
     <>
-      <section id="reimbursement" className="py-32 bg-brand-dark relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[500px] bg-brand-primary/8 rounded-full blur-[130px] pointer-events-none" />
-
-        <div className="container mx-auto px-4 relative z-10">
-
-          {/* Header */}
-          <div className="mb-20">
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 border border-brand-primary/30 text-brand-accent text-xs font-mono uppercase tracking-widest mb-6"
-            >
-              Company-Reimbursable
-            </motion.div>
-
-            <motion.h2
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.08 }}
-              className="text-5xl md:text-7xl font-display font-medium text-white leading-none mb-5"
-            >
-              Your Employer<br />can pay for this.
-            </motion.h2>
-
-            <motion.p
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.16 }}
-              className="text-brand-text/60 text-lg max-w-lg"
-            >
-              We wrote the email you can send it to your manager.
-            </motion.p>
+      <motion.div
+        id="reimbursement"
+        initial={{ opacity: 0, y: 12 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className="flex flex-col sm:flex-row items-center justify-between gap-4 bg-white/[0.03] border border-white/8 rounded-xl px-5 py-4"
+      >
+        <div className="flex items-center gap-3 text-center sm:text-left">
+          <div className="w-8 h-8 rounded-full bg-brand-primary/15 border border-brand-primary/25 flex items-center justify-center shrink-0">
+            <Wallet size={14} className="text-brand-accent" />
           </div>
-
-          {/* Steps */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden mb-16">
-            {STEPS.map((step, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="bg-brand-dark p-10 flex flex-col gap-5 group hover:bg-[#0a0a12] transition-colors duration-300"
-              >
-                <div className="flex items-center justify-between">
-                  <div className="w-10 h-10 rounded-full bg-brand-primary/15 border border-brand-primary/25 flex items-center justify-center group-hover:bg-brand-primary/25 group-hover:border-brand-primary/50 transition-all duration-300">
-                    <step.icon size={17} className="text-brand-accent" />
-                  </div>
-                  <span className="text-4xl font-display font-bold text-white/[0.05] select-none group-hover:text-white/[0.09] transition-colors duration-300">
-                    {step.number}
-                  </span>
-                </div>
-
-                <div>
-                  <h3 className="text-base font-display font-medium text-white mb-1.5">
-                    {step.title}
-                  </h3>
-                  <p className="text-brand-text/45 text-sm font-mono">
-                    {step.tag}
-                  </p>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* CTA */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="flex flex-col sm:flex-row items-start sm:items-center gap-5"
-          >
-            <button
-              onClick={handleOpenModal}
-              className="h-14 px-12 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(255,255,255,0.1)] cursor-pointer"
-            >
-              Get the Reimbursement Letter
-            </button>
-            <span className="text-brand-text/30 text-sm font-mono">
-              Copy · Personalize · Send
-            </span>
-          </motion.div>
-
+          <p className="text-sm text-brand-text/80">
+            <span className="text-white font-medium">Your employer can pay for this.</span>{' '}
+            We wrote the email for you.
+          </p>
         </div>
-      </section>
+        <button
+          onClick={handleOpenModal}
+          className="h-10 px-6 text-xs font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 cursor-pointer shrink-0"
+        >
+          Get the Reimbursement Letter
+        </button>
+      </motion.div>
 
       {/* Modal */}
       <AnimatePresence>

@@ -52,20 +52,32 @@ function isBot(ua: string) {
   return BOT_UA.test(ua);
 }
 
+function escapeAttribute(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/"/g, '&quot;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;');
+}
+
 function injectMeta(html: string, title: string, description: string, image: string, url: string) {
   const absImage = image.startsWith('http') ? image : `${BASE_URL}${image}`;
-  const meta = `
-    <title>${title}</title>
-    <meta property="og:title" content="${title}" />
-    <meta property="og:description" content="${description}" />
-    <meta property="og:image" content="${absImage}" />
-    <meta property="og:url" content="${url}" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="${title}" />
-    <meta name="twitter:description" content="${description}" />
-    <meta name="twitter:image" content="${absImage}" />`;
-  return html.replace('<head>', `<head>${meta}`);
+  const safeTitle = escapeAttribute(title);
+  const safeDescription = escapeAttribute(description);
+  const safeImage = escapeAttribute(absImage);
+  const safeUrl = escapeAttribute(url);
+
+  return html
+    .replace(/<title>[\s\S]*?<\/title>/i, `<title>${safeTitle}</title>`)
+    .replace(/<meta name="description" content="[^"]*" \/>/i, `<meta name="description" content="${safeDescription}" />`)
+    .replace(/<link rel="canonical" href="[^"]*" \/>/i, `<link rel="canonical" href="${safeUrl}" />`)
+    .replace(/<meta property="og:url" content="[^"]*" \/>/i, `<meta property="og:url" content="${safeUrl}" />`)
+    .replace(/<meta property="og:title" content="[^"]*" \/>/i, `<meta property="og:title" content="${safeTitle}" />`)
+    .replace(/<meta property="og:description" content="[^"]*" \/>/i, `<meta property="og:description" content="${safeDescription}" />`)
+    .replace(/<meta property="og:image" content="[^"]*" \/>/i, `<meta property="og:image" content="${safeImage}" />`)
+    .replace(/<meta name="twitter:title" content="[^"]*" \/>/i, `<meta name="twitter:title" content="${safeTitle}" />`)
+    .replace(/<meta name="twitter:description" content="[^"]*" \/>/i, `<meta name="twitter:description" content="${safeDescription}" />`)
+    .replace(/<meta name="twitter:image" content="[^"]*" \/>/i, `<meta name="twitter:image" content="${safeImage}" />`);
 }
 
 function resolvePageMeta(pathname: string, html: string): string {
@@ -202,6 +214,16 @@ function resolvePageMeta(pathname: string, html: string): string {
     return updated;
   }
 
+  if (pathname === '/portfolio') {
+    return injectMeta(
+      html,
+      'Builder Portfolio | MyRealProduct',
+      'Explore real AI products built by MyRealProduct students across productivity, health, fintech, computer vision, and more.',
+      '/og-preview.png',
+      `${BASE_URL}/portfolio`
+    );
+  }
+
   if (pathname === '/podcast') {
     return injectMeta(
       html,
@@ -289,12 +311,31 @@ function resolvePageMeta(pathname: string, html: string): string {
 const app = express();
 const indexHtml = fs.readFileSync(path.join(DIST, 'index.html'), 'utf-8');
 
-app.use(express.static(DIST, { index: false }));
+app.disable('x-powered-by');
+app.use((_req, res, next) => {
+  res.setHeader('X-Frame-Options', 'SAMEORIGIN');
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
+  res.setHeader('Permissions-Policy', 'camera=(), microphone=(), geolocation=()');
+  next();
+});
+
+app.use(express.static(DIST, {
+  index: false,
+  setHeaders: (res, filePath) => {
+    if (filePath.includes(`${path.sep}assets${path.sep}`)) {
+      res.setHeader('Cache-Control', 'public, max-age=31536000, immutable');
+    } else {
+      res.setHeader('Cache-Control', 'public, max-age=86400');
+    }
+  },
+}));
 
 app.get('*', (req, res) => {
   const ua = req.headers['user-agent'] ?? '';
   const html = isBot(ua) ? resolvePageMeta(req.path, indexHtml) : indexHtml;
   res.setHeader('Content-Type', 'text/html');
+  res.setHeader('Cache-Control', 'no-cache, no-store, must-revalidate');
   res.send(html);
 });
 

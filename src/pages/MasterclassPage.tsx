@@ -118,7 +118,7 @@ const LEVELS: Level[] = [
         category: 'Code Build Track',
         modules: [
           { name: 'Cursor 101', why: 'AI-native coding, for when you want full control' },
-          { name: 'Claude Code 101', why: 'Vibe code a production-grade app from scratch' },
+          { name: 'Claude Code 101', why: 'Build a production-grade app from scratch' },
           { name: 'Git & GitHub 101', why: 'Manage your codebase like a professional, not a hobbyist' },
         ],
       },

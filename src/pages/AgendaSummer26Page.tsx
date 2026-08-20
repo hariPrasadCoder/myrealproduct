@@ -136,7 +136,7 @@ const WEEKS: Week[] = [
               { text: 'Week 2 Submission Template', link: { label: 'Open Template', href: 'https://docs.google.com/presentation/d/1AHHFum9s4pZQDDPOvA9UxaRSl1rwp6qYV_YZY8QXPOI/edit?usp=sharing' } },
               { text: 'Figure out 1-line solution & #1 feature' },
               { text: 'Define how the user journey looks like' },
-              { text: 'Vibe code your basic app using Replit AI' },
+              { text: 'Build your basic app using Replit AI' },
             ],
           },
           {

@@ -431,7 +431,7 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
         </div>
       </section>
 
-      {/* Book GIF */}
+      {/* Book preview */}
       <section className="py-12 px-4">
         <div className="max-w-3xl mx-auto">
           <motion.div
@@ -441,10 +441,15 @@ function BookLandingGate({ onAccess }: { onAccess: (email: string) => void }) {
             transition={{ duration: 0.6 }}
             className="rounded-sm overflow-hidden border border-white/8"
           >
-            <img
-              src="/images/Book.gif"
-              alt="31 Day AI Engineer Challenge preview"
+            <video
+              src="/images/Book.webm"
+              aria-label="31 Day AI Engineer Challenge preview"
               className="w-full h-auto"
+              autoPlay
+              loop
+              muted
+              playsInline
+              preload="metadata"
             />
           </motion.div>
         </div>
@@ -729,7 +734,7 @@ const pageVariants = {
   }),
 };
 
-const pageTransition = { duration: 0.38, ease: [0.4, 0, 0.2, 1] };
+const pageTransition = { duration: 0.38, ease: [0.4, 0, 0.2, 1] as const };
 
 // ─── Book Reader ─────────────────────────────────────────────────────────────
 
@@ -962,9 +967,9 @@ function BookReader({ email }: { email: string }) {
                     className="border-t border-white/5 bg-[#080810]/95 px-4 py-4"
                   >
                     <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                      {/* GIF preview */}
+                      {/* Book preview */}
                       <div className="w-32 shrink-0 rounded-sm overflow-hidden border border-white/10">
-                        <img src="/images/Book.gif" alt="Book preview" className="w-full h-auto" />
+                        <video src="/images/Book.webm" aria-label="Book preview" className="w-full h-auto" autoPlay loop muted playsInline preload="metadata" />
                       </div>
 
                       {/* Share info + actions */}

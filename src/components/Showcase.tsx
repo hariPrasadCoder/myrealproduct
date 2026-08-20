@@ -79,8 +79,11 @@ export default function Showcase() {
               Portfolio
             </span>
             <h2 className="text-5xl md:text-7xl font-display font-medium text-white leading-none">
-              Student <br /> <span className="text-white/30">Creations</span>
+              Same Path. <br /> <span className="text-white/30">Different Products.</span>
             </h2>
+            <p className="text-brand-text mt-4 max-w-md">
+              Every builder climbs the same four weeks: app, then RAG, then agents, then production. What they build it for is theirs.
+            </p>
           </div>
           <div className="hidden md:flex items-center gap-2 text-white/40 font-mono text-xs uppercase tracking-widest">
             <Layers size={14} />
@@ -171,7 +174,7 @@ export default function Showcase() {
               You're Next.
             </h3>
             <p className="text-white/80 mb-8 max-w-xs relative z-10">
-              Join the cohort and build your own AI product in just 4 weeks.
+              Start this Saturday and build your own AI product in just 4 weeks.
             </p>
             <div className="w-16 h-16 rounded-full bg-white text-brand-primary flex items-center justify-center group-hover:scale-110 transition-transform relative z-10">
               <ArrowUpRight size={32} />
