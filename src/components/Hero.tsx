@@ -129,15 +129,18 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.1 }}
               className="text-4xl sm:text-5xl lg:text-6xl font-medium leading-[1.08] tracking-tight font-display text-white mb-6"
             >
-              Become a Full Stack{' '}
+              Become an{' '}
               <span className="relative inline-block">
                 <span className="absolute inset-0 bg-gradient-to-r from-brand-primary via-brand-accent to-brand-secondary blur-2xl opacity-30" />
                 <span className="relative text-transparent bg-clip-text bg-gradient-to-r from-white via-brand-accent to-white font-semibold">
                   AI Engineer
                 </span>
               </span>
-              <span className="block text-2xl sm:text-3xl lg:text-4xl text-white/40 mt-3 font-normal">
-                in 4 weeks, by actually shipping one.
+              <span className="block mt-3">
+                in just 4 weeks
+              </span>
+              <span className="block mt-3 text-2xl sm:text-3xl lg:text-4xl text-white/40 font-normal">
+                by building a real product.
               </span>
             </motion.h1>
 
@@ -148,7 +151,7 @@ export default function Hero() {
               transition={{ duration: 0.6, delay: 0.2 }}
               className="text-lg text-brand-text/80 mb-10 max-w-md leading-relaxed font-light tracking-wide"
             >
-              Not another course. You'll build <span className="text-white font-medium">one real AI product</span>, from a working app to a fully agentic, production-deployed system, guided by Hari and your coach the entire way.
+              Think of it as having a <span className="text-white font-medium">personal trainer for becoming an AI engineer</span>. For four weeks, Hari and your coach guide you from a working app to a fully agentic, production-deployed product.
             </motion.p>
 
             {/* CTAs */}

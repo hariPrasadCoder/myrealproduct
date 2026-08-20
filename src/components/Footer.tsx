@@ -8,6 +8,7 @@ const NAV = [
       { href: '/', text: 'For Individuals' },
       { href: '/enterprise', text: 'For Enterprises' },
       { href: '/agency', text: 'Agency' },
+      { href: '/portfolio', text: 'Builder Portfolio' },
     ],
   },
   {

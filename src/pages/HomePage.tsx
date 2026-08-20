@@ -6,7 +6,7 @@ import OfficialPartners from '../components/OfficialPartners';
 import TheLadder from '../components/TheLadder';
 import Founder from '../components/Founder';
 import Testimonials from '../components/Testimonials';
-import Showcase from '../components/Showcase';
+import PortfolioPreview from '../components/PortfolioPreview';
 import Pricing from '../components/Pricing';
 import FAQ from '../components/FAQ';
 import Footer from '../components/Footer';
@@ -22,12 +22,16 @@ export default function HomePage() {
   return (
     <main className="bg-brand-dark min-h-screen text-white selection:bg-brand-primary/30 selection:text-white">
       <Helmet>
-        <title>Become a Full Stack AI Engineer in 4 Weeks | MyRealProduct</title>
-        <meta name="description" content="Not another course. Build and ship one real AI product, from a working app to RAG, AI agents, and production, guided by Hari and your coach. $1,999, apply now, start this Saturday." />
+        <title>Become an AI Engineer in 4 Weeks | MyRealProduct</title>
+        <meta name="description" content="Become an AI engineer in four weeks by building a real product. Get weekly direction from Hari and daily support from your dedicated coach." />
         <link rel="canonical" href="https://www.myrealproduct.com/" />
-        <meta property="og:title" content="Become a Full Stack AI Engineer in 4 Weeks" />
-        <meta property="og:description" content="Not another course. Build and ship one real AI product, from a working app to RAG, AI agents, and production, guided by Hari and your coach the entire way." />
+        <meta property="og:title" content="Become an AI Engineer in Just 4 Weeks" />
+        <meta property="og:description" content="Build a real AI product with weekly direction from Hari and daily support from your dedicated coach." />
         <meta property="og:url" content="https://www.myrealproduct.com/" />
+        <meta property="og:image" content="https://www.myrealproduct.com/og-preview.png" />
+        <meta name="twitter:title" content="Become an AI Engineer in Just 4 Weeks" />
+        <meta name="twitter:description" content="Build a real AI product with weekly direction from Hari and daily support from your dedicated coach." />
+        <meta name="twitter:image" content="https://www.myrealproduct.com/og-preview.png" />
       </Helmet>
       <Navbar />
 
@@ -44,9 +48,9 @@ export default function HomePage() {
       {/* 4. Who's behind it — answers "who is Hari" right when he's first promised */}
       <Founder />
 
-      {/* 5. Proof — quotes, then the portfolio. One beat, not three. */}
+      {/* 5. Proof — quotes, then a compact path to the full builder portfolio. */}
       <Testimonials />
-      <Showcase />
+      <PortfolioPreview />
 
       {/* 6. The ask — price, reimbursement folded in, then objections */}
       <Pricing />

@@ -1,32 +1,34 @@
 import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { lazy, Suspense, useEffect } from 'react';
 import HomePage from './pages/HomePage';
-import JoinPage from './pages/JoinPage';
-import BookPage from './pages/BookPage';
-import PodcastPage from './pages/PodcastPage';
-import PodcastEpisodePage from './pages/PodcastEpisodePage';
-import AgendaSpring26Page from './pages/AgendaSpring26Page';
-import AgendaSummer26Page from './pages/AgendaSummer26Page';
-import LeaderboardSpring26Page from './pages/LeaderboardSpring26Page';
-import LeaderboardSummer26Page from './pages/LeaderboardSummer26Page';
-import EnterprisePage from './pages/EnterprisePage';
-import EnterpriseHRPage from './pages/EnterpriseHRPage';
-import MasterclassPage from './pages/MasterclassPage';
-import ResourcesPage from './pages/ResourcesPage';
-import ClaudeCode101Page from './pages/ClaudeCode101Page';
-import LLMTesting101Page from './pages/LLMTesting101Page';
-import AgencyPage from './pages/AgencyPage';
-import StoriesPage from './pages/StoriesPage';
-import DeniseStoryPage from './pages/DeniseStoryPage';
-import AprotiimStoryPage from './pages/AprotiimStoryPage';
-import DigvijayStoryPage from './pages/DigvijayStoryPage';
-import DebisreeStoryPage from './pages/DebisreeStoryPage';
-import RajeshStoryPage from './pages/RajeshStoryPage';
-import JoanStoryPage from "./pages/JoanStoryPage";
-import PadmapriyaStoryPage from "./pages/PadmapriyaStoryPage";
-import PraveenaStoryPage from "./pages/PraveenaStoryPage";
-import SaahithiStoryPage from "./pages/SaahithiStoryPage";
-import CommunityPage from './pages/CommunityPage';
+
+const JoinPage = lazy(() => import('./pages/JoinPage'));
+const BookPage = lazy(() => import('./pages/BookPage'));
+const PodcastPage = lazy(() => import('./pages/PodcastPage'));
+const PodcastEpisodePage = lazy(() => import('./pages/PodcastEpisodePage'));
+const AgendaSpring26Page = lazy(() => import('./pages/AgendaSpring26Page'));
+const AgendaSummer26Page = lazy(() => import('./pages/AgendaSummer26Page'));
+const LeaderboardSpring26Page = lazy(() => import('./pages/LeaderboardSpring26Page'));
+const LeaderboardSummer26Page = lazy(() => import('./pages/LeaderboardSummer26Page'));
+const EnterprisePage = lazy(() => import('./pages/EnterprisePage'));
+const EnterpriseHRPage = lazy(() => import('./pages/EnterpriseHRPage'));
+const MasterclassPage = lazy(() => import('./pages/MasterclassPage'));
+const ResourcesPage = lazy(() => import('./pages/ResourcesPage'));
+const ClaudeCode101Page = lazy(() => import('./pages/ClaudeCode101Page'));
+const LLMTesting101Page = lazy(() => import('./pages/LLMTesting101Page'));
+const AgencyPage = lazy(() => import('./pages/AgencyPage'));
+const StoriesPage = lazy(() => import('./pages/StoriesPage'));
+const DeniseStoryPage = lazy(() => import('./pages/DeniseStoryPage'));
+const AprotiimStoryPage = lazy(() => import('./pages/AprotiimStoryPage'));
+const DigvijayStoryPage = lazy(() => import('./pages/DigvijayStoryPage'));
+const DebisreeStoryPage = lazy(() => import('./pages/DebisreeStoryPage'));
+const RajeshStoryPage = lazy(() => import('./pages/RajeshStoryPage'));
+const JoanStoryPage = lazy(() => import('./pages/JoanStoryPage'));
+const PadmapriyaStoryPage = lazy(() => import('./pages/PadmapriyaStoryPage'));
+const PraveenaStoryPage = lazy(() => import('./pages/PraveenaStoryPage'));
+const SaahithiStoryPage = lazy(() => import('./pages/SaahithiStoryPage'));
+const CommunityPage = lazy(() => import('./pages/CommunityPage'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
 function ScrollToTop() {
   const { pathname } = useLocation();
   useEffect(() => {
@@ -39,6 +41,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <ScrollToTop />
+      <Suspense fallback={<div className="min-h-screen bg-brand-dark" />}>
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/join" element={<JoinPage />} />
@@ -67,8 +70,10 @@ export default function App() {
         <Route path="/story/praveena" element={<PraveenaStoryPage />} />
         <Route path="/story/saahithi" element={<SaahithiStoryPage />} />
         <Route path="/community" element={<CommunityPage />} />
+        <Route path="/portfolio" element={<PortfolioPage />} />
         <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
+      </Suspense>
     </BrowserRouter>
   );
 }

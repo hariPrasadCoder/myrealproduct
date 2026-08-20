@@ -132,7 +132,7 @@ const WEEKS: Week[] = [
 
 const LOGISTICS = [
   { icon: GraduationCap, label: 'Pre-requisite', value: 'Basic Python' },
-  { icon: CalendarDays, label: 'Weekly live session', value: 'Every Saturday with Hari' },
+  { icon: CalendarDays, label: 'Weekly live session', value: 'Choose an available Saturday time with Hari' },
   { icon: RefreshCw, label: 'Enrollment', value: 'New seats weekly, start Saturday' },
   { icon: Award, label: 'Certificate', value: '"AI Product Builder" on completion' },
 ];
@@ -286,13 +286,14 @@ export default function TheLadder() {
           className="text-center mb-12"
         >
           <span className="text-brand-primary font-mono text-xs tracking-widest uppercase mb-4 block">
-            The 4-Week Ladder
+            The 4-Week AI Fast Track
           </span>
           <h2 className="text-3xl md:text-5xl font-display font-medium text-white leading-tight mb-4">
-            Everyone will teach you to prompt ChatGPT.
-            <br />
-            <span className="text-white/30">Almost nobody takes you to production.</span>
+            The fastest way to learn AI is to build something real.
           </h2>
+          <p className="mx-auto max-w-xl text-brand-text/70 leading-relaxed">
+            Go from a working app to RAG, agents, and production in four focused weeks.
+          </p>
         </motion.div>
 
         {/* Overview strip — the whole arc, grabbed in one glance, before any of the detail below */}

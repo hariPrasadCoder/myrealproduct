@@ -39,7 +39,7 @@ const FAQS: { q: string; a: string; calLink?: string }[] = [
   },
   {
     q: "What happens if I miss a live session?",
-    a: "Recordings will be shared so you can catch up anytime. Your coach will also help you stay on track."
+    a: "The entire program is personalized around you, so you choose from the available Saturday session times to find the best fit for your schedule. If you still need to miss one, you’ll receive the recording and your coach will help you catch up and stay on track."
   },
   {
     q: "Is there a refund policy?",

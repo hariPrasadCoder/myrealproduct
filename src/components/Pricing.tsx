@@ -38,13 +38,13 @@ export default function Pricing() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-center max-w-2xl mx-auto mb-14"
+          className="text-center max-w-3xl mx-auto mb-14"
         >
           <span className="inline-block px-3 py-1 bg-brand-primary/10 text-brand-primary text-xs font-mono uppercase tracking-widest rounded-full mb-6">
             The Fast Track
           </span>
           <h2 className="text-4xl md:text-5xl font-display font-medium text-white tracking-tight leading-tight">
-            One real product. One path into AI. <span className="text-brand-accent">$1,999.</span>
+            One real product. One path <span className="whitespace-nowrap">into AI.</span>
           </h2>
         </motion.div>
 
