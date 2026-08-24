@@ -59,7 +59,7 @@ export default function Pricing() {
             <div className="p-12 lg:p-16 flex flex-col justify-center items-center text-center border-b lg:border-b-0 lg:border-r border-white/10 bg-gradient-to-b from-white/[0.02] to-transparent">
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-brand-primary/20 border border-brand-primary/30 text-brand-accent text-xs font-mono uppercase tracking-widest mb-8">
                 <Sparkles size={12} />
-                <span>The Fast Track Seat</span>
+                <span>The Fast Track: your 1:1 personal trainer for 4 weeks</span>
               </div>
 
               <h2 className="text-5xl md:text-6xl font-display font-bold text-white mb-2 tracking-tighter">
@@ -67,7 +67,7 @@ export default function Pricing() {
               </h2>
               <p className="text-brand-text/60 text-sm font-mono uppercase tracking-wider mb-4">One-time payment</p>
               <p className="text-brand-text/40 text-xs max-w-[240px] leading-relaxed mb-10">
-                Independent 1:1 technical coaching runs $150–$400/hr elsewhere. This buys the guided, guaranteed-outcome version of that.
+                Four weeks of personal guidance from Hari and your coach. Independent 1:1 technical coaching runs $150–$400/hr elsewhere.
               </p>
 
               <Button size="lg" className="w-full h-14 px-8 text-sm font-medium tracking-widest uppercase rounded-sm bg-white text-black hover:bg-brand-accent hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(255,255,255,0.15)] group-hover:shadow-[0_0_50px_rgba(255,255,255,0.2)]" data-tally-open="D4N6gl" data-tally-layout="modal" data-tally-width="500" data-tally-form-events-forwarding="1" onClick={handleApplyClick}>

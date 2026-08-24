@@ -43,7 +43,7 @@ const FAQS: { q: string; a: string; calLink?: string }[] = [
   },
   {
     q: "Is there a refund policy?",
-    a: "Yes, it’s tiered, not a flat window. Leave after week 1 and get 75% back, after week 2 get 50%, after week 3 get 25% (excluding the 10% transaction fee). The longer you’re in, the more of the program you’ve already received."
+    a: "Yes. Refunds are prorated by completed weeks: after week 1, you receive 75% back; after week 2, 50%; after week 3, 25%. All refunds exclude a 10% transaction fee. Refunds apply to future weeks only, so any week that has started counts as used."
   },
   {
     q: "I’m not a “tech person.” Can I still join?",
